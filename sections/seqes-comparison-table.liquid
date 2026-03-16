@@ -1,0 +1,388 @@
+<style>
+  .seqes-comparison-{{ section.id }} {
+    --seqes-bg: {{ section.settings.background_color }};
+    --seqes-frame: {{ section.settings.frame_color }};
+    --seqes-text: {{ section.settings.text_color }};
+    --seqes-muted: {{ section.settings.muted_color }};
+    --seqes-divider: {{ section.settings.divider_color }};
+
+    width: 100%;
+    background: var(--seqes-bg);
+    color: var(--seqes-text);
+  }
+
+  .seqes-comparison__inner-{{ section.id }} {
+    max-width: {{ section.settings.content_width }}px;
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+  }
+
+  .seqes-comparison__eyebrow-{{ section.id }} {
+    margin: 0 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12px;
+    color: var(--seqes-frame);
+  }
+
+  .seqes-comparison__title-{{ section.id }} {
+    margin: 0 0 12px;
+    text-align: center;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.1;
+    color: var(--seqes-text);
+  }
+
+  .seqes-comparison__intro-{{ section.id }} {
+    max-width: 720px;
+    margin: 0 auto 34px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--seqes-muted);
+  }
+
+  .seqes-comparison__grid-{{ section.id }} {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr 1fr;
+  }
+
+  .seqes-comparison__cell-{{ section.id }} {
+    padding: 18px 18px;
+    border-bottom: 1px solid var(--seqes-divider);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  .seqes-comparison__feature-{{ section.id }} {
+    font-weight: 600;
+    color: var(--seqes-text);
+  }
+
+  .seqes-comparison__market-{{ section.id }} {
+    color: var(--seqes-muted);
+  }
+
+  .seqes-comparison__seqes-{{ section.id }} {
+    font-weight: 700;
+    color: var(--seqes-text);
+    border-left: 3px solid var(--seqes-frame);
+    border-right: 3px solid var(--seqes-frame);
+  }
+
+  .seqes-comparison__seqes-head-{{ section.id }} {
+    border-left: 3px solid var(--seqes-frame);
+    border-right: 3px solid var(--seqes-frame);
+    border-top: 3px solid var(--seqes-frame);
+    font-weight: 700;
+  }
+
+  .seqes-comparison__seqes-last-{{ section.id }} {
+    border-bottom: 3px solid var(--seqes-frame);
+  }
+
+  .seqes-comparison__brand-{{ section.id }} {
+    color: var(--seqes-frame);
+    font-weight: 700;
+  }
+
+  .seqes-comparison__mobile-{{ section.id }} {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .seqes-comparison__grid-{{ section.id }} {
+      display: none;
+    }
+
+    .seqes-comparison__mobile-{{ section.id }} {
+      display: block;
+    }
+
+    .seqes-comparison__mobile-row-{{ section.id }} {
+      padding: 18px 0;
+      border-top: 1px solid var(--seqes-divider);
+    }
+
+    .seqes-comparison__mobile-row-{{ section.id }}:first-child {
+      border-top: 0;
+    }
+
+    .seqes-comparison__mobile-feature-{{ section.id }} {
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--seqes-text);
+    }
+
+    .seqes-comparison__mobile-card-{{ section.id }} {
+      margin-bottom: 10px;
+      padding: 14px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .seqes-comparison__mobile-card-seqes-{{ section.id }} {
+      border: 3px solid var(--seqes-frame);
+      border-radius: 12px;
+      font-weight: 700;
+      color: var(--seqes-text);
+    }
+
+    .seqes-comparison__mobile-card-market-{{ section.id }} {
+      color: var(--seqes-muted);
+    }
+
+    .seqes-comparison__mobile-label-{{ section.id }} {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--seqes-frame);
+    }
+  }
+</style>
+
+<div class="seqes-comparison-{{ section.id }}">
+  <div class="seqes-comparison__inner-{{ section.id }}">
+    {% if section.settings.eyebrow != blank %}
+      <div class="seqes-comparison__eyebrow-{{ section.id }}">{{ section.settings.eyebrow }}</div>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h2 class="seqes-comparison__title-{{ section.id }}">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.intro != blank %}
+      <div class="seqes-comparison__intro-{{ section.id }}">{{ section.settings.intro }}</div>
+    {% endif %}
+
+    <div class="seqes-comparison__grid-{{ section.id }}">
+      <div class="seqes-comparison__cell-{{ section.id }}"></div>
+      <div class="seqes-comparison__cell-{{ section.id }} seqes-comparison__seqes-head-{{ section.id }}">
+        <span class="seqes-comparison__brand-{{ section.id }}">{{ section.settings.seqes_heading }}</span>
+      </div>
+      <div class="seqes-comparison__cell-{{ section.id }}">{{ section.settings.market_heading }}</div>
+
+      {% for block in section.blocks %}
+        <div class="seqes-comparison__cell-{{ section.id }} seqes-comparison__feature-{{ section.id }}" {{ block.shopify_attributes }}>
+          {{ block.settings.feature }}
+        </div>
+
+        <div class="seqes-comparison__cell-{{ section.id }} seqes-comparison__seqes-{{ section.id }} {% if forloop.last %}seqes-comparison__seqes-last-{{ section.id }}{% endif %}">
+          {{ block.settings.seqes_text }}
+        </div>
+
+        <div class="seqes-comparison__cell-{{ section.id }} seqes-comparison__market-{{ section.id }}">
+          {{ block.settings.market_text }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="seqes-comparison__mobile-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="seqes-comparison__mobile-row-{{ section.id }}" {{ block.shopify_attributes }}>
+          <div class="seqes-comparison__mobile-feature-{{ section.id }}">{{ block.settings.feature }}</div>
+
+          <div class="seqes-comparison__mobile-card-{{ section.id }} seqes-comparison__mobile-card-seqes-{{ section.id }}">
+            <span class="seqes-comparison__mobile-label-{{ section.id }}">{{ section.settings.seqes_heading }}</span>
+            {{ block.settings.seqes_text }}
+          </div>
+
+          <div class="seqes-comparison__mobile-card-{{ section.id }} seqes-comparison__mobile-card-market-{{ section.id }}">
+            <span class="seqes-comparison__mobile-label-{{ section.id }}">{{ section.settings.market_heading }}</span>
+            {{ block.settings.market_text }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Seqes comparison table",
+  "tag": "section",
+  "class": "section-seqes-comparison-table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Lo que hace diferente a Seqes"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "¿Por qué elegir Seqes?"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>No todas las cremas hidratantes son iguales. La diferencia está en la calidad de los ingredientes, la forma en que cuidan la piel y la experiencia que ofrecen.</p>"
+    },
+    {
+      "type": "text",
+      "id": "seqes_heading",
+      "label": "Seqes column heading",
+      "default": "Seqes"
+    },
+    {
+      "type": "text",
+      "id": "market_heading",
+      "label": "Market column heading",
+      "default": "Muchas cremas del mercado"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 900,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "label": "Content width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#00393b"
+    },
+    {
+      "type": "color",
+      "id": "frame_color",
+      "label": "Seqes frame color",
+      "default": "#a8e0c0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text color",
+      "default": "#d4e1df"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#2f5c5e"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature",
+          "label": "Feature",
+          "default": "Ingredientes"
+        },
+        {
+          "type": "text",
+          "id": "seqes_text",
+          "label": "Seqes text",
+          "default": "Activos botánicos cuidadosamente seleccionados"
+        },
+        {
+          "type": "text",
+          "id": "market_text",
+          "label": "Market text",
+          "default": "Ingredientes estándar"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Seqes comparison table",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Ingredientes",
+            "seqes_text": "Activos botánicos cuidadosamente seleccionados",
+            "market_text": "Ingredientes estándar"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Fragancia",
+            "seqes_text": "Sin fragancia ni perfume",
+            "market_text": "Frecuentemente con perfume"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Cuidado de la piel",
+            "seqes_text": "Diseñada para piel sensible",
+            "market_text": "Fórmulas genéricas"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Hidratación",
+            "seqes_text": "Hidratación profunda y duradera",
+            "market_text": "Hidratación superficial"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Textura",
+            "seqes_text": "Ligera y de rápida absorción",
+            "market_text": "Puede sentirse pesada o grasa"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Experiencia",
+            "seqes_text": "Cuidado consciente y premium",
+            "market_text": "Producto funcional básico"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
