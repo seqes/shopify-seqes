@@ -42,16 +42,61 @@
             "text_style": "style_vendor"
           }
         },
-        "custom_liquid_K4cf4M": {
-          "type": "custom_liquid",
+        "seqes_it_skin_badge": {
+          "type": "seqes_icon_text",
           "settings": {
-            "custom_liquid": "{% render 'seqes-skin-type-badge', text: 'Para pieles secas y muy sensibles', color: '#FAA525', font_size: 17 %}"
+            "text": "Para pieles secas y muy sensibles",
+            "text_color": "#FAA525",
+            "font_size": 17,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "none",
+            "icon_color": "#00393b",
+            "enable_animation": false
           }
         },
-        "custom_liquid_zw6FHC": {
-          "type": "custom_liquid",
+        "seqes_it_claim_1": {
+          "type": "seqes_icon_text",
           "settings": {
-            "custom_liquid": "{% render 'seqes-product-claims', claims: 'Dermatológicamente testeado|Hipoalergénico|Sin aroma ni colorantes|Permitido su uso en niños menores de 6 años', bullet_color: '#00393b', font_size: 15 %}"
+            "text": "Dermatológicamente testeado",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_2": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Hipoalergénico",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_3": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Sin aroma ni colorantes",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_4": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Permitido su uso en niños menores de 6 años",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
           }
         },
         "description_rTYcfB": {
@@ -151,8 +196,11 @@
         "text_t8gmHK",
         "text_KcnXyW",
         "text_CQpYUh",
-        "custom_liquid_K4cf4M",
-        "custom_liquid_zw6FHC",
+        "seqes_it_skin_badge",
+        "seqes_it_claim_1",
+        "seqes_it_claim_2",
+        "seqes_it_claim_3",
+        "seqes_it_claim_4",
         "description_rTYcfB",
         "variant_picker",
         "buy_buttons",
@@ -599,6 +647,7 @@
     },
     "seqes_gradient_fade_down": {
       "type": "seqes-gradient-divider",
+      "name": "Seqes gradient divider",
       "settings": {
         "color": "#003B3D",
         "height": 100,
@@ -607,6 +656,7 @@
     },
     "seqes_gradient_fade_up": {
       "type": "seqes-gradient-divider",
+      "name": "Seqes gradient divider",
       "settings": {
         "color": "#003B3D",
         "height": 100,

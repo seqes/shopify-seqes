@@ -3,7 +3,7 @@
   assign gradient_height = section.settings.height
   assign direction = section.settings.direction
 -%}
-<style>
+{%- style -%}
   .seqes-gradient-{{ section.id }} {
     height: {{ gradient_height }}px;
     width: 100vw;
@@ -32,7 +32,13 @@
     );
     {%- endif -%}
   }
-</style>
+
+  @media screen and (max-width: 749px) {
+    .seqes-gradient-{{ section.id }} {
+      height: {{ gradient_height | times: 60 | divided_by: 100 }}px;
+    }
+  }
+{%- endstyle -%}
 
 <div class="seqes-gradient-{{ section.id }}"></div>
 

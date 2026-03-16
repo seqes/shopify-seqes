@@ -1011,6 +1011,18 @@
             {
               "value": "washing",
               "label": "Washing"
+            },
+            {
+              "value": "seqes_warning",
+              "label": "⚠ Seqes: Advertencia"
+            },
+            {
+              "value": "seqes_instructions",
+              "label": "📖 Seqes: Modo de uso"
+            },
+            {
+              "value": "seqes_formula",
+              "label": "🧪 Seqes: Ingredientes"
             }
           ],
           "default": "ruler",
@@ -1217,6 +1229,18 @@
             {
               "value": "washing",
               "label": "Washing"
+            },
+            {
+              "value": "seqes_warning",
+              "label": "⚠ Seqes: Advertencia"
+            },
+            {
+              "value": "seqes_instructions",
+              "label": "📖 Seqes: Modo de uso"
+            },
+            {
+              "value": "seqes_formula",
+              "label": "🧪 Seqes: Ingredientes"
             }
           ],
           "default": "box",
@@ -1423,6 +1447,18 @@
             {
               "value": "washing",
               "label": "Washing"
+            },
+            {
+              "value": "seqes_warning",
+              "label": "⚠ Seqes: Advertencia"
+            },
+            {
+              "value": "seqes_instructions",
+              "label": "📖 Seqes: Modo de uso"
+            },
+            {
+              "value": "seqes_formula",
+              "label": "🧪 Seqes: Ingredientes"
             }
           ],
           "default": "washing",
@@ -1647,7 +1683,7 @@
           "id": "color_active_segment",
           "label": "Active segment",
           "default": "#151515"
-        },
+        }
       ]
     },
 		{
@@ -1882,11 +1918,363 @@
 				}
 			]
 		},
-		{
+    {
       "type": "payment_icons",
       "name": "Payment icons",
       "limit": 1,
       "settings": []
+    },
+    {
+      "type": "seqes_icon_text",
+      "name": "Seqes icon + text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 15
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi-bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "500",
+          "label": "Font weight"
+        },
+        {
+          "type": "select",
+          "id": "font_style",
+          "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "italic", "label": "Italic" }
+          ],
+          "default": "normal",
+          "label": "Font style"
+        },
+        {
+          "type": "header",
+          "content": "Icon"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "bullet", "label": "Bullet dot" },
+            { "value": "emoji", "label": "Emoji" },
+            { "value": "theme_icon", "label": "Theme icon" }
+          ],
+          "default": "none",
+          "label": "Icon type"
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "info": "Paste an emoji character (used when Icon type is Emoji)"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "apple", "label": "Apple" },
+            { "value": "banana", "label": "Banana" },
+            { "value": "bottle", "label": "Bottle" },
+            { "value": "box", "label": "Box" },
+            { "value": "carrot", "label": "Carrot" },
+            { "value": "chat_bubble", "label": "Chat bubble" },
+            { "value": "check_mark", "label": "Check mark" },
+            { "value": "clipboard", "label": "Clipboard" },
+            { "value": "dairy", "label": "Dairy" },
+            { "value": "dairy_free", "label": "Dairy free" },
+            { "value": "dryer", "label": "Dryer" },
+            { "value": "eye", "label": "Eye" },
+            { "value": "fire", "label": "Fire" },
+            { "value": "gluten_free", "label": "Gluten free" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "iron", "label": "Iron" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "leather", "label": "Leather" },
+            { "value": "lightning_bolt", "label": "Lightning bolt" },
+            { "value": "lipstick", "label": "Lipstick" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "map_pin", "label": "Map pin" },
+            { "value": "nut_free", "label": "Nut free" },
+            { "value": "pants", "label": "Pants" },
+            { "value": "paw_print", "label": "Paw print" },
+            { "value": "pepper", "label": "Pepper" },
+            { "value": "perfume", "label": "Perfume" },
+            { "value": "plane", "label": "Plane" },
+            { "value": "plant", "label": "Plant" },
+            { "value": "price_tag", "label": "Price tag" },
+            { "value": "question_mark", "label": "Question mark" },
+            { "value": "recycle", "label": "Recycle" },
+            { "value": "return", "label": "Return" },
+            { "value": "ruler", "label": "Ruler" },
+            { "value": "serving_dish", "label": "Serving dish" },
+            { "value": "shirt", "label": "Shirt" },
+            { "value": "shoe", "label": "Shoe" },
+            { "value": "silhouette", "label": "Silhouette" },
+            { "value": "snowflake", "label": "Snowflake" },
+            { "value": "star", "label": "Star" },
+            { "value": "stopwatch", "label": "Stopwatch" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "washing", "label": "Washing" },
+            { "value": "seqes_warning", "label": "⚠ Seqes: Advertencia" },
+            { "value": "seqes_instructions", "label": "📖 Seqes: Modo de uso" },
+            { "value": "seqes_formula", "label": "🧪 Seqes: Ingredientes" }
+          ],
+          "default": "none",
+          "label": "Theme icon",
+          "info": "Used when Icon type is Theme icon"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon / bullet color",
+          "default": "#00393b"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_animation",
+          "label": "Enable glow animation",
+          "default": false,
+          "info": "Animated glow pulse on the icon or bullet"
+        }
+      ]
+    },
+    {
+      "type": "estimated_shipping",
+      "name": "Estimated shipping",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "default": "local_shipping",
+          "label": "Material icon name",
+          "info": "[View all available icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.platform=web)"
+        },
+        {
+          "type": "checkbox",
+          "id": "filled_icon",
+          "default": false,
+          "label": "Filled icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon (overrides material icon)"
+        },
+        {
+          "type": "select",
+          "id": "icon_size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "medium",
+          "label": "Icon size"
+        },
+        {
+          "type": "text",
+          "id": "message",
+          "default": "Order now, receive between [start_date] and [end_date]",
+          "label": "Message",
+          "info": "Use [start_date] and [end_date] as placeholders"
+        },
+        {
+          "type": "range",
+          "id": "min_shipping_days",
+          "min": 1,
+          "max": 30,
+          "step": 1,
+          "default": 3,
+          "label": "Minimum shipping days"
+        },
+        {
+          "type": "range",
+          "id": "max_shipping_days",
+          "min": 1,
+          "max": 60,
+          "step": 1,
+          "default": 7,
+          "label": "Maximum shipping days"
+        },
+        {
+          "type": "select",
+          "id": "date_format",
+          "options": [
+            { "value": "short", "label": "Short (Jan 15)" },
+            { "value": "long", "label": "Long (January 15)" }
+          ],
+          "default": "short",
+          "label": "Date format"
+        }
+      ]
+    },
+    {
+      "type": "rating_stars",
+      "name": "Rating stars",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "default": 4.8,
+          "label": "Rating"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "default": "4.8/5 (120 reviews)",
+          "label": "Label text"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star color",
+          "default": "#FFB800"
+        },
+        {
+          "type": "color",
+          "id": "bg_star_color",
+          "label": "Background star color",
+          "default": "#E0E0E0"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "min": 12,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "default": 18,
+          "label": "Star size"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "options": [
+            { "value": "flex-start", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Right" }
+          ],
+          "default": "flex-start",
+          "label": "Alignment"
+        }
+      ]
+    },
+    {
+      "type": "urgency_text",
+      "name": "Urgency text",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Only a few left in stock!",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "default": "warning",
+          "label": "Material icon name",
+          "info": "[View all available icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.platform=web)"
+        },
+        {
+          "type": "checkbox",
+          "id": "filled_icon",
+          "default": true,
+          "label": "Filled icon"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#CC0000"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Font size"
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+          ],
+          "default": "bold",
+          "label": "Font weight"
+        }
+      ]
+    },
+    {
+      "type": "emoji_benefits",
+      "name": "Emoji benefits",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "benefits",
+          "default": "Free shipping on orders over €50|30-day return policy|Dermatologically tested",
+          "label": "Benefits (separate with |)"
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "default": "✓",
+          "label": "Emoji or symbol prefix"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#333333"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Font size"
+        }
+      ]
     }
   ]
 }

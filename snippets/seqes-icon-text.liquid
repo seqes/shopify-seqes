@@ -1,0 +1,44 @@
+{%- liquid
+  assign it_text = text | default: ''
+  assign it_color = text_color | default: ''
+  assign it_size = font_size | default: 15
+  assign it_weight = font_weight | default: '500'
+  assign it_style = font_style | default: 'normal'
+  assign it_icon_type = icon_type | default: 'none'
+  assign it_icon = icon | default: 'none'
+  assign it_emoji = emoji | default: ''
+  assign it_icon_color = icon_color | default: '#00393b'
+  assign it_animate = enable_animation | default: false
+  assign it_uid = uid | default: ''
+-%}
+
+{%- if it_text == blank -%}
+  {%- break -%}
+{%- endif -%}
+
+{%- if it_animate -%}
+{%- assign _r = it_icon_color | color_extract: 'red' -%}
+{%- assign _g = it_icon_color | color_extract: 'green' -%}
+{%- assign _b = it_icon_color | color_extract: 'blue' -%}
+<style>@keyframes seqesItGlow-{{ it_uid }}{0%,100%{box-shadow:0 0 0 0 rgba({{ _r }},{{ _g }},{{ _b }},0);opacity:1}50%{box-shadow:0 0 8px 2px rgba({{ _r }},{{ _g }},{{ _b }},.35);opacity:.75}}</style>
+{%- endif -%}
+
+<div
+  class="seqes-it"
+  style="--it-size:{{ it_size }}px;--it-weight:{{ it_weight }};--it-style:{{ it_style }};{% if it_color != blank %}--it-color:{{ it_color }};{% endif %}--it-icon-color:{{ it_icon_color }};"
+>
+  {%- if it_icon_type == 'bullet' -%}
+    <span class="seqes-it-icon"><span class="seqes-it-bullet{% if it_animate %} seqes-it-bullet--animated{% endif %}"{% if it_animate %} style="animation-name:seqesItGlow-{{ it_uid }};"{% endif %}></span></span>
+  {%- elsif it_icon_type == 'emoji' and it_emoji != blank -%}
+    <span class="seqes-it-icon seqes-it-emoji">{{ it_emoji }}</span>
+  {%- elsif it_icon_type == 'theme_icon' and it_icon != 'none' -%}
+    <span class="seqes-it-icon seqes-it-svg">
+      {%- if it_icon contains 'seqes_' -%}
+        {%- render 'seqes-icons', icon: it_icon -%}
+      {%- else -%}
+        {%- render 'svg-icons-inline', icon: it_icon -%}
+      {%- endif -%}
+    </span>
+  {%- endif -%}
+  <span>{{ it_text }}</span>
+</div>
