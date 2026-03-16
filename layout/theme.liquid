@@ -77,6 +77,10 @@
 	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 	{{ settings.custom_html_head }}
 
+    {%- comment -%}
+      TODO: Remove this hardcoded collection price-hiding once the vet clinic
+      homepage is fully migrated. Use collection metafields or tags instead.
+    {%- endcomment -%}
     {% if collection.handle == "nuestros-profesionales" or collection.handle =="reserva" %}
     <style>
       .price  { display: none !important }

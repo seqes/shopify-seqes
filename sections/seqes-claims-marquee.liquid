@@ -1,0 +1,154 @@
+{%- liquid
+  assign speed = section.settings.speed | default: '22s'
+  assign check_color = section.settings.check_color
+  assign font_size = section.settings.font_size
+  assign section_width = section.settings.section_width
+-%}
+<style>
+  .seqes-clean-marquee-{{ section.id }} {
+    --brand-color: {{ check_color }};
+    --speed: {{ speed }};
+    overflow: hidden;
+    width: 100%;
+    margin: 25px 0;
+  }
+  .seqes-clean-track-{{ section.id }} {
+    display: flex;
+    width: max-content;
+    animation: seqes-scroll-{{ section.id }} var(--speed) linear infinite;
+  }
+  .seqes-clean-group-{{ section.id }} {
+    display: flex;
+    gap: 40px;
+    padding-right: 40px;
+    flex-shrink: 0;
+  }
+  .seqes-clean-item-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: {{ font_size }}px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .seqes-clean-check-{{ section.id }} {
+    color: var(--brand-color);
+    font-size: {{ font_size | plus: 2 }}px;
+    font-weight: 700;
+  }
+  @keyframes seqes-scroll-{{ section.id }} {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media screen and (max-width: 749px) {
+    .seqes-clean-item-{{ section.id }} {
+      font-size: {{ font_size | minus: 2 }}px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .seqes-clean-track-{{ section.id }} {
+      animation: none;
+    }
+  }
+</style>
+
+<div class="row {{ section_width }}">
+  <div class="small-12 columns">
+    <div class="seqes-clean-marquee-{{ section.id }}">
+      <div class="seqes-clean-track-{{ section.id }}">
+        {%- for copy in (1..2) -%}
+        <div class="seqes-clean-group-{{ section.id }}"{% if copy == 2 %} aria-hidden="true"{% endif %}>
+          {%- for block in section.blocks -%}
+            <div class="seqes-clean-item-{{ section.id }}" {{ block.shopify_attributes }}>
+              <span class="seqes-clean-check-{{ section.id }}">✓</span>{{ block.settings.text }}
+            </div>
+          {%- endfor -%}
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Seqes claims marquee",
+  "tag": "section",
+  "class": "section-seqes-claims-marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "speed",
+      "label": "Animation speed",
+      "default": "22s",
+      "info": "CSS duration, e.g. 22s or 30s. Higher = slower."
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Checkmark color",
+      "default": "#8E9F78"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "full-width-row",
+          "label": "Full width"
+        },
+        {
+          "value": "full-width-row-full",
+          "label": "Full width, no spacing"
+        }
+      ],
+      "default": "full-width-row",
+      "label": "Section width"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "claim",
+      "name": "Claim",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Claim text",
+          "default": "Libre de Sulfatos"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Seqes claims marquee",
+      "blocks": [
+        { "type": "claim", "settings": { "text": "Libre de Gluten" } },
+        { "type": "claim", "settings": { "text": "Libre de Sulfatos" } },
+        { "type": "claim", "settings": { "text": "Libre de Parabenos" } },
+        { "type": "claim", "settings": { "text": "Libre de Ftalatos" } },
+        { "type": "claim", "settings": { "text": "Libre de Siliconas" } },
+        { "type": "claim", "settings": { "text": "Libre de Fragancia" } }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["*"]
+  }
+}
+{% endschema %}
