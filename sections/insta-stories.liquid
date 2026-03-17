@@ -1,0 +1,616 @@
+{%- style -%}
+  .is-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+  }
+  @media screen and (min-width: 750px) {
+    .is-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  insta-stories { display: block; --pfp-size: 7rem; --ring-width: 0.3rem; --ring-offset: 0.3rem; }
+  .content-rte + insta-stories { margin-top: 2rem; }
+  .insta-stories__open-buttons-and-arrows-container { position: relative; z-index: 0; }
+  .insta-stories__open-buttons-container { overflow: hidden; }
+  .insta-stories__open-buttons-and-arrows-container .insta-stories__open-btns-prev { left: 0; transform: translateY(-50%); display: none; }
+  .insta-stories__open-buttons-and-arrows-container .insta-stories__open-btns-next { right: 0; transform: translateY(-50%); display: none; }
+  .insta-stories__open-buttons { display: flex; column-gap: 1rem; align-items: flex-start; width: fit-content; margin: 0 auto; }
+
+  .insta-story-open-btn { width: var(--pfp-size); padding: 0; background: none; border: none; cursor: pointer; color: inherit; }
+  .insta-story-open-btn:focus-visible { outline: none; box-shadow: none; }
+  .insta-story-open-btn__pfp-ring {
+    width: var(--pfp-size); height: var(--pfp-size); border-radius: 50%; padding: var(--ring-width);
+    background: linear-gradient(45deg, rgba(255,200,0,1) 15%, rgba(255,21,88,1) 50%, rgba(211,0,197,1) 85%);
+  }
+  .insta-story-open-btn--close-friends .insta-story-open-btn__pfp-ring {
+    background: linear-gradient(45deg, #3cb043 0%, #57d15e 100%);
+  }
+  .insta-story-open-btn__pfp-ring-offset {
+    width: 100%; height: 100%; border-radius: 50%; padding: var(--ring-offset);
+    background: {{ section.settings.bg_color }};
+  }
+  .insta-story-open-btn__pfp {
+    width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #c2c2c2;
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .insta-story-open-btn__pfp .material-icon { font-size: calc(var(--pfp-size) * 0.9); color: #fff; transform: translateY(18%); }
+  .insta-story-open-btn__pfp img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .insta-story-open-btn__username {
+    max-width: 100%; white-space: nowrap; text-overflow: ellipsis; display: block; overflow: hidden;
+    text-align: center; margin-top: 0.4em; font-size: calc(var(--pfp-size) / 6);
+  }
+
+  .insta-stories__modal {
+    position: fixed; top: 0; left: 0; z-index: 130; height: 100vh; width: 100%; overflow: hidden;
+    display: none; place-items: center; background: rgba(0,0,0,0.9); backdrop-filter: blur(5px);
+    --story-height: calc(100vh - 4rem); --story-width: min(calc(var(--story-height) * 9 / 16), 100vw);
+    --slide-transition-duration: 0.3s;
+  }
+  .insta-stories__modal[data-open="true"] { display: grid; }
+  .insta-stories__modal__close {
+    font-size: 4rem; width: 1em; height: 1em; display: grid; place-items: center;
+    position: absolute; top: 2rem; right: 2rem; z-index: 2; background: none; border: none; cursor: pointer;
+  }
+  .insta-stories__modal__close .material-icon { font-size: 1em; color: #ececec; }
+
+  .insta-stories__slider-container { width: calc(var(--story-width) * 3); overflow: hidden; }
+  .insta-stories__slider {
+    display: flex; width: fit-content; transition: transform var(--slide-transition-duration);
+    position: relative; left: var(--story-width);
+  }
+
+  .insta-story {
+    height: var(--story-height); width: var(--story-width); position: relative; z-index: 0;
+    box-shadow: 0.3rem 0.3rem 1rem rgba(0,0,0,0.3); transition: transform var(--slide-transition-duration);
+    transform: scale(0.6);
+  }
+  .insta-story--active { transform: scale(1); z-index: 1; }
+
+  .insta-story__top { position: absolute; top: 0; left: 0; padding: 2rem; z-index: 2; width: 100%; }
+  .insta-story__progress { display: flex; justify-content: space-between; column-gap: 0.3rem; }
+  .insta-story__progress-item {
+    display: block; height: 0.3rem; border-radius: 1rem; flex: 1 1 auto;
+    background: rgba(255,255,255,0.35); position: relative;
+  }
+  .insta-story__progress-bar {
+    content: ""; display: block; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #fff;
+  }
+  .insta-story__progress-item--completed .insta-story__progress-bar { width: 100%; }
+  .insta-story__progress-item--active .insta-story__progress-bar { animation: fillProgress var(--duration) linear forwards; }
+  @keyframes fillProgress { from { width: 0; } to { width: 100%; } }
+
+  .insta-story__info { display: flex; align-items: center; padding-top: 1rem; --pfp-size: 4rem; }
+  .insta-story__pfp { width: var(--pfp-size); height: var(--pfp-size); }
+  .insta-story__info__text, .insta-story__info__text .material-icon { font-size: 1.6rem; line-height: var(--pfp-size); margin: 0; }
+  .insta-story__info__text { margin-right: auto; margin-left: 0.6em; }
+  .insta-story__time-posted { margin-left: 0.25em; opacity: 0.8; }
+  .insta-story__info__btn { color: #ececec; padding: 0.5rem; background: none; border: none; cursor: pointer; }
+
+  .insta-story__info__volume-btn[data-muted="true"] .material-icon:first-child { display: none; }
+  .insta-story__info__volume-btn[data-muted="false"] .material-icon:last-child { display: none; }
+  .insta-story__pause-resume-btn[data-paused="true"] .material-icon:first-child { display: none; }
+  .insta-story__pause-resume-btn[data-paused="false"] .material-icon:last-child { display: none; }
+  .insta-story__info__close-btn { padding: 0; margin-left: 0.4rem; display: none; }
+  .insta-story__info__close-btn .material-icon { font-size: 3.25rem; }
+
+  .insta-story__invisible-btn {
+    position: absolute; top: 0; left: 0; height: 100%; width: 15%;
+    background: none; border: none; outline: none; opacity: 0; z-index: 1; cursor: pointer;
+  }
+  .insta-story__invisible-btn--next { left: auto; right: 0; }
+
+  .insta-story__media {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+    background: var(--background); display: none; border-radius: 0.5rem; overflow: hidden;
+  }
+  .insta-story__media img, .insta-story__media video {
+    width: 100%; height: 100%; object-fit: var(--object-fit); object-position: center; pointer-events: none;
+  }
+
+  .insta-story:not(.insta-story--active) .active-content,
+  .insta-story--active .inactive-content { visibility: hidden; opacity: 0; }
+
+  .insta-story__inactive-overlay {
+    --pfp-size: calc(var(--story-width) * 0.3);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.75); border: none; cursor: pointer; color: inherit;
+  }
+  .insta-story__inactive-overlay .insta-story-open-btn__pfp-ring { margin-bottom: calc(var(--pfp-size) / 10); }
+  .insta-story__inactive-overlay .insta-story__username { color: #fff; font-size: calc(var(--story-width) * 0.06); }
+
+  .insta-story__arrow {
+    width: 3rem; height: 3rem; display: grid; place-items: center; background: #fff; border-radius: 50%;
+    position: absolute; top: 50%; transform: translate(-50%, -50%); padding: 0; border: none; cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  }
+  .insta-story .insta-story__arrow { opacity: 0.8; }
+  .insta-story__arrow .material-icon { font-size: 2.6rem; color: #000; }
+  .insta-story__arrow[disabled] { opacity: 0.2; }
+  .insta-story .insta-story__arrow--next { left: calc(100% + 3rem); }
+  .insta-story__arrow--next .material-icon { transform: translateX(3%); }
+  .insta-story .insta-story__arrow--prev { right: calc(100% + 3rem); transform: translate(50%, -50%); }
+  .insta-story__arrow--prev .material-icon { transform: translateX(-3%); }
+
+  .insta-stories__slider--paused .insta-story__top { opacity: 0; }
+
+  @media screen and (max-width: 999px) {
+    .insta-stories__slider-container { width: calc(var(--story-width) + 9rem); padding: 0 4.5rem; }
+    .insta-stories__slider { left: 0; }
+  }
+  @media screen and (max-width: 749px) {
+    .insta-stories__open-buttons-container { margin: 0 -1.5rem; }
+    .insta-stories__open-buttons { padding: 0 1.5rem; }
+    .insta-stories__slider-container { width: var(--story-width); padding: 0; }
+    .insta-stories__modal { --story-height: 100vh; --story-width: 100vw; }
+    .insta-story { transform: scale(1); }
+    .insta-story__inactive-overlay { pointer-events: none; }
+    .insta-story__info__close-btn { display: block; }
+    .insta-stories__open-buttons-and-arrows-container .insta-stories__open-btns-prev { left: -1rem; }
+    .insta-stories__open-buttons-and-arrows-container .insta-stories__open-btns-next { right: -1rem; }
+  }
+{%- endstyle -%}
+
+<div class="is-section-{{ section.id }} {{ section.settings.visibility }}">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.text != blank -%}
+      <div class="content-rte center">
+        {%- if section.settings.title != blank -%}
+          <h2 class="{{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a
+            {% if section.settings.link %}href="{{ section.settings.link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+            class="button"
+          >
+            {{- section.settings.button_label | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <insta-stories
+      class="insta-stories"
+      data-last-index="{{ section.blocks.size | minus: 1 }}"
+      data-section="{{ section.id }}"
+    >
+      <div class="insta-stories__open-buttons-and-arrows-container">
+        <div class="insta-stories__open-buttons-container">
+          <div class="insta-stories__open-buttons" id="insta-stories__open-buttons-{{ section.id }}">
+            {%- for block in section.blocks -%}
+              <button
+                class="insta-story-open-btn{% if block.settings.close_friends %} insta-story-open-btn--close-friends{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="insta-story-open-btn__pfp-ring">
+                  <div class="insta-story-open-btn__pfp-ring-offset">
+                    <div class="insta-story-open-btn__pfp">
+                      {%- if block.settings.profile_picture != blank -%}
+                        <img
+                          src="{{ block.settings.profile_picture | image_url: width: 400 }}"
+                          alt="{{ block.settings.username }}"
+                          width="auto"
+                          height="auto"
+                          loading="lazy"
+                        >
+                      {%- else -%}
+                        {%- render 'material-icon', icon: 'person', filled: true -%}
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+                <span class="insta-story-open-btn__username">{{ block.settings.username }}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        </div>
+        <button class="insta-story__arrow insta-story__arrow--prev active-content insta-stories__open-btns-prev">
+          {%- render 'material-icon', icon: 'chevron_left' -%}
+        </button>
+        <button class="insta-story__arrow insta-story__arrow--next active-content insta-stories__open-btns-next">
+          {%- render 'material-icon', icon: 'chevron_right' -%}
+        </button>
+      </div>
+
+      <div class="insta-stories__modal" data-open="false">
+        <button class="insta-stories__modal__close insta-stories__close-button mobile-hidden">
+          {%- render 'material-icon', icon: 'close' -%}
+        </button>
+        <div class="insta-stories__slider-container">
+          <div class="insta-stories__slider">
+            {%- for block in section.blocks -%}
+              <div
+                class="insta-story"
+                data-index="{{ forloop.index0 }}"
+                data-active-media-index="0"
+                {{ block.shopify_attributes }}
+              >
+                <div class="insta-story__top active-content">
+                  <div class="insta-story__progress"></div>
+                  <div class="insta-story__info">
+                    <div class="insta-story-open-btn__pfp insta-story__pfp">
+                      {%- if block.settings.profile_picture != blank -%}
+                        <img
+                          src="{{ block.settings.profile_picture | image_url: width: 400 }}"
+                          alt="{{ block.settings.username }}"
+                          width="auto"
+                          height="auto"
+                          loading="lazy"
+                        >
+                      {%- else -%}
+                        {%- render 'material-icon', icon: 'person', filled: true -%}
+                      {%- endif -%}
+                    </div>
+                    <p class="insta-story__info__text">
+                      <span class="insta-story__username">{{ block.settings.username }}</span>
+                      {%- if block.settings.verified -%}
+                        {%- render 'material-icon', icon: 'verified', filled: true -%}
+                      {%- endif -%}
+                      <span class="insta-story__time-posted"></span>
+                    </p>
+                    <button class="insta-story__info__btn insta-story__pause-resume-btn" data-paused="false">
+                      {%- render 'material-icon', icon: 'pause', filled: true -%}
+                      {%- render 'material-icon', icon: 'play_arrow', filled: true -%}
+                    </button>
+                    <button class="insta-story__info__btn insta-story__info__volume-btn insta-story__volume-btn" data-muted="true">
+                      {%- render 'material-icon', icon: 'volume_up', filled: true -%}
+                      {%- render 'material-icon', icon: 'volume_off', filled: true -%}
+                    </button>
+                    <button class="insta-story__info__btn insta-story__info__close-btn insta-stories__close-button">
+                      {%- render 'material-icon', icon: 'close' -%}
+                    </button>
+                  </div>
+                </div>
+
+                {%- if block.settings.story_1_video != blank -%}
+                  <div class="insta-story__media" data-type="video"
+                    data-duration="{{ block.settings.story_1_video.duration | divided_by: 1000.0 }}"
+                    data-time-posted="{{ block.settings.story_1_time_posted }}"
+                    style="--background:{{ block.settings.story_1_bg }};--object-fit:{{ block.settings.story_1_media_fit }}">
+                    {{ block.settings.story_1_video | video_tag: image_size: '1000x', loop: false, muted: true, playsinline: '', autoplay: false }}
+                  </div>
+                {%- elsif block.settings.story_1_image != blank -%}
+                  <div class="insta-story__media" data-type="image"
+                    data-duration="{{ section.settings.autoplay_speed }}"
+                    data-time-posted="{{ block.settings.story_1_time_posted }}"
+                    style="--background:{{ block.settings.story_1_bg }};--object-fit:{{ block.settings.story_1_media_fit }}">
+                    {{ block.settings.story_1_image | image_url: width: 1500 | image_tag: loading: 'lazy', widths: '165, 360, 535, 750, 1070, 1250, 1500' }}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.story_2_video != blank -%}
+                  <div class="insta-story__media" data-type="video"
+                    data-duration="{{ block.settings.story_2_video.duration | divided_by: 1000.0 }}"
+                    data-time-posted="{{ block.settings.story_2_time_posted }}"
+                    style="--background:{{ block.settings.story_2_bg }};--object-fit:{{ block.settings.story_2_media_fit }}">
+                    {{ block.settings.story_2_video | video_tag: image_size: '1000x', loop: false, muted: true, playsinline: '', autoplay: false }}
+                  </div>
+                {%- elsif block.settings.story_2_image != blank -%}
+                  <div class="insta-story__media" data-type="image"
+                    data-duration="{{ section.settings.autoplay_speed }}"
+                    data-time-posted="{{ block.settings.story_2_time_posted }}"
+                    style="--background:{{ block.settings.story_2_bg }};--object-fit:{{ block.settings.story_2_media_fit }}">
+                    {{ block.settings.story_2_image | image_url: width: 1500 | image_tag: loading: 'lazy', widths: '165, 360, 535, 750, 1070, 1250, 1500' }}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.story_3_video != blank -%}
+                  <div class="insta-story__media" data-type="video"
+                    data-duration="{{ block.settings.story_3_video.duration | divided_by: 1000.0 }}"
+                    data-time-posted="{{ block.settings.story_3_time_posted }}"
+                    style="--background:{{ block.settings.story_3_bg }};--object-fit:{{ block.settings.story_3_media_fit }}">
+                    {{ block.settings.story_3_video | video_tag: image_size: '1000x', loop: false, muted: true, playsinline: '', autoplay: false }}
+                  </div>
+                {%- elsif block.settings.story_3_image != blank -%}
+                  <div class="insta-story__media" data-type="image"
+                    data-duration="{{ section.settings.autoplay_speed }}"
+                    data-time-posted="{{ block.settings.story_3_time_posted }}"
+                    style="--background:{{ block.settings.story_3_bg }};--object-fit:{{ block.settings.story_3_media_fit }}">
+                    {{ block.settings.story_3_image | image_url: width: 1500 | image_tag: loading: 'lazy', widths: '165, 360, 535, 750, 1070, 1250, 1500' }}
+                  </div>
+                {%- endif -%}
+
+                <button class="insta-story__inactive-overlay inactive-content insta-story__slide-btn" data-index="{{ forloop.index0 }}">
+                  <div class="insta-story-open-btn__pfp-ring mobile-hidden">
+                    <div class="insta-story-open-btn__pfp-ring-offset">
+                      <div class="insta-story-open-btn__pfp">
+                        {%- if block.settings.profile_picture != blank -%}
+                          <img src="{{ block.settings.profile_picture | image_url: width: 400 }}" alt="{{ block.settings.username }}" width="auto" height="auto" loading="lazy">
+                        {%- else -%}
+                          {%- render 'material-icon', icon: 'person', filled: true -%}
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                  <span class="insta-story__username mobile-hidden">{{ block.settings.username }}</span>
+                </button>
+                <button class="insta-story__invisible-btn insta-story__invisible-btn--prev insta-story__prev active-content" data-index="{{ forloop.index0 }}">&nbsp;</button>
+                <button class="insta-story__invisible-btn insta-story__invisible-btn--next insta-story__next active-content" data-index="{{ forloop.index0 }}">&nbsp;</button>
+                <button class="insta-story__arrow insta-story__arrow--prev active-content insta-story__prev mobile-hidden" data-index="{{ forloop.index0 }}">
+                  {%- render 'material-icon', icon: 'chevron_left' -%}
+                </button>
+                <button class="insta-story__arrow insta-story__arrow--next active-content insta-story__next mobile-hidden" data-index="{{ forloop.index0 }}">
+                  {%- render 'material-icon', icon: 'chevron_right' -%}
+                </button>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </insta-stories>
+  </div>
+</div>
+
+<script>
+if(!customElements.get("insta-stories")){class InstaStories extends HTMLElement{constructor(){super(),this.openButtons=this.querySelectorAll(".insta-story-open-btn"),this.openButtonsOverflowContainer=this.querySelector(".insta-stories__open-buttons-container"),this.openButtonsContainer=this.querySelector(".insta-stories__open-buttons"),this.openBtnsPrev=this.querySelector(".insta-stories__open-btns-prev"),this.openBtnsNext=this.querySelector(".insta-stories__open-btns-next"),this.closeButtons=this.querySelectorAll(".insta-stories__close-button"),this.modal=this.querySelector(".insta-stories__modal"),this.modalOpen=!1,this.slider=this.querySelector(".insta-stories__slider"),this.stories=this.querySelectorAll(".insta-story"),this.prevBtns=this.querySelectorAll(".insta-story__prev"),this.nextBtns=this.querySelectorAll(".insta-story__next"),this.slideBtns=this.querySelectorAll(".insta-story__slide-btn"),this.activeIndex=0,this.activeStory=this.stories[this.activeIndex],this.lastIndex=parseInt(this.dataset.lastIndex),this.pauseResumeBtns=this.querySelectorAll(".insta-story__pause-resume-btn"),this.isPaused=!1,this.volumeBtns=this.querySelectorAll(".insta-story__volume-btn"),this.isMuted=!0,this.initStories(),this.initButtonsSlider(),this.openButtons.forEach(t=>{t.addEventListener("click",this.openModal.bind(this))}),this.closeButtons.forEach(t=>{t.addEventListener("click",this.closeModal.bind(this))}),this.prevBtns.forEach(t=>{t.addEventListener("click",this.storyPrevBtnClick.bind(this))}),this.nextBtns.forEach(t=>{t.addEventListener("click",this.storyNextBtnClick.bind(this))}),this.slideBtns.forEach(t=>{t.addEventListener("click",this.slideBtnClick.bind(this))}),this.pauseResumeBtns.forEach(t=>{t.addEventListener("click",this.togglePauseResume.bind(this))}),this.volumeBtns.forEach(t=>{t.addEventListener("click",this.toggleIsMuted.bind(this))}),this.slider.addEventListener("touchstart",this.touchStartHandler.bind(this)),this.slider.addEventListener("touchend",this.touchEndHandler.bind(this)),document.addEventListener("keydown",t=>{if(this.modalOpen)switch(t.key){case"Escape":this.closeModal();break;case"ArrowLeft":this.storyPrevBtnClick();break;case"ArrowRight":this.storyNextBtnClick()}}),Shopify.designMode&&(document.addEventListener("shopify:section:load",()=>{this.initStories(),this.initButtonsSlider()}),document.addEventListener("shopify:section:reorder",()=>{this.initStories(),this.initButtonsSlider()}))}autoplay(){let t=this.activeStory,e=parseInt(t.dataset.activeMediaIndex),i=t.querySelectorAll(".insta-story__media")[e],s=1e3*parseInt(i.getAttribute("data-duration"));this.updateProgressBars(e),this.autoplayStartTime=Date.now(),this.autoplayTimeout=setTimeout(()=>{this.storyNextBtnClick()},s)}storyPrevBtnClick(){let t=this.activeStory;"0"===t.dataset.activeMediaIndex?this.changeActiveStory(this.activeIndex-1):this.changeActiveMedia(parseInt(t.dataset.activeMediaIndex)-1)}storyNextBtnClick(){let t=this.activeStory;t.dataset.activeMediaIndex===t.dataset.lastMediaIndex?this.changeActiveStory(this.activeIndex+1):this.changeActiveMedia(parseInt(t.dataset.activeMediaIndex)+1)}slideBtnClick(t){let e=parseInt(t.currentTarget.dataset.index);this.changeActiveStory(e)}changeActiveStory(t){if(clearTimeout(this.autoplayTimeout),t>this.lastIndex||t<0)return;let e=this.stories[this.activeIndex],i=parseInt(e.dataset.activeMediaIndex);if("true"===e.dataset.played||i>0){let s=e.querySelectorAll(".insta-story__progress-item")[i];s&&(s.classList.remove("insta-story__progress-item--active"),t>this.activeIndex&&s.classList.add("insta-story__progress-item--completed"))}let n=e.querySelectorAll(".insta-story__media")[i];if(n&&"video"===n.getAttribute("data-type")){let o=n.querySelector("video");o&&(o.pause(),this.isPaused||(o.currentTime=0))}this.activeIndex=t,this.activeStory=this.stories[this.activeIndex],this.stories.forEach(t=>{t.classList.remove("insta-story--active")}),this.activeStory.classList.add("insta-story--active"),this.activeStory.dataset.played="true",this.slider.style.transform=`translateX(calc(var(--story-width) * ${-1*this.activeIndex}))`;let r=parseInt(this.activeStory.dataset.activeMediaIndex,10);this.changeActiveMedia(r),this.updateProgressBars(r)}changeActiveMedia(t){if(clearTimeout(this.autoplayTimeout),t<0)return;let e=this.activeStory,i=parseInt(e.dataset.lastMediaIndex);if(t>i)return;e.dataset.activeMediaIndex=t;let s=e.querySelectorAll(".insta-story__media");for(let n=0;n<s.length;n++)if(n===t){if(s[n].style.display="block","video"===s[n].getAttribute("data-type")){let o=s[n].querySelector("video");o&&!this.isPaused&&o.play()}e.querySelector(".insta-story__time-posted").innerHTML=s[n].dataset.timePosted}else if(s[n].style.display="","video"===s[n].getAttribute("data-type")){let r=s[n].querySelector("video");r&&(r.pause(),this.isPaused||(r.currentTime=0))}this.updateProgressBars(t),this.isPaused||this.autoplay();let a=e.querySelectorAll(".insta-story__prev"),l=e.querySelectorAll(".insta-story__next");a.forEach(e=>{0===this.activeIndex&&0===t?e.setAttribute("disabled",""):e.removeAttribute("disabled")}),l.forEach(e=>{this.activeIndex===this.lastIndex&&t===i?e.setAttribute("disabled",""):e.removeAttribute("disabled")})}updateProgressBars(t){let e=this.activeStory,i=e.querySelectorAll(".insta-story__progress-item");i.forEach((e,i)=>{e.classList.remove("insta-story__progress-item--completed","insta-story__progress-item--active"),i<t?e.classList.add("insta-story__progress-item--completed"):i===t&&e.classList.add("insta-story__progress-item--active")})}openModal(t){this.modal.dataset.open="true",this.modalOpen=!0,document.body.classList.add("overflow-hidden"),this.changeActiveStory(parseInt(t.currentTarget.dataset.index))}closeModal(){this.querySelectorAll("video").forEach(t=>{t.pause()}),this.modal.dataset.open="false",this.modalOpen=!1,document.body.classList.remove("overflow-hidden"),clearTimeout(this.autoplayTimeout)}initButtonsSlider(){if(this.openButtonsOverflowContainer.clientWidth>this.openButtonsContainer.clientWidth)return;let t=()=>"ontouchstart"in window||navigator.maxTouchPoints,e,i=0,s=0,n=t=>{this.openButtonsContainer.style.transform=`translateX(${t}px)`,i=t};this.openButtonsOverflowContainer.addEventListener("touchstart",t=>{this.isDragging=!0,e=t.touches[0].clientX-s}),this.openButtonsOverflowContainer.addEventListener("touchmove",t=>{if(!this.isDragging)return;let i=t.touches[0].clientX,s=i-e;s<0&&Math.abs(s)<=this.openButtonsContainer.offsetWidth-this.openButtonsOverflowContainer.offsetWidth&&n(s)}),this.openButtonsOverflowContainer.addEventListener("touchend",()=>{this.isDragging=!1,s=i});let o=parseFloat(getComputedStyle(this.openButtons[0]).width),r=parseFloat(getComputedStyle(this.openButtonsContainer).columnGap),a=()=>{let t=Math.floor(this.openButtonsOverflowContainer.clientWidth/(o+r));return(t-1)*(o+r)},l=()=>{this.openBtnsPrev.style.display=this.openButtonsOverflowContainer.scrollLeft<=0?"none":"grid",this.openBtnsNext.style.display=this.openButtonsOverflowContainer.scrollLeft>this.openButtonsOverflowContainer.scrollWidth-this.openButtonsContainer.clientWidth?"none":"grid"};this.openBtnsPrev.addEventListener("click",()=>{this.openButtonsOverflowContainer.scrollBy({left:-a(),behavior:"smooth"}),setTimeout(l,300)}),this.openBtnsNext.addEventListener("click",()=>{this.openButtonsOverflowContainer.scrollBy({left:a(),behavior:"smooth"}),setTimeout(l,300)}),l(),t()&&(this.openBtnsPrev.style.display="none",this.openBtnsNext.style.display="none"),window.addEventListener("resize",debounce(()=>{this.openButtonsOverflowContainer.clientWidth<=this.openButtonsContainer.clientWidth?t()?(this.openBtnsPrev.style.display="none",this.openBtnsNext.style.display="none"):l():(this.openBtnsPrev.style.display="none",this.openBtnsNext.style.display="none")},250))}initStories(){this.stories.forEach(t=>{let e=t.querySelectorAll(".insta-story__media");t.dataset.lastMediaIndex=e.length-1,t.dataset.played="false";let i=t.querySelector(".insta-story__progress");for(let s=0;s<e.length;s++){let n=e[s].getAttribute("data-duration"),o=document.createElement("span");o.className="insta-story__progress-item",o.style.setProperty("--duration",`${n}s`);let r=document.createElement("span");r.className="insta-story__progress-bar",o.appendChild(r),i.appendChild(o)}let a=parseInt(t.dataset.activeMediaIndex);e[a]&&(e[a].style.display="block")})}togglePauseResume(t){let e="true"===t.currentTarget.getAttribute("data-paused");e?this.resumeStory():this.pauseStory(),this.pauseResumeBtns.forEach(t=>{t.setAttribute("data-paused",e?"false":"true")})}pauseStory(){this.isPaused=!0;let t=this.activeStory.querySelectorAll(".insta-story__media")[parseInt(this.activeStory.dataset.activeMediaIndex)],e=1e3*parseInt(t.getAttribute("data-duration"));if(this.remainingTime=e-(Date.now()-this.autoplayStartTime),clearTimeout(this.autoplayTimeout),"video"===t.getAttribute("data-type")){let i=t.querySelector("video");i&&i.pause()}let s=this.querySelectorAll(".insta-story__progress-bar");s.forEach(t=>{t.style.animationPlayState="paused"})}resumeStory(){this.isPaused=!1;let t=this.querySelectorAll(".insta-story__progress-bar");t.forEach(t=>{t.style.animationPlayState="running"});let e=this.activeStory.querySelectorAll(".insta-story__media")[parseInt(this.activeStory.dataset.activeMediaIndex)];if("video"===e.getAttribute("data-type")){let i=e.querySelector("video");i&&i.play()}this.autoplayStartTime=Date.now(),this.autoplayTimeout=setTimeout(()=>{this.storyNextBtnClick()},this.remainingTime)}toggleIsMuted(t){t.currentTarget,this.isMuted=!this.isMuted;let e=this.querySelectorAll("video");e.forEach(t=>{t.muted=this.isMuted}),this.volumeBtns.forEach(t=>{this.isMuted?t.setAttribute("data-muted","true"):t.setAttribute("data-muted","false")})}touchStartHandler(t){this.touchStartX=t.touches[0].clientX}touchEndHandler(t){let e=t.changedTouches[0].clientX,i=e-this.touchStartX;!(50>Math.abs(i))&&(i<0?this.activeIndex<this.lastIndex&&this.changeActiveStory(this.activeIndex+1):this.activeIndex>0&&this.changeActiveStory(this.activeIndex-1))}}customElements.define("insta-stories",InstaStories)}
+</script>
+
+{% schema %}
+{
+  "name": "Instagram stories",
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Instagram stories",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h3", "label": "Small" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" }
+      ],
+      "default": "h2",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Display images and testimonials in a format familiar to your customers.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Stories"
+    },
+    {
+      "type": "paragraph",
+      "content": "On touch devices, swipe gestures are enabled for the best mobile experience."
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 5,
+      "max": 15,
+      "step": 1,
+      "unit": "sec",
+      "label": "Image autoplay speed",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "user",
+      "name": "User post",
+      "settings": [
+        {
+          "type": "text",
+          "id": "username",
+          "label": "User name",
+          "default": "username"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified account",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "profile_picture",
+          "label": "Profile picture"
+        },
+        {
+          "type": "checkbox",
+          "id": "close_friends",
+          "label": "Close friends story (green ring)",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Story #1"
+        },
+        {
+          "type": "image_picker",
+          "id": "story_1_image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "story_1_video",
+          "label": "Video (overrides image)"
+        },
+        {
+          "type": "select",
+          "id": "story_1_media_fit",
+          "options": [
+            { "value": "contain", "label": "Contain" },
+            { "value": "cover", "label": "Cover" }
+          ],
+          "default": "contain",
+          "label": "Media fit"
+        },
+        {
+          "type": "text",
+          "id": "story_1_time_posted",
+          "label": "Time posted",
+          "default": "10m"
+        },
+        {
+          "type": "color",
+          "id": "story_1_bg",
+          "label": "Background",
+          "default": "#282828"
+        },
+        {
+          "type": "header",
+          "content": "Story #2"
+        },
+        {
+          "type": "image_picker",
+          "id": "story_2_image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "story_2_video",
+          "label": "Video (overrides image)"
+        },
+        {
+          "type": "select",
+          "id": "story_2_media_fit",
+          "options": [
+            { "value": "contain", "label": "Contain" },
+            { "value": "cover", "label": "Cover" }
+          ],
+          "default": "contain",
+          "label": "Media fit"
+        },
+        {
+          "type": "text",
+          "id": "story_2_time_posted",
+          "label": "Time posted",
+          "default": "1h"
+        },
+        {
+          "type": "color",
+          "id": "story_2_bg",
+          "label": "Background",
+          "default": "#282828"
+        },
+        {
+          "type": "header",
+          "content": "Story #3"
+        },
+        {
+          "type": "image_picker",
+          "id": "story_3_image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "story_3_video",
+          "label": "Video (overrides image)"
+        },
+        {
+          "type": "select",
+          "id": "story_3_media_fit",
+          "options": [
+            { "value": "contain", "label": "Contain" },
+            { "value": "cover", "label": "Cover" }
+          ],
+          "default": "contain",
+          "label": "Media fit"
+        },
+        {
+          "type": "text",
+          "id": "story_3_time_posted",
+          "label": "Time posted",
+          "default": "4h"
+        },
+        {
+          "type": "color",
+          "id": "story_3_bg",
+          "label": "Background",
+          "default": "#282828"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram stories",
+      "blocks": [
+        { "type": "user" },
+        { "type": "user" },
+        { "type": "user" }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
