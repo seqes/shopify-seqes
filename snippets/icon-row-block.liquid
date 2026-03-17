@@ -1,0 +1,79 @@
+{%- comment -%}
+  Icon Row block for Product Information.
+  Displays a horizontal row of icon images (certifications, trust badges, etc.)
+  with optional labels and configurable sizing/spacing.
+
+  Required: block (with settings below)
+{%- endcomment -%}
+
+{%- style -%}
+  .icon-row-{{ block.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: {{ block.settings.gap }}px;
+    justify-content: {{ block.settings.alignment }};
+    margin: {{ block.settings.margin_top }}px 0 {{ block.settings.margin_bottom }}px;
+  }
+  .icon-row-{{ block.id }} .icon-row__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .icon-row-{{ block.id }} .icon-row__img {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    object-fit: contain;
+    {% if block.settings.grayscale %}filter: grayscale(1);{% endif %}
+    transition: filter 0.2s ease, opacity 0.2s ease;
+  }
+  {% if block.settings.grayscale %}
+    .icon-row-{{ block.id }}:hover .icon-row__img { filter: grayscale(0); }
+  {% endif %}
+  .icon-row-{{ block.id }} .icon-row__label {
+    font-size: {{ block.settings.label_size }}px;
+    color: {{ block.settings.label_color }};
+    text-align: center;
+    line-height: 1.2;
+    max-width: {{ block.settings.icon_size | plus: 20 }}px;
+  }
+  {% if block.settings.border %}
+    .icon-row-{{ block.id }} .icon-row__item {
+      border: 1px solid {{ block.settings.border_color }};
+      border-radius: {{ block.settings.border_radius }}px;
+      padding: {{ block.settings.icon_padding }}px;
+    }
+  {% endif %}
+{%- endstyle -%}
+
+<div class="icon-row-{{ block.id }}" {{ block.shopify_attributes }}>
+  {%- for i in (1..8) -%}
+    {%- liquid
+      assign img_key = 'icon_' | append: i
+      assign label_key = 'label_' | append: i
+      assign link_key = 'link_' | append: i
+      assign img = block.settings[img_key]
+      assign label = block.settings[label_key]
+      assign link = block.settings[link_key]
+    -%}
+    {%- if img != blank -%}
+      <div class="icon-row__item">
+        {%- if link != blank -%}<a href="{{ link }}" target="_blank" rel="noopener">{%- endif -%}
+          <img
+            class="icon-row__img"
+            src="{{ img | image_url: width: 200 }}"
+            alt="{{ img.alt | default: label | escape }}"
+            width="{{ block.settings.icon_size }}"
+            height="{{ block.settings.icon_size }}"
+            loading="lazy"
+          >
+        {%- if link != blank -%}</a>{%- endif -%}
+        {%- if label != blank and block.settings.show_labels -%}
+          <span class="icon-row__label">{{ label }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

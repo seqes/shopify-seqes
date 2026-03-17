@@ -352,6 +352,8 @@
         {%- if block.settings.icon != blank -%}{%- render 'material-icon', icon: block.settings.icon, filled: block.settings.filled_icon -%}{%- endif -%}
         <span>{{ block.settings.text }}</span>
       </p>
+    {%- when 'icon_row' -%}
+      {%- render 'icon-row-block', block: block -%}
     {%- when 'emoji_benefits' -%}
       <div class="emoji-benefits" style="margin:4px 0;font-size:{{ block.settings.font_size }}px;color:{{ block.settings.text_color }}" {{ block.shopify_attributes }}>
         {%- assign benefits = block.settings.benefits | split: '|' -%}
