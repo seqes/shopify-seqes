@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs": {
@@ -13,6 +22,21 @@
             "sku_style": "style_vendor"
           }
         },
+        "seqes_it_claim_5": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Permitido su uso en niños menores de 6 años",
+            "text_color": "",
+            "font_size": 14,
+            "font_weight": "400",
+            "font_style": "normal",
+            "icon_type": "none",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -25,11 +49,13 @@
           "type": "seqes_icon_text",
           "settings": {
             "text": "Para pieles secas y muy sensibles",
-            "text_color": "#FAA525",
+            "text_color": "#faa525",
             "font_size": 17,
             "font_weight": "500",
             "font_style": "normal",
             "icon_type": "none",
+            "emoji": "",
+            "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": false
           }
@@ -38,9 +64,13 @@
           "type": "seqes_icon_text",
           "settings": {
             "text": "Dermatológicamente testeado",
+            "text_color": "",
             "font_size": 15,
             "font_weight": "500",
+            "font_style": "normal",
             "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": true
           }
@@ -49,9 +79,13 @@
           "type": "seqes_icon_text",
           "settings": {
             "text": "Hipoalergénico — estudio clínico",
+            "text_color": "",
             "font_size": 15,
             "font_weight": "500",
+            "font_style": "normal",
             "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": true
           }
@@ -60,9 +94,13 @@
           "type": "seqes_icon_text",
           "settings": {
             "text": "Sin aroma ni colorantes",
+            "text_color": "",
             "font_size": 15,
             "font_weight": "500",
+            "font_style": "normal",
             "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": true
           }
@@ -71,20 +109,13 @@
           "type": "seqes_icon_text",
           "settings": {
             "text": "96% ingredientes de origen natural",
+            "text_color": "",
             "font_size": 15,
             "font_weight": "500",
+            "font_style": "normal",
             "icon_type": "bullet",
-            "icon_color": "#00393b",
-            "enable_animation": true
-          }
-        },
-        "seqes_it_claim_5": {
-          "type": "seqes_icon_text",
-          "settings": {
-            "text": "Permitido su uso en niños menores de 6 años",
-            "font_size": 15,
-            "font_weight": "500",
-            "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": true
           }
@@ -120,11 +151,15 @@
             "show_gift_card_recipient": false
           }
         },
+        "payment_icons_gBkwRC": {
+          "type": "payment_icons",
+          "settings": {}
+        },
         "text_guarantee": {
           "type": "text",
           "settings": {
             "text": "GARANTÍA DE 30 DÍAS · DESPACHO GRATIS SOBRE $50.000",
-            "text_style": "style_vendor"
+            "text_style": "style_body"
           }
         },
         "faq_safe": {
@@ -189,16 +224,17 @@
       },
       "block_order": [
         "sku_ghdKTc",
+        "seqes_it_claim_5",
         "title",
         "seqes_it_skin_badge",
         "seqes_it_claim_1",
         "seqes_it_claim_2",
         "seqes_it_claim_3",
         "seqes_it_claim_4",
-        "seqes_it_claim_5",
         "description_rTYcfB",
         "variant_picker",
         "buy_buttons",
+        "payment_icons_gBkwRC",
         "text_guarantee",
         "faq_safe",
         "faq_fragrance",
@@ -277,6 +313,81 @@
         "disable_bottom_spacing": true
       }
     },
+    "insta_stories_HYTmaT": {
+      "type": "insta-stories",
+      "blocks": {
+        "user_iktzdg": {
+          "type": "user",
+          "settings": {
+            "username": "username",
+            "verified": false,
+            "close_friends": false,
+            "story_1_media_fit": "contain",
+            "story_1_time_posted": "10m",
+            "story_1_bg": "#282828",
+            "story_2_media_fit": "contain",
+            "story_2_time_posted": "1h",
+            "story_2_bg": "#282828",
+            "story_3_media_fit": "contain",
+            "story_3_time_posted": "4h",
+            "story_3_bg": "#282828"
+          }
+        },
+        "user_aDnHLC": {
+          "type": "user",
+          "settings": {
+            "username": "username",
+            "verified": false,
+            "close_friends": false,
+            "story_1_media_fit": "contain",
+            "story_1_time_posted": "10m",
+            "story_1_bg": "#282828",
+            "story_2_media_fit": "contain",
+            "story_2_time_posted": "1h",
+            "story_2_bg": "#282828",
+            "story_3_media_fit": "contain",
+            "story_3_time_posted": "4h",
+            "story_3_bg": "#282828"
+          }
+        },
+        "user_dTXRUG": {
+          "type": "user",
+          "settings": {
+            "username": "username",
+            "verified": false,
+            "close_friends": false,
+            "story_1_media_fit": "contain",
+            "story_1_time_posted": "10m",
+            "story_1_bg": "#282828",
+            "story_2_media_fit": "contain",
+            "story_2_time_posted": "1h",
+            "story_2_bg": "#282828",
+            "story_3_media_fit": "contain",
+            "story_3_time_posted": "4h",
+            "story_3_bg": "#282828"
+          }
+        }
+      },
+      "block_order": [
+        "user_iktzdg",
+        "user_aDnHLC",
+        "user_dTXRUG"
+      ],
+      "name": "Instagram stories",
+      "settings": {
+        "visibility": "always-display",
+        "title": "Instagram stories",
+        "heading_size": "h2",
+        "text": "<p>Display images and testimonials in a format familiar to your customers.</p>",
+        "button_label": "",
+        "link": "",
+        "bg_color": "#ffffff",
+        "text_color": "#121212",
+        "autoplay_speed": 10,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "customer_reviews_social_proof": {
       "type": "seqes-testimonials",
       "blocks": {
@@ -329,7 +440,53 @@
         "columns": 2,
         "bg_color": "#f5f0eb",
         "text_color": "#003b3d",
-        "accent_color": "#FAA525",
+        "accent_color": "#faa525",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "testimonials_tnxED7": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_AKXP48": {
+          "type": "quote",
+          "settings": {
+            "stars": "4.5",
+            "text": "Add your customer or client quote here to showcase them.",
+            "author": "Testimonial author"
+          }
+        },
+        "quote_wERVwp": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "text": "Add your customer or client quote here to showcase them.",
+            "author": "Testimonial author"
+          }
+        },
+        "quote_BCawLX": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "text": "Add your customer or client quote here to showcase them.",
+            "author": "Testimonial author"
+          }
+        }
+      },
+      "block_order": [
+        "quote_AKXP48",
+        "quote_wERVwp",
+        "quote_BCawLX"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "full_width": true,
+        "text_size": "medium",
+        "pagination": "dots",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "transparent",
+        "color_text": "#151515",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -353,7 +510,7 @@
         "text_RnzK9d": {
           "type": "text",
           "settings": {
-            "text": "<p>La piel de los bebés es hasta un <strong>30% más delgada</strong> que la piel adulta y pierde humedad más fácilmente.</p><p>Esto puede provocar <strong>sequedad, irritación o rojeces</strong>, especialmente en zonas como mejillas, pliegues y piernas.</p><p>Una crema hidratante adecuada ayuda a <strong>restaurar la barrera cutánea</strong> y mantener la piel protegida desde los primeros días.</p>"
+            "text": "<p>La piel de los bebés es hasta un <strong>30% más delgada</strong> que la piel adulta y pierde humedad más fácilmente.</p><p>Esto puede provocar <strong>sequedad, irritación o rojeces</strong>, especialmente en zonas como mejillas, pliegues y piernas.</p><p>Una crema hidratante adecuada ayuda a <strong>restaurar la barrera cutánea</strong> y mantener la piel protegida desde los primeros días.</p><p></p>"
           }
         },
         "button_hJaUiD": {
@@ -494,7 +651,7 @@
       ],
       "settings": {
         "speed": "22s",
-        "check_color": "#8E9F78",
+        "check_color": "#8e9f78",
         "font_size": 20,
         "section_width": "full-width-row"
       }
@@ -555,7 +712,7 @@
     "seqes_gradient_fade_down": {
       "type": "seqes-gradient-divider",
       "settings": {
-        "color": "#003B3D",
+        "color": "#003b3d",
         "height": 100,
         "direction": "bottom_to_top"
       }
@@ -629,7 +786,7 @@
     "seqes_gradient_fade_up": {
       "type": "seqes-gradient-divider",
       "settings": {
-        "color": "#003B3D",
+        "color": "#003b3d",
         "height": 100,
         "direction": "top_to_bottom"
       }
@@ -677,8 +834,10 @@
         "results_headline_alignment": "left",
         "caption": "<p>Fuentes: Estudio Hipoalergénico Orlandi, Dosier Cobiostem Alerce, Índice de Naturalidad ISO 16128.</p>",
         "button_label": "",
+        "link": "",
         "button_style_secondary": false,
         "atc_button_label": "",
+        "atc_product": "",
         "padding_top": 48,
         "padding_bottom": 48
       }
@@ -968,7 +1127,9 @@
     "breadcrumbs",
     "main-product",
     "logo_list_3g4EtA",
+    "insta_stories_HYTmaT",
     "customer_reviews_social_proof",
+    "testimonials_tnxED7",
     "layered_images_with_text_tXj8WJ",
     "before_after_image_Qf9kMC",
     "seqes_claims_marquee",
