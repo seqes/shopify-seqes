@@ -1,24 +1,17 @@
-fix: resolve 53 integration issues in ported sections
+fix: inject missing layout CSS into 7 problematic sections
 
-Color schemes (21 sections):
-- Replace non-functional color-{{ scheme }} classes with direct color pickers
-- Add bg_color + text_color settings to section and block schemas
-- Generate scoped CSS rules (section-color-{{ section.id }}) for backgrounds
-- Handle block-level colors via inline styles with Liquid variables
-- Promote global settings references to section-level settings
+Sections affected: custom-columns, slideshow-hero, collage,
+multirow, parallax-hero, bundle-deals, pricing-table.
 
-Custom elements JS (6 sections):
-- Add <comparison-slider> before/after drag interaction
-- Add <bundle-deals> checkbox toggling + variant selection + price recalc
-- Add <promo-popup> show/dismiss popup with delay + localStorage
-- Add <internal-video> lazy-load video sources on IntersectionObserver
-- Add <section-group> move section content into side-by-side containers
+Root cause: these sections relied on CSS classes (.custom-columns,
+.hero-slide, .collage, .image-with-text, .plan-card, etc.) that
+were defined in the source theme's base.css but missing from Seqes.
 
-Missing snippets:
-- Add icon-discount.liquid SVG for card-product and price snippets
-
-Source-theme cleanup:
-- Remove content-for-grouping class from image-banner, email-signup-banner
-- Remove animate-item classes from 5 sections
-- Clean up separate-atc-btn.liquid animation class reference
-- Fix malformed Liquid tag in product-card-size-options.liquid
+Changes:
+- Add common utility CSS to theme.liquid (page-width, grid, media,
+  card, button, field, select, popup, rte, and visibility helpers)
+- Extract and inject section-specific layout CSS from source theme
+  into each section's style block (custom-columns grid, hero slides,
+  collage layout, multirow image-with-text, parallax positioning)
+- Ensure dedicated CSS assets are linked (section-bundle-deals.css,
+  section-pricing-table.css, collage.css)
