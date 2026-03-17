@@ -2574,6 +2574,16 @@
           "label": "Background color"
         },
         {
+          "type": "range",
+          "id": "bg_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 100,
+          "label": "Background opacity"
+        },
+        {
           "type": "color",
           "id": "text_color",
           "default": "#003b3d",
@@ -2588,12 +2598,33 @@
         {
           "type": "range",
           "id": "photo_size",
-          "min": 32,
-          "max": 72,
-          "step": 4,
+          "min": 28,
+          "max": 64,
+          "step": 2,
           "unit": "px",
-          "default": 48,
+          "default": 44,
           "label": "Photo size"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 10,
+          "max": 16,
+          "step": 1,
+          "unit": "px",
+          "default": 12,
+          "label": "Review text size",
+          "info": "Smaller text fits more content in 2 lines."
+        },
+        {
+          "type": "range",
+          "id": "max_chars",
+          "min": 60,
+          "max": 200,
+          "step": 10,
+          "default": 120,
+          "label": "Max characters per review",
+          "info": "Text is truncated to fit neatly in each slide."
         },
         {
           "type": "range",

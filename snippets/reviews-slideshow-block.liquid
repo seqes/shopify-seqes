@@ -1,7 +1,8 @@
 {%- comment -%}
   Reviews Slideshow block for Product Information.
-  Displays a rotating carousel of customer reviews with photo bubbles,
-  star ratings, and a configurable verified badge (e.g. Google).
+  Compact rotating carousel with photo bubbles, star ratings,
+  truncated review text, and a small verified badge icon.
+  Each slide is self-contained via CSS Grid.
 
   Required: block (with settings below)
 {%- endcomment -%}
@@ -13,41 +14,42 @@
   assign badge_text = block.settings.badge_text
   assign star_color = block.settings.star_color | default: '#FAA525'
   assign bg = block.settings.bg_color | default: '#f5f0eb'
+  assign bg_opacity = block.settings.bg_opacity | default: 100
   assign text_col = block.settings.text_color | default: '#003b3d'
-  assign photo_size = block.settings.photo_size | default: 48
+  assign photo_size = block.settings.photo_size | default: 44
+  assign text_size = block.settings.text_size | default: 12
+  assign max_chars = block.settings.max_chars | default: 120
+
+  assign bg_r = bg | color_extract: 'red'
+  assign bg_g = bg | color_extract: 'green'
+  assign bg_b = bg | color_extract: 'blue'
+  assign bg_a = bg_opacity | divided_by: 100.0
 -%}
 
-{%- capture star_svg -%}<svg width="14" height="14" viewBox="0 0 20 20" fill="{{ star_color }}" xmlns="http://www.w3.org/2000/svg"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>{%- endcapture -%}
+{%- capture star_svg -%}<svg width="11" height="11" viewBox="0 0 20 20" fill="{{ star_color }}" xmlns="http://www.w3.org/2000/svg"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>{%- endcapture -%}
 
-{%- capture half_star_svg -%}<svg width="14" height="14" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="half-{{ bid }}"><stop offset="50%" stop-color="{{ star_color }}"/><stop offset="50%" stop-color="#d1d5db"/></linearGradient></defs><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" fill="url(#half-{{ bid }})"/></svg>{%- endcapture -%}
-
-{%- capture empty_star_svg -%}<svg width="14" height="14" viewBox="0 0 20 20" fill="#d1d5db" xmlns="http://www.w3.org/2000/svg"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>{%- endcapture -%}
+{%- capture empty_star_svg -%}<svg width="11" height="11" viewBox="0 0 20 20" fill="#d1d5db" xmlns="http://www.w3.org/2000/svg"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>{%- endcapture -%}
 
 {%- style -%}
   .rsb-{{ bid }} {
-    background: {{ bg }};
-    border-radius: 1rem;
-    padding: 1.4rem 1.6rem;
-    margin: 8px 0;
-    position: relative;
+    background: rgba({{ bg_r }}, {{ bg_g }}, {{ bg_b }}, {{ bg_a }});
+    border-radius: 0.8rem;
+    padding: 0.8rem 1rem;
+    margin: 6px 0;
     overflow: hidden;
     color: {{ text_col }};
   }
   .rsb-{{ bid }} .rsb-track {
-    display: flex;
-    transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   }
   .rsb-{{ bid }} .rsb-slide {
-    min-width: 100%;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .rsb-{{ bid }} .rsb-top {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.7rem;
+    overflow: hidden;
   }
   .rsb-{{ bid }} .rsb-photo {
     width: {{ photo_size }}px;
@@ -55,7 +57,7 @@
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
-    border: 2px solid rgba(0,0,0,0.06);
+    border: 1.5px solid rgba(0,0,0,0.06);
   }
   .rsb-{{ bid }} .rsb-photo-placeholder {
     width: {{ photo_size }}px;
@@ -66,55 +68,67 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: {{ photo_size | divided_by: 2 }}px;
+    font-size: {{ photo_size | divided_by: 2.5 | round }}px;
     color: rgba(0,0,0,0.3);
     line-height: 1;
   }
-  .rsb-{{ bid }} .rsb-meta {
+  .rsb-{{ bid }} .rsb-body {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    min-width: 0;
+    gap: 0.15rem;
+    overflow: hidden;
+  }
+  .rsb-{{ bid }} .rsb-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
   .rsb-{{ bid }} .rsb-name {
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: {{ text_size }}px;
     line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .rsb-{{ bid }} .rsb-stars {
     display: flex;
-    gap: 1px;
+    gap: 0px;
     align-items: center;
+    flex-shrink: 0;
   }
-  .rsb-{{ bid }} .rsb-text {
-    font-size: 1.35rem;
-    line-height: 1.55;
-    margin: 0;
-    font-style: italic;
-    opacity: 0.9;
-  }
-  .rsb-{{ bid }} .rsb-badge {
+  .rsb-{{ bid }} .rsb-badge-icon {
+    flex-shrink: 0;
+    opacity: 0.55;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.2rem;
-    font-size: 1.1rem;
-    opacity: 0.6;
   }
-  .rsb-{{ bid }} .rsb-badge img {
-    width: 16px;
-    height: 16px;
+  .rsb-{{ bid }} .rsb-badge-icon img {
+    width: 13px;
+    height: 13px;
     object-fit: contain;
+  }
+  .rsb-{{ bid }} .rsb-text {
+    font-size: {{ text_size }}px;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.85;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .rsb-{{ bid }} .rsb-dots {
     display: flex;
     justify-content: center;
-    gap: 6px;
-    margin-top: 0.6rem;
+    gap: 5px;
+    margin-top: 0.45rem;
   }
   .rsb-{{ bid }} .rsb-dot {
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: {{ text_col }};
     opacity: 0.2;
@@ -124,7 +138,7 @@
     transition: opacity 0.2s;
   }
   .rsb-{{ bid }} .rsb-dot.active {
-    opacity: 0.7;
+    opacity: 0.6;
   }
 {%- endstyle -%}
 
@@ -147,47 +161,38 @@
         assign stars_key = 'review_' | append: i | append: '_stars'
         assign r_img = block.settings[img_key]
         assign r_name = block.settings[name_key]
-        assign r_text = block.settings[text_key]
+        assign r_text = block.settings[text_key] | truncate: max_chars
         assign r_stars = block.settings[stars_key] | times: 1
       -%}
-      {%- if r_text != blank -%}
+      {%- if block.settings[text_key] != blank -%}
         <div class="rsb-slide">
-          <div class="rsb-top">
-            {%- if r_img != blank -%}
-              <img class="rsb-photo" src="{{ r_img | image_url: width: 120 }}" alt="{{ r_name | escape }}" width="{{ photo_size }}" height="{{ photo_size }}" loading="lazy">
-            {%- else -%}
-              <div class="rsb-photo-placeholder">
-                {%- if r_name != blank -%}{{ r_name | slice: 0 }}{%- else -%}?{%- endif -%}
-              </div>
-            {%- endif -%}
-            <div class="rsb-meta">
+          {%- if r_img != blank -%}
+            <img class="rsb-photo" src="{{ r_img | image_url: width: 120 }}" alt="{{ r_name | escape }}" width="{{ photo_size }}" height="{{ photo_size }}" loading="lazy">
+          {%- else -%}
+            <div class="rsb-photo-placeholder">
+              {%- if r_name != blank -%}{{ r_name | slice: 0 }}{%- else -%}?{%- endif -%}
+            </div>
+          {%- endif -%}
+          <div class="rsb-body">
+            <div class="rsb-header">
               {%- if r_name != blank -%}
                 <span class="rsb-name">{{ r_name }}</span>
               {%- endif -%}
               {%- if r_stars > 0 -%}
                 <div class="rsb-stars">
                   {%- for s in (1..5) -%}
-                    {%- if s <= r_stars -%}
-                      {{ star_svg }}
-                    {%- else -%}
-                      {{ empty_star_svg }}
-                    {%- endif -%}
+                    {%- if s <= r_stars -%}{{ star_svg }}{%- else -%}{{ empty_star_svg }}{%- endif -%}
                   {%- endfor -%}
                 </div>
               {%- endif -%}
-            </div>
-          </div>
-          <p class="rsb-text">"{{ r_text }}"</p>
-          {%- if badge_logo != blank or badge_text != blank -%}
-            <div class="rsb-badge">
               {%- if badge_logo != blank -%}
-                <img src="{{ badge_logo | image_url: width: 48 }}" alt="{{ badge_text | escape }}" width="16" height="16">
-              {%- endif -%}
-              {%- if badge_text != blank -%}
-                <span>{{ badge_text }}</span>
+                <div class="rsb-badge-icon" title="{{ badge_text | escape }}">
+                  <img src="{{ badge_logo | image_url: width: 48 }}" alt="{{ badge_text | default: 'Verified' | escape }}" loading="lazy">
+                </div>
               {%- endif -%}
             </div>
-          {%- endif -%}
+            <p class="rsb-text">"{{ r_text }}"</p>
+          </div>
         </div>
       {%- endif -%}
     {%- endfor -%}
