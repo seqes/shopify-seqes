@@ -104,7 +104,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.newsletter.name",
+  "name": "Newsletter",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -160,7 +160,7 @@
     {
       "type": "checkbox",
       "id": "button_style_secondary",
-      "label": "t:sections.slideshow.blocks.slide.settings.secondary_style.label",
+      "label": "Use outline button style",
       "default": false
     },
     {
@@ -169,41 +169,41 @@
       "options": [
         {
           "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
+          "label": "Accent 1"
         },
         {
           "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
+          "label": "Accent 2"
         },
         {
           "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
+          "label": "Background 1"
         },
         {
           "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
+          "label": "Background 2"
         },
         {
           "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
+          "label": "Inverse"
         }
       ],
       "default": "background-1",
-      "label": "t:sections.all.colors.label"
+      "label": "Color scheme"
     },
     {
       "type": "checkbox",
       "id": "full_width",
       "default": true,
-      "label": "t:sections.newsletter.settings.full_width.label"
+      "label": "Full width"
     },
     {
       "type": "paragraph",
-      "content": "t:sections.newsletter.settings.paragraph.content"
+      "content": "Each email subscription creates a customer account."
     },
     {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Section padding"
     },
     {
       "type": "range",
@@ -212,7 +212,7 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
+      "label": "Padding top",
       "default": 40
     },
     {
@@ -222,21 +222,21 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
+      "label": "Padding bottom",
       "default": 52
     }
   ],
   "blocks": [
     {
       "type": "heading",
-      "name": "t:sections.newsletter.blocks.heading.name",
+      "name": "Heading",
       "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "heading",
           "default": "Subscribe to our emails",
-          "label": "t:sections.newsletter.blocks.heading.settings.heading.label"
+          "label": "Heading"
         },
         {
           "type": "select",
@@ -244,38 +244,38 @@
           "options": [
             {
               "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
+              "label": "Small"
             },
             {
               "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
+              "label": "Medium"
             },
             {
               "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
+              "label": "Large"
             }
           ],
           "default": "h1",
-          "label": "t:sections.all.heading_size.label"
+          "label": "Heading size"
         }
       ]
     },
     {
       "type": "paragraph",
-      "name": "t:sections.newsletter.blocks.paragraph.name",
+      "name": "Paragraph",
       "limit": 1,
       "settings": [
         {
           "type": "richtext",
           "id": "text",
           "default": "<p>Be the first to know about new collections and exclusive offers.</p>",
-          "label": "t:sections.newsletter.blocks.paragraph.settings.paragraph.label"
+          "label": "Text"
         }
       ]
     },
     {
       "type": "email_form",
-      "name": "t:sections.newsletter.blocks.email_form.name",
+      "name": "Email form",
       "limit": 1
     },
     {
@@ -284,7 +284,7 @@
   ],
   "presets": [
     {
-      "name": "t:sections.newsletter.presets.name",
+      "name": "Newsletter",
       "blocks": [
         {
           "type": "heading"

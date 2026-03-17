@@ -133,7 +133,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.email-signup-banner.name",
+  "name": "Email signup banner",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -163,12 +163,12 @@
     },
     {
       "type": "paragraph",
-      "content": "t:sections.email-signup-banner.settings.paragraph.content"
+      "content": "Each email subscription creates a customer account."
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "t:sections.email-signup-banner.settings.image.label"
+      "label": "Background image"
     },
     {
       "type": "range",
@@ -177,13 +177,13 @@
       "max": 100,
       "step": 10,
       "unit": "%",
-      "label": "t:sections.email-signup-banner.settings.image_overlay_opacity.label",
+      "label": "Image overlay opacity",
       "default": 0
     },
     {
       "type": "checkbox",
       "id": "show_background_image",
-      "label": "t:sections.email-signup-banner.settings.show_background_image.label",
+      "label": "Show background image",
       "default": true
     },
     {
@@ -192,24 +192,24 @@
       "options": [
         {
           "value": "adapt-image",
-          "label": "t:sections.email-signup-banner.settings.image_height.options__1.label"
+          "label": "Adapt to image"
         },
         {
           "value": "small",
-          "label": "t:sections.email-signup-banner.settings.image_height.options__2.label"
+          "label": "Small"
         },
         {
           "value": "medium",
-          "label": "t:sections.email-signup-banner.settings.image_height.options__3.label"
+          "label": "Medium"
         },
         {
           "value": "large",
-          "label": "t:sections.email-signup-banner.settings.image_height.options__4.label"
+          "label": "Large"
         }
       ],
       "default": "medium",
-      "label": "t:sections.email-signup-banner.settings.image_height.label",
-      "info": "t:sections.email-signup-banner.settings.image_height.info"
+      "label": "Banner height",
+      "info": "For best results, use an image with a 16:9 aspect ratio."
     },
     {
       "type": "select",
@@ -217,49 +217,49 @@
       "options": [
         {
           "value": "top-left",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__1.label"
+          "label": "Top left"
         },
         {
           "value": "top-center",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__2.label"
+          "label": "Top center"
         },
         {
           "value": "top-right",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__3.label"
+          "label": "Top right"
         },
         {
           "value": "middle-left",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__4.label"
+          "label": "Middle left"
         },
         {
           "value": "middle-center",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__5.label"
+          "label": "Middle center"
         },
         {
           "value": "middle-right",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__6.label"
+          "label": "Middle right"
         },
         {
           "value": "bottom-left",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__7.label"
+          "label": "Bottom left"
         },
         {
           "value": "bottom-center",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__8.label"
+          "label": "Bottom center"
         },
         {
           "value": "bottom-right",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_position.options__9.label"
+          "label": "Bottom right"
         }
       ],
       "default": "middle-center",
-      "label": "t:sections.email-signup-banner.settings.desktop_content_position.label"
+      "label": "Desktop content position"
     },
     {
       "type": "checkbox",
       "id": "show_text_box",
       "default": true,
-      "label": "t:sections.email-signup-banner.settings.show_text_box.label"
+      "label": "Show container on desktop"
     },
     {
       "type": "select",
@@ -267,19 +267,19 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.options__1.label"
+          "label": "Left"
         },
         {
           "value": "center",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.options__2.label"
+          "label": "Center"
         },
         {
           "value": "right",
-          "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.options__3.label"
+          "label": "Right"
         }
       ],
       "default": "center",
-      "label": "t:sections.email-signup-banner.settings.desktop_content_alignment.label"
+      "label": "Desktop content alignment"
     },
     {
       "type": "select",
@@ -287,32 +287,32 @@
       "options": [
         {
           "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
+          "label": "Accent 1"
         },
         {
           "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
+          "label": "Accent 2"
         },
         {
           "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
+          "label": "Background 1"
         },
         {
           "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
+          "label": "Background 2"
         },
         {
           "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
+          "label": "Inverse"
         }
       ],
       "default": "background-1",
-      "label": "t:sections.all.colors.label",
-      "info": "t:sections.email-signup-banner.settings.color_scheme.info"
+      "label": "Color scheme",
+      "info": "Visible when container is shown."
     },
     {
       "type": "header",
-      "content": "t:sections.email-signup-banner.settings.header.content"
+      "content": "Mobile layout"
     },
     {
       "type": "select",
@@ -320,38 +320,38 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.email-signup-banner.settings.mobile_content_alignment.options__1.label"
+          "label": "Left"
         },
         {
           "value": "center",
-          "label": "t:sections.email-signup-banner.settings.mobile_content_alignment.options__2.label"
+          "label": "Center"
         },
         {
           "value": "right",
-          "label": "t:sections.email-signup-banner.settings.mobile_content_alignment.options__3.label"
+          "label": "Right"
         }
       ],
       "default": "center",
-      "label": "t:sections.email-signup-banner.settings.mobile_content_alignment.label"
+      "label": "Mobile content alignment"
     },
     {
       "type": "checkbox",
       "id": "show_text_below",
       "default": true,
-      "label": "t:sections.email-signup-banner.settings.show_text_below.label"
+      "label": "Show container below image on mobile"
     }
   ],
   "blocks": [
     {
       "type": "heading",
-      "name": "t:sections.email-signup-banner.blocks.heading.name",
+      "name": "Heading",
       "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "heading",
           "default": "Opening soon",
-          "label": "t:sections.email-signup-banner.blocks.heading.settings.heading.label"
+          "label": "Heading"
         },
         {
           "type": "select",
@@ -359,32 +359,32 @@
           "options": [
             {
               "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
+              "label": "Small"
             },
             {
               "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
+              "label": "Medium"
             },
             {
               "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
+              "label": "Large"
             }
           ],
           "default": "h1",
-          "label": "t:sections.all.heading_size.label"
+          "label": "Heading size"
         }
       ]
     },
     {
       "type": "paragraph",
-      "name": "t:sections.email-signup-banner.blocks.paragraph.name",
+      "name": "Paragraph",
       "limit": 1,
       "settings": [
         {
           "type": "richtext",
           "id": "text",
           "default": "<p>Be the first to know when we launch.</p>",
-          "label": "t:sections.email-signup-banner.blocks.paragraph.settings.paragraph.label"
+          "label": "Text"
         },
         {
           "type": "select",
@@ -392,27 +392,27 @@
           "options": [
             {
               "value": "body",
-              "label": "t:sections.email-signup-banner.blocks.paragraph.settings.text_style.options__1.label"
+              "label": "Body"
             },
             {
               "value": "subtitle",
-              "label": "t:sections.email-signup-banner.blocks.paragraph.settings.text_style.options__2.label"
+              "label": "Subtitle"
             }
           ],
           "default": "body",
-          "label": "t:sections.email-signup-banner.blocks.paragraph.settings.text_style.label"
+          "label": "Text style"
         }
       ]
     },
     {
       "type": "email_form",
-      "name": "t:sections.email-signup-banner.blocks.email_form.name",
+      "name": "Email form",
       "limit": 1
     }
   ],
   "presets": [
     {
-      "name": "t:sections.email-signup-banner.presets.name",
+      "name": "Email signup banner",
       "blocks": [
         {
           "type": "heading"

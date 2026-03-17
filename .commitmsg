@@ -1,16 +1,5 @@
-feat: port all remaining sections from source theme with dependencies
+fix: replace 648 translation keys with plain English text
 
-Port 22 new sections from the Shrine source theme, adapted for Seqes
-with self-contained CSS/JS and resolved dependencies.
-
-Sections: insta-stories, bundle-deals, collage, comparison-slider,
-content-tabs, custom-columns, email-signup-banner, image-banner,
-image-slider, multirow, newsletter, parallax-hero, pricing-table,
-product-features, promo-popup, related-products, results,
-section-group, shoppable-image, slideshow-hero, track-order,
-vertical-ticker.
-
-Supporting: 16 snippets, 6 CSS assets, shrine-components.js
-(extracted custom elements with conflict guards), .gitignore.
-
-All 253 theme files pass validation.
+All t:sections.* translation references in ported sections have been
+replaced with human-readable English labels. This fixes the missing
+translation display issue in the Shopify theme editor.
