@@ -15,6 +15,21 @@
   .bundle-deals-{{ section.id }} .bundle-deals__media {
     grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
   }
+
+  /* Base layout rules */
+  .bundle-offer {--padding: 1rem;}
+  .bundle-offer h3 {margin-bottom: 0.4em;}
+  .bundle-offer .upsell {margin: 0;}
+  .bundle-offer__divider {padding: 0 var(--padding);}
+  .bundle-offer__divider svg {display: block;font-size: 3rem;width: 1em;height: 1em;padding: 0.2em;border-radius: 50%;color: rgb(var(--border-color));border: solid 1px rgba(var(--border-color), var(--plus-border-opacity));}
+  .bundle-offer__divider span {display: block;height: 1px;flex-grow: 1;background: rgba(var(--border-color), var(--divider-opacity));}
+  .bundle-offer__footer {border-top: solid var(--border-thickness) rgba(var(--border-color), var(--border-opacity));padding: var(--padding);}
+  .bundle-offer__footer__total-text {font-size: 1.8rem;}
+  .bundle-offer__footer p {margin: 0;line-height: 1.25;}
+  .bundle-offer__footer__benefit {font-size: 1.2rem;}
+  .bundle-offer__footer__prices {font-size: 1.7rem;}
+  .bundle-offer-container + product-form {margin-top: 1rem;}
+  @media screen and (min-width: 1000px) {.bundle-offer {--padding: 1.2rem;}.bundle-offer__footer__total-text {font-size: 2rem;}.bundle-offer__footer__benefit {font-size: 1.3rem;}.bundle-offer__footer__prices {font-size: 1.8rem;}.bundle-offer-container + product-form {margin-top: 1.2rem;}}
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} {{ section.settings.visibility }}">

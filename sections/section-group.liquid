@@ -1,3 +1,11 @@
+{%- style -%}
+  .section-group-grid {display: grid;grid-template-columns: repeat(2, 1fr);place-items: center;}
+  .section-group__container .page-width, .section-group__container div[class*="-padding"] {padding: 0;}
+  .section-group__container .section-group__container__child-grid {grid-template-columns: repeat(1, 1fr);}
+  .section-group__container {width: 100%;}
+  @media screen and (max-width: 999px) {.section-group-grid {grid-template-columns: repeat(1, 1fr);}.section-group-grid--mobile-reverse .section-group__section-two-container {order: -1;}}
+{%- endstyle -%}
+
 {% style %}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -33,6 +41,8 @@
 {%- else -%}
   <h2 class='title center h1'>Paste IDs of the 2 sections you wish to combine</h2>
 {%- endif -%}
+
+<script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

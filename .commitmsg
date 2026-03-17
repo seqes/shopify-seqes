@@ -1,5 +1,13 @@
-fix: replace 648 translation keys with plain English text
+fix: inject missing CSS and JS dependencies into ported sections
 
-All t:sections.* translation references in ported sections have been
-replaced with human-readable English labels. This fixes the missing
-translation display issue in the Shopify theme editor.
+Sections from the source theme relied on its base.css (315KB) for
+layout styles, causing videos/images to render at full size without
+constraints. Fixed by extracting the relevant CSS rules and inlining
+them into each section, plus adding external CSS asset links and
+JS script references where needed.
+
+- Created splide-base.css (13KB) for slider sections
+- Inlined layout CSS into 16 sections
+- Added shrine-components.js to 8 sections needing custom elements
+- Added external CSS links for content-tabs, pricing-table,
+  bundle-deals, collage, and related-products

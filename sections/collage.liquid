@@ -14,6 +14,9 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* Base layout rules */
+  .collage-wrapper-title, .collection-hero__title, .collection__title, .main-page-title, .page-title, .title--primary, .title-wrapper, .title-wrapper--no-top-margin, .title-wrapper--self-padded-mobile, .title-wrapper--self-padded-tablet-down, .title-wrapper-with-link {text-align: center;}
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient isolate {{ section.settings.visibility }}">
@@ -194,6 +197,8 @@
     </div>
   </div>
 </div>
+
+<script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

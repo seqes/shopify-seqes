@@ -56,6 +56,11 @@
       {% endif %}
     }
   }
+
+  /* Base layout rules */
+  @media screen and (min-width: 750px) {.hero-slide__background__mobile-media {display: none;}.parallax-hero .hero__heading {font-size: var(--heading-size);}}
+  @media screen and (max-width: 749px) {.hero-slide__background--has-mobile .hero-slide__background__desktop-media {display: none;}.hero-slide__content-container {align-items: var(--mobile-content-vertical-position);justify-content: var(--mobile-content-text-alignment);}.hero-slide__content {text-align: var(--mobile-content-text-alignment);max-width: 100%;}.parallax-hero .hero__heading {font-size: var(--mobile-heading-size);}}
+  .parallax-hero .parallax-hero__layer {z-index: var(--z-index);transition: transform 0.05s ease-in-out;}
 {%- endstyle -%}
 
 {% liquid
@@ -267,6 +272,8 @@
     {% endcase %}
   {% endfor %}
 </parallax-hero>
+
+<script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
