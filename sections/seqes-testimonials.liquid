@@ -111,6 +111,11 @@
     width: 1.4rem;
     height: 1.4rem;
   }
+  .seqes-testimonials-{{ section.id }} .st-badge img {
+    width: 1.6rem;
+    height: 1.6rem;
+    object-fit: contain;
+  }
 {%- endstyle -%}
 
 {%- capture star_svg -%}<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>{%- endcapture -%}
@@ -157,8 +162,12 @@
 
           {%- if block.settings.verified -%}
             <div class="st-badge">
-              <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-              Compra verificada
+              {%- if block.settings.badge_logo != blank -%}
+                <img src="{{ block.settings.badge_logo | image_url: width: 48 }}" alt="{{ block.settings.badge_text | default: 'Verified' | escape }}" loading="lazy">
+              {%- else -%}
+                <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              {%- endif -%}
+              {{ block.settings.badge_text | default: 'Compra verificada' }}
             </div>
           {%- endif -%}
         </div>
@@ -264,6 +273,19 @@
           "id": "verified",
           "label": "Show verified badge",
           "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_logo",
+          "label": "Badge logo",
+          "info": "Upload a Google, Trustpilot, or other review platform logo. Falls back to a checkmark icon if empty."
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text",
+          "default": "Compra verificada",
+          "info": "E.g. 'Reseña verificada de Google'"
         }
       ]
     }

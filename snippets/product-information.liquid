@@ -354,6 +354,8 @@
       </p>
     {%- when 'icon_row' -%}
       {%- render 'icon-row-block', block: block -%}
+    {%- when 'reviews_slideshow' -%}
+      {%- render 'reviews-slideshow-block', block: block -%}
     {%- when 'emoji_benefits' -%}
       <div class="emoji-benefits" style="margin:4px 0;font-size:{{ block.settings.font_size }}px;color:{{ block.settings.text_color }}" {{ block.shopify_attributes }}>
         {%- assign benefits = block.settings.benefits | split: '|' -%}
