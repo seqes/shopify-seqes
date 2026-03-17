@@ -17,9 +17,12 @@
 
   /* Base layout rules */
   .collage-wrapper-title, .collection-hero__title, .collection__title, .main-page-title, .page-title, .title--primary, .title-wrapper, .title-wrapper--no-top-margin, .title-wrapper--self-padded-mobile, .title-wrapper--self-padded-tablet-down, .title-wrapper-with-link {text-align: center;}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
+  .section-color-{{ section.id }}-card_color_scheme { background: {{ section.settings.card_bg_bg_color }}; color: {{ section.settings.card_text_text_color }}; }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient isolate {{ section.settings.visibility }}">
+<div class="section-color-{{ section.id }}-color_scheme gradient isolate {{ section.settings.visibility }}">
   <div class="page-width{% if section.settings.heading == blank %} no-heading{% endif %} section-{{ section.id }}-padding">
     <h2 class="collage-wrapper-title {{ section.settings.heading_size }} index-0">{{ section.settings.heading | escape }}</h2>
     <div class="collage{% if section.settings.mobile_layout == 'collage' %} collage--mobile{% endif %}">
@@ -30,7 +33,7 @@
         >
           {%- case block.type -%}
             {%- when 'image' -%}
-              <div class="collage-card {% if section.settings.card_styles == 'none' %}global-media-settings{% else %}card-wrapper {{ section.settings.card_styles }} color-{{ settings.card_color_scheme }}{% endif %}">
+              <div class="collage-card {% if section.settings.card_styles == 'none' %}global-media-settings{% else %}card-wrapper {{ section.settings.card_styles }} section-color-{{ section.id }}-card_color_scheme{% endif %}">
                 <div
                   class="media media--transparent ratio"
                   {% if block.settings.image != blank %}
@@ -67,7 +70,7 @@
                 wrapper_class: section.settings.card_styles
               %}
             {%- when 'video' -%}
-              <div class="collage-card {% if section.settings.card_styles == 'none' %}global-media-settings{% else %}{{ section.settings.card_styles }} color-{{ settings.card_color_scheme }}{% endif %}">
+              <div class="collage-card {% if section.settings.card_styles == 'none' %}global-media-settings{% else %}{{ section.settings.card_styles }} section-color-{{ section.id }}-card_color_scheme{% endif %}">
                 <noscript>
                   <a
                     href="{{ block.settings.video_url }}"
@@ -201,244 +204,99 @@
 <script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
-{
-  "name": "Collage",
-  "tag": "section",
-  "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "select",
-      "id": "visibility",
-      "options": [
-        {
-          "value": "desktop-hidden",
-          "label": "Mobile only"
+{"name":"Collage","tag":"section","class":"section","disabled_on": {"groups": ["header","footer"
+    ]
+  },"settings": [
+    {"type":"select","id":"visibility","options": [
+        {"value":"desktop-hidden","label":"Mobile only"
         },
-        {
-          "value": "mobile-hidden",
-          "label": "Desktop only"
+        {"value":"mobile-hidden","label":"Desktop only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "label": "Display on",
-      "default": "always-display"
+      ],"label":"Display on","default":"always-display"
     },
-    {
-      "type": "text",
-      "id": "heading",
-      "default": "Multimedia collage",
-      "label": "Heading"
+    {"type":"text","id":"heading","default":"Multimedia collage","label":"Heading"
     },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "Small"
+    {"type":"select","id":"heading_size","options": [
+        {"value":"h2","label":"Small"
         },
-        {
-          "value": "h1",
-          "label": "Medium"
+        {"value":"h1","label":"Medium"
         },
-        {
-          "value": "h0",
-          "label": "Large"
+        {"value":"h0","label":"Large"
         }
-      ],
-      "default": "h1",
-      "label": "Heading size"
+      ],"default":"h1","label":"Heading size"
     },
-    {
-      "type": "select",
-      "id": "desktop_layout",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left large block"
+    {"type":"select","id":"desktop_layout","options": [
+        {"value":"left","label":"Left large block"
         },
-        {
-          "value": "right",
-          "label": "Right large block"
+        {"value":"right","label":"Right large block"
         }
-      ],
-      "default": "left",
-      "label": "Desktop layout"
+      ],"default":"left","label":"Desktop layout"
     },
-    {
-      "type": "select",
-      "id": "mobile_layout",
-      "options": [
-        {
-          "value": "collage",
-          "label": "Collage"
+    {"type":"select","id":"mobile_layout","options": [
+        {"value":"collage","label":"Collage"
         },
-        {
-          "value": "column",
-          "label": "Column"
+        {"value":"column","label":"Column"
         }
-      ],
-      "default": "column",
-      "label": "Mobile layout"
+      ],"default":"column","label":"Mobile layout"
     },
-    {
-      "type": "select",
-      "id": "card_styles",
-      "options": [
-        {
-          "value": "none",
-          "label": "None"
+    {"type":"select","id":"card_styles","options": [
+        {"value":"none","label":"None"
         },
-        {
-          "value": "product-card-wrapper",
-          "label": "Card"
+        {"value":"product-card-wrapper","label":"Card"
         }
-      ],
-      "default": "product-card-wrapper",
-      "info": "Card style adds a container with shadow.",
-      "label": "Card style"
+      ],"default":"product-card-wrapper","info":"Card style adds a container with shadow.","label":"Card style"
     },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "Accent 1"
-        },
-        {
-          "value": "accent-2",
-          "label": "Accent 2"
-        },
-        {
-          "value": "background-1",
-          "label": "Background 1"
-        },
-        {
-          "value": "background-2",
-          "label": "Background 2"
-        },
-        {
-          "value": "inverse",
-          "label": "Inverse"
-        }
-      ],
-      "default": "background-1",
-      "label": "Color scheme",
-      "info": "Has Cards Info"
+    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
     },
-    {
-      "type": "header",
-      "content": "Section padding"
+    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
     },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 36
+    {"type":"header","content":"Section padding"
     },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 36
+    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 36
+    },
+    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 36
+    },
+    {"type":"color","id":"card_bg_bg_color","label":"Card background","default":"#ffffff"
+    },
+    {"type":"color","id":"card_text_text_color","label":"Card text","default":"#121212"
     }
-  ],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+  ],"blocks": [
+    {"type":"image","name":"Image","settings": [
+        {"type":"image_picker","id":"image","label":"Image"
         }
       ]
     },
-    {
-      "type": "product",
-      "name": "Product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
+    {"type":"product","name":"Product","settings": [
+        {"type":"product","id":"product","label":"Product"
         },
-        {
-          "type": "checkbox",
-          "id": "second_image",
-          "default": false,
-          "label": "Show second image on hover"
+        {"type":"checkbox","id":"second_image","default": false,"label":"Show second image on hover"
         }
       ]
     },
-    {
-      "type": "collection",
-      "name": "Collection",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Collection"
+    {"type":"collection","name":"Collection","settings": [
+        {"type":"collection","id":"collection","label":"Collection"
         }
       ]
     },
-    {
-      "type": "video",
-      "name": "Video",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "cover_image",
-          "label": "Cover Image"
+    {"type":"video","name":"Video","settings": [
+        {"type":"image_picker","id":"cover_image","label":"Cover Image"
         },
-        {
-          "type": "video_url",
-          "id": "video_url",
-          "accept": ["youtube", "vimeo"],
-          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-          "label": "URL",
-          "placeholder": "Placeholder",
-          "info": "Info"
+        {"type":"video_url","id":"video_url","accept": ["youtube","vimeo"
+          ],"default":"https://www.youtube.com/watch?v=_9VUPq3SxOc","label":"URL","placeholder":"Placeholder","info":"Info"
         },
-        {
-          "type": "text",
-          "id": "description",
-          "default": "Describe the video",
-          "label": "Video alt text",
-          "info": "Info"
+        {"type":"text","id":"description","default":"Describe the video","label":"Video alt text","info":"Info"
         }
       ]
     }
-  ],
-  "max_blocks": 3,
-  "presets": [
-    {
-      "name": "Collage",
-      "blocks": [
-        {
-          "type": "image"
+  ],"max_blocks": 3,"presets": [
+    {"name":"Collage","blocks": [
+        {"type":"image"
         },
-        {
-          "type": "product"
+        {"type":"product"
         },
-        {
-          "type": "collection"
+        {"type":"collection"
         }
       ]
     }

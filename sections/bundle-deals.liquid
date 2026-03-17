@@ -30,12 +30,17 @@
   .bundle-offer__footer__prices {font-size: 1.7rem;}
   .bundle-offer-container + product-form {margin-top: 1rem;}
   @media screen and (min-width: 1000px) {.bundle-offer {--padding: 1.2rem;}.bundle-offer__footer__total-text {font-size: 2rem;}.bundle-offer__footer__benefit {font-size: 1.3rem;}.bundle-offer__footer__prices {font-size: 1.8rem;}.bundle-offer-container + product-form {margin-top: 1.2rem;}}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
+  .section-color-{{ section.id }}-pickers_color_scheme { background: {{ section.settings.pickers_bg_bg_color }}; color: {{ section.settings.pickers_text_text_color }}; }
+  .section-color-{{ section.id }}-pickers_overlay_color { background: {{ section.settings.pickers_overlay_bg_color }}; color: {{ section.settings.pickers_overlay_text_color }}; }
+  .section-color-{{ section.id }}-pickers_text_color { background: {{ section.settings.pickers_text_bg_color }}; color: {{ section.settings.pickers_text_text_color }}; }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} {{ section.settings.visibility }}">
+<div class="section-color-{{ section.id }}-color_scheme {{ section.settings.visibility }}">
   <div class="page-width section-{{ section.id }}-padding">
     {% assign content_index = 0 %}
-    <div class=" index-0">
+    <div class="index-0">
       {%- unless section.settings.title == blank -%}
         {% assign content_index = 1 %}
         <div class="title-wrapper--no-top-margin{% if section.settings.text != blank %} main-title-with-text{% endif %}">
@@ -122,7 +127,7 @@
                   id="checkbox-{{ forloop.index0 }}"
                   data-id="{{ product.selected_or_first_available_variant.id }}"
                   data-price="{{ price }}"
-                  data-compare-price="{{ compare_price }} "
+                  data-compare-price="{{ compare_price }}"
                   data-index="{{ forloop.index0 }}"
                   data-id-index="id_{{ forloop.index0 }}"
                   data-checked="true"
@@ -162,7 +167,7 @@
                 {% if product.has_only_default_variant == false %}
                   <div class="bundle-deals__variant-selects bundle-deals__variant-selects-js" data-index="{{ forloop.index0 }}" data-id-index="id_{{ forloop.index0 }}">
                     {%- for option in product.options_with_values -%}
-                      <div class="select select--small no-background color-{{ settings.pickers_color_scheme }} accent-color-{{ settings.pickers_overlay_color }} accent-2-color-{{ settings.pickers_text_color }}">
+                      <div class="select select--small no-background section-color-{{ section.id }}-pickers_color_scheme accent-section-color-{{ section.id }}-pickers_overlay_color accent-2-section-color-{{ section.id }}-pickers_text_color">
                         <select class="select__select">
                           {% for value in option.values %}
                             <option
@@ -263,238 +268,189 @@
   </div>
 </div>
 
+<script>
+if(!customElements.get('bundle-deals')){
+  class BundleDeals extends HTMLElement{
+    connectedCallback(){
+      this.checkboxes=this.querySelectorAll('.bundle-deals__checkbox-js');
+      this.mediaItems=this.querySelectorAll('.bundle-deals__media-item');
+      this.percentageLeft=parseFloat(this.dataset.percentageLeft)||1;
+      this.fixedDiscount=parseFloat(this.dataset.fixedDiscount)||0;
+      this.currencySymbol=this.dataset.currencySymbol||'$';
+      this.updatePrices=this.dataset.updatePrices==='true';
+      this.variantSelects=this.querySelectorAll('.bundle-deals__variant-selects-js');
+
+      this.checkboxes.forEach(cb=>{
+        cb.addEventListener('change',()=>this.onCheckboxChange(cb));
+      });
+
+      this.variantSelects.forEach(vs=>{
+        const selects=vs.querySelectorAll('select');
+        const jsonEl=vs.querySelector('script[type="application/json"]');
+        if(!jsonEl)return;
+        try{vs._variants=JSON.parse(jsonEl.textContent);}catch(e){return;}
+        selects.forEach(s=>s.addEventListener('change',()=>this.onVariantChange(vs)));
+      });
+    }
+    onCheckboxChange(cb){
+      const idx=parseInt(cb.dataset.index);
+      const checked=cb.checked;
+      cb.dataset.checked=checked?'true':'false';
+      if(this.mediaItems[idx]){
+        this.mediaItems[idx].style.opacity=checked?'1':'0.3';
+      }
+      this.recalcTotals();
+    }
+    onVariantChange(vs){
+      const selects=[...vs.querySelectorAll('select')];
+      const combo=selects.map(s=>s.value);
+      const variant=vs._variants.find(v=>{
+        return v.options.every((o,i)=>o===combo[i]);
+      });
+      if(!variant)return;
+      const idx=vs.dataset.index;
+      const cb=this.querySelector('[data-index="'+idx+'"]');
+      if(cb)cb.dataset.id=variant.id;
+      const product=this.querySelector('.bundle-deals__product-js:nth-child('+(parseInt(idx)+1)+')');
+      if(product){
+        const img=this.mediaItems[parseInt(idx)]?.querySelector('img');
+        if(img&&variant.featured_image)img.src=variant.featured_image.src;
+      }
+      this.recalcTotals();
+    }
+    recalcTotals(){
+      let total=0,totalCompare=0;
+      this.checkboxes.forEach(cb=>{
+        if(cb.dataset.checked==='true'){
+          total+=parseFloat(cb.dataset.price)||0;
+          totalCompare+=parseFloat(cb.dataset.comparePrice)||0;
+        }
+      });
+      total=total*this.percentageLeft-this.fixedDiscount;
+      const fmt=v=>this.currencySymbol+(v/100).toFixed(2);
+      const tp=this.querySelector('.bundle-deals__total-price-js');
+      const tcp=this.querySelector('.bundle-deals__total-compare-price-js');
+      if(tp)tp.textContent=fmt(total);
+      if(tcp)tcp.textContent=totalCompare>total?fmt(totalCompare):'';
+      this.updateFormIds();
+    }
+    updateFormIds(){
+      const form=this.querySelector('form[data-type="add-to-cart-form"]');
+      if(!form)return;
+      const existing=form.querySelectorAll('input[name="items[][id]"]');
+      existing.forEach(e=>e.remove());
+      this.checkboxes.forEach(cb=>{
+        if(cb.dataset.checked==='true'){
+          const input=document.createElement('input');
+          input.type='hidden';
+          input.name='items[][id]';
+          input.value=cb.dataset.id;
+          form.prepend(input);
+        }
+      });
+    }
+  }
+  customElements.define('bundle-deals',BundleDeals);
+}
+</script>
+
 {% schema %}
-{
-  "name": "Bundle deals",
-  "settings": [
-    {
-      "type": "select",
-      "id": "visibility",
-      "options": [
-        {
-          "value": "desktop-hidden",
-          "label": "Mobile only"
+{"name":"Bundle deals","settings": [
+    {"type":"select","id":"visibility","options": [
+        {"value":"desktop-hidden","label":"Mobile only"
         },
-        {
-          "value": "mobile-hidden",
-          "label": "Desktop only"
+        {"value":"mobile-hidden","label":"Desktop only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "label": "Display on",
-      "default": "always-display"
+      ],"label":"Display on","default":"always-display"
     },
-    {
-      "type": "header",
-      "content": "General"
+    {"type":"header","content":"General"
     },
-    {
-      "type": "text",
-      "id": "title",
-      "default": "Bundle deals",
-      "label": "Heading"
+    {"type":"text","id":"title","default":"Bundle deals","label":"Heading"
     },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "Small"
+    {"type":"select","id":"heading_size","options": [
+        {"value":"h2","label":"Small"
         },
-        {
-          "value": "h1",
-          "label": "Medium"
+        {"value":"h1","label":"Medium"
         },
-        {
-          "value": "h0",
-          "label": "Large"
+        {"value":"h0","label":"Large"
         }
-      ],
-      "default": "h1",
-      "label": "Heading size"
+      ],"default":"h1","label":"Heading size"
     },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "Text"
+    {"type":"richtext","id":"text","label":"Text"
     },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "Accent 1"
+    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
+    },
+    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
+    },
+    {"type":"header","content":"Bundles"
+    },
+    {"type":"select","id":"layout","options": [
+        {"value":"","label":"Vertical"
         },
-        {
-          "value": "accent-2",
-          "label": "Accent 2"
+        {"value":"horizontal-images-left","label":"Horizontal - Images left"
         },
-        {
-          "value": "background-1",
-          "label": "Background 1"
-        },
-        {
-          "value": "background-2",
-          "label": "Background 2"
-        },
-        {
-          "value": "inverse",
-          "label": "Inverse"
+        {"value":"horizontal-images-right","label":"Horizontal - Images right"
         }
-        ],
-      "default": "background-1",
-      "label": "Color scheme"
+      ],"default":"horizontal-images-left","label":"Desktop layout"
     },
-    {
-      "type": "header",
-      "content": "Bundles"
+    {"type":"checkbox","id":"enable_price_changes","label":"Enable dynamic price changes","info":"Enables live changes to item and total prices after variant/checkbox change. CAUTION: Due to the way Liquid works, after a change, new price will NOT work with currency converters.","default": true
     },
-    {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "",
-          "label": "Vertical"
-        },
-        {
-          "value": "horizontal-images-left",
-          "label": "Horizontal - Images left"
-        },
-        {
-          "value": "horizontal-images-right",
-          "label": "Horizontal - Images right"
-        }
-      ],
-      "default": "horizontal-images-left",
-      "label": "Desktop layout"
+    {"type":"checkbox","id":"prices_under","label":"Dispaly price under the title for products without a variant picker","default": true
     },
-    {
-      "type": "checkbox",
-      "id": "enable_price_changes",
-      "label": "Enable dynamic price changes",
-      "info": "Enables live changes to item and total prices after variant/checkbox change. CAUTION: Due to the way Liquid works, after a change, new price will NOT work with currency converters.",
-      "default": true
+    {"type":"checkbox","id":"skip_cart","label":"Skip cart","default": false,"info":"Your customers will be sent directly to checkout after click the Add to Cart button."
     },
-    {
-      "type": "checkbox",
-      "id": "prices_under",
-      "label": "Dispaly price under the title for products without a variant picker",
-      "default": true
+    {"type":"text","id":"total_price_label","label":"Total price label","default":"Total Price:"
     },
-    {
-      "type": "checkbox",
-      "id": "skip_cart",
-      "label": "Skip cart",
-      "default": false,
-      "info": "Your customers will be sent directly to checkout after click the Add to Cart button."
+    {"type":"text","id":"btn_label","label":"Add to cart button label","default":"Add selected to cart"
     },
-    {
-      "type": "text",
-      "id": "total_price_label",
-      "label": "Total price label",
-      "default": "Total Price:"
+    {"type":"header","content":"Discounts"
     },
-    {
-      "type": "text",
-      "id": "btn_label",
-      "label": "Add to cart button label",
-      "default": "Add selected to cart"
+    {"type":"text","id":"percentage_discount","label":"Percentage discount","default":"0","info":"Percentae to be discounted from the total price, WITHOUT the % symbol."
     },
-    {
-      "type": "header",
-      "content": "Discounts"
+    {"type":"text","id":"fixed_amount_discount","label":"Fixed amount discount","default":"0","info":"Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
     },
-    {
-      "type": "text",
-      "id": "percentage_discount",
-      "label": "Percentage discount",
-      "default": "0",
-      "info": "Percentae to be discounted from the total price, WITHOUT the % symbol."
+    {"type":"header","content":"Section padding"
     },
-    {
-      "type": "text",
-      "id": "fixed_amount_discount",
-      "label": "Fixed amount discount",
-      "default": "0",
-      "info": "Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
+    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 36
     },
-    {
-      "type": "header",
-      "content": "Section padding"
+    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 36
     },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 36
+    {"type":"color","id":"pickers_bg_bg_color","label":"Pickers background","default":"#ffffff"
     },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 36
+    {"type":"color","id":"pickers_text_text_color","label":"Pickers text","default":"#121212"
+    },
+    {"type":"color","id":"pickers_overlay_bg_color","label":"Pickers overlay color background","default":"#ffffff"
+    },
+    {"type":"color","id":"pickers_overlay_text_color","label":"Pickers overlay color text","default":"#121212"
+    },
+    {"type":"color","id":"pickers_text_bg_color","label":"Pickers text color background","default":"#ffffff"
+    },
+    {"type":"color","id":"pickers_text_text_color","label":"Pickers text color text","default":"#121212"
     }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
+  ],"blocks": [
+    {"type":"product","name":"Product","limit": 5,"settings": [
+        {"type":"product","id":"product","label":"Product"
         },
-        {
-          "type": "text",
-          "id": "percentage_discount",
-          "label": "Percentage discount",
-          "default": "0",
-          "info": "Percentae to be discounted from the total price, WITHOUT the % symbol."
+        {"type":"text","id":"percentage_discount","label":"Percentage discount","default":"0","info":"Percentae to be discounted from the total price, WITHOUT the % symbol."
         },
-        {
-          "type": "text",
-          "id": "fixed_amount_discount",
-          "label": "Fixed amount discount",
-          "default": "0",
-          "info": "Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
+        {"type":"text","id":"fixed_amount_discount","label":"Fixed amount discount","default":"0","info":"Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
         }
       ]
     }
-  ],
-  "presets": [
-    {
-      "name": "Bundle deals",
-      "blocks": [
-        {
-          "type": "product"
+  ],"presets": [
+    {"name":"Bundle deals","blocks": [
+        {"type":"product"
         },
-        {
-          "type": "product"
+        {"type":"product"
         },
-        {
-          "type": "product"
+        {"type":"product"
         }
       ]
     }
-  ],
-  "disabled_on": {
-    "groups": ["header", "footer"]
+  ],"disabled_on": {"groups": ["header","footer"
+    ]
   }
 }
 {% endschema %}

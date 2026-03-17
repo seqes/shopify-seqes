@@ -14,11 +14,13 @@
   /* Base layout rules */
   .track-order-form {padding-bottom: 2rem;margin: 0 auto;max-width: 60rem;}
   .track-order-form .field {margin-top: 3rem;}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient {{ section.settings.visibility }}">
+<div class="section-color-{{ section.id }}-color_scheme gradient {{ section.settings.visibility }}">
   <div class="page-width section-{{ section.id }}-padding">
-    <div class="track-order-form animate-item">
+    <div class="track-order-form">
       <div class="center">
         {%- if section.settings.heading != blank -%}
           <h2 class="title title-wrapper--no-top-margin {{ section.settings.heading_size }}">
@@ -80,132 +82,47 @@
 </script>
 
 {% schema %}
-{
-  "name": "Track order",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "select",
-      "id": "visibility",
-      "options": [
-        {
-          "value": "desktop-hidden",
-          "label": "Mobile only"
+{"name":"Track order","disabled_on": {"groups": ["header","footer"
+    ]
+  },"settings": [
+    {"type":"select","id":"visibility","options": [
+        {"value":"desktop-hidden","label":"Mobile only"
         },
-        {
-          "value": "mobile-hidden",
-          "label": "Desktop only"
+        {"value":"mobile-hidden","label":"Desktop only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "label": "Display on",
-      "default": "always-display"
+      ],"label":"Display on","default":"always-display"
     },
-    {
-      "type": "text",
-      "id": "heading",
-      "default": "Track Order",
-      "label": "Heading"
+    {"type":"text","id":"heading","default":"Track Order","label":"Heading"
     },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "Text",
-      "default": "<p>Please enter you tracking number below. if your tracking number doesn't work feel free to contact us at [shop email]</p>"
+    {"type":"richtext","id":"text","label":"Text","default":"<p>Please enter you tracking number below. if your tracking number doesn't work feel free to contact us at [shop email]</p>"
     },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "Small"
+    {"type":"select","id":"heading_size","options": [
+        {"value":"h2","label":"Small"
         },
-        {
-          "value": "h1",
-          "label": "Medium"
+        {"value":"h1","label":"Medium"
         },
-        {
-          "value": "h0",
-          "label": "Large"
+        {"value":"h0","label":"Large"
         }
-      ],
-      "default": "h2",
-      "label": "Heading size"
+      ],"default":"h2","label":"Heading size"
     },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button label",
-      "default": "TRACK"
+    {"type":"text","id":"button_label","label":"Button label","default":"TRACK"
     },
-    {
-      "type": "checkbox",
-      "id": "button_full_width",
-      "label": "Use full width button style",
-      "default": true
+    {"type":"checkbox","id":"button_full_width","label":"Use full width button style","default": true
     },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "Accent 1"
-        },
-        {
-          "value": "accent-2",
-          "label": "Accent 2"
-        },
-        {
-          "value": "background-1",
-          "label": "Background 1"
-        },
-        {
-          "value": "background-2",
-          "label": "Background 2"
-        },
-        {
-          "value": "inverse",
-          "label": "Inverse"
-        }
-      ],
-      "default": "background-1",
-      "label": "Color scheme"
+    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
     },
-    {
-      "type": "header",
-      "content": "Section padding"
+    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
     },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 36
+    {"type":"header","content":"Section padding"
     },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 36
+    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 36
+    },
+    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 36
     }
-  ],
-  "presets": [
-    {
-      "name": "Track order"
+  ],"presets": [
+    {"name":"Track order"
     }
   ]
 }

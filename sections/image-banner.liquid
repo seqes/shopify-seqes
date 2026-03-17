@@ -44,7 +44,7 @@
   .banner__box {padding: 4rem 3.5rem;position: relative;height: fit-content;align-items: center;text-align: center;width: 100%;word-wrap: break-word;z-index: 0;}
   @media screen and (min-width: 750px) {.banner--desktop-transparent .banner__box {background: transparent;--color-foreground: 255, 255, 255;--color-button: 255, 255, 255;--color-button-text: 0, 0, 0;max-width: 89rem;border: none;border-radius: 0;box-shadow: none;}.banner--desktop-transparent .banner__box.banner--transparent-black {background: transparent;--color-foreground: 0, 0, 0;--color-button: 0, 0, 0;--color-button-text: 255, 255, 255;}.banner--desktop-transparent .button--secondary {--color-button: 255, 255, 255;--color-button-text: 255, 255, 255;--alpha-button-background: 0;}.banner--desktop-transparent .banner__box.banner--transparent-black .button--secondary {--color-button: 0, 0, 0;--color-button-text: 0, 0, 0;}.banner--desktop-transparent .content-container:after {display: none;}}
   @media screen and (max-width: 749px) {.banner--mobile-bottom::after, .banner--mobile-bottom .banner__media::after {display: none;}}
-  .banner::after, .banner__media::after {content: "";position: absolute;top: 0;background: #000000;opacity: 0;z-index: 0;width: 100%;height: 100%;}
+  .banner::after, .banner__media::after {content:"";position: absolute;top: 0;background: #000000;opacity: 0;z-index: 0;width: 100%;height: 100%;}
   .banner__box > * + .banner__text {margin-top: 1.5rem;}
   @media screen and (min-width: 750px) {.banner__box > * + .banner__text {margin-top: 2rem;}}
   .banner__box > * + * {margin-top: 1rem;}
@@ -72,6 +72,8 @@
   .email-signup-banner .banner__media {overflow: hidden;}
   @media screen and (max-width: 749px) {.banner--mobile-content-align-left .newsletter-form__message {justify-content: flex-start;}.banner--mobile-content-align-right .newsletter-form__message {justify-content: right;}}
   @media screen and (min-width: 750px) {.banner--content-align-center .newsletter-form__message {justify-content: center;}.banner--content-align-right .newsletter-form__message {justify-content: right;}}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
 {%- endstyle -%}
 {%- endif -%}
 
@@ -101,7 +103,7 @@
   .banner__box {padding: 4rem 3.5rem;position: relative;height: fit-content;align-items: center;text-align: center;width: 100%;word-wrap: break-word;z-index: 0;}
   @media screen and (min-width: 750px) {.banner--desktop-transparent .banner__box {background: transparent;--color-foreground: 255, 255, 255;--color-button: 255, 255, 255;--color-button-text: 0, 0, 0;max-width: 89rem;border: none;border-radius: 0;box-shadow: none;}.banner--desktop-transparent .banner__box.banner--transparent-black {background: transparent;--color-foreground: 0, 0, 0;--color-button: 0, 0, 0;--color-button-text: 255, 255, 255;}.banner--desktop-transparent .button--secondary {--color-button: 255, 255, 255;--color-button-text: 255, 255, 255;--alpha-button-background: 0;}.banner--desktop-transparent .banner__box.banner--transparent-black .button--secondary {--color-button: 0, 0, 0;--color-button-text: 0, 0, 0;}.banner--desktop-transparent .content-container:after {display: none;}}
   @media screen and (max-width: 749px) {.banner--mobile-bottom::after, .banner--mobile-bottom .banner__media::after {display: none;}}
-  .banner::after, .banner__media::after {content: "";position: absolute;top: 0;background: #000000;opacity: 0;z-index: 0;width: 100%;height: 100%;}
+  .banner::after, .banner__media::after {content:"";position: absolute;top: 0;background: #000000;opacity: 0;z-index: 0;width: 100%;height: 100%;}
   .banner__box > * + .banner__text {margin-top: 1.5rem;}
   @media screen and (min-width: 750px) {.banner__box > * + .banner__text {margin-top: 2rem;}}
   .banner__box > * + * {margin-top: 1rem;}
@@ -129,10 +131,12 @@
   .email-signup-banner .banner__media {overflow: hidden;}
   @media screen and (max-width: 749px) {.banner--mobile-content-align-left .newsletter-form__message {justify-content: flex-start;}.banner--mobile-content-align-right .newsletter-form__message {justify-content: right;}}
   @media screen and (min-width: 750px) {.banner--content-align-center .newsletter-form__message {justify-content: center;}.banner--content-align-right .newsletter-form__message {justify-content: right;}}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
 {%- endstyle -%}
 <div
   id="Banner-{{ section.id }}"
-  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %} content-for-grouping {{ section.settings.visibility }}"
+  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %} {{ section.settings.visibility }}"
 >
   {%- if section.settings.image != blank -%}
     <div class="banner__media media {{ section.settings.image_1_visibility }}{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank and section.settings.image_2_visibility != 'desktop-hidden' %} banner__media-half{% endif %}">
@@ -195,7 +199,7 @@
     </div>
   {%- endif -%}
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
-    <div class="banner__box banner--transparent-{{ section.settings.transparent_container_color }} content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+    <div class="banner__box banner--transparent-{{ section.settings.transparent_container_color }} content-container content-container--full-width-mobile section-color-{{ section.id }}-color_scheme gradient">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
@@ -279,405 +283,165 @@
 </div>
 
 {% schema %}
-{
-  "name": "Image banner",
-  "tag": "section",
-  "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "select",
-      "id": "visibility",
-      "options": [
-        {
-          "value": "desktop-hidden",
-          "label": "Mobile only"
+{"name":"Image banner","tag":"section","class":"section","disabled_on": {"groups": ["header","footer"
+    ]
+  },"settings": [
+    {"type":"select","id":"visibility","options": [
+        {"value":"desktop-hidden","label":"Mobile only"
         },
-        {
-          "value": "mobile-hidden",
-          "label": "Desktop only"
+        {"value":"mobile-hidden","label":"Desktop only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "label": "Display on",
-      "default": "always-display"
+      ],"label":"Display on","default":"always-display"
     },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "First image"
+    {"type":"image_picker","id":"image","label":"First image"
     },
-    {
-      "type": "select",
-      "id": "image_1_visibility",
-      "label": "Display first image on:",
-      "options": [
-        {
-          "value": "mobile-hidden",
-          "label": "Desktop only"
+    {"type":"select","id":"image_1_visibility","label":"Display first image on:","options": [
+        {"value":"mobile-hidden","label":"Desktop only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "default": "always-display"
+      ],"default":"always-display"
     },
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Second image"
+    {"type":"image_picker","id":"image_2","label":"Second image"
     },
-    {
-      "type": "select",
-      "id": "image_2_visibility",
-      "label": "Display second image on:",
-      "options": [
-        {
-          "value": "desktop-hidden",
-          "label": "Mobile only"
+    {"type":"select","id":"image_2_visibility","label":"Display second image on:","options": [
+        {"value":"desktop-hidden","label":"Mobile only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "default": "always-display"
+      ],"default":"always-display"
     },
-    {
-      "type": "range",
-      "id": "image_overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "unit": "%",
-      "label": "Image overlay opacity",
-      "default": 0
+    {"type":"range","id":"image_overlay_opacity","min": 0,"max": 100,"step": 10,"unit":"%","label":"Image overlay opacity","default": 0
     },
-    {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "Adapt to first image"
+    {"type":"select","id":"image_height","options": [
+        {"value":"adapt","label":"Adapt to first image"
         },
-        {
-          "value": "small",
-          "label": "Small"
+        {"value":"small","label":"Small"
         },
-        {
-          "value": "medium",
-          "label": "Medium"
+        {"value":"medium","label":"Medium"
         },
-        {
-          "value": "large",
-          "label": "Large"
+        {"value":"large","label":"Large"
         }
-      ],
-      "default": "medium",
-      "label": "Banner height",
-      "info": "For best results, use an image with a 16:9 aspect ratio."
+      ],"default":"medium","label":"Banner height","info":"For best results, use an image with a 16:9 aspect ratio."
     },
-    {
-      "type": "select",
-      "id": "desktop_content_position",
-      "options": [
-        {
-          "value": "top-left",
-          "label": "Top left"
+    {"type":"select","id":"desktop_content_position","options": [
+        {"value":"top-left","label":"Top left"
         },
-        {
-          "value": "top-center",
-          "label": "Top center"
+        {"value":"top-center","label":"Top center"
         },
-        {
-          "value": "top-right",
-          "label": "Top right"
+        {"value":"top-right","label":"Top right"
         },
-        {
-          "value": "middle-left",
-          "label": "Middle left"
+        {"value":"middle-left","label":"Middle left"
         },
-        {
-          "value": "middle-center",
-          "label": "Middle center"
+        {"value":"middle-center","label":"Middle center"
         },
-        {
-          "value": "middle-right",
-          "label": "Middle right"
+        {"value":"middle-right","label":"Middle right"
         },
-        {
-          "value": "bottom-left",
-          "label": "Bottom left"
+        {"value":"bottom-left","label":"Bottom left"
         },
-        {
-          "value": "bottom-center",
-          "label": "Bottom center"
+        {"value":"bottom-center","label":"Bottom center"
         },
-        {
-          "value": "bottom-right",
-          "label": "Bottom right"
+        {"value":"bottom-right","label":"Bottom right"
         }
-      ],
-      "default": "middle-center",
-      "label": "Desktop content position"
+      ],"default":"middle-center","label":"Desktop content position"
     },
-    {
-      "type": "checkbox",
-      "id": "show_text_box",
-      "default": true,
-      "label": "Show container on desktop"
+    {"type":"checkbox","id":"show_text_box","default": true,"label":"Show container on desktop"
     },
-    {
-      "type": "select",
-      "id": "desktop_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
+    {"type":"select","id":"desktop_content_alignment","options": [
+        {"value":"left","label":"Left"
         },
-        {
-          "value": "center",
-          "label": "Center"
+        {"value":"center","label":"Center"
         },
-        {
-          "value": "right",
-          "label": "Right"
+        {"value":"right","label":"Right"
         }
-      ],
-      "default": "center",
-      "label": "Desktop content alignment"
+      ],"default":"center","label":"Desktop content alignment"
     },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "Accent 1"
+    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
+    },
+    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
+    },
+    {"type":"select","id":"transparent_container_color","label":"Transparent container text color","options": [
+        {"value":"white","label":"White"
         },
-        {
-          "value": "accent-2",
-          "label": "Accent 2"
-        },
-        {
-          "value": "background-1",
-          "label": "Background 1"
-        },
-        {
-          "value": "background-2",
-          "label": "Background 2"
-        },
-        {
-          "value": "inverse",
-          "label": "Inverse"
+        {"value":"black","label":"Black"
         }
-      ],
-      "default": "background-1",
-      "label": "Color scheme",
-      "info": "Info"
+      ],"default":"white"
     },
-    {
-      "type": "select",
-      "id": "transparent_container_color",
-      "label": "Transparent container text color",
-      "options": [
-        {
-          "value": "white",
-          "label": "White"
+    {"type":"header","content":"Content"
+    },
+    {"type":"select","id":"mobile_content_alignment","options": [
+        {"value":"left","label":"Left"
         },
-        {
-          "value": "black",
-          "label": "Black"
+        {"value":"center","label":"Center"
+        },
+        {"value":"right","label":"Right"
         }
-      ],
-      "default": "white"
+      ],"default":"center","label":"Mobile content alignment"
     },
-    {
-      "type": "header",
-      "content": "Content"
+    {"type":"checkbox","id":"stack_images_on_mobile","default": true,"label":"Stack Images On Mobile"
     },
-    {
-      "type": "select",
-      "id": "mobile_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "center",
-      "label": "Mobile content alignment"
-    },
-    {
-      "type": "checkbox",
-      "id": "stack_images_on_mobile",
-      "default": true,
-      "label": "Stack Images On Mobile"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_text_below",
-      "default": true,
-      "label": "Show container below image on mobile"
+    {"type":"checkbox","id":"show_text_below","default": true,"label":"Show container below image on mobile"
     }
-  ],
-  "blocks": [
-    {
-      "type": "heading",
-      "name": "Heading",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "default": "Image banner",
-          "label": "Heading"
+  ],"blocks": [
+    {"type":"heading","name":"Heading","limit": 1,"settings": [
+        {"type":"text","id":"heading","default":"Image banner","label":"Heading"
         },
-        {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "Small"
+        {"type":"select","id":"heading_size","options": [
+            {"value":"h2","label":"Small"
             },
-            {
-              "value": "h1",
-              "label": "Medium"
+            {"value":"h1","label":"Medium"
             },
-            {
-              "value": "h0",
-              "label": "Large"
+            {"value":"h0","label":"Large"
             }
-          ],
-          "default": "h1",
-          "label": "Heading size"
+          ],"default":"h1","label":"Heading size"
         }
       ]
     },
-    {
-      "type": "text",
-      "name": "Text",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "default": "Give customers details about the banner image(s) or content on the template.",
-          "label": "Description"
+    {"type":"text","name":"Text","limit": 1,"settings": [
+        {"type":"text","id":"text","default":"Give customers details about the banner image(s) or content on the template.","label":"Description"
         },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "Option 1"
+        {"type":"select","id":"text_style","options": [
+            {"value":"body","label":"Option 1"
             },
-            {
-              "value": "subtitle",
-              "label": "Option 2"
+            {"value":"subtitle","label":"Option 2"
             },
-            {
-              "value": "caption-with-letter-spacing",
-              "label": "Option 3"
+            {"value":"caption-with-letter-spacing","label":"Option 3"
             }
-          ],
-          "default": "body",
-          "label": "Text Style"
+          ],"default":"body","label":"Text Style"
         }
       ]
     },
-    {
-      "type": "buttons",
-      "name": "Buttons",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_label_1",
-          "default": "Button label",
-          "label": "First button label",
-          "info": "Leave the label blank to hide the button."
+    {"type":"buttons","name":"Buttons","limit": 1,"settings": [
+        {"type":"text","id":"button_label_1","default":"Button label","label":"First button label","info":"Leave the label blank to hide the button."
         },
-        {
-          "type": "url",
-          "id": "button_link_1",
-          "label": "First button link"
+        {"type":"url","id":"button_link_1","label":"First button link"
         },
-        {
-          "type": "checkbox",
-          "id": "button_style_secondary_1",
-          "default": false,
-          "label": "Use outline button style"
+        {"type":"checkbox","id":"button_style_secondary_1","default": false,"label":"Use outline button style"
         },
-        {
-          "type": "text",
-          "id": "button_label_2",
-          "default": "Button label",
-          "label": "Second button label",
-          "info": "Leave the label blank to hide the button."
+        {"type":"text","id":"button_label_2","default":"Button label","label":"Second button label","info":"Leave the label blank to hide the button."
         },
-        {
-          "type": "url",
-          "id": "button_link_2",
-          "label": "Second button link"
+        {"type":"url","id":"button_link_2","label":"Second button link"
         },
-        {
-          "type": "checkbox",
-          "id": "button_style_secondary_2",
-          "default": false,
-          "label": "Use outline button style"
+        {"type":"checkbox","id":"button_style_secondary_2","default": false,"label":"Use outline button style"
         }
       ]
     },
-    {
-      "type": "atc_button",
-      "name":"Add to Cart button",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button label",
-          "default": "Add to Cart"
+    {"type":"atc_button","name":"Add to Cart button","limit": 1,"settings": [
+        {"type":"text","id":"button_label","label":"Button label","default":"Add to Cart"
         },
-        {
-          "type": "product",
-          "id": "atc_product",
-          "label": "ATC Custom product",
-          "info": "IMPORTANT: If empty, the button will add the main product FROM THE PRODUCT PAGE to cart (INCLUDING the selected variant/quantity, upsells etc.)"
+        {"type":"product","id":"atc_product","label":"ATC Custom product","info":"IMPORTANT: If empty, the button will add the main product FROM THE PRODUCT PAGE to cart (INCLUDING the selected variant/quantity, upsells etc.)"
         }
       ]
     }
-  ],
-  "presets": [
-    {
-      "name": "Name",
-      "blocks": [
-        {
-          "type": "heading"
+  ],"presets": [
+    {"name":"Name","blocks": [
+        {"type":"heading"
         },
-        {
-          "type": "text"
+        {"type":"text"
         },
-        {
-          "type": "buttons"
+        {"type":"buttons"
         }
       ]
     }

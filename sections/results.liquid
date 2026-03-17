@@ -20,18 +20,20 @@
   .content-and-results__image {max-width: 600px;margin-left: auto;margin-right: auto;}
   .results__rows-container {margin-bottom: 1rem;}
   .results__percentage {width: 7rem;height: 7rem;display: flex;align-items: center;justify-content: center;text-align: center;border-radius: 50%;position: relative;--border-width: 0.7rem;flex-shrink: 0;margin-right: 2rem;z-index: 0;}
-  .results__percentage::before {content: "";display: block;position: absolute;top: 0;left: 0;bottom: 0;right: 0;border-radius: 50%;z-index: -2;background: conic-gradient( from 0deg at 50% 50%, rgb(var(--color-base-accent-1)) 0%, rgb(var(--color-base-accent-1)) var(--percentage), rgb(var(--color-background)) var(--percentage), rgb(var(--color-background)) 100% );}
+  .results__percentage::before {content:"";display: block;position: absolute;top: 0;left: 0;bottom: 0;right: 0;border-radius: 50%;z-index: -2;background: conic-gradient( from 0deg at 50% 50%, rgb(var(--color-base-accent-1)) 0%, rgb(var(--color-base-accent-1)) var(--percentage), rgb(var(--color-background)) var(--percentage), rgb(var(--color-background)) 100% );}
   .color-accent-1 .results__percentage::before, .color-accent-2 .results__percentage::before {background: conic-gradient( from 0deg at 50% 50%, rgb(var(--color-foreground)) 0%, rgb(var(--color-foreground)) var(--percentage), rgb(var(--color-background)) var(--percentage), rgb(var(--color-background)) 100% );}
-  .results__percentage::after {content: "";display: block;position: absolute;top: var(--border-width);left: var(--border-width);bottom: var(--border-width);right: var(--border-width);border-radius: 50%;z-index: -1;background: rgb(var(--color-background));}
+  .results__percentage::after {content:"";display: block;position: absolute;top: var(--border-width);left: var(--border-width);bottom: var(--border-width);right: var(--border-width);border-radius: 50%;z-index: -1;background: rgb(var(--color-background));}
   .results__percentage p {margin: 0;color: rgb(var(--color-base-accent-1));font-size: 1.8rem;font-weight: 700;}
   .color-accent-1 .results__percentage p, .color-accent-2 .results__percentage p {color: rgb(var(--color-foreground));}
   .results__row {padding: 1rem 0;display: flex;align-items: center;border-bottom: 2px solid rgba(var(--color-foreground), 0.05);}
   .results__row:first-of-type {border-top: 2px solid rgba(var(--color-foreground), 0.05);}
   .results__text p {margin: 0;}
   .results__caption p {margin: 0;font-size: 1.2rem;}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} {{ section.settings.visibility }}">
+<div class="section-color-{{ section.id }}-color_scheme {{ section.settings.visibility }}">
   <div class="page-width section-{{ section.id }}-padding">
     <div class="content-and-results section-group__container__child-grid{% if section.settings.layout == 'results_first' %} content-and-results--results-first{% endif %}{% if section.settings.title == blank and section.settings.text == blank and section.settings.image == blank %} content-and-results--no-content{% endif %}">
       {% assign content_index = 0 %}
@@ -157,272 +159,133 @@
   </div>
 </div>
 
+<script>
+if(!customElements.get('internal-video')){
+  class InternalVideo extends HTMLElement{
+    connectedCallback(){
+      this.video=this.querySelector('video');
+      if(!this.video)return;
+      const autoplay=this.dataset.autoplay==='true';
+      const sources=this.video.querySelectorAll('source[data-src]');
+      if(sources.length===0&&autoplay){this.video.play().catch(()=>{});return;}
+      const observer=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            sources.forEach(s=>{if(s.dataset.src){s.src=s.dataset.src;s.removeAttribute('data-src');}});
+            this.video.load();
+            if(autoplay)this.video.play().catch(()=>{});
+            observer.disconnect();
+          }
+        });
+      },{threshold:0.1});
+      observer.observe(this);
+    }
+  }
+  customElements.define('internal-video',InternalVideo);
+}
+</script>
+
 {% schema %}
-{
-  "name": "Results",
-  "settings": [
-    {
-      "type": "select",
-      "id": "visibility",
-      "options": [
-        {
-          "value": "desktop-hidden",
-          "label": "Mobile only"
+{"name":"Results","settings": [
+    {"type":"select","id":"visibility","options": [
+        {"value":"desktop-hidden","label":"Mobile only"
         },
-        {
-          "value": "mobile-hidden",
-          "label": "Desktop only"
+        {"value":"mobile-hidden","label":"Desktop only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "label": "Display on",
-      "default": "always-display"
+      ],"label":"Display on","default":"always-display"
     },
-    {
-      "type": "header",
-      "content": "General"
+    {"type":"header","content":"General"
     },
-    {
-      "type": "text",
-      "id": "title",
-      "default": "Results",
-      "label": "Heading"
+    {"type":"text","id":"title","default":"Results","label":"Heading"
     },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "Small"
+    {"type":"select","id":"heading_size","options": [
+        {"value":"h2","label":"Small"
         },
-        {
-          "value": "h1",
-          "label": "Medium"
+        {"value":"h1","label":"Medium"
         },
-        {
-          "value": "h0",
-          "label": "Large"
+        {"value":"h0","label":"Large"
         }
-      ],
-      "default": "h1",
-      "label": "Heading size"
+      ],"default":"h1","label":"Heading size"
     },
-    {
-      "type": "richtext",
-      "id": "text",
-      "default": "<p>Talk about results of your customers and how your product improved their life.</p>",
-      "label": "Text"
+    {"type":"richtext","id":"text","default":"<p>Talk about results of your customers and how your product improved their life.</p>","label":"Text"
     },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
+    {"type":"image_picker","id":"image","label":"Image"
     },
-    {
-      "type": "paragraph",
-      "content": "Or"
+    {"type":"paragraph","content":"Or"
     },
-    {
-      "type": "video",
-      "id": "video",
-      "label": "Video",
-      "info": "Use autoplay mp4 instead of GIFs & animated WEBPs."
+    {"type":"video","id":"video","label":"Video","info":"Use autoplay mp4 instead of GIFs & animated WEBPs."
     },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "Accent 1"
+    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
+    },
+    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
+    },
+    {"type":"header","content":"Results"
+    },
+    {"type":"select","id":"layout","options": [
+        {"value":"results_first","label":"Results first"
         },
-        {
-          "value": "accent-2",
-          "label": "Accent 2"
-        },
-        {
-          "value": "background-1",
-          "label": "Background 1"
-        },
-        {
-          "value": "background-2",
-          "label": "Background 2"
-        },
-        {
-          "value": "inverse",
-          "label": "Inverse"
+        {"value":"results_second","label":"Results second"
         }
-      ],
-      "default": "background-1",
-      "label": "Color scheme"
+      ],"default":"results_second","label":"Desktop results placement"
     },
-    {
-      "type": "header",
-      "content": "Results"
+    {"type":"text","id":"results_headline","default":"Results heading","label":"Results heading"
     },
-    {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "results_first",
-          "label": "Results first"
+    {"type":"select","id":"results_headline_size","options": [
+        {"value":"h3","label":"Small"
         },
-        {
-          "value": "results_second",
-          "label": "Results second"
+        {"value":"h2","label":"Medium"
+        },
+        {"value":"h1","label":"Large"
         }
-      ],
-      "default": "results_second",
-      "label": "Desktop results placement"
+      ],"default":"h2","label":"Results heading size"
     },
-    {
-      "type": "text",
-      "id": "results_headline",
-      "default": "Results heading",
-      "label": "Results heading"
-    },
-    {
-      "type": "select",
-      "id": "results_headline_size",
-      "options": [
-        {
-          "value": "h3",
-          "label": "Small"
+    {"type":"select","id":"results_headline_alignment","options": [
+        {"value":"left","label":"Left"
         },
-        {
-          "value": "h2",
-          "label": "Medium"
-        },
-        {
-          "value": "h1",
-          "label": "Large"
+        {"value":"center","label":"Center"
         }
-      ],
-      "default": "h2",
-      "label": "Results heading size"
+      ],"default":"left","label":"Results heading alignment"
     },
-    {
-      "type": "select",
-      "id": "results_headline_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        }
-      ],
-      "default": "left",
-      "label": "Results heading alignment"
+    {"type":"richtext","id":"caption","default":"<p>Caption about the results and/or link for their proof.</p>","label":"Caption"
     },
-    {
-      "type": "richtext",
-      "id": "caption",
-      "default": "<p>Caption about the results and/or link for their proof.</p>",
-      "label": "Caption"
+    {"type":"text","id":"button_label","label":"Button label","info":"Leave the label blank to hide the button."
     },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button label",
-      "info": "Leave the label blank to hide the button."
+    {"type":"url","id":"link","label":"Button link"
     },
-    {
-      "type": "url",
-      "id": "link",
-      "label": "Button link"
+    {"type":"checkbox","id":"button_style_secondary","label":"Use outline button style","default": false
     },
-    {
-      "type": "checkbox",
-      "id": "button_style_secondary",
-      "label": "Use outline button style",
-      "default": false
+    {"type":"text","id":"atc_button_label","label":"Add to Cart button label","info":"Leave the label blank to hide the Add to Cart button."
     },
-    {
-      "type": "text",
-      "id": "atc_button_label",
-      "label": "Add to Cart button label",
-      "info": "Leave the label blank to hide the Add to Cart button."
+    {"type":"product","id":"atc_product","label":"ATC Custom product","info":"IMPORTANT: If empty, the button will add the main product FROM THE PRODUCT PAGE to cart (INCLUDING the selected variant/quantity, upsells etc.)"
     },
-    {
-      "type": "product",
-      "id": "atc_product",
-      "label": "ATC Custom product",
-      "info": "IMPORTANT: If empty, the button will add the main product FROM THE PRODUCT PAGE to cart (INCLUDING the selected variant/quantity, upsells etc.)"
+    {"type":"header","content":"Section padding"
     },
-    {
-      "type": "header",
-      "content": "Section padding"
+    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 36
     },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 36
+    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 36
     }
-  ],
-  "blocks": [
-    {
-      "type": "row",
-      "name": "Result row",
-      "settings": [
-        {
-          "type": "range",
-          "id": "percentage",
-          "min": 0,
-          "max": 100,
-          "default": 90,
-          "step": 1,
-          "label": "Percentage"
+  ],"blocks": [
+    {"type":"row","name":"Result row","settings": [
+        {"type":"range","id":"percentage","min": 0,"max": 100,"default": 90,"step": 1,"label":"Percentage"
         },
-        {
-          "type": "richtext",
-          "id": "row_text",
-          "default": "<p>Noticed that this product has significantly improved their life.</p>",
-          "label": "Result"
+        {"type":"richtext","id":"row_text","default":"<p>Noticed that this product has significantly improved their life.</p>","label":"Result"
         }
       ]
     }
-  ],
-  "presets": [
-    {
-      "name": "Results",
-      "blocks": [
-        {
-          "type": "row"
+  ],"presets": [
+    {"name":"Results","blocks": [
+        {"type":"row"
         },
-        {
-          "type": "row"
+        {"type":"row"
         },
-        {
-          "type": "row"
+        {"type":"row"
         }
       ]
     }
-  ],
-  "disabled_on": {
-    "groups": ["header", "footer"]
+  ],"disabled_on": {"groups": ["header","footer"
+    ]
   }
 }
 {% endschema %}

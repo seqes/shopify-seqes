@@ -41,7 +41,7 @@
   .banner__box {padding: 4rem 3.5rem;position: relative;height: fit-content;align-items: center;text-align: center;width: 100%;word-wrap: break-word;z-index: 0;}
   @media screen and (min-width: 750px) {.banner--desktop-transparent .banner__box {background: transparent;--color-foreground: 255, 255, 255;--color-button: 255, 255, 255;--color-button-text: 0, 0, 0;max-width: 89rem;border: none;border-radius: 0;box-shadow: none;}.banner--desktop-transparent .banner__box.banner--transparent-black {background: transparent;--color-foreground: 0, 0, 0;--color-button: 0, 0, 0;--color-button-text: 255, 255, 255;}.banner--desktop-transparent .button--secondary {--color-button: 255, 255, 255;--color-button-text: 255, 255, 255;--alpha-button-background: 0;}.banner--desktop-transparent .banner__box.banner--transparent-black .button--secondary {--color-button: 0, 0, 0;--color-button-text: 0, 0, 0;}.banner--desktop-transparent .content-container:after {display: none;}}
   @media screen and (max-width: 749px) {.banner--mobile-bottom::after, .banner--mobile-bottom .banner__media::after {display: none;}}
-  .banner::after, .banner__media::after {content: "";position: absolute;top: 0;background: #000000;opacity: 0;z-index: 0;width: 100%;height: 100%;}
+  .banner::after, .banner__media::after {content:"";position: absolute;top: 0;background: #000000;opacity: 0;z-index: 0;width: 100%;height: 100%;}
   .banner__box > * + .banner__text {margin-top: 1.5rem;}
   @media screen and (min-width: 750px) {.banner__box > * + .banner__text {margin-top: 2rem;}}
   .banner__box > * + * {margin-top: 1rem;}
@@ -76,11 +76,13 @@
   .email-signup-banner .banner__media {overflow: hidden;}
   @media screen and (max-width: 749px) {.banner--mobile-content-align-left .newsletter-form__message {justify-content: flex-start;}.banner--mobile-content-align-right .newsletter-form__message {justify-content: right;}}
   @media screen and (min-width: 750px) {.banner--content-align-center .newsletter-form__message {justify-content: center;}.banner--content-align-right .newsletter-form__message {justify-content: right;}}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
 {%- endstyle -%}
 
 <div
   id="Banner-{{ section.id }}"
-  class="email-signup-banner banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.image_height == 'adapt-image' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %} content-for-grouping {{ section.settings.visibility }}"
+  class="email-signup-banner banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.image_height == 'adapt-image' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %} {{ section.settings.visibility }}"
 >
   {%- if section.settings.show_background_image -%}
     <div class="banner__media{% if section.settings.image != blank %} media{% endif %}">
@@ -95,8 +97,7 @@
             {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
             {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
             {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
-            {{ section.settings.image | image_url }} {{ section.settings.image.width }}w
-          "
+            {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
           sizes="100vw"
           src="{{ section.settings.image | image_url: width: 1500 }}"
           loading="lazy"
@@ -111,7 +112,7 @@
     </div>
   {%- endif -%}
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
-    <div class="email-signup-banner__box banner__box newsletter newsletter__wrapper isolate{% if section.settings.show_background_image == false %} email-signup-banner__box--no-image{% endif %} content-container color-{{ section.settings.color_scheme }} gradient content-container--full-width-mobile">
+    <div class="email-signup-banner__box banner__box newsletter newsletter__wrapper isolate{% if section.settings.show_background_image == false %} email-signup-banner__box--no-image{% endif %} content-container section-color-{{ section.id }}-color_scheme gradient content-container--full-width-mobile">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
@@ -189,300 +190,126 @@
 </div>
 
 {% schema %}
-{
-  "name": "Email signup banner",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "select",
-      "id": "visibility",
-      "options": [
-        {
-          "value": "desktop-hidden",
-          "label": "Mobile only"
+{"name":"Email signup banner","tag":"section","class":"section","settings": [
+    {"type":"select","id":"visibility","options": [
+        {"value":"desktop-hidden","label":"Mobile only"
         },
-        {
-          "value": "mobile-hidden",
-          "label": "Desktop only"
+        {"value":"mobile-hidden","label":"Desktop only"
         },
-        {
-          "value": "always-display",
-          "label": "All devices"
+        {"value":"always-display","label":"All devices"
         }
-      ],
-      "label": "Display on",
-      "default": "always-display"
+      ],"label":"Display on","default":"always-display"
     },
-    {
-      "type": "header",
-      "content": "General"
+    {"type":"header","content":"General"
     },
-    {
-      "type": "paragraph",
-      "content": "Each email subscription creates a customer account."
+    {"type":"paragraph","content":"Each email subscription creates a customer account."
     },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background image"
+    {"type":"image_picker","id":"image","label":"Background image"
     },
-    {
-      "type": "range",
-      "id": "image_overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "unit": "%",
-      "label": "Image overlay opacity",
-      "default": 0
+    {"type":"range","id":"image_overlay_opacity","min": 0,"max": 100,"step": 10,"unit":"%","label":"Image overlay opacity","default": 0
     },
-    {
-      "type": "checkbox",
-      "id": "show_background_image",
-      "label": "Show background image",
-      "default": true
+    {"type":"checkbox","id":"show_background_image","label":"Show background image","default": true
     },
-    {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt-image",
-          "label": "Adapt to image"
+    {"type":"select","id":"image_height","options": [
+        {"value":"adapt-image","label":"Adapt to image"
         },
-        {
-          "value": "small",
-          "label": "Small"
+        {"value":"small","label":"Small"
         },
-        {
-          "value": "medium",
-          "label": "Medium"
+        {"value":"medium","label":"Medium"
         },
-        {
-          "value": "large",
-          "label": "Large"
+        {"value":"large","label":"Large"
         }
-      ],
-      "default": "medium",
-      "label": "Banner height",
-      "info": "For best results, use an image with a 16:9 aspect ratio."
+      ],"default":"medium","label":"Banner height","info":"For best results, use an image with a 16:9 aspect ratio."
     },
-    {
-      "type": "select",
-      "id": "desktop_content_position",
-      "options": [
-        {
-          "value": "top-left",
-          "label": "Top left"
+    {"type":"select","id":"desktop_content_position","options": [
+        {"value":"top-left","label":"Top left"
         },
-        {
-          "value": "top-center",
-          "label": "Top center"
+        {"value":"top-center","label":"Top center"
         },
-        {
-          "value": "top-right",
-          "label": "Top right"
+        {"value":"top-right","label":"Top right"
         },
-        {
-          "value": "middle-left",
-          "label": "Middle left"
+        {"value":"middle-left","label":"Middle left"
         },
-        {
-          "value": "middle-center",
-          "label": "Middle center"
+        {"value":"middle-center","label":"Middle center"
         },
-        {
-          "value": "middle-right",
-          "label": "Middle right"
+        {"value":"middle-right","label":"Middle right"
         },
-        {
-          "value": "bottom-left",
-          "label": "Bottom left"
+        {"value":"bottom-left","label":"Bottom left"
         },
-        {
-          "value": "bottom-center",
-          "label": "Bottom center"
+        {"value":"bottom-center","label":"Bottom center"
         },
-        {
-          "value": "bottom-right",
-          "label": "Bottom right"
+        {"value":"bottom-right","label":"Bottom right"
         }
-      ],
-      "default": "middle-center",
-      "label": "Desktop content position"
+      ],"default":"middle-center","label":"Desktop content position"
     },
-    {
-      "type": "checkbox",
-      "id": "show_text_box",
-      "default": true,
-      "label": "Show container on desktop"
+    {"type":"checkbox","id":"show_text_box","default": true,"label":"Show container on desktop"
     },
-    {
-      "type": "select",
-      "id": "desktop_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
+    {"type":"select","id":"desktop_content_alignment","options": [
+        {"value":"left","label":"Left"
         },
-        {
-          "value": "center",
-          "label": "Center"
+        {"value":"center","label":"Center"
         },
-        {
-          "value": "right",
-          "label": "Right"
+        {"value":"right","label":"Right"
         }
-      ],
-      "default": "center",
-      "label": "Desktop content alignment"
+      ],"default":"center","label":"Desktop content alignment"
     },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "Accent 1"
+    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
+    },
+    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
+    },
+    {"type":"header","content":"Mobile layout"
+    },
+    {"type":"select","id":"mobile_content_alignment","options": [
+        {"value":"left","label":"Left"
         },
-        {
-          "value": "accent-2",
-          "label": "Accent 2"
+        {"value":"center","label":"Center"
         },
-        {
-          "value": "background-1",
-          "label": "Background 1"
-        },
-        {
-          "value": "background-2",
-          "label": "Background 2"
-        },
-        {
-          "value": "inverse",
-          "label": "Inverse"
+        {"value":"right","label":"Right"
         }
-      ],
-      "default": "background-1",
-      "label": "Color scheme",
-      "info": "Visible when container is shown."
+      ],"default":"center","label":"Mobile content alignment"
     },
-    {
-      "type": "header",
-      "content": "Mobile layout"
-    },
-    {
-      "type": "select",
-      "id": "mobile_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "center",
-      "label": "Mobile content alignment"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_text_below",
-      "default": true,
-      "label": "Show container below image on mobile"
+    {"type":"checkbox","id":"show_text_below","default": true,"label":"Show container below image on mobile"
     }
-  ],
-  "blocks": [
-    {
-      "type": "heading",
-      "name": "Heading",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "default": "Opening soon",
-          "label": "Heading"
+  ],"blocks": [
+    {"type":"heading","name":"Heading","limit": 1,"settings": [
+        {"type":"text","id":"heading","default":"Opening soon","label":"Heading"
         },
-        {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "Small"
+        {"type":"select","id":"heading_size","options": [
+            {"value":"h2","label":"Small"
             },
-            {
-              "value": "h1",
-              "label": "Medium"
+            {"value":"h1","label":"Medium"
             },
-            {
-              "value": "h0",
-              "label": "Large"
+            {"value":"h0","label":"Large"
             }
-          ],
-          "default": "h1",
-          "label": "Heading size"
+          ],"default":"h1","label":"Heading size"
         }
       ]
     },
-    {
-      "type": "paragraph",
-      "name": "Paragraph",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "default": "<p>Be the first to know when we launch.</p>",
-          "label": "Text"
+    {"type":"paragraph","name":"Paragraph","limit": 1,"settings": [
+        {"type":"richtext","id":"text","default":"<p>Be the first to know when we launch.</p>","label":"Text"
         },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "Body"
+        {"type":"select","id":"text_style","options": [
+            {"value":"body","label":"Body"
             },
-            {
-              "value": "subtitle",
-              "label": "Subtitle"
+            {"value":"subtitle","label":"Subtitle"
             }
-          ],
-          "default": "body",
-          "label": "Text style"
+          ],"default":"body","label":"Text style"
         }
       ]
     },
-    {
-      "type": "email_form",
-      "name": "Email form",
-      "limit": 1
+    {"type":"email_form","name":"Email form","limit": 1,"settings": []
     }
-  ],
-  "presets": [
-    {
-      "name": "Email signup banner",
-      "blocks": [
-        {
-          "type": "heading"
+  ],"presets": [
+    {"name":"Email signup banner","blocks": [
+        {"type":"heading"
         },
-        {
-          "type": "paragraph"
+        {"type":"paragraph"
         },
-        {
-          "type": "email_form"
+        {"type":"email_form"
         }
       ]
     }
-  ],
-  "templates": ["password"]
+  ],"templates": ["password"
+  ]
 }
 {% endschema %}
