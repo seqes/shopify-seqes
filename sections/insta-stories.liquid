@@ -160,7 +160,7 @@
     {%- if section.settings.title != blank or section.settings.text != blank -%}
       <div class="content-rte center">
         {%- if section.settings.title != blank -%}
-          <h2 class="{{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+          <h2 class="{{ section.settings.heading_size }}"{% if section.settings.heading_color != blank %} style="color: {{ section.settings.heading_color }}"{% endif %}>{{ section.settings.title }}</h2>
         {%- endif -%}
         {%- if section.settings.text != blank -%}
           <div class="rte">{{ section.settings.text }}</div>
@@ -416,6 +416,12 @@ if(!customElements.get("insta-stories")){class InstaStories extends HTMLElement{
       "id": "text_color",
       "label": "Text color",
       "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "info": "Overrides the heading color independently. Leave empty to inherit from Text color."
     },
     {
       "type": "header",
