@@ -22,21 +22,6 @@
             "sku_style": "style_vendor"
           }
         },
-        "seqes_it_claim_5": {
-          "type": "seqes_icon_text",
-          "settings": {
-            "text": "Permitido su uso en niños menores de 6 años",
-            "text_color": "",
-            "font_size": 14,
-            "font_weight": "400",
-            "font_style": "normal",
-            "icon_type": "none",
-            "emoji": "",
-            "icon": "none",
-            "icon_color": "#00393b",
-            "enable_animation": true
-          }
-        },
         "rating_stars_KGbTcc": {
           "type": "rating_stars",
           "settings": {
@@ -87,6 +72,21 @@
             "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": false
+          }
+        },
+        "seqes_it_claim_5": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Permitido su uso en niños menores de 6 años",
+            "text_color": "",
+            "font_size": 14,
+            "font_weight": "400",
+            "font_style": "normal",
+            "icon_type": "none",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": true
           }
         },
         "text_ntWDmi": {
@@ -317,36 +317,6 @@
             "content_font_size": 14
           }
         },
-        "collapsible_tab_RUpAe7": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Metodos de Pago",
-            "open": false,
-            "content": "<p>Puedes pagar todas tus compras de manera segura con Redcompra y Tarjeta de Crédito a través de Mercado Pago. </p><p>Pago 3 cuotas sin interés con Tarjeta de Débito, pago 24 cuotas con Tarjeta de Crédito o transferencia bancaria a través de Fintoc seleccionando la opción de pago vía Ventipay.</p><p>Tu pago está 100% protegido con nosotros. Contamos con certificado de seguridad SSL para proteger todos los datos de nuestros clientes.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_xcHRCU": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Despacho",
-            "open": false,
-            "content": "<p>Actualmente contamos con 2 métodos de envío:<br/></p><ul><li><strong>Blue Express:</strong> Disponible para todo Chile Continental.</li><li><strong>Envío Express ⚡️:</strong> Disponible, según stock en Punto de Venta (tiendas), para RM, Viña del Mar, Antofagasta y Concepción.</li></ul><p></p><p><em><strong>**Envío Express ⚡️ no aplican para envíos gratuitos</strong></em><em>.</em><em><strong>**<br/><br/></strong></em><strong>Tiempo de envío:</strong></p><ul><li><strong>Blue Express RM:</strong> 2 a 5 días hábiles</li><li><strong>Blue Express regiones norte, centro y sur:</strong> 3 a 7 días hábiles.</li><li><strong>Blue Express regiones extremas:</strong> 10 a 15 días hábiles.</li><li><strong>Envío Express ⚡️:</strong> Entrega en un máximo de 3 horas</li></ul><p><strong>*En caso de combinar este producto con el Calendario de Adviento, será despachado en 1 solo envío, a partir del 29 de septiembre*</strong></p><p>Durante eventos de alta demanda como <strong>Cyber Days, Navidad o Black Friday</strong>, los tiempos de<strong> despacho pueden extenderse</strong> debido al alto volumen de pedidos y la saturación de las empresas de transporte.</p><p>Por esta razón, es importante considerar <strong>entre 2 a 3 días hábiles adicionales</strong> al plazo de entrega habitual.</p><p>En el caso de los envíos exprés, se recomienda contemplar <strong>hasta 3 horas adicionales</strong> sobre el tiempo originalmente estimado.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_7hWjNc": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Cambios y Devoluciones",
-            "open": false,
-            "content": "<p>Puedes optar a la garantía de cambio o devolución<strong> </strong><em><strong>siempre que el producto esté sellado, con su empaque original intacto y sin uso</strong></em>, <em>hasta 30 días después de la fecha en que este haya sido recibido</em>, en el lugar donde el producto fue despachado.</p><p>Para cambios por motivos personales, será necesario realizar el pago del envío de la devolución hacia el lugar de origen, así como también el pago del reenvío del producto cambiado. El valor de cada uno va acorde a las tarifas establecidas en nuestra página web.</p><p>Si tu producto cumple con las <a href=\"https://sokobox.cl/pages/cambios-y-devoluciones\">condiciones de cambio y devolución</a>, por favor escríbenos a hola@sokobox.cl para guiarte en el proceso.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
         "4fd23485-293f-46a0-8a4c-34d0e25ea41b": {
           "type": "share",
           "settings": {}
@@ -354,12 +324,12 @@
       },
       "block_order": [
         "sku_ghdKTc",
-        "seqes_it_claim_5",
         "rating_stars_KGbTcc",
         "title",
         "urgency_text_bk4yJw",
         "text_nkpTCr",
         "seqes_it_skin_badge",
+        "seqes_it_claim_5",
         "text_ntWDmi",
         "seqes_it_claim_1",
         "seqes_it_claim_2",
@@ -377,9 +347,6 @@
         "faq_dry_skin",
         "image_fbM9GA",
         "side_panel_YWimqF",
-        "collapsible_tab_RUpAe7",
-        "collapsible_tab_xcHRCU",
-        "collapsible_tab_7hWjNc",
         "4fd23485-293f-46a0-8a4c-34d0e25ea41b"
       ],
       "settings": {
@@ -430,7 +397,7 @@
         "logo_PGm3XA": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo_producto_vegano.webp",
+            "image": "shopify://shop_images/Logo_Libre_de_Disruptorees_Hormonales.webp",
             "link": ""
           }
         }
@@ -448,7 +415,7 @@
         "columns": 5,
         "mobile_swipe": true,
         "center_align": true,
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
     },
@@ -704,14 +671,64 @@
         "initial_position": 75,
         "line_color": "#ffffff",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
+      }
+    },
+    "text_with_icons_q7yjEd": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon_MQMEz6": {
+          "type": "icon",
+          "settings": {
+            "icon": "truck",
+            "image": "shopify://shop_images/Icon_Delivery_Truck.webp",
+            "heading": "DESPACHOS GRATIS",
+            "text": "<p>Por compras sobre $50.000</p>"
+          }
+        },
+        "icon_JTNVmQ": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/Icon_Chile.webp",
+            "heading": "A TODO CHILE",
+            "text": "<p>De Arica a Punta Arenas</p>"
+          }
+        },
+        "icon_nrMNYB": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/Icon_Warranty.webp",
+            "heading": "Pago 100% seguro",
+            "text": "<p>Tarjeta de Crédito, débito o transferencia</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_MQMEz6",
+        "icon_JTNVmQ",
+        "icon_nrMNYB"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "text_alignment": "left",
+        "icon_position": "left",
+        "icon_size": "large",
+        "heading_size": "large",
+        "mobile_swipe": true,
+        "color_bg": "transparent",
+        "color_heading": "#003b3d",
+        "color_text": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     },
     "seqes_gradient_divider_9X8qrf": {
       "type": "seqes-gradient-divider",
       "settings": {
         "color": "#003b3d",
-        "height": 100,
+        "height": 50,
         "direction": "bottom_to_top"
       }
     },
@@ -759,62 +776,6 @@
         "color_text": "#ffffff",
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
-      }
-    },
-    "seqes_gradient_divider_fanEdT": {
-      "type": "seqes-gradient-divider",
-      "settings": {
-        "color": "#003b3d",
-        "height": 100,
-        "direction": "top_to_bottom"
-      }
-    },
-    "seqes_claims_marquee": {
-      "type": "seqes-claims-marquee",
-      "blocks": {
-        "claim_1": {
-          "type": "claim",
-          "settings": {
-            "text": "Despacho gratis sobre $50.000"
-          }
-        },
-        "claim_3": {
-          "type": "claim",
-          "settings": {
-            "text": "Respaldada por Estudios Clínicos"
-          }
-        },
-        "claim_R89J3q": {
-          "type": "claim",
-          "settings": {
-            "text": "Garantía de satisfacción"
-          }
-        },
-        "claim_2": {
-          "type": "claim",
-          "settings": {
-            "text": "Despacho a todo Chile"
-          }
-        },
-        "claim_4": {
-          "type": "claim",
-          "settings": {
-            "text": "Fórmula certificada por ISP"
-          }
-        }
-      },
-      "block_order": [
-        "claim_1",
-        "claim_3",
-        "claim_R89J3q",
-        "claim_2",
-        "claim_4"
-      ],
-      "settings": {
-        "speed": "22s",
-        "check_color": "#8e9f78",
-        "font_size": 20,
-        "section_width": "full-width-row"
       }
     },
     "ingredients_gallery": {
@@ -881,6 +842,14 @@
         "overlay_opacity": 50,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "seqes_gradient_divider_fanEdT": {
+      "type": "seqes-gradient-divider",
+      "settings": {
+        "color": "#003b3d",
+        "height": 50,
+        "direction": "top_to_bottom"
       }
     },
     "multicolumn_fH3XAG": {
@@ -1152,11 +1121,11 @@
     "layered_images_with_text_tXj8WJ",
     "image_with_text_overlay_HWBgTc",
     "before_after_image_Qf9kMC",
+    "text_with_icons_q7yjEd",
     "seqes_gradient_divider_9X8qrf",
     "testimonials_3eWjHg",
-    "seqes_gradient_divider_fanEdT",
-    "seqes_claims_marquee",
     "ingredients_gallery",
+    "seqes_gradient_divider_fanEdT",
     "multicolumn_fH3XAG",
     "seqes_comparison_table_xBUAHL",
     "collapsible_content_KNxP6C",
