@@ -187,55 +187,6 @@
             "show_gift_card_recipient": false
           }
         },
-        "payment_icons_gBkwRC": {
-          "type": "payment_icons",
-          "settings": {}
-        },
-        "text_guarantee": {
-          "type": "text",
-          "settings": {
-            "text": "GARANTÍA DE 30 DÍAS · DESPACHO GRATIS SOBRE $50.000",
-            "text_style": "style_body"
-          }
-        },
-        "faq_safe": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "¿Es segura para bebés y recién nacidos?",
-            "open": false,
-            "content": "<p>Sí. Nuestra fórmula fue evaluada en un <strong>estudio clínico con 50 voluntarios</strong> (Instituto Orlandi), donde se confirmó su perfil hipoalergénico con <strong>0% de reacciones adversas</strong>. Puede utilizarse desde los primeros meses de vida en todo tipo de pieles, incluyendo las más sensibles.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "faq_fragrance": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "¿Tiene fragancia o perfume?",
-            "open": false,
-            "content": "<p>No. Seqes es una crema <strong>sin fragancia, sin perfume y sin colorantes</strong>. Muchos productos para bebé incluyen perfumes que pueden sensibilizar pieles delicadas. Nosotros los eliminamos para reducir al mínimo el riesgo de irritación.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "faq_dry_skin": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "¿Sirve para piel seca, atópica o con dermatitis?",
-            "open": false,
-            "content": "<p>Sí. Combina <strong>células madre de Alerce milenario</strong> (protección antioxidante), <strong>extracto de Murta</strong> y <strong>Hydrovance</strong> (hidratación biomimética profunda) para restaurar la barrera cutánea. Ideal para pieles secas, sensibles y con tendencia atópica.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "image_fbM9GA": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Ciencia_e_Innovacion.png",
-            "position": "text-center",
-            "image_link": ""
-          }
-        },
         "95b7e00a-0453-4eb0-9cf0-1dae84d8b822": {
           "type": "side_panel",
           "settings": {
@@ -251,6 +202,51 @@
             "side_panel_3_icon": "seqes_warning",
             "side_panel_3_content": "<p>{{ product.metafields.custom.advertencias | metafield_tag }}</p>",
             "side_panel_3_page": ""
+          }
+        },
+        "text_guarantee": {
+          "type": "text",
+          "settings": {
+            "text": "GARANTÍA DE 30 DÍAS · DESPACHO GRATIS SOBRE $50.000",
+            "text_style": "style_body"
+          }
+        },
+        "faq_safe": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Puedo usarla si soy adulto con piel sensible o alérgica?",
+            "open": false,
+            "content": "<p>Totalmente. Si una fórmula pasa las exigencias de seguridad para la piel de un recién nacido— que es hasta un 30% más delgada y reactiva que la de un adulto — imagina lo que puede hacer por tu piel. Seqes es hipoalergénica con 0% de reacciones adversas en estudios clínicos, sin fragancia, sin parabenos y sin sulfatos. Funciona en cuerpo y rostro. Si tu piel reacciona a todo imagina que esta crema fue hecha para lo más exigente que existe: la piel de una guagua.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_fragrance": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Necesito una crema especial si la piel de mi guagua se ve bien?",
+            "open": false,
+            "content": "<p>Sí. La piel de tu guagua es hasta un 30% más delgada que la de un adulto y pierde humedad mucho más rápido. Aunque se vea bien hoy, sin una hidratación adecuada puede desarrollar sequedad, irritación o rojeces. Seqes actúa como protección preventiva, no solo como solución cuando ya hay un problema.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_dry_skin": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Por qué elegir estasi hay tantas cremas disponibles?",
+            "open": false,
+            "content": "<p>Porque lo que le pones a la piel de tu guagua no debería ser lo mismo que compras al paso. Seqes tiene células madre de Alerce obtenidas por biotecnología, extracto de Murta chilena, hidratación biomimética con Hydrovance y manteca de karité. Todo respaldado por estudios clínicos con 0% de reacciones adversas. No es una crema más con un envase bonito: es lo que lleva adentro lo que la hace distinta.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "image_fbM9GA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Ciencia_e_Innovacion.png",
+            "position": "text-center",
+            "image_link": ""
           }
         },
         "collapsible_tab_RUpAe7": {
@@ -301,13 +297,12 @@
         "reviews_slideshow_qrrpKE",
         "variant_picker",
         "buy_buttons",
-        "payment_icons_gBkwRC",
+        "95b7e00a-0453-4eb0-9cf0-1dae84d8b822",
         "text_guarantee",
         "faq_safe",
         "faq_fragrance",
         "faq_dry_skin",
         "image_fbM9GA",
-        "95b7e00a-0453-4eb0-9cf0-1dae84d8b822",
         "collapsible_tab_RUpAe7",
         "collapsible_tab_xcHRCU",
         "collapsible_tab_7hWjNc",
