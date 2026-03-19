@@ -37,12 +37,41 @@
             "enable_animation": true
           }
         },
+        "rating_stars_KGbTcc": {
+          "type": "rating_stars",
+          "settings": {
+            "rating": 4.8,
+            "label": "4.8/5 (120 reviews)",
+            "star_color": "#ffb800",
+            "bg_star_color": "#e0e0e0",
+            "size": 18,
+            "alignment": "flex-start"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
             "uppercase": false,
             "show_products_rating": true,
             "show_custom_badges": false
+          }
+        },
+        "urgency_text_bk4yJw": {
+          "type": "urgency_text",
+          "settings": {
+            "text": "250ml FORMATO DE LANZAMIENTO",
+            "icon": "sell",
+            "filled_icon": true,
+            "text_color": "#003b3d",
+            "font_size": 14,
+            "font_weight": "bold"
+          }
+        },
+        "text_nkpTCr": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "style_body"
           }
         },
         "seqes_it_skin_badge": {
@@ -58,6 +87,13 @@
             "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": false
+          }
+        },
+        "text_ntWDmi": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "style_body"
           }
         },
         "seqes_it_claim_1": {
@@ -118,6 +154,13 @@
             "icon": "none",
             "icon_color": "#00393b",
             "enable_animation": true
+          }
+        },
+        "text_dFTTTa": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "style_body"
           }
         },
         "description_rTYcfB": {
@@ -287,12 +330,17 @@
       "block_order": [
         "sku_ghdKTc",
         "seqes_it_claim_5",
+        "rating_stars_KGbTcc",
         "title",
+        "urgency_text_bk4yJw",
+        "text_nkpTCr",
         "seqes_it_skin_badge",
+        "text_ntWDmi",
         "seqes_it_claim_1",
         "seqes_it_claim_2",
         "seqes_it_claim_3",
         "seqes_it_claim_4",
+        "text_dFTTTa",
         "description_rTYcfB",
         "reviews_slideshow_qrrpKE",
         "variant_picker",
@@ -374,7 +422,7 @@
         "columns": 5,
         "mobile_swipe": true,
         "center_align": true,
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
@@ -819,7 +867,7 @@
             "image_link": "",
             "retina": true,
             "title": "+95% origen natural",
-            "text": "<p>Ingredientes de origen natural.Verificable, no autodeclarado.<br/><br/></p>",
+            "text": "<p>Ingredientes de origen natural. Verificable, no autodeclarado.<br/><br/></p>",
             "link_label": "",
             "link": ""
           }
