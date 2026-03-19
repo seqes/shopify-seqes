@@ -173,15 +173,20 @@
         </div>
       </noscript>
     {%- when 'side_panel' -%}
-      <side-panel-links class="side-panel-links"{% if block.settings.center_icons %} style="text-align: center"{% endif %}>
+      {%- capture sp_style -%}
+        {%- if block.settings.center_icons %}text-align:center;{% endif -%}
+        {%- if block.settings.layout == 'vertical' %}display:flex;flex-direction:column;gap:4px;{% endif -%}
+        {%- if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}--sp-btn-size:{{ block.settings.button_font_size }}px;{% endif -%}
+      {%- endcapture -%}
+      <side-panel-links class="side-panel-links" data-drawer="Product-Information-Drawer-{{ block.id }}"{% if sp_style != blank %} style="{{ sp_style | strip }}"{% endif %}>
         {%- if block.settings.side_panel_1_label != '' -%}
-        <button class="side-panel-links--link no-js-hidden" data-id="1">{%- if block.settings.side_panel_1_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_1_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_1_icon %}{%- endif -%}<span class="text-button">{{ block.settings.side_panel_1_label }}</span></button>
+        <button class="side-panel-links--link no-js-hidden" data-id="1">{%- if block.settings.side_panel_1_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_1_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_1_icon %}{%- endif -%}<span class="text-button" {% if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}style="font-size:{{ block.settings.button_font_size }}px"{% endif %}>{{ block.settings.side_panel_1_label }}</span></button>
         {%- endif -%}
         {%- if block.settings.side_panel_2_label != '' -%}
-        <button class="side-panel-links--link no-js-hidden" data-id="2">{%- if block.settings.side_panel_2_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_2_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_2_icon %}{%- endif -%}<span class="text-button">{{ block.settings.side_panel_2_label }}</span></button>
+        <button class="side-panel-links--link no-js-hidden" data-id="2">{%- if block.settings.side_panel_2_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_2_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_2_icon %}{%- endif -%}<span class="text-button" {% if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}style="font-size:{{ block.settings.button_font_size }}px"{% endif %}>{{ block.settings.side_panel_2_label }}</span></button>
         {%- endif -%}
         {%- if block.settings.side_panel_3_label != '' -%}
-        <button class="side-panel-links--link no-js-hidden" data-id="3">{%- if block.settings.side_panel_3_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_3_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_3_icon %}{%- endif -%}<span class="text-button">{{ block.settings.side_panel_3_label }}</span></button>
+        <button class="side-panel-links--link no-js-hidden" data-id="3">{%- if block.settings.side_panel_3_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_3_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_3_icon %}{%- endif -%}<span class="text-button" {% if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}style="font-size:{{ block.settings.button_font_size }}px"{% endif %}>{{ block.settings.side_panel_3_label }}</span></button>
         {%- endif -%}
       </side-panel-links>
     {%- when 'shipping_checkpoints' -%}

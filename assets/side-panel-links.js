@@ -7,7 +7,8 @@ if (!customElements.get('side-panel-links')) {
     constructor() {
       super();
       this.links = this.querySelectorAll('button');
-      this.drawer = document.getElementById('Product-Information-Drawer');
+      const drawerId = this.dataset.drawer || 'Product-Information-Drawer';
+      this.drawer = document.getElementById(drawerId);
       this.buttons = this.drawer.querySelector('.side-panel-content--tabs');
       this.panels = this.drawer.querySelector('.side-panel-content--inner').querySelectorAll('.side-panel-content--tab-panel');
       this.body = document.body;

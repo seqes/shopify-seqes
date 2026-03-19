@@ -133,7 +133,8 @@
 {%- assign side_panels = section.blocks | where: "type", "side_panel" -%}
 {%- if side_panels.size > 0 -%}
 <script src="{{ 'side-panel-links.js' | asset_url }}" defer="defer"></script>
-<div class="side-panel product-information-drawer" id="Product-Information-Drawer" tabindex="-1">
+{%- for sp_block in side_panels -%}
+<div class="side-panel product-information-drawer" id="Product-Information-Drawer-{{ sp_block.id }}" tabindex="-1">
 	<div class="side-panel-inner">
 		<div class="side-panel-header">
 			<div>
@@ -141,42 +142,42 @@
 				<side-panel-close class="side-panel-close">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
 			</div>
 		</div>
-		<div class="side-panel-content side-panel-content--has-tabs">
-			{%- assign block = side_panels[0] -%}
+		<div class="side-panel-content side-panel-content--has-tabs"{% if sp_block.settings.content_font_size != blank and sp_block.settings.content_font_size != 14 %} style="font-size: {{ sp_block.settings.content_font_size }}px"{% endif %}>
 			<side-panel-content-tabs class="side-panel-content--tabs">
-				{%- if block.settings.side_panel_1_label != '' -%}
-					<button class="tab-active">{{ block.settings.side_panel_1_label }}</button>
+				{%- if sp_block.settings.side_panel_1_label != '' -%}
+					<button class="tab-active">{{ sp_block.settings.side_panel_1_label }}</button>
 				{%- endif -%}
-				{%- if block.settings.side_panel_2_label != '' -%}
-					<button>{{ block.settings.side_panel_2_label }}</button>
+				{%- if sp_block.settings.side_panel_2_label != '' -%}
+					<button>{{ sp_block.settings.side_panel_2_label }}</button>
 				{%- endif -%}
-				{%- if block.settings.side_panel_3_label != '' -%}
-					<button>{{ block.settings.side_panel_3_label }}</button>
+				{%- if sp_block.settings.side_panel_3_label != '' -%}
+					<button>{{ sp_block.settings.side_panel_3_label }}</button>
 				{%- endif -%}
 			</side-panel-content-tabs>
 			<div class="side-panel-content--inner">
-				{%- if block.settings.side_panel_1_label != '' -%}
+				{%- if sp_block.settings.side_panel_1_label != '' -%}
 				<div class="side-panel-content--tab-panel rte tab-active">
-					{{ block.settings.side_panel_1_content }}
-				  {{ block.settings.side_panel_1_page.content }}
+					{{ sp_block.settings.side_panel_1_content }}
+				  {{ sp_block.settings.side_panel_1_page.content }}
 				</div>
 				{%- endif -%}
-				{%- if block.settings.side_panel_2_label != '' -%}
+				{%- if sp_block.settings.side_panel_2_label != '' -%}
 				<div class="side-panel-content--tab-panel rte">
-					{{ block.settings.side_panel_2_content }}
-				  {{ block.settings.side_panel_2_page.content }}
+					{{ sp_block.settings.side_panel_2_content }}
+				  {{ sp_block.settings.side_panel_2_page.content }}
 				</div>
 				{%- endif -%}
-				{%- if block.settings.side_panel_3_label != '' -%}
+				{%- if sp_block.settings.side_panel_3_label != '' -%}
 				<div class="side-panel-content--tab-panel rte">
-					{{ block.settings.side_panel_3_content }}
-				  {{ block.settings.side_panel_3_page.content }}
+					{{ sp_block.settings.side_panel_3_content }}
+				  {{ sp_block.settings.side_panel_3_page.content }}
 				</div>
 				{%- endif -%}
 			</div>
 		</div>
 	</div>
 </div>
+{%- endfor -%}
 {%- endif -%}
 
 {%- if section.settings.lightbox != blank -%}
@@ -1481,11 +1482,41 @@
           "content": "Layout"
         },
         {
+          "type": "select",
+          "id": "layout",
+          "options": [
+            { "value": "horizontal", "label": "Horizontal" },
+            { "value": "vertical", "label": "Vertical" }
+          ],
+          "default": "horizontal",
+          "label": "Button orientation"
+        },
+        {
           "type": "checkbox",
           "id": "center_icons",
           "label": "Center icons",
           "default": false,
           "info": "Centers the icon buttons horizontally."
+        },
+        {
+          "type": "range",
+          "id": "button_font_size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Button text size"
+        },
+        {
+          "type": "range",
+          "id": "content_font_size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Panel content text size"
         }
       ]
     },
