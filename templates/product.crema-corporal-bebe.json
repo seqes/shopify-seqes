@@ -369,13 +369,26 @@
         "logo_PGm3XA"
       ],
       "settings": {
-        "heading": "",
-        "description": "",
+        "heading": "Libre de lo que sobra, llena de lo que importa",
+        "description": "<p>Todo lo que eliminamos para proteger su piel</p>",
         "columns": 5,
         "mobile_swipe": true,
         "center_align": true,
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
+        "disable_bottom_spacing": false
+      }
+    },
+    "section_divider_Bky4ga": {
+      "type": "section-divider",
+      "name": "Section divider",
+      "settings": {
+        "shape": "waves_3",
+        "flip_horizontal": false,
+        "flip_vertical": false,
+        "shape_color": "#003b3d",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "insta_stories_HYTmaT": {
@@ -450,11 +463,24 @@
         "text": "<p>Ahora no la cambian por nada</p>",
         "button_label": "",
         "link": "",
-        "bg_color": "#ffffff",
-        "text_color": "#003b3d",
+        "bg_color": "#003b3d",
+        "text_color": "#ffffff",
         "autoplay_speed": 10,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section_divider_LrJCFH": {
+      "type": "section-divider",
+      "name": "Section divider",
+      "settings": {
+        "shape": "waves_3",
+        "flip_horizontal": false,
+        "flip_vertical": true,
+        "shape_color": "#003b3d",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "layered_images_with_text_tXj8WJ": {
@@ -792,8 +818,8 @@
             "image_full_width": false,
             "image_link": "",
             "retina": true,
-            "title": "96% origen natural",
-            "text": "<p><strong>Certificado ISO 16128.</strong> Base de agua, aceite de almendras, manteca de karité y glicerina vegetal. Solo un 4% corresponde a activos funcionales de síntesis.</p>",
+            "title": "+95% origen natural",
+            "text": "<p>Ingredientes de origen natural.Verificable, no autodeclarado.<br/><br/></p>",
             "link_label": "",
             "link": ""
           }
@@ -806,7 +832,7 @@
             "image_link": "",
             "retina": true,
             "title": "Activos botánicos chilenos",
-            "text": "<p><strong>Cobiostem Alerce + Murta.</strong> Activos de biotecnología sostenible combinados con extractos nativos de alto poder antioxidante.</p>",
+            "text": "<p>Desarrollada y producida en Chile con activos botánicos nativos.</p>",
             "link_label": "",
             "link": ""
           }
@@ -818,8 +844,8 @@
             "image_full_width": false,
             "image_link": "",
             "retina": true,
-            "title": "Clínicamente testeada",
-            "text": "<p><strong>Estudio con 50 voluntarios.</strong> Evaluación hipoalergénica realizada por el Instituto Orlandi confirma 0% de reacciones adversas.</p>",
+            "title": "Fórmula biodegradable",
+            "text": "<p>Biotecnología con 99% de ahorro de agua. Envase reciclable.<br/><br/></p>",
             "link_label": "",
             "link": ""
           }
@@ -831,8 +857,8 @@
             "image_full_width": false,
             "image_link": "",
             "retina": true,
-            "title": "Clean Beauty consciente",
-            "text": "<p><strong>Fórmula biodegradable.</strong> Sin parabenos, sin sulfatos, sin fragancia, sin ftalatos, sin siliconas. Vegana y libre de crueldad animal.</p>",
+            "title": "Vegana y Cruelty Free",
+            "text": "<p>Sin testeo en animales. Ni en desarrollo ni en producción.<br/><br/></p>",
             "link_label": "",
             "link": ""
           }
@@ -847,7 +873,7 @@
       "settings": {
         "heading": "¿Confiarías cualquier crema para la piel de tu guagua?",
         "heading_left": false,
-        "description": "",
+        "description": "<p>Compromisos que puedes verificar</p>",
         "full_width": true,
         "display_type": "carousel",
         "image_ratio": "adapt",
@@ -1045,7 +1071,9 @@
     "breadcrumbs",
     "main-product",
     "logo_list_3g4EtA",
+    "section_divider_Bky4ga",
     "insta_stories_HYTmaT",
+    "section_divider_LrJCFH",
     "layered_images_with_text_tXj8WJ",
     "image_with_text_overlay_HWBgTc",
     "before_after_image_Qf9kMC",
