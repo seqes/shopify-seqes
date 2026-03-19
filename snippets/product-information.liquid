@@ -173,7 +173,7 @@
         </div>
       </noscript>
     {%- when 'side_panel' -%}
-      <side-panel-links class="side-panel-links"{% if block.settings.center_icons %} style="text-align: center"{% endif %}>
+      <side-panel-links class="side-panel-links">
         {%- if block.settings.side_panel_1_label != '' -%}
         <button class="side-panel-links--link no-js-hidden" data-id="1">{%- if block.settings.side_panel_1_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_1_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_1_icon %}{%- endif -%}<span class="text-button">{{ block.settings.side_panel_1_label }}</span></button>
         {%- endif -%}
