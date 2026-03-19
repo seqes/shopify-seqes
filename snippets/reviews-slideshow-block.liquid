@@ -1,0 +1,238 @@
+{%- comment -%}
+  Reviews Slideshow block for Product Information.
+  Compact rotating carousel with photo bubbles, star ratings,
+  truncated review text, and a small verified badge icon.
+  Each slide is self-contained via CSS Grid.
+
+  Required: block (with settings below)
+{%- endcomment -%}
+
+{%- liquid
+  assign bid = block.id
+  assign speed = block.settings.autoplay_speed | default: 5
+  assign badge_logo = block.settings.badge_logo
+  assign badge_text = block.settings.badge_text
+  assign star_color = block.settings.star_color | default: '#FAA525'
+  assign bg = block.settings.bg_color | default: '#f5f0eb'
+  assign bg_opacity = block.settings.bg_opacity | default: 100
+  assign text_col = block.settings.text_color | default: '#003b3d'
+  assign photo_size = block.settings.photo_size | default: 44
+  assign text_size = block.settings.text_size | default: 12
+  assign max_chars = block.settings.max_chars | default: 120
+
+  assign bg_r = bg | color_extract: 'red'
+  assign bg_g = bg | color_extract: 'green'
+  assign bg_b = bg | color_extract: 'blue'
+  assign bg_a = bg_opacity | divided_by: 100.0
+-%}
+
+{%- capture star_svg -%}<svg width="11" height="11" viewBox="0 0 20 20" fill="{{ star_color }}" xmlns="http://www.w3.org/2000/svg"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>{%- endcapture -%}
+
+{%- capture empty_star_svg -%}<svg width="11" height="11" viewBox="0 0 20 20" fill="#d1d5db" xmlns="http://www.w3.org/2000/svg"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>{%- endcapture -%}
+
+{%- style -%}
+  .rsb-{{ bid }} {
+    background: rgba({{ bg_r }}, {{ bg_g }}, {{ bg_b }}, {{ bg_a }});
+    border-radius: 0.8rem;
+    padding: 0.8rem 1rem;
+    margin: 6px 0;
+    overflow: hidden;
+    color: {{ text_col }};
+  }
+  .rsb-{{ bid }} .rsb-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .rsb-{{ bid }} .rsb-slide {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    overflow: hidden;
+  }
+  .rsb-{{ bid }} .rsb-photo {
+    width: {{ photo_size }}px;
+    height: {{ photo_size }}px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1.5px solid rgba(0,0,0,0.06);
+  }
+  .rsb-{{ bid }} .rsb-photo-placeholder {
+    width: {{ photo_size }}px;
+    height: {{ photo_size }}px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: {{ photo_size | divided_by: 2.5 | round }}px;
+    color: rgba(0,0,0,0.3);
+    line-height: 1;
+  }
+  .rsb-{{ bid }} .rsb-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    overflow: hidden;
+  }
+  .rsb-{{ bid }} .rsb-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .rsb-{{ bid }} .rsb-name {
+    font-weight: 600;
+    font-size: {{ text_size }}px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .rsb-{{ bid }} .rsb-stars {
+    display: flex;
+    gap: 0px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .rsb-{{ bid }} .rsb-badge-icon {
+    flex-shrink: 0;
+    opacity: 0.55;
+    display: flex;
+    align-items: center;
+  }
+  .rsb-{{ bid }} .rsb-badge-icon img {
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+  }
+  .rsb-{{ bid }} .rsb-text {
+    font-size: {{ text_size }}px;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.85;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .rsb-{{ bid }} .rsb-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 0.45rem;
+  }
+  .rsb-{{ bid }} .rsb-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: {{ text_col }};
+    opacity: 0.2;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .rsb-{{ bid }} .rsb-dot.active {
+    opacity: 0.6;
+  }
+{%- endstyle -%}
+
+{%- assign review_count = 0 -%}
+{%- for i in (1..6) -%}
+  {%- assign text_key = 'review_' | append: i | append: '_text' -%}
+  {%- if block.settings[text_key] != blank -%}
+    {%- assign review_count = review_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if review_count > 0 -%}
+<div class="rsb-{{ bid }}" {{ block.shopify_attributes }}>
+  <div class="rsb-track" data-rsb-track>
+    {%- for i in (1..6) -%}
+      {%- liquid
+        assign img_key = 'review_' | append: i | append: '_image'
+        assign name_key = 'review_' | append: i | append: '_name'
+        assign text_key = 'review_' | append: i | append: '_text'
+        assign stars_key = 'review_' | append: i | append: '_stars'
+        assign r_img = block.settings[img_key]
+        assign r_name = block.settings[name_key]
+        assign r_text = block.settings[text_key] | truncate: max_chars
+        assign r_stars = block.settings[stars_key] | times: 1
+      -%}
+      {%- if block.settings[text_key] != blank -%}
+        <div class="rsb-slide">
+          {%- if r_img != blank -%}
+            <img class="rsb-photo" src="{{ r_img | image_url: width: 120 }}" alt="{{ r_name | escape }}" width="{{ photo_size }}" height="{{ photo_size }}" loading="lazy">
+          {%- else -%}
+            <div class="rsb-photo-placeholder">
+              {%- if r_name != blank -%}{{ r_name | slice: 0 }}{%- else -%}?{%- endif -%}
+            </div>
+          {%- endif -%}
+          <div class="rsb-body">
+            <div class="rsb-header">
+              {%- if r_name != blank -%}
+                <span class="rsb-name">{{ r_name }}</span>
+              {%- endif -%}
+              {%- if r_stars > 0 -%}
+                <div class="rsb-stars">
+                  {%- for s in (1..5) -%}
+                    {%- if s <= r_stars -%}{{ star_svg }}{%- else -%}{{ empty_star_svg }}{%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+              {%- if badge_logo != blank -%}
+                <div class="rsb-badge-icon" title="{{ badge_text | escape }}">
+                  <img src="{{ badge_logo | image_url: width: 48 }}" alt="{{ badge_text | default: 'Verified' | escape }}" loading="lazy">
+                </div>
+              {%- endif -%}
+            </div>
+            <p class="rsb-text">"{{ r_text }}"</p>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if review_count > 1 -%}
+    <div class="rsb-dots" data-rsb-dots>
+      {%- for i in (1..review_count) -%}
+        <button class="rsb-dot{% if i == 1 %} active{% endif %}" data-rsb-goto="{{ i | minus: 1 }}" aria-label="Review {{ i }}"></button>
+      {%- endfor -%}
+    </div>
+
+    <script>
+      (function(){
+        var root = document.querySelector('.rsb-{{ bid }}');
+        if (!root) return;
+        var track = root.querySelector('[data-rsb-track]');
+        var dots = root.querySelectorAll('[data-rsb-goto]');
+        var total = {{ review_count }};
+        var current = 0;
+        var speed = {{ speed }} * 1000;
+        var timer;
+
+        function goTo(idx) {
+          current = ((idx % total) + total) % total;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+          dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+        }
+
+        dots.forEach(function(d) {
+          d.addEventListener('click', function() {
+            goTo(parseInt(d.dataset.rsbGoto));
+            clearInterval(timer);
+            timer = setInterval(function(){ goTo(current + 1); }, speed);
+          });
+        });
+
+        timer = setInterval(function(){ goTo(current + 1); }, speed);
+      })();
+    </script>
+  {%- endif -%}
+</div>
+{%- endif -%}

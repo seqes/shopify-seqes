@@ -133,7 +133,8 @@
 {%- assign side_panels = section.blocks | where: "type", "side_panel" -%}
 {%- if side_panels.size > 0 -%}
 <script src="{{ 'side-panel-links.js' | asset_url }}" defer="defer"></script>
-<div class="side-panel product-information-drawer" id="Product-Information-Drawer" tabindex="-1">
+{%- for sp_block in side_panels -%}
+<div class="side-panel product-information-drawer" id="Product-Information-Drawer-{{ sp_block.id }}" tabindex="-1">
 	<div class="side-panel-inner">
 		<div class="side-panel-header">
 			<div>
@@ -141,42 +142,42 @@
 				<side-panel-close class="side-panel-close">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
 			</div>
 		</div>
-		<div class="side-panel-content side-panel-content--has-tabs">
-			{%- assign block = side_panels[0] -%}
+		<div class="side-panel-content side-panel-content--has-tabs"{% if sp_block.settings.content_font_size != blank and sp_block.settings.content_font_size != 14 %} style="font-size: {{ sp_block.settings.content_font_size }}px"{% endif %}>
 			<side-panel-content-tabs class="side-panel-content--tabs">
-				{%- if block.settings.side_panel_1_label != '' -%}
-					<button class="tab-active">{{ block.settings.side_panel_1_label }}</button>
+				{%- if sp_block.settings.side_panel_1_label != '' -%}
+					<button class="tab-active">{{ sp_block.settings.side_panel_1_label }}</button>
 				{%- endif -%}
-				{%- if block.settings.side_panel_2_label != '' -%}
-					<button>{{ block.settings.side_panel_2_label }}</button>
+				{%- if sp_block.settings.side_panel_2_label != '' -%}
+					<button>{{ sp_block.settings.side_panel_2_label }}</button>
 				{%- endif -%}
-				{%- if block.settings.side_panel_3_label != '' -%}
-					<button>{{ block.settings.side_panel_3_label }}</button>
+				{%- if sp_block.settings.side_panel_3_label != '' -%}
+					<button>{{ sp_block.settings.side_panel_3_label }}</button>
 				{%- endif -%}
 			</side-panel-content-tabs>
 			<div class="side-panel-content--inner">
-				{%- if block.settings.side_panel_1_label != '' -%}
+				{%- if sp_block.settings.side_panel_1_label != '' -%}
 				<div class="side-panel-content--tab-panel rte tab-active">
-					{{ block.settings.side_panel_1_content }}
-				  {{ block.settings.side_panel_1_page.content }}
+					{{ sp_block.settings.side_panel_1_content }}
+				  {{ sp_block.settings.side_panel_1_page.content }}
 				</div>
 				{%- endif -%}
-				{%- if block.settings.side_panel_2_label != '' -%}
+				{%- if sp_block.settings.side_panel_2_label != '' -%}
 				<div class="side-panel-content--tab-panel rte">
-					{{ block.settings.side_panel_2_content }}
-				  {{ block.settings.side_panel_2_page.content }}
+					{{ sp_block.settings.side_panel_2_content }}
+				  {{ sp_block.settings.side_panel_2_page.content }}
 				</div>
 				{%- endif -%}
-				{%- if block.settings.side_panel_3_label != '' -%}
+				{%- if sp_block.settings.side_panel_3_label != '' -%}
 				<div class="side-panel-content--tab-panel rte">
-					{{ block.settings.side_panel_3_content }}
-				  {{ block.settings.side_panel_3_page.content }}
+					{{ sp_block.settings.side_panel_3_content }}
+				  {{ sp_block.settings.side_panel_3_page.content }}
 				</div>
 				{%- endif -%}
 			</div>
 		</div>
 	</div>
 </div>
+{%- endfor -%}
 {%- endif -%}
 
 {%- if section.settings.lightbox != blank -%}
@@ -820,7 +821,7 @@
 		{
       "type": "side_panel",
       "name": "Information side panel",
-      "limit": 1,
+      "limit": 3,
       "settings": [
 				{
 					"type": "header",
@@ -1011,6 +1012,18 @@
             {
               "value": "washing",
               "label": "Washing"
+            },
+            {
+              "value": "seqes_warning",
+              "label": "⚠ Seqes: Advertencia"
+            },
+            {
+              "value": "seqes_instructions",
+              "label": "📖 Seqes: Modo de uso"
+            },
+            {
+              "value": "seqes_formula",
+              "label": "🧪 Seqes: Ingredientes"
             }
           ],
           "default": "ruler",
@@ -1217,6 +1230,18 @@
             {
               "value": "washing",
               "label": "Washing"
+            },
+            {
+              "value": "seqes_warning",
+              "label": "⚠ Seqes: Advertencia"
+            },
+            {
+              "value": "seqes_instructions",
+              "label": "📖 Seqes: Modo de uso"
+            },
+            {
+              "value": "seqes_formula",
+              "label": "🧪 Seqes: Ingredientes"
             }
           ],
           "default": "box",
@@ -1423,6 +1448,18 @@
             {
               "value": "washing",
               "label": "Washing"
+            },
+            {
+              "value": "seqes_warning",
+              "label": "⚠ Seqes: Advertencia"
+            },
+            {
+              "value": "seqes_instructions",
+              "label": "📖 Seqes: Modo de uso"
+            },
+            {
+              "value": "seqes_formula",
+              "label": "🧪 Seqes: Ingredientes"
             }
           ],
           "default": "washing",
@@ -1439,6 +1476,47 @@
 	        "id": "side_panel_3_page",
           "label": "Page",
 					"info": "When using metafields, your metafield type should be page."
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "options": [
+            { "value": "horizontal", "label": "Horizontal" },
+            { "value": "vertical", "label": "Vertical" }
+          ],
+          "default": "horizontal",
+          "label": "Button orientation"
+        },
+        {
+          "type": "checkbox",
+          "id": "center_icons",
+          "label": "Center icons",
+          "default": false,
+          "info": "Centers the icon buttons horizontally."
+        },
+        {
+          "type": "range",
+          "id": "button_font_size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Button text size"
+        },
+        {
+          "type": "range",
+          "id": "content_font_size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Panel content text size"
         }
       ]
     },
@@ -1647,7 +1725,7 @@
           "id": "color_active_segment",
           "label": "Active segment",
           "default": "#151515"
-        },
+        }
       ]
     },
 		{
@@ -1882,11 +1960,911 @@
 				}
 			]
 		},
-		{
+    {
       "type": "payment_icons",
       "name": "Payment icons",
       "limit": 1,
       "settings": []
+    },
+    {
+      "type": "seqes_icon_text",
+      "name": "Seqes icon + text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 15
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi-bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "500",
+          "label": "Font weight"
+        },
+        {
+          "type": "select",
+          "id": "font_style",
+          "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "italic", "label": "Italic" }
+          ],
+          "default": "normal",
+          "label": "Font style"
+        },
+        {
+          "type": "header",
+          "content": "Icon"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "bullet", "label": "Bullet dot" },
+            { "value": "emoji", "label": "Emoji" },
+            { "value": "theme_icon", "label": "Theme icon" }
+          ],
+          "default": "none",
+          "label": "Icon type"
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "info": "Paste an emoji character (used when Icon type is Emoji)"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "apple", "label": "Apple" },
+            { "value": "banana", "label": "Banana" },
+            { "value": "bottle", "label": "Bottle" },
+            { "value": "box", "label": "Box" },
+            { "value": "carrot", "label": "Carrot" },
+            { "value": "chat_bubble", "label": "Chat bubble" },
+            { "value": "check_mark", "label": "Check mark" },
+            { "value": "clipboard", "label": "Clipboard" },
+            { "value": "dairy", "label": "Dairy" },
+            { "value": "dairy_free", "label": "Dairy free" },
+            { "value": "dryer", "label": "Dryer" },
+            { "value": "eye", "label": "Eye" },
+            { "value": "fire", "label": "Fire" },
+            { "value": "gluten_free", "label": "Gluten free" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "iron", "label": "Iron" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "leather", "label": "Leather" },
+            { "value": "lightning_bolt", "label": "Lightning bolt" },
+            { "value": "lipstick", "label": "Lipstick" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "map_pin", "label": "Map pin" },
+            { "value": "nut_free", "label": "Nut free" },
+            { "value": "pants", "label": "Pants" },
+            { "value": "paw_print", "label": "Paw print" },
+            { "value": "pepper", "label": "Pepper" },
+            { "value": "perfume", "label": "Perfume" },
+            { "value": "plane", "label": "Plane" },
+            { "value": "plant", "label": "Plant" },
+            { "value": "price_tag", "label": "Price tag" },
+            { "value": "question_mark", "label": "Question mark" },
+            { "value": "recycle", "label": "Recycle" },
+            { "value": "return", "label": "Return" },
+            { "value": "ruler", "label": "Ruler" },
+            { "value": "serving_dish", "label": "Serving dish" },
+            { "value": "shirt", "label": "Shirt" },
+            { "value": "shoe", "label": "Shoe" },
+            { "value": "silhouette", "label": "Silhouette" },
+            { "value": "snowflake", "label": "Snowflake" },
+            { "value": "star", "label": "Star" },
+            { "value": "stopwatch", "label": "Stopwatch" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "washing", "label": "Washing" },
+            { "value": "seqes_warning", "label": "⚠ Seqes: Advertencia" },
+            { "value": "seqes_instructions", "label": "📖 Seqes: Modo de uso" },
+            { "value": "seqes_formula", "label": "🧪 Seqes: Ingredientes" }
+          ],
+          "default": "none",
+          "label": "Theme icon",
+          "info": "Used when Icon type is Theme icon"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon / bullet color",
+          "default": "#00393b"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_animation",
+          "label": "Enable glow animation",
+          "default": false,
+          "info": "Animated glow pulse on the icon or bullet"
+        }
+      ]
+    },
+    {
+      "type": "estimated_shipping",
+      "name": "Estimated shipping",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "default": "local_shipping",
+          "label": "Material icon name",
+          "info": "[View all available icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.platform=web)"
+        },
+        {
+          "type": "checkbox",
+          "id": "filled_icon",
+          "default": false,
+          "label": "Filled icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon (overrides material icon)"
+        },
+        {
+          "type": "select",
+          "id": "icon_size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "medium",
+          "label": "Icon size"
+        },
+        {
+          "type": "text",
+          "id": "message",
+          "default": "Order now, receive between [start_date] and [end_date]",
+          "label": "Message",
+          "info": "Use [start_date] and [end_date] as placeholders"
+        },
+        {
+          "type": "range",
+          "id": "min_shipping_days",
+          "min": 1,
+          "max": 30,
+          "step": 1,
+          "default": 3,
+          "label": "Minimum shipping days"
+        },
+        {
+          "type": "range",
+          "id": "max_shipping_days",
+          "min": 1,
+          "max": 60,
+          "step": 1,
+          "default": 7,
+          "label": "Maximum shipping days"
+        },
+        {
+          "type": "select",
+          "id": "date_format",
+          "options": [
+            { "value": "short", "label": "Short (Jan 15)" },
+            { "value": "long", "label": "Long (January 15)" }
+          ],
+          "default": "short",
+          "label": "Date format"
+        }
+      ]
+    },
+    {
+      "type": "rating_stars",
+      "name": "Rating stars",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "default": 4.8,
+          "label": "Rating"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "default": "4.8/5 (120 reviews)",
+          "label": "Label text"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star color",
+          "default": "#FFB800"
+        },
+        {
+          "type": "color",
+          "id": "bg_star_color",
+          "label": "Background star color",
+          "default": "#E0E0E0"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "min": 12,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "default": 18,
+          "label": "Star size"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "options": [
+            { "value": "flex-start", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Right" }
+          ],
+          "default": "flex-start",
+          "label": "Alignment"
+        }
+      ]
+    },
+    {
+      "type": "urgency_text",
+      "name": "Urgency text",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Only a few left in stock!",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "default": "warning",
+          "label": "Material icon name",
+          "info": "[View all available icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.platform=web)"
+        },
+        {
+          "type": "checkbox",
+          "id": "filled_icon",
+          "default": true,
+          "label": "Filled icon"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#CC0000"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Font size"
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+          ],
+          "default": "bold",
+          "label": "Font weight"
+        }
+      ]
+    },
+    {
+      "type": "icon_row",
+      "name": "Icon row (certifications)",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "min": 20,
+          "max": 80,
+          "step": 2,
+          "unit": "px",
+          "default": 40,
+          "label": "Icon size"
+        },
+        {
+          "type": "range",
+          "id": "gap",
+          "min": 4,
+          "max": 30,
+          "step": 2,
+          "unit": "px",
+          "default": 12,
+          "label": "Gap between icons"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "options": [
+            { "value": "flex-start", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Right" }
+          ],
+          "default": "flex-start",
+          "label": "Alignment"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": 0,
+          "max": 30,
+          "step": 2,
+          "unit": "px",
+          "default": 8,
+          "label": "Top margin"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "min": 0,
+          "max": 30,
+          "step": 2,
+          "unit": "px",
+          "default": 8,
+          "label": "Bottom margin"
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "checkbox",
+          "id": "grayscale",
+          "default": false,
+          "label": "Grayscale icons (color on hover)"
+        },
+        {
+          "type": "checkbox",
+          "id": "border",
+          "default": false,
+          "label": "Show border around icons"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "default": "#e0e0e0",
+          "label": "Border color"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 6,
+          "label": "Border radius"
+        },
+        {
+          "type": "range",
+          "id": "icon_padding",
+          "min": 2,
+          "max": 16,
+          "step": 1,
+          "unit": "px",
+          "default": 6,
+          "label": "Icon padding (with border)"
+        },
+        {
+          "type": "header",
+          "content": "Labels"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_labels",
+          "default": false,
+          "label": "Show labels under icons"
+        },
+        {
+          "type": "range",
+          "id": "label_size",
+          "min": 8,
+          "max": 14,
+          "step": 1,
+          "unit": "px",
+          "default": 10,
+          "label": "Label font size"
+        },
+        {
+          "type": "color",
+          "id": "label_color",
+          "default": "#666666",
+          "label": "Label color"
+        },
+        {
+          "type": "header",
+          "content": "Icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "text",
+          "id": "label_1",
+          "label": "Label 1"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Link 1"
+        },
+        {
+          "type": "header",
+          "content": "Icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "text",
+          "id": "label_2",
+          "label": "Label 2"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Link 2"
+        },
+        {
+          "type": "header",
+          "content": "Icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3",
+          "label": "Icon 3"
+        },
+        {
+          "type": "text",
+          "id": "label_3",
+          "label": "Label 3"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Link 3"
+        },
+        {
+          "type": "header",
+          "content": "Icon 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_4",
+          "label": "Icon 4"
+        },
+        {
+          "type": "text",
+          "id": "label_4",
+          "label": "Label 4"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Link 4"
+        },
+        {
+          "type": "header",
+          "content": "Icon 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_5",
+          "label": "Icon 5"
+        },
+        {
+          "type": "text",
+          "id": "label_5",
+          "label": "Label 5"
+        },
+        {
+          "type": "url",
+          "id": "link_5",
+          "label": "Link 5"
+        },
+        {
+          "type": "header",
+          "content": "Icon 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_6",
+          "label": "Icon 6"
+        },
+        {
+          "type": "text",
+          "id": "label_6",
+          "label": "Label 6"
+        },
+        {
+          "type": "url",
+          "id": "link_6",
+          "label": "Link 6"
+        },
+        {
+          "type": "header",
+          "content": "Icon 7"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_7",
+          "label": "Icon 7"
+        },
+        {
+          "type": "text",
+          "id": "label_7",
+          "label": "Label 7"
+        },
+        {
+          "type": "url",
+          "id": "link_7",
+          "label": "Link 7"
+        },
+        {
+          "type": "header",
+          "content": "Icon 8"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_8",
+          "label": "Icon 8"
+        },
+        {
+          "type": "text",
+          "id": "label_8",
+          "label": "Label 8"
+        },
+        {
+          "type": "url",
+          "id": "link_8",
+          "label": "Link 8"
+        }
+      ]
+    },
+    {
+      "type": "emoji_benefits",
+      "name": "Emoji benefits",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "benefits",
+          "default": "Free shipping on orders over €50|30-day return policy|Dermatologically tested",
+          "label": "Benefits (separate with |)"
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "default": "✓",
+          "label": "Emoji or symbol prefix"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#333333"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "label": "Font size"
+        }
+      ]
+    },
+    {
+      "type": "reviews_slideshow",
+      "name": "Reviews slideshow",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Appearance"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "default": "#f5f0eb",
+          "label": "Background color"
+        },
+        {
+          "type": "range",
+          "id": "bg_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 100,
+          "label": "Background opacity"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "default": "#003b3d",
+          "label": "Text color"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "default": "#FAA525",
+          "label": "Star color"
+        },
+        {
+          "type": "range",
+          "id": "photo_size",
+          "min": 28,
+          "max": 64,
+          "step": 2,
+          "unit": "px",
+          "default": 44,
+          "label": "Photo size"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 10,
+          "max": 16,
+          "step": 1,
+          "unit": "px",
+          "default": 12,
+          "label": "Review text size",
+          "info": "Smaller text fits more content in 2 lines."
+        },
+        {
+          "type": "range",
+          "id": "max_chars",
+          "min": 60,
+          "max": 200,
+          "step": 10,
+          "default": 120,
+          "label": "Max characters per review",
+          "info": "Text is truncated to fit neatly in each slide."
+        },
+        {
+          "type": "range",
+          "id": "autoplay_speed",
+          "min": 3,
+          "max": 12,
+          "step": 1,
+          "unit": "s",
+          "default": 5,
+          "label": "Slide speed"
+        },
+        {
+          "type": "header",
+          "content": "Verified badge"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_logo",
+          "label": "Badge logo",
+          "info": "Upload a Google, Trustpilot, or other review platform logo."
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "default": "Reseñas verificadas de Google",
+          "label": "Badge text"
+        },
+        {
+          "type": "header",
+          "content": "Review 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_1_image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "review_1_name",
+          "label": "Name",
+          "default": "Customer name"
+        },
+        {
+          "type": "textarea",
+          "id": "review_1_text",
+          "label": "Review text",
+          "default": "Write a customer review here."
+        },
+        {
+          "type": "range",
+          "id": "review_1_stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Stars"
+        },
+        {
+          "type": "header",
+          "content": "Review 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_2_image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "review_2_name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "review_2_text",
+          "label": "Review text"
+        },
+        {
+          "type": "range",
+          "id": "review_2_stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Stars"
+        },
+        {
+          "type": "header",
+          "content": "Review 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_3_image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "review_3_name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "review_3_text",
+          "label": "Review text"
+        },
+        {
+          "type": "range",
+          "id": "review_3_stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Stars"
+        },
+        {
+          "type": "header",
+          "content": "Review 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_4_image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "review_4_name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "review_4_text",
+          "label": "Review text"
+        },
+        {
+          "type": "range",
+          "id": "review_4_stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Stars"
+        },
+        {
+          "type": "header",
+          "content": "Review 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_5_image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "review_5_name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "review_5_text",
+          "label": "Review text"
+        },
+        {
+          "type": "range",
+          "id": "review_5_stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Stars"
+        },
+        {
+          "type": "header",
+          "content": "Review 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "review_6_image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "review_6_name",
+          "label": "Name"
+        },
+        {
+          "type": "textarea",
+          "id": "review_6_text",
+          "label": "Review text"
+        },
+        {
+          "type": "range",
+          "id": "review_6_stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Stars"
+        }
+      ]
     }
   ]
 }

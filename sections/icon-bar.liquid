@@ -1,0 +1,325 @@
+{%- style -%}
+  .icon-bar-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+  }
+  .icon-bar-{{ section.id }} .icon-bar__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    gap: {{ section.settings.mobile_spacing }}px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .icon-bar__card {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .icon-bar__card--vertical {
+    flex-direction: column;
+  }
+  .icon-bar__card--horizontal {
+    flex-direction: row;
+    text-align: left;
+  }
+  .icon-bar__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-bar__icon--small { font-size: 24px; }
+  .icon-bar__icon--small img { height: 24px; width: auto; }
+  .icon-bar__icon--medium { font-size: 36px; }
+  .icon-bar__icon--medium img { height: 36px; width: auto; }
+  .icon-bar__icon--large { font-size: 48px; }
+  .icon-bar__icon--large img { height: 48px; width: auto; }
+  .icon-bar__info h3 {
+    margin: 0 0 4px;
+    font-size: 1em;
+  }
+  .icon-bar__info .rte {
+    margin: 0;
+    font-size: 0.875em;
+    opacity: 0.85;
+  }
+  .icon-bar-{{ section.id }} .icon-bar__heading {
+    text-align: center;
+    margin: 0 0 24px;
+  }
+  .icon-bar-{{ section.id }} .icon-bar__text {
+    text-align: center;
+    margin: 0 0 24px;
+    opacity: 0.85;
+  }
+  @media screen and (min-width: 750px) {
+    .icon-bar-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .icon-bar-{{ section.id }} .icon-bar__grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+      gap: {{ section.settings.desktop_spacing }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="icon-bar-{{ section.id }} {{ section.settings.visibility }}">
+  <div style="max-width:1200px;margin:0 auto;padding:0 20px">
+    {%- unless section.settings.title == blank -%}
+      <h2 class="icon-bar__heading {{ section.settings.heading_size }}">
+        {{ section.settings.title | escape }}
+      </h2>
+    {%- endunless -%}
+    {%- if section.settings.text != blank -%}
+      <div class="icon-bar__text rte">{{ section.settings.text }}</div>
+    {%- endif -%}
+  </div>
+  <div class="icon-bar__grid">
+    {%- for block in section.blocks -%}
+      <div class="icon-bar__card icon-bar__card--{{ section.settings.icon_layout }}" {{ block.shopify_attributes }}>
+        <div class="icon-bar__icon icon-bar__icon--{{ section.settings.icon_size }}" style="color:{{ section.settings.icon_color }}">
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url }}"
+              {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}role="presentation"{% endif %}
+              loading="lazy"
+            >
+          {%- else -%}
+            {%- render 'material-icon', icon: block.settings.icon, filled: block.settings.filled_icon -%}
+          {%- endif -%}
+        </div>
+        {%- unless block.settings.title == blank and block.settings.text == blank -%}
+          <div class="icon-bar__info">
+            {%- if block.settings.title != blank -%}
+              <h3>{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="rte">{{ block.settings.text }}</div>
+            {%- endif -%}
+          </div>
+        {%- endunless -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Icon Bar",
+  "class": "section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
+    },
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Icon bar",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h3", "label": "Small" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" }
+      ],
+      "default": "h2",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "select",
+      "id": "icon_layout",
+      "options": [
+        { "value": "horizontal", "label": "Horizontal" },
+        { "value": "vertical", "label": "Vertical" }
+      ],
+      "default": "vertical",
+      "label": "Icon layout"
+    },
+    {
+      "type": "select",
+      "id": "icon_size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium",
+      "label": "Icon size"
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Columns"
+    },
+    {
+      "type": "range",
+      "id": "desktop_spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Spacing",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2,
+      "label": "Columns"
+    },
+    {
+      "type": "range",
+      "id": "mobile_spacing",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Spacing",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "default": "check_circle",
+          "label": "Material icon name",
+          "info": "[View all available icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.platform=web)"
+        },
+        {
+          "type": "checkbox",
+          "id": "filled_icon",
+          "default": false,
+          "label": "Filled icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom icon (overrides material icon)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Icon",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an icon to highlight a feature</p>",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Bar",
+      "blocks": [
+        { "type": "column" },
+        { "type": "column" },
+        { "type": "column" },
+        { "type": "column" }
+      ]
+    }
+  ]
+}
+{% endschema %}

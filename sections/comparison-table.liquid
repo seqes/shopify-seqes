@@ -1,0 +1,618 @@
+{%- style -%}
+  .ct-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+  }
+  @media screen and (min-width: 750px) {
+    .ct-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ct-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  @media screen and (min-width: 750px) {
+    .ct-layout { grid-template-columns: 1fr 1fr; column-gap: 5rem; }
+    .ct-layout--no-content { grid-template-columns: 1fr; }
+    .ct-layout--table-first .ct-table-wrap { order: -1; }
+  }
+  .ct-content { text-align: center; }
+  .ct-content h2 { margin: 0 0 12px; }
+  .ct-content .rte { margin: 0 0 16px; }
+  .ct-content .ct-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 1px solid currentColor;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .ct-content .ct-btn:hover { opacity: 0.7; }
+
+  .ct-table-wrap { width: 100%; max-width: 50rem; }
+
+  .comparison-table-s {
+    --ct-radius: 2rem;
+    border-spacing: 0;
+    width: 100%;
+  }
+  .comparison-table-s th {
+    padding: 0.5rem 0.75rem;
+    font-size: var(--ct-font-size, 1.8rem);
+    line-height: 1.3;
+  }
+  .comparison-table-s thead { z-index: 1; }
+  .comparison-table-s tbody {
+    box-shadow: 0.3rem 0.3rem 0.8rem rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.06);
+    border-radius: var(--ct-radius);
+  }
+  .comparison-table-s td {
+    --ct-sep-opacity: 0;
+    --ct-overlay-opacity: 0;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 -1px 0 0 rgba(0,0,0, var(--ct-sep-opacity)),
+                inset 0 0 0 6rem rgba(0,0,0, var(--ct-overlay-opacity));
+  }
+  .comparison-table-s img { vertical-align: middle; }
+  .comparison-table-s tbody tr:first-of-type .ct-row-name { border-radius: var(--ct-radius) 0 0 0; }
+  .comparison-table-s tbody tr:last-of-type .ct-row-name { border-radius: 0 0 0 var(--ct-radius); }
+  .comparison-table-s tbody tr:first-of-type td:last-child { border-radius: 0 var(--ct-radius) 0 0; }
+  .comparison-table-s tbody tr:last-of-type td:last-child { border-radius: 0 0 var(--ct-radius) 0; }
+  .comparison-table-s tbody td:not(.ct-row-name) { padding: 1rem 2rem; }
+  .comparison-table-s .ct-row-name h3 { font-size: 1.6rem; margin: 0; }
+
+  .ct-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: auto;
+    border-radius: 50%;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ct-icon--solid {
+    background: var(--ct-bg-color);
+    padding: 0.4rem;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+  .ct-icon svg {
+    color: var(--ct-icon-color);
+    width: 100%;
+    height: 100%;
+  }
+
+  .ct-logo-cell img { max-width: var(--ct-mobile-logo-w, 60px); }
+  @media screen and (min-width: 750px) {
+    .ct-logo-cell img { max-width: none; }
+  }
+
+  .ct-highlighted {
+    background: {{ section.settings.highlighted_bg }};
+    color: {{ section.settings.highlighted_text }};
+  }
+
+  {% if section.settings.style != 'minimal' %}
+    .comparison-table-s-{{ section.id }} tr:not(:last-of-type) .ct-highlighted {
+      --ct-sep-opacity: {{ section.settings.highlighted_separator_opacity | divided_by: 100.0 }};
+    }
+    .comparison-table-s-{{ section.id }} tr:not(:last-of-type) .ct-regular {
+      --ct-sep-opacity: {{ section.settings.regular_separator_opacity | divided_by: 100.0 }};
+    }
+    .comparison-table-s-{{ section.id }} tr:nth-child(2n) .ct-highlighted {
+      --ct-overlay-opacity: {{ section.settings.highlighted_overlay_opacity | divided_by: 100.0 }};
+    }
+    .comparison-table-s-{{ section.id }} tr:nth-child(2n) .ct-regular {
+      --ct-overlay-opacity: {{ section.settings.regular_overlay_opacity | divided_by: 100.0 }};
+    }
+  {% endif %}
+
+  .comparison-table-s--centered .ct-logo-cell {
+    border-radius: var(--ct-radius) var(--ct-radius) 0 0;
+    padding: 0.75rem 1rem;
+  }
+  .comparison-table-s--centered tbody tr:last-of-type td:nth-child(2)::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: {{ section.settings.highlighted_bg }};
+    border-radius: 0 0 var(--ct-radius) var(--ct-radius);
+  }
+  .comparison-table-s--centered { padding-bottom: 3rem; }
+
+  .comparison-table-s--minimal tbody {
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .comparison-table-s--minimal tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .comparison-table-s--minimal tbody tr:not(:last-of-type) {
+    border-bottom: solid 1px rgba(0,0,0, {{ section.settings.minimalistic_border_opacity | divided_by: 100.0 }});
+  }
+  .comparison-table-s--minimal th:nth-child(2),
+  .comparison-table-s--minimal td:nth-child(2) {
+    order: -1;
+    text-align: left;
+  }
+  .comparison-table-s--minimal th,
+  .comparison-table-s--minimal tbody td:not(.ct-row-name) {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  .comparison-table-s--minimal .ct-row-name {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+  }
+  .comparison-table-s--minimal .ct-icon--solid {
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0.9rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .comparison-table-s { --ct-radius: 1.5rem; }
+    .comparison-table-s .ct-row-name h3,
+    .comparison-table-s th { font-size: calc(var(--ct-font-size, 1.8rem) * 0.85); }
+  }
+{%- endstyle -%}
+
+<div class="ct-section-{{ section.id }} {{ section.settings.visibility }}">
+  <div class="ct-layout{% if section.settings.layout == 'table_first' %} ct-layout--table-first{% endif %}{% if section.settings.title == blank and section.settings.text == blank %} ct-layout--no-content{% endif %}">
+    {%- unless section.settings.title == blank and section.settings.text == blank and section.settings.button_label == blank -%}
+      <div class="ct-content">
+        {%- unless section.settings.title == blank -%}
+          <h2 class="{{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endunless -%}
+        {%- unless section.settings.text == blank -%}
+          <div class="rte">{{ section.settings.text }}</div>
+        {%- endunless -%}
+        {%- if section.settings.button_label != blank -%}
+          <a
+            {% if section.settings.link %}href="{{ section.settings.link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+            class="ct-btn"
+          >
+            {{- section.settings.button_label | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+
+    <div class="ct-table-wrap">
+      {%- liquid
+        if section.settings.checkmark_style == 'solid' or section.settings.style == 'minimal'
+          assign solid_check = true
+        else
+          assign solid_check = false
+        endif
+        if section.settings.x_style == 'solid' or section.settings.style == 'minimal'
+          assign solid_x = true
+        else
+          assign solid_x = false
+        endif
+      -%}
+      <table class="comparison-table-s comparison-table-s--{{ section.settings.style }} comparison-table-s-{{ section.id }}">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th
+              align="center"
+              class="ct-logo-cell{% if section.settings.style == 'centered' %} ct-highlighted{% endif %}"
+              style="--ct-mobile-logo-w:{{ section.settings.mobile_logo_width }}px;--ct-font-size:{{ section.settings.us_label_size | divided_by: 10.0 }}rem;"
+            >
+              {%- if section.settings.logo != blank -%}
+                {%- assign logo_w = section.settings.logo_width -%}
+                {%- assign logo_h = logo_w | divided_by: section.settings.logo.aspect_ratio -%}
+                {{ section.settings.logo | image_url: width: 400 | image_tag: width: logo_w, height: logo_h, alt: shop.name }}
+              {%- else -%}
+                {{ section.settings.us_label | replace: '[shop_name]', shop.name }}
+              {%- endif -%}
+            </th>
+            <th align="center" style="--ct-font-size:{{ section.settings.others_label_size | divided_by: 10.0 }}rem;">
+              {{ section.settings.others_label }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td align="center" class="ct-row-name{% if section.settings.style == 'centered' %} ct-regular{% elsif section.settings.style == 'classic' %} ct-highlighted{% endif %}">
+                <h3>{{ block.settings.benefit }}</h3>
+              </td>
+              <td align="center" class="{% if section.settings.style == 'centered' %}ct-highlighted{% elsif section.settings.style == 'classic' %}ct-regular{% endif %}">
+                {%- if block.settings.us -%}
+                  <div class="ct-icon{% if solid_check %} ct-icon--solid{% endif %}" style="--ct-icon-color:{{ section.settings.checkmark_color }};--ct-bg-color:{{ section.settings.checkmark_bg_color }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                  </div>
+                {%- else -%}
+                  <div class="ct-icon{% if solid_x %} ct-icon--solid{% endif %}" style="{% if section.settings.opposite_icon_colors == 'original' %}--ct-icon-color:{{ section.settings.x_color }};--ct-bg-color:{{ section.settings.x_bg_color }}{% else %}--ct-icon-color:{{ section.settings.checkmark_color }};--ct-bg-color:{{ section.settings.checkmark_bg_color }}{% endif %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                  </div>
+                {%- endif -%}
+              </td>
+              <td align="center" class="ct-regular">
+                {%- if block.settings.others -%}
+                  <div class="ct-icon{% if solid_check %} ct-icon--solid{% endif %}" style="{% if section.settings.opposite_icon_colors == 'original' %}--ct-icon-color:{{ section.settings.checkmark_color }};--ct-bg-color:{{ section.settings.checkmark_bg_color }}{% else %}--ct-icon-color:{{ section.settings.x_color }};--ct-bg-color:{{ section.settings.x_bg_color }}{% endif %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                  </div>
+                {%- else -%}
+                  <div class="ct-icon{% if solid_x %} ct-icon--solid{% endif %}" style="--ct-icon-color:{{ section.settings.x_color }};--ct-bg-color:{{ section.settings.x_bg_color }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                  </div>
+                {%- endif -%}
+              </td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Comparison table (Alt)",
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
+    },
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Comparison table",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h3", "label": "Small" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" }
+      ],
+      "default": "h2",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Talk about how and why your brand is better than the others.</p>",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "highlighted_bg",
+      "label": "Highlighted column background",
+      "default": "#003B3D"
+    },
+    {
+      "type": "color",
+      "id": "highlighted_text",
+      "label": "Highlighted column text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Table"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "table_first", "label": "Table first" },
+        { "value": "table_second", "label": "Table second" }
+      ],
+      "default": "table_second",
+      "label": "Desktop table placement"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "options": [
+        { "value": "classic", "label": "Classic" },
+        { "value": "centered", "label": "Centered" },
+        { "value": "minimal", "label": "Minimalistic" }
+      ],
+      "default": "classic",
+      "label": "Table style"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 25,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop logo width",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "min": 25,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile logo width",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "us_label",
+      "label": "Us label",
+      "default": "[shop_name]",
+      "info": "Displayed if logo image is not selected. Use [shop_name] for shop name."
+    },
+    {
+      "type": "range",
+      "id": "us_label_size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Us label font size",
+      "default": 18
+    },
+    {
+      "type": "text",
+      "id": "others_label",
+      "label": "Competitors label",
+      "default": "Others"
+    },
+    {
+      "type": "range",
+      "id": "others_label_size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Competitors label font size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "select",
+      "id": "checkmark_style",
+      "options": [
+        { "value": "regular", "label": "Regular" },
+        { "value": "solid", "label": "Solid" }
+      ],
+      "default": "regular",
+      "label": "Checkmark style",
+      "info": "Solid is automatic for Minimalistic style."
+    },
+    {
+      "type": "color",
+      "id": "checkmark_color",
+      "default": "#53AF01",
+      "label": "Checkmark color"
+    },
+    {
+      "type": "color",
+      "id": "checkmark_bg_color",
+      "default": "#53AF01",
+      "label": "Solid checkmark background"
+    },
+    {
+      "type": "select",
+      "id": "x_style",
+      "options": [
+        { "value": "regular", "label": "Regular" },
+        { "value": "solid", "label": "Solid" }
+      ],
+      "default": "regular",
+      "label": "X style",
+      "info": "Solid is automatic for Minimalistic style."
+    },
+    {
+      "type": "color",
+      "id": "x_color",
+      "default": "#121212",
+      "label": "X color"
+    },
+    {
+      "type": "color",
+      "id": "x_bg_color",
+      "default": "#DBDBDB",
+      "label": "Solid X background"
+    },
+    {
+      "type": "select",
+      "id": "opposite_icon_colors",
+      "options": [
+        { "value": "original", "label": "Original" },
+        { "value": "inverse", "label": "Inverse" }
+      ],
+      "default": "original",
+      "label": "Opposite icons color",
+      "info": "Color of check in 'others' and X in 'us'."
+    },
+    {
+      "type": "header",
+      "content": "Classic & Centered style"
+    },
+    {
+      "type": "range",
+      "id": "highlighted_separator_opacity",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "%",
+      "label": "Highlighted cells separator",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "highlighted_overlay_opacity",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "%",
+      "label": "Even rows highlighted overlay",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "regular_separator_opacity",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "%",
+      "label": "Regular cells separator",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "regular_overlay_opacity",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "%",
+      "label": "Even rows regular overlay",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Minimalistic style"
+    },
+    {
+      "type": "range",
+      "id": "minimalistic_border_opacity",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "%",
+      "label": "Rows separator opacity",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Table row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit",
+          "default": "Benefit",
+          "label": "Benefit"
+        },
+        {
+          "type": "checkbox",
+          "id": "us",
+          "default": true,
+          "label": "Us"
+        },
+        {
+          "type": "checkbox",
+          "id": "others",
+          "default": false,
+          "label": "Others"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison table (Alt)",
+      "blocks": [
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

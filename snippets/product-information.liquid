@@ -1,6 +1,10 @@
 <div id="ProductInfo-{{ section.id }}" class="product-information--inner{% if section.settings.enable_sticky_info %} production-information--sticky{% endif %}">
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
   {%- assign outline_button = false -%}
+  {%- assign has_icon_text = section.blocks | where: 'type', 'seqes_icon_text' -%}
+  {%- if has_icon_text.size > 0 -%}
+    {%- render 'seqes-icon-text-css' -%}
+  {%- endif -%}
   {% for block in section.blocks %}
     {%- case block.type -%}
     {%- when '@app' -%}
@@ -11,6 +15,22 @@
       </p>
     {%- when 'custom_liquid' -%}
       {{ block.settings.custom_liquid }}
+    {%- when 'seqes_icon_text' -%}
+      <div {{ block.shopify_attributes }}>
+        {%- render 'seqes-icon-text',
+          text: block.settings.text,
+          text_color: block.settings.text_color,
+          font_size: block.settings.font_size,
+          font_weight: block.settings.font_weight,
+          font_style: block.settings.font_style,
+          icon_type: block.settings.icon_type,
+          icon: block.settings.icon,
+          emoji: block.settings.emoji,
+          icon_color: block.settings.icon_color,
+          enable_animation: block.settings.enable_animation,
+          uid: block.id
+        -%}
+      </div>
     {%- when 'title' -%}
       <div class="product-title-container" {{ block.shopify_attributes }}>
         <h1 class="product-title uppercase--{{ block.settings.uppercase }}">{{ product.title }}</h1>
@@ -153,15 +173,20 @@
         </div>
       </noscript>
     {%- when 'side_panel' -%}
-      <side-panel-links class="side-panel-links">
+      {%- capture sp_style -%}
+        {%- if block.settings.center_icons %}text-align:center;{% endif -%}
+        {%- if block.settings.layout == 'vertical' %}display:flex;flex-direction:column;gap:4px;{% endif -%}
+        {%- if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}--sp-btn-size:{{ block.settings.button_font_size }}px;{% endif -%}
+      {%- endcapture -%}
+      <side-panel-links class="side-panel-links" data-drawer="Product-Information-Drawer-{{ block.id }}"{% if sp_style != blank %} style="{{ sp_style | strip }}"{% endif %}>
         {%- if block.settings.side_panel_1_label != '' -%}
-        <button class="side-panel-links--link no-js-hidden" data-id="1">{% render 'svg-icons-inline', icon: block.settings.side_panel_1_icon %}<span class="text-button">{{ block.settings.side_panel_1_label }}</span></button>
+        <button class="side-panel-links--link no-js-hidden" data-id="1">{%- if block.settings.side_panel_1_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_1_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_1_icon %}{%- endif -%}<span class="text-button" {% if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}style="font-size:{{ block.settings.button_font_size }}px"{% endif %}>{{ block.settings.side_panel_1_label }}</span></button>
         {%- endif -%}
         {%- if block.settings.side_panel_2_label != '' -%}
-        <button class="side-panel-links--link no-js-hidden" data-id="2">{% render 'svg-icons-inline', icon: block.settings.side_panel_2_icon %}<span class="text-button">{{ block.settings.side_panel_2_label }}</span></button>
+        <button class="side-panel-links--link no-js-hidden" data-id="2">{%- if block.settings.side_panel_2_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_2_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_2_icon %}{%- endif -%}<span class="text-button" {% if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}style="font-size:{{ block.settings.button_font_size }}px"{% endif %}>{{ block.settings.side_panel_2_label }}</span></button>
         {%- endif -%}
         {%- if block.settings.side_panel_3_label != '' -%}
-        <button class="side-panel-links--link no-js-hidden" data-id="3">{% render 'svg-icons-inline', icon: block.settings.side_panel_3_icon %}<span class="text-button">{{ block.settings.side_panel_3_label }}</span></button>
+        <button class="side-panel-links--link no-js-hidden" data-id="3">{%- if block.settings.side_panel_3_icon contains 'seqes_' -%}{% render 'seqes-icons', icon: block.settings.side_panel_3_icon %}{%- else -%}{% render 'svg-icons-inline', icon: block.settings.side_panel_3_icon %}{%- endif -%}<span class="text-button" {% if block.settings.button_font_size != blank and block.settings.button_font_size != 14 %}style="font-size:{{ block.settings.button_font_size }}px"{% endif %}>{{ block.settings.side_panel_3_label }}</span></button>
         {%- endif -%}
       </side-panel-links>
     {%- when 'shipping_checkpoints' -%}
@@ -322,6 +347,29 @@
           <figure>{{ type | payment_type_svg_tag: class: 'payment-icons__icon' }}</figure>
         {%- endfor -%}
       {%- endunless -%}
+      </div>
+    {%- when 'estimated_shipping' -%}
+      {%- render 'estimated-shipping', block: block -%}
+    {%- when 'rating_stars' -%}
+      {%- render 'rating-stars-block', block: block -%}
+    {%- when 'urgency_text' -%}
+      <p class="urgency-text" style="color:{{ block.settings.text_color }};font-size:{{ block.settings.font_size }}px;font-weight:{{ block.settings.font_weight }};margin:4px 0;display:flex;align-items:center;gap:6px" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon != blank -%}{%- render 'material-icon', icon: block.settings.icon, filled: block.settings.filled_icon -%}{%- endif -%}
+        <span>{{ block.settings.text }}</span>
+      </p>
+    {%- when 'icon_row' -%}
+      {%- render 'icon-row-block', block: block -%}
+    {%- when 'reviews_slideshow' -%}
+      {%- render 'reviews-slideshow-block', block: block -%}
+    {%- when 'emoji_benefits' -%}
+      <div class="emoji-benefits" style="margin:4px 0;font-size:{{ block.settings.font_size }}px;color:{{ block.settings.text_color }}" {{ block.shopify_attributes }}>
+        {%- assign benefits = block.settings.benefits | split: '|' -%}
+        {%- for benefit in benefits -%}
+          <div style="display:flex;align-items:center;gap:6px;margin:2px 0">
+            {%- if block.settings.emoji != blank -%}<span>{{ block.settings.emoji }}</span>{%- endif -%}
+            <span>{{ benefit | strip }}</span>
+          </div>
+        {%- endfor -%}
       </div>
   {%- endcase -%}
   {% endfor %}

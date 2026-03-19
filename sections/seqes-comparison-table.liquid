@@ -1,4 +1,4 @@
-<style>
+{%- style -%}
   .seqes-comparison-{{ section.id }} {
     --seqes-bg: {{ section.settings.background_color }};
     --seqes-frame: {{ section.settings.frame_color }};
@@ -148,7 +148,7 @@
       color: var(--seqes-frame);
     }
   }
-</style>
+{%- endstyle -%}
 
 <div class="seqes-comparison-{{ section.id }}">
   <div class="seqes-comparison__inner-{{ section.id }}">

@@ -1,0 +1,93 @@
+{%- liquid
+  assign gradient_color = section.settings.color
+  assign gradient_height = section.settings.height
+  assign direction = section.settings.direction
+-%}
+{%- style -%}
+  .seqes-gradient-{{ section.id }} {
+    height: {{ gradient_height }}px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 0;
+    {%- if direction == 'bottom_to_top' -%}
+    background: linear-gradient(
+      to top,
+      {{ gradient_color }} 0%,
+      {{ gradient_color | color_modify: 'alpha', 0.92 }} 18%,
+      {{ gradient_color | color_modify: 'alpha', 0.72 }} 38%,
+      {{ gradient_color | color_modify: 'alpha', 0.45 }} 62%,
+      {{ gradient_color | color_modify: 'alpha', 0.18 }} 82%,
+      transparent 100%
+    );
+    {%- else -%}
+    background: linear-gradient(
+      to bottom,
+      {{ gradient_color }} 0%,
+      {{ gradient_color | color_modify: 'alpha', 0.92 }} 18%,
+      {{ gradient_color | color_modify: 'alpha', 0.72 }} 38%,
+      {{ gradient_color | color_modify: 'alpha', 0.45 }} 62%,
+      {{ gradient_color | color_modify: 'alpha', 0.18 }} 82%,
+      transparent 100%
+    );
+    {%- endif -%}
+  }
+
+  @media screen and (max-width: 749px) {
+    .seqes-gradient-{{ section.id }} {
+      height: {{ gradient_height | times: 60 | divided_by: 100 }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="seqes-gradient-{{ section.id }}"></div>
+
+{% schema %}
+{
+  "name": "Seqes gradient divider",
+  "tag": "section",
+  "class": "section-seqes-gradient-divider",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Gradient color",
+      "default": "#003B3D"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Height",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "options": [
+        {
+          "value": "bottom_to_top",
+          "label": "Fade up (solid at bottom)"
+        },
+        {
+          "value": "top_to_bottom",
+          "label": "Fade down (solid at top)"
+        }
+      ],
+      "default": "bottom_to_top",
+      "label": "Direction"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Seqes gradient divider"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["*"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,451 @@
+{%- style -%}
+  .modal-v2__modal .popup-modal__close + * {margin-top: 0;}
+  .modal-v2__modal .popup-modal__close + .sizing-chart__title {padding: 0 2.5rem;}
+  .popup-overlay {position: fixed;top: 0;left: 0;z-index: 1090;transition: width 0s, height 0s, background-color 0.3s;width: 0;height: 0;background-color: rgba(0, 0, 0, 0);}
+  .popup-overlay--active {width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.3);}
+  .popup-modal {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%) scale(0);transform-origin: center center;border-radius: 1.25rem;overflow: hidden;visibility: hidden;opacity: 0;z-index: 1100;transition: all 0.3s ease-in-out;max-width: calc(100% - 1rem);width: 38rem;}
+  .popup-modal--image {width: 76rem;}
+  .popup-modal--image-second .popup-modal__content {order: -1;}
+  .popup-modal__container {display: flex;}
+  .popup-modal--active {transform: translate(-50%, -50%);visibility: visible;opacity: 1;}
+  .popup-modal__image {width: 100%;max-width: 38rem;position: relative;}
+  .popup-modal__image img {object-fit: cover;object-position: center center;position: absolute;top: 0;left: 0;}
+  .popup-modal__content {text-align: center;display: flex;flex-direction: column;align-items: center;padding: 5rem 2rem 2.5rem;background: rgb(var(--color-background));max-width: 38rem;width: 100%;}
+  .popup-modal__title {margin: 2rem 0;z-index: 0;}
+  .popup-modal__title span {display: block;}
+  .popup-modal__title .title {margin: 0;position: relative;z-index: 0;}
+  .popup-modal__title .title::before {content:"";display: block;width: 25rem;height: 25rem;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -35%);border-radius: 50%;z-index: -1;background: linear-gradient( 180deg, rgba(var(--color-base-accent-1), 0.1) 20%, rgba(0, 0, 0, 0) 60% );}
+  .popup-modal__title__prefix, .popup-modal__title__suffix {font-size: calc(var(--font-heading-scale) * 1.6rem);}
+  .popup-modal__title .h2 {font-size: calc(var(--font-heading-scale) * 2.5rem);}
+  .popup-modal__title .h1 {font-size: calc(var(--font-heading-scale) * 3.5rem);}
+  .popup-modal__title .h0 {font-size: calc(var(--font-heading-scale) * 4.5rem);}
+  .popup-modal__title .title {line-height: calc(1 + 0.2 / max (1, var(--font-heading-scale)));}
+  .popup-modal__text p {margin-top: 0;line-height: 1.4;margin-bottom: 0.5em;}
+  .popup-modal__timer p {margin: 0;font-weight: var(--font-heading-weight);line-height: 1;margin-bottom: 1.5rem;font-weight: var(--font-heading-weight);}
+  .popup-modal__timer__minutes, .popup-modal__timer__seconds {font-size: 4rem;}
+  .popup-modal__timer__colon {font-size: 3rem;}
+  .popup-modal__email-form {width: 100%;}
+  .popup-modal .newsletter-form__message {justify-content: center;width: 100%;margin-top: 1rem;}
+  .popup-modal .button {width: 100%;margin-top: 0.75rem;margin-bottom: 1.5rem;}
+  .popup-modal__close {font-size: 3.5rem;cursor: pointer;outline: none;width: 1em;height: 1em;position: absolute;top: 0.5rem;right: 0.5rem;border-radius: 50%;display: flex;justify-content: center;align-items: center;border: solid 0.2rem rgba(var(--color-foreground), 0.5);background: rgb(var(--color-background));z-index: 2;}
+  .popup-modal__close span {display: block;width: 0.5em;height: 0.2rem;background: rgba(var(--color-foreground), 0.5);transform: rotate(45deg);flex-shrink: 0;}
+  .popup-modal__close span:nth-child(2) {position: absolute;transform: rotate(-45deg);}
+  .popup-modal__close--borderless {border: none;font-size: 3rem;}
+  .popup-modal__dismiss-btn {border: none;outline: none;background: none;font-size: 1.4rem;color: rgba(var(--color-foreground), 0.75);cursor: pointer;position: relative;}
+  .popup-modal__dismiss-btn:hover {text-decoration: underline;}
+  @media screen and (max-width: 50rem) {.popup-modal__image {display: none;}.popup-modal--image {width: 38rem;}}
+  .popup-modal__discount-code {margin-bottom: 1.5rem;position: relative;}
+  .popup-modal__discount-code .field {align-items: center;}
+  .popup-modal__discount-code .field__input {padding-left: 1.2rem;box-shadow: none;cursor: default;}
+  .popup-modal__discount-code .field__input:not(:placeholder-shown) ~ .field__label {left: calc(var(--inputs-border-width) + 1.2rem);}
+  .popup-modal .popup-modal__copy-btn {margin: 0;display: flex;align-items: center;min-width: auto;width: fit-content;min-height: 3.9rem;line-height: 1;margin-right: 0.4rem;font-size: 1.6rem;padding: 0 2.5rem;}
+  .popup-modal__copy-btn svg {width: 1.6rem;height: 1.6rem;margin-left: 0.5rem;}
+  .popup-modal__success-msg {font-size: 1.3rem;margin: 0;margin-top: 0.2rem;color: #00a100;display: none;}
+
+  .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
+{%- endstyle -%}
+
+{%- unless section.settings.mode == 'disabled' -%}
+  <promo-popup
+    data-test-mode="{% if section.settings.mode == 'testing' or section.settings.mode == 'success_testing' %}true{% else %}false{% endif %}"
+    data-delay-days="{{ section.settings.popup_days }}"
+    data-delay-seconds="{{ section.settings.popup_seconds }}"
+    data-display-timer="{{ section.settings.display_timer }}"
+    data-timer-duration="{{ section.settings.timer_duration }}"
+  >
+    <div class="sign-up-popup-overlay popup-overlay promp-popup__close-btn{% if section.settings.mode == 'testing' %} popup-overlay--active{% endif %}">&nbsp</div>
+    <div class="sign-up-popup-modal popup-modal{% if section.settings.mode == 'testing' %} popup-modal--active{% endif %} section-color-{{ section.id }}-color_scheme{% if section.settings.image != blank %} popup-modal--image{% endif %}{% if section.settings.layout == 'image_second' %} popup-modal--image-second{% endif %}">
+      <div class="popup-modal__container">
+        <button class="popup-modal__close promp-popup__close-btn section-color-{{ section.id }}-color_scheme">
+          <span></span>
+          <span></span>
+        </button>
+        {%- unless section.settings.image == blank -%}
+          <div class="popup-modal__image">
+            {{
+              section.settings.image
+              | image_url: width: 800
+              | image_tag: loading: 'lazy', width: '100%', height: '100%'
+            }}
+          </div>
+        {%- endunless -%}
+        <div class="popup-modal__content section-color-{{ section.id }}-color_scheme">
+          {%- unless section.settings.heading == blank
+            and section.settings.heading_prefix == blank
+            and section.settings.heading_suffix == blank
+          -%}
+            <h2 class="popup-modal__title">
+              {%- unless section.settings.heading_prefix == blank -%}
+                <span class="popup-modal__title__prefix">
+                  {{ section.settings.heading_prefix }}
+                </span>
+              {%- endunless -%}
+              {%- unless section.settings.heading == blank -%}
+                <span class="title {{ section.settings.heading_size }}">
+                  {{ section.settings.heading }}
+                </span>
+              {%- endunless -%}
+              {%- unless section.settings.heading_suffix == blank -%}
+                <span class="popup-modal__title__suffix">
+                  {{ section.settings.heading_suffix }}
+                </span>
+              {%- endunless -%}
+            </h2>
+          {%- endunless -%}
+          {%- unless section.settings.text == blank -%}
+            <div class="popup-modal__text">
+              {{ section.settings.text }}
+            </div>
+          {%- endunless -%}
+          {%- if section.settings.display_timer -%}
+            <div class="popup-modal__timer">
+              <p>
+                <span class="popup-modal__timer__minutes"></span>
+                <span class="popup-modal__timer__minutes-label">M</span>
+                <span class="popup-modal__timer__colon">:</span>
+                <span class="popup-modal__timer__seconds"></span>
+                <span class="popup-modal__timer__seconds-label">S</span>
+              </p>
+            </div>
+          {%- endif -%}
+          <div class="popup-modal__email-form">
+            {% form 'customer', class: 'newsletter-form' %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="newsletter-form__field-wrapper">
+                <div class="field">
+                  <input
+                    id="NewsletterForm--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="field__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="Newsletter-error--{{ section.id }}"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="Newsletter-success--{{ section.id }}"
+                    {% endif %}
+                    placeholder="{{ 'newsletter.label' | t }}"
+                    required
+                  >
+                  <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                    {{ 'newsletter.label' | t }}
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  class="button"
+                  name="commit"
+                  id="Subscribe"
+                  aria-label="{{ 'newsletter.button_label' | t }}"
+                >
+                  {{ section.settings.button_label }}
+                </button>
+                {%- if form.errors -%}
+                  <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
+                    {%- render 'icon-error' -%}
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </small>
+                {%- endif -%}
+              </div>
+              {%- if form.posted_successfully? -%}
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const storageKey ="promo-bar-subscribed-" + window.location.host;
+                    {% unless section.settings.mode == 'success_testing' %}
+                      if (localStorage.getItem(storageKey)) return;
+                    {% endunless %}
+  
+                    const successOverlay = document.querySelector('.success-popup-overlay');
+                    const sucessPopupModal = document.querySelector('.success-popup-modal');
+                    if (sucessPopupModal) {
+                      localStorage.setItem(storageKey, JSON.stringify({ subscribed: true}));
+                      sucessPopupModal.classList.add('popup-modal--active');
+                      successOverlay.classList.add('popup-overlay--active');
+  
+                      const copyBtn = sucessPopupModal.querySelector('.popup-modal__copy-btn');
+                      const copySuccessMsg = sucessPopupModal.querySelector('.popup-modal__success-msg');
+                      const discountCode ="{{ section.settings.discount_code }}";
+  
+                      copyBtn.addEventListener('click', function() {
+                        navigator.clipboard.writeText(discountCode);
+                        copySuccessMsg.style.display = 'block';
+                      })
+  
+                      const closeBtn = sucessPopupModal.querySelector('.popup-modal__close');
+                      const dismissBtn = sucessPopupModal.querySelector('.popup-modal__dismiss-btn');
+  
+                      successOverlay.addEventListener('click', function() {
+                        closeModal();
+                      })
+                      closeBtn.addEventListener('click', function() {
+                        closeModal();
+                      })
+                      if (dismissBtn) {
+                        dismissBtn.addEventListener('click', function() {
+                          closeModal();
+                        })
+                      }
+  
+                      function closeModal() {
+                        sucessPopupModal.classList.remove('popup-modal--active');
+                        successOverlay.classList.remove('popup-overlay--active');
+                      }
+                    }
+                  })
+                </script>
+              {%- endif -%}
+            {% endform %}
+          </div>
+          {% unless section.settings.dismiss_btn_label == blank %}
+            <button class="popup-modal__dismiss-btn promp-popup__close-btn">{{ section.settings.dismiss_btn_label }}</button>
+          {% endunless %}
+        </div>
+      </div>
+    </div>
+  </promo-popup>
+
+  <div class="success-popup-overlay popup-overlay{% if section.settings.mode == 'success_testing' %} popup-overlay--active{% endif %}">&nbsp</div>
+  <div class="success-popup-modal popup-modal{% if section.settings.mode == 'success_testing' %} popup-modal--active{% endif %} section-color-{{ section.id }}-color_scheme{% if section.settings.image != blank and section.settings.success_display_image %} popup-modal--image{% endif %}{% if section.settings.layout == 'image_second' %} popup-modal--image-second{% endif %}">
+    <button class="popup-modal__close section-color-{{ section.id }}-color_scheme">
+      <span></span>
+      <span></span>
+    </button>
+    <div class="popup-modal__container">
+      {%- unless section.settings.image == blank or section.settings.success_display_image == false -%}
+        <div class="popup-modal__image">
+          {{
+            section.settings.image
+            | image_url: width: 800
+            | image_tag: loading: 'lazy', width: '100%', height: '100%'
+          }}
+        </div>
+      {%- endunless -%}
+      <div class="popup-modal__content section-color-{{ section.id }}-color_scheme">
+        {%- unless section.settings.success_heading == blank
+          and section.settings.success_heading_prefix == blank
+          and section.settings.success_heading_suffix == blank
+        -%}
+          <h2 class="popup-modal__title">
+            {%- unless section.settings.success_heading_prefix == blank -%}
+              <span class="popup-modal__title__prefix">
+                {{ section.settings.success_heading_prefix }}
+              </span>
+            {%- endunless -%}
+            {%- unless section.settings.success_heading == blank -%}
+              <span class="title {{ section.settings.success_heading_size }}">
+                {{ section.settings.success_heading }}
+              </span>
+            {%- endunless -%}
+            {%- unless section.settings.success_heading_suffix == blank -%}
+              <span class="popup-modal__title__suffix">
+                {{ section.settings.success_heading_suffix }}
+              </span>
+            {%- endunless -%}
+          </h2>
+        {%- endunless -%}
+        {%- unless section.settings.success_text == blank -%}
+          <div class="popup-modal__text success-popup-modal__text">
+            {{ section.settings.success_text }}
+          </div>
+        {%- endunless -%}
+        <div class="popup-modal__discount-code">
+          <div class="field">
+            <input
+              id="DiscountCode--{{ section.id }}"
+              type="text"
+              class="field__input"
+              value="{{ section.settings.discount_code }}"
+              autocorrect="off"
+              autocapitalize="off"
+              placeholder="{{ section.settings.discount_code_label }}"
+              readonly
+            >
+            <label class="field__label" for="DiscountCode--{{ section.id }}">
+              {{- section.settings.discount_code_label -}}
+            </label>
+            <button class="popup-modal__copy-btn button">
+              {{ section.settings.copy_button_label }}
+              {% render 'icon-clipboard' %}
+            </button>
+          </div>
+          <p class="popup-modal__success-msg">{{ section.settings.copy_message }}</p>
+        </div>
+
+        {% unless section.settings.success_dismiss_btn_label == blank %}
+          <button class="popup-modal__dismiss-btn">{{ section.settings.success_dismiss_btn_label }}</button>
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+{%- endunless -%}
+
+<script>
+if(!customElements.get('promo-popup')){
+  class PromoPopup extends HTMLElement{
+    connectedCallback(){
+      this.testMode=this.dataset.testMode==='true';
+      this.delayDays=parseInt(this.dataset.delayDays)||7;
+      this.delaySeconds=parseInt(this.dataset.delaySeconds)||3;
+      this.displayTimer=this.dataset.displayTimer==='true';
+      this.timerDuration=parseInt(this.dataset.timerDuration)||300;
+      this.storageKey='promo-popup-'+location.host;
+      this.overlay=this.querySelector('.popup-overlay');
+      this.modal=this.querySelector('.popup-modal');
+      this.closeBtns=this.querySelectorAll('.promp-popup__close-btn');
+      
+      this.closeBtns.forEach(btn=>btn.addEventListener('click',()=>this.close()));
+      
+      if(this.testMode){return;}
+      const stored=localStorage.getItem(this.storageKey);
+      if(stored){
+        try{
+          const data=JSON.parse(stored);
+          if(data.dismissed){
+            const diff=Date.now()-data.timestamp;
+            if(diff<this.delayDays*86400000)return;
+          }
+          if(data.subscribed)return;
+        }catch(e){}
+      }
+      setTimeout(()=>this.open(),this.delaySeconds*1000);
+    }
+    open(){
+      if(this.overlay)this.overlay.classList.add('popup-overlay--active');
+      if(this.modal)this.modal.classList.add('popup-modal--active');
+      if(this.displayTimer)this.startTimer();
+    }
+    close(){
+      if(this.overlay)this.overlay.classList.remove('popup-overlay--active');
+      if(this.modal)this.modal.classList.remove('popup-modal--active');
+      localStorage.setItem(this.storageKey,JSON.stringify({dismissed:true,timestamp:Date.now()}));
+    }
+    startTimer(){
+      let remaining=this.timerDuration;
+      const mEl=this.querySelector('.popup-modal__timer__minutes');
+      const sEl=this.querySelector('.popup-modal__timer__seconds');
+      if(!mEl||!sEl)return;
+      const tick=()=>{
+        if(remaining<=0)return;
+        remaining--;
+        mEl.textContent=String(Math.floor(remaining/60)).padStart(2,'0');
+        sEl.textContent=String(remaining%60).padStart(2,'0');
+      };
+      tick();
+      this._timer=setInterval(tick,1000);
+    }
+    disconnectedCallback(){
+      if(this._timer)clearInterval(this._timer);
+    }
+  }
+  customElements.define('promo-popup',PromoPopup);
+}
+</script>
+
+{% schema %}
+{"name":"Promo Pop-Up","limit": 1,"disabled_on": {"groups": ["header","footer"
+    ]
+  },"settings": [
+    {"type":"paragraph","content":"[Tutorial on how to set up](https://www.youtube.com/watch?v=2c1CCF3gsvI)"
+    },
+    {"type":"header","content":"Popup"
+    },
+    {"type":"select","id":"mode","label":"Display mode","default":"disabled","options": [
+        {"value":"disabled","label":"Disabled"
+        },
+        {"value":"testing","label":"Test mode"
+        },
+        {"value":"success_testing","label":"Success test mode"
+        },
+        {"value":"enabled","label":"Enabled"
+        }
+      ],"info":"Test mode displays your popup without delay each time even after dismissing it. Switch to Enabled once you are happy with how your popup looks."
+    },
+    {"type":"range","id":"popup_seconds","label":"Delay","info":"Time interval, in seconds, after which the modal will appear.","default": 5,"min": 2,"max": 60,"step": 1,"unit":"sec"
+    },
+    {"type":"range","id":"popup_days","label":"Frequency","default": 30,"info":"Number of days before a dismissed popup reappears","min": 2,"max": 30,"step": 1,"unit":"day"
+    },
+    {"type":"checkbox","id":"display_timer","label":"Display countdown timer","default": true,"info":"IMPORTANT: Due to liquid limitations, ONLY IN TEST MODE, you need to refresh the page after certain changes to display the correct timer. This does NOT happen when the Pop Up is published."
+    },
+    {"type":"range","id":"timer_duration","min": 1,"max": 10,"default": 3,"step": 0.5,"unit":"min","label":"Timer duration"
+    },
+    {"type":"image_picker","id":"image","label":"Image"
+    },
+    {"type":"select","id":"layout","label":"Desktop image position","options": [
+        {"value":"image_first","label":"Image first"
+        },
+        {"value":"image_second","label":"Image second"
+        }
+      ],"default":"image_first"
+    },
+    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
+    },
+    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
+    },
+    {"type":"header","content":"Content"
+    },
+    {"type":"text","id":"heading_prefix","label":"Heading prefix","default":"Sign up and"
+    },
+    {"type":"text","id":"heading","label":"Heading","default":"GET 10% OFF"
+    },
+    {"type":"select","id":"heading_size","options": [
+        {"value":"h3","label":"Extra Small"
+        },
+        {"value":"h2","label":"Small"
+        },
+        {"value":"h1","label":"Medium"
+        },
+        {"value":"h0","label":"Large"
+        }
+      ],"default":"h1","label":"Heading size"
+    },
+    {"type":"text","id":"heading_suffix","label":"Heading suffix"
+    },
+    {"type":"richtext","id":"text","label":"Text","default":"<p>Sign up for our email newsletter for special discounts and exclusive offers.</p>"
+    },
+    {"type":"text","id":"button_label","label":"Sign up button label","default":"Sign up","info":"NOTE: Make sure you put in your own discount code in the settings under \"SUCCESS\" category down bellow."
+    },
+    {"type":"text","id":"dismiss_btn_label","label":"Dismiss button label","default":"No thanks"
+    },
+    {"type":"header","content":"Success"
+    },
+    {"type":"text","id":"discount_code","label":"Discount code","default":"EXAMPLE10"
+    },
+    {"type":"text","id":"success_heading_prefix","label":"Heading prefix","default":"Enjoy your"
+    },
+    {"type":"text","id":"success_heading","label":"Heading","default":"DISCOUNT!"
+    },
+    {"type":"select","id":"success_heading_size","options": [
+        {"value":"h3","label":"Extra Small"
+        },
+        {"value":"h2","label":"Small"
+        },
+        {"value":"h1","label":"Medium"
+        },
+        {"value":"h0","label":"Large"
+        }
+      ],"default":"h1","label":"Heading size"
+    },
+    {"type":"text","id":"success_heading_suffix","label":"Heading suffix"
+    },
+    {"type":"richtext","id":"success_text","label":"Text","default":"<p>Use the code bellow to get 10% off your whole order!</p>"
+    },
+    {"type":"text","id":"discount_code_label","label":"Discount code field label","default":"Discount code:"
+    },
+    {"type":"text","id":"copy_button_label","label":"Copy button label","default":"Copy"
+    },
+    {"type":"text","id":"copy_message","label":"Copied successful message","default":"Code copied successfully!"
+    },
+    {"type":"text","id":"success_dismiss_btn_label","label":"Dismiss button label","default":"Close"
+    },
+    {"type":"checkbox","id":"success_display_image","label":"Display image in success mode","default": true
+    }
+  ]
+}
+{% endschema %}

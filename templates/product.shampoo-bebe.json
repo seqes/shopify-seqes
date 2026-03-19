@@ -1,0 +1,941 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "sku_shampoo": {
+          "type": "sku",
+          "settings": {
+            "sku_style": "style_vendor"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "uppercase": false,
+            "show_products_rating": true,
+            "show_custom_badges": false
+          }
+        },
+        "seqes_it_skin_badge": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Limpieza suave para cuero cabelludo sensible",
+            "text_color": "#FAA525",
+            "font_size": 17,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "none",
+            "icon_color": "#00393b",
+            "enable_animation": false
+          }
+        },
+        "seqes_it_claim_1": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "100% libre de sulfatos",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_2": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Activo anticaída COSMOS Approved",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_3": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Base limpiadora derivada del azúcar",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_4": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "96% ingredientes de origen natural",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_5": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Hipoalergénico — estudio clínico",
+            "font_size": 15,
+            "font_weight": "500",
+            "icon_type": "bullet",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "description_shampoo": {
+          "type": "description",
+          "settings": {
+            "seo_text_max_height": 400,
+            "seo_text_read_more": "Leer más",
+            "seo_text_read_less": "Leer menos"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_size": "regular",
+            "color_picker_use_variants": false,
+            "variant_is_disabled": true,
+            "sizing_guide_variant": "Size",
+            "sizing_guide_text": "",
+            "sizing_guide_icon": "none",
+            "sizing_guide_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "outline_button": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "text_guarantee": {
+          "type": "text",
+          "settings": {
+            "text": "GARANTÍA DE 30 DÍAS · DESPACHO GRATIS SOBRE $50.000",
+            "text_style": "style_vendor"
+          }
+        },
+        "faq_safe_shampoo": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Es seguro para bebés y recién nacidos?",
+            "open": false,
+            "content": "<p>Sí. La fórmula fue evaluada en un <strong>estudio clínico con 50 voluntarios</strong> (Instituto Orlandi), confirmando su perfil hipoalergénico con <strong>0% de reacciones adversas</strong>. Su base limpiadora de glucósidos derivados del azúcar es mucho más suave que los sulfatos convencionales.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_sulfate_free": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Por qué es libre de sulfatos?",
+            "open": false,
+            "content": "<p>Los sulfatos (SLS, SLES) son detergentes agresivos que pueden resecar el cuero cabelludo sensible del bebé. Seqes utiliza <strong>glucósidos de origen vegetal</strong> — tensioactivos derivados del azúcar — que limpian eficazmente sin irritar ni alterar el pH natural de la piel.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_hair_loss": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Qué es el activo anticaída AnaGain?",
+            "open": false,
+            "content": "<p><strong>AnaGain</strong> es un activo obtenido del guisante orgánico (<em>Pisum sativum</em>) con certificación <strong>COSMOS Approved</strong>. Actúa estimulando las señales de crecimiento del folículo capilar. En nuestro shampoo, contribuye a fortalecer el cabello desde la raíz.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "side_panel_shampoo": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Ingredientes",
+            "side_panel_1_icon": "check_mark",
+            "side_panel_1_content": "<p>{{ product.metafields.custom.ingredientes | metafield_tag }}</p>",
+            "side_panel_1_page": "",
+            "side_panel_2_label": "Modo de Uso",
+            "side_panel_2_icon": "question_mark",
+            "side_panel_2_content": "<p>{{ product.metafields.custom.modo_de_uso | metafield_tag }}</p>",
+            "side_panel_2_page": "",
+            "side_panel_3_label": "Advertencias",
+            "side_panel_3_icon": "return",
+            "side_panel_3_content": "<p>{{ product.metafields.custom.advertencias | metafield_tag }}</p>",
+            "side_panel_3_page": ""
+          }
+        },
+        "share_shampoo": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "sku_shampoo",
+        "title",
+        "seqes_it_skin_badge",
+        "seqes_it_claim_1",
+        "seqes_it_claim_2",
+        "seqes_it_claim_3",
+        "seqes_it_claim_4",
+        "seqes_it_claim_5",
+        "description_shampoo",
+        "variant_picker",
+        "buy_buttons",
+        "text_guarantee",
+        "faq_safe_shampoo",
+        "faq_sulfate_free",
+        "faq_hair_loss",
+        "side_panel_shampoo",
+        "share_shampoo"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_sticky_info": true,
+        "enable_sticky_add_to_cart": true,
+        "show_taxes_included": true,
+        "media_layout": "thumbnails",
+        "display_slider_pagination": true,
+        "media_aspect_ratio": "adapt",
+        "display_captions": true,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": false
+      }
+    },
+    "logo_list_shampoo": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_sulfatos": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_sulfatos.webp",
+            "link": ""
+          }
+        },
+        "logo_siliconas": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_siliconas.webp",
+            "link": ""
+          }
+        },
+        "logo_parabenos": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_parabenos.webp",
+            "link": ""
+          }
+        },
+        "logo_gluten": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_gluten.webp",
+            "link": ""
+          }
+        },
+        "logo_vegano": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_producto_vegano.webp",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_sulfatos",
+        "logo_siliconas",
+        "logo_parabenos",
+        "logo_gluten",
+        "logo_vegano"
+      ],
+      "settings": {
+        "heading": "",
+        "description": "",
+        "columns": 5,
+        "mobile_swipe": true,
+        "center_align": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "customer_reviews_shampoo": {
+      "type": "seqes-testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "text": "Mi hija tenía el cuero cabelludo muy reseco y con escamas. Desde que usamos Seqes, limpia super suave y ya no le queda irritado. Se nota que es diferente a los shampoos de farmacia.",
+            "author": "Catalina G., mamá de Sofía (10 meses)",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "text": "No tiene olor a nada y eso me encanta. La mayoría de los shampoos de bebé tienen fragancias innecesarias. Este limpia bien, no irrita y el pelo queda suavecito. Muy contenta.",
+            "author": "María José S., mamá de Benjamín (16 meses)",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "text": "Buscaba un shampoo sin sulfatos de verdad para mi bebé. Seqes cumple y además tiene activos anticaída. Lo uso también yo y noto la diferencia. Muy buena calidad.",
+            "author": "Daniela V., mamá de Amanda (2 años)",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "text": "La espuma es suave, no como otros que hacen un montón de espuma con sulfatos. Se nota que es un producto pensado de verdad para pieles sensibles. Lo recomiendo totalmente.",
+            "author": "Constanza M., mamá de Lucas (7 meses)",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4"
+      ],
+      "settings": {
+        "subheading": "Lo que dicen las mamás",
+        "heading": "Opiniones reales de quienes ya probaron Seqes",
+        "columns": 2,
+        "bg_color": "#f5f0eb",
+        "text_color": "#003b3d",
+        "accent_color": "#FAA525",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "layered_images_shampoo": {
+      "type": "layered-images-with-text",
+      "blocks": {
+        "subheading_shampoo": {
+          "type": "subheading",
+          "settings": {
+            "text": "Cuero cabelludo delicado"
+          }
+        },
+        "heading_shampoo": {
+          "type": "heading",
+          "settings": {
+            "text": "El cuero cabelludo del bebé necesita limpieza sin agresión",
+            "heading_size": "h3"
+          }
+        },
+        "text_shampoo": {
+          "type": "text",
+          "settings": {
+            "text": "<p>El cuero cabelludo de los bebés es <strong>más fino y permeable</strong> que el de un adulto. Los sulfatos y detergentes agresivos pueden alterar su pH natural, provocar <strong>resequedad, descamación o costra láctea</strong>.</p><p>Un shampoo suave con <strong>tensioactivos derivados del azúcar</strong> limpia eficazmente sin comprometer la barrera protectora del cuero cabelludo.</p>"
+          }
+        },
+        "button_shampoo": {
+          "type": "button",
+          "settings": {
+            "button_text": "Conoce nuestra fórmula",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_shampoo",
+        "heading_shampoo",
+        "text_shampoo",
+        "button_shampoo"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Baby_Lotion_Webp.webp",
+        "image_ratio": "square",
+        "image_2": "shopify://shop_images/2616858.webp",
+        "image_ratio_2": "adapt",
+        "image_3": "shopify://shop_images/newborn-skin-peeling-1165471859-770x533-1_jpg.webp",
+        "image_ratio_3": "adapt",
+        "full_width": true,
+        "layout": "image_first",
+        "content_alignment": "text-left",
+        "content_position": "middle",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "seqes_claims_marquee_shampoo": {
+      "type": "seqes-claims-marquee",
+      "blocks": {
+        "claim_1": {
+          "type": "claim",
+          "settings": {
+            "text": "Libre de Sulfatos"
+          }
+        },
+        "claim_2": {
+          "type": "claim",
+          "settings": {
+            "text": "Libre de Siliconas"
+          }
+        },
+        "claim_3": {
+          "type": "claim",
+          "settings": {
+            "text": "Libre de Parabenos"
+          }
+        },
+        "claim_4": {
+          "type": "claim",
+          "settings": {
+            "text": "Base de Glucósidos"
+          }
+        },
+        "claim_5": {
+          "type": "claim",
+          "settings": {
+            "text": "COSMOS Approved"
+          }
+        },
+        "claim_6": {
+          "type": "claim",
+          "settings": {
+            "text": "Libre de Fragancia"
+          }
+        },
+        "claim_7": {
+          "type": "claim",
+          "settings": {
+            "text": "Vegano"
+          }
+        },
+        "claim_8": {
+          "type": "claim",
+          "settings": {
+            "text": "Biodegradable"
+          }
+        }
+      },
+      "block_order": [
+        "claim_1",
+        "claim_2",
+        "claim_3",
+        "claim_4",
+        "claim_5",
+        "claim_6",
+        "claim_7",
+        "claim_8"
+      ],
+      "settings": {
+        "speed": "22s",
+        "check_color": "#8E9F78",
+        "font_size": 20,
+        "section_width": "full-width-row"
+      }
+    },
+    "image_with_text_overlay_shampoo": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_science": {
+          "type": "subheading",
+          "settings": {
+            "text": "Activos con certificación internacional"
+          }
+        },
+        "heading_science": {
+          "type": "heading",
+          "settings": {
+            "text": "AnaGain — Activo anticaída COSMOS Approved",
+            "heading_size": "h1-large"
+          }
+        },
+        "text_science": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Obtenido del guisante orgánico (<em>Pisum sativum</em>), <strong>AnaGain</strong> estimula las señales moleculares del folículo capilar para promover el crecimiento del cabello. Un activo validado científicamente con certificación <strong>COSMOS</strong> para cosmética natural.</p>",
+            "description_size": "medium"
+          }
+        },
+        "button_science": {
+          "type": "button",
+          "settings": {
+            "button_text": "Descubre más",
+            "button_link": "",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_science",
+        "heading_science",
+        "text_science",
+        "button_science"
+      ],
+      "settings": {
+        "section_width": "grid",
+        "image": "shopify://shop_images/long-forest-path.jpg",
+        "image_parallax": false,
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "content_width": "large",
+        "content_position": "bottom-center",
+        "text_alignment": "center",
+        "overlay_color": "#003b3d",
+        "overlay_opacity": 50,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "gradient_fade_down_shampoo": {
+      "type": "seqes-gradient-divider",
+      "settings": {
+        "color": "#003B3D",
+        "height": 100,
+        "direction": "bottom_to_top"
+      }
+    },
+    "ingredients_gallery_shampoo": {
+      "type": "gallery",
+      "blocks": {
+        "ingredient_anagain": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Alerce_Webp_Square.webp",
+            "subheading": "Activo anticaída certificado",
+            "title": "AnaGain (Pisum Sativum)",
+            "text": "Péptido vegetal COSMOS Approved que estimula las señales de crecimiento del folículo capilar. Fortalece el cabello desde la raíz.",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "ingredient_murta": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Murta_Webp_Square.webp",
+            "subheading": "Fruto nativo chileno",
+            "title": "Extracto de Murta",
+            "text": "Rico en antioxidantes y vitamina C. Protege el cuero cabelludo y aporta vitalidad al cabello del bebé.",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "ingredient_glucosides": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Skin_Hydration_Webp_Square.webp",
+            "subheading": "Limpieza ultra-suave",
+            "title": "Glucósidos vegetales",
+            "text": "Tensioactivos derivados del azúcar y del coco — 100% origen vegetal. Limpian sin agredir, respetando el pH natural del cuero cabelludo.",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_anagain",
+        "ingredient_murta",
+        "ingredient_glucosides"
+      ],
+      "settings": {
+        "columns_desktop": 3,
+        "section_width": "full-width-row-full",
+        "mobile_swipe": false,
+        "image_ratio": "square",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "column_spacing": "none",
+        "heading_size": "h3",
+        "overlay_color": "#003b3d",
+        "overlay_opacity": 50,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "gradient_fade_up_shampoo": {
+      "type": "seqes-gradient-divider",
+      "settings": {
+        "color": "#003B3D",
+        "height": 100,
+        "direction": "top_to_bottom"
+      }
+    },
+    "results_stats_shampoo": {
+      "type": "results",
+      "blocks": {
+        "stat_natural": {
+          "type": "row",
+          "settings": {
+            "percentage": 96,
+            "row_text": "<p><strong>Ingredientes de origen natural</strong> certificados bajo norma ISO 16128. Base limpiadora de glucósidos vegetales + activos botánicos chilenos.</p>"
+          }
+        },
+        "stat_clinical": {
+          "type": "row",
+          "settings": {
+            "percentage": 100,
+            "row_text": "<p><strong>Tolerancia cutánea confirmada</strong> en estudio clínico con 50 voluntarios (Instituto Orlandi). Cero reacciones adversas reportadas.</p>"
+          }
+        },
+        "stat_surfactants": {
+          "type": "row",
+          "settings": {
+            "percentage": 100,
+            "row_text": "<p><strong>Tensioactivos de origen vegetal.</strong> Lauryl, Decyl y Coco Glucoside — derivados del azúcar y coco, 100% origen natural.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "stat_natural",
+        "stat_clinical",
+        "stat_surfactants"
+      ],
+      "settings": {
+        "visibility": "always-display",
+        "title": "Respaldado por la ciencia",
+        "heading_size": "h1",
+        "text": "<p>Cada ingrediente y cada afirmación está documentada en fichas técnicas y estudios clínicos independientes.</p>",
+        "bg_color": "#003b3d",
+        "text_color": "#ffffff",
+        "layout": "results_second",
+        "results_headline": "Nuestros números",
+        "results_headline_size": "h2",
+        "results_headline_alignment": "left",
+        "caption": "<p>Fuentes: Estudio Hipoalergénico Orlandi, Ficha Técnica AnaGain (Pisum Sativum), Índice de Naturalidad ISO 16128.</p>",
+        "button_label": "",
+        "button_style_secondary": false,
+        "atc_button_label": "",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "comparison_table_shampoo": {
+      "type": "seqes-comparison-table",
+      "blocks": {
+        "row_surfactants": {
+          "type": "row",
+          "settings": {
+            "feature": "Base limpiadora",
+            "seqes_text": "Glucósidos vegetales derivados del azúcar (sin sulfatos)",
+            "market_text": "Sulfatos (SLS/SLES) — detergentes agresivos"
+          }
+        },
+        "row_fragrance": {
+          "type": "row",
+          "settings": {
+            "feature": "Fragancia",
+            "seqes_text": "Sin fragancia ni perfume",
+            "market_text": "Frecuentemente con perfume sintético"
+          }
+        },
+        "row_actives": {
+          "type": "row",
+          "settings": {
+            "feature": "Activos capilares",
+            "seqes_text": "AnaGain anticaída (COSMOS Approved) + Murta + Inulina",
+            "market_text": "Sin activos diferenciados"
+          }
+        },
+        "row_natural": {
+          "type": "row",
+          "settings": {
+            "feature": "Origen natural",
+            "seqes_text": "96% ingredientes de origen natural (ISO 16128)",
+            "market_text": "Porcentaje no declarado"
+          }
+        },
+        "row_clinical": {
+          "type": "row",
+          "settings": {
+            "feature": "Testeo clínico",
+            "seqes_text": "Estudio hipoalergénico con 50 voluntarios (Inst. Orlandi)",
+            "market_text": "Sin estudios clínicos publicados"
+          }
+        },
+        "row_silicones": {
+          "type": "row",
+          "settings": {
+            "feature": "Siliconas",
+            "seqes_text": "Libre de siliconas — no deja residuos en el cabello",
+            "market_text": "Frecuentemente con siliconas que acumulan residuos"
+          }
+        }
+      },
+      "block_order": [
+        "row_surfactants",
+        "row_fragrance",
+        "row_actives",
+        "row_natural",
+        "row_clinical",
+        "row_silicones"
+      ],
+      "settings": {
+        "eyebrow": "Lo que hace diferente a Seqes",
+        "title": "¿Por qué elegir nuestro shampoo?",
+        "intro": "<p>No todos los shampoos para bebé son iguales. La base limpiadora, los activos y la seguridad clínica marcan la diferencia.</p>",
+        "seqes_heading": "Seqes",
+        "market_heading": "Muchos shampoos del mercado",
+        "content_width": 1200,
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "background_color": "#00393b",
+        "frame_color": "#a8e0c0",
+        "text_color": "#ffffff",
+        "muted_color": "#d4e1df",
+        "divider_color": "#2f5c5e"
+      }
+    },
+    "video_shampoo": {
+      "type": "video",
+      "settings": {
+        "heading": "Así se ve la diferencia",
+        "heading_left": false,
+        "description": "<p>Espuma suave, limpieza efectiva y cero irritación. Un shampoo pensado para lo más delicado.</p>",
+        "section_width": "grid",
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": false,
+        "aspect_ratio": "16-9",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "multicolumn_shampoo": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_sulfate_free": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_sulfatos.webp",
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "100% libre de sulfatos",
+            "text": "<p><strong>Base de glucósidos vegetales.</strong> Tensioactivos derivados del azúcar y coco que limpian sin agredir el cuero cabelludo sensible del bebé.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_cosmos": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/logo_hecho_en_chile.webp",
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "Activo COSMOS Approved",
+            "text": "<p><strong>AnaGain (Pisum sativum).</strong> Péptido vegetal con certificación internacional que estimula el crecimiento capilar desde la raíz.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_clinical": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/logo_materiales_sustentables.webp",
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "Clínicamente testeado",
+            "text": "<p><strong>Estudio con 50 voluntarios.</strong> Evaluación hipoalergénica del Instituto Orlandi confirma 0% de reacciones adversas.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_clean": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_crueldad_animal.webp",
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "Clean Beauty vegano",
+            "text": "<p><strong>Fórmula biodegradable.</strong> Sin sulfatos, sin siliconas, sin parabenos, sin fragancia. Vegano y libre de crueldad animal.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "col_sulfate_free",
+        "col_cosmos",
+        "col_clinical",
+        "col_clean"
+      ],
+      "settings": {
+        "heading": "¿Confiarías cualquier shampoo para tu guagua?",
+        "heading_left": false,
+        "description": "",
+        "full_width": true,
+        "display_type": "carousel",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "text_alignment": "center",
+        "heading_size": "h5",
+        "mobile_swipe": true,
+        "show_progress_bar": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "faq_shampoo": {
+      "type": "collapsible-content",
+      "blocks": {
+        "faq_sulfates": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Qué son los sulfatos y por qué evitarlos?",
+            "open": false,
+            "content": "<p>Los <strong>sulfatos (SLS, SLES)</strong> son detergentes económicos que generan mucha espuma pero pueden ser agresivos para el cuero cabelludo. Eliminan los aceites naturales de la piel, causando <strong>resequedad, irritación y descamación</strong>.</p><p>Seqes utiliza <strong>glucósidos de origen vegetal</strong> (Lauryl, Decyl y Coco Glucoside) — tensioactivos derivados del azúcar que limpian eficazmente sin alterar el pH ni resecar el cuero cabelludo del bebé.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_hypo_shampoo": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Es hipoalergénico? ¿Cómo lo saben?",
+            "open": false,
+            "content": "<p>Sí. El perfil hipoalergénico de nuestro shampoo fue confirmado en un <strong>estudio clínico independiente realizado por el Instituto Orlandi</strong> con 50 voluntarios. Los resultados mostraron <strong>0% de reacciones adversas</strong>.</p><p>Esto significa que la fórmula fue diseñada y validada científicamente para minimizar el riesgo de irritación o alergia.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_cradle_cap": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Puede ayudar con la costra láctea?",
+            "open": false,
+            "content": "<p>La costra láctea es una forma de <strong>dermatitis seborreica</strong> común en recién nacidos. Aunque no es una condición médica que un shampoo pueda curar, usar una fórmula <strong>sin sulfatos, sin fragancia y con activos suaves</strong> puede ayudar a no agravar la condición y a mantener el cuero cabelludo limpio sin irritarlo.</p><p>Seqes limpia con glucósidos vegetales suaves e incluye <strong>inulina prebiótica</strong> que apoya el equilibrio del microbioma del cuero cabelludo.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_age_shampoo": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Desde qué edad se puede usar?",
+            "open": false,
+            "content": "<p>Seqes puede utilizarse <strong>desde los primeros meses de vida</strong>. Al no contener sulfatos, fragancia ni ingredientes agresivos, es seguro para el cuero cabelludo delicado de recién nacidos y bebés.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_glucosides": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Qué son los glucósidos y de dónde vienen?",
+            "open": false,
+            "content": "<p>Los <strong>glucósidos</strong> son tensioactivos (agentes limpiadores) derivados de azúcares y aceites vegetales como el coco. A diferencia de los sulfatos, los glucósidos son <strong>100% de origen natural</strong>, biodegradables y especialmente suaves.</p><p>En nuestro shampoo usamos Lauryl Glucoside, Decyl Glucoside y Coco Glucoside — una combinación que limpia eficazmente sin agredir la piel ni el cabello.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_anagain_detail": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿El activo anticaída funciona en bebés?",
+            "open": false,
+            "content": "<p><strong>AnaGain</strong> es un péptido del guisante orgánico (<em>Pisum sativum</em>) con certificación <strong>COSMOS Approved</strong> que estimula las señales de crecimiento del folículo capilar.</p><p>En bebés, su función principal es <strong>fortalecer el cabello desde la raíz</strong> y apoyar un crecimiento saludable. Es un activo seguro, suave y de origen natural que complementa la limpieza delicada del shampoo.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_pharmacy_shampoo": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Cuál es la diferencia con shampoos de farmacia?",
+            "open": false,
+            "content": "<p>La mayoría de shampoos de farmacia para bebé usan <strong>sulfatos como base limpiadora</strong> y contienen fragancias sintéticas. Seqes se diferencia por:</p><p>• <strong>Glucósidos vegetales</strong> en vez de sulfatos<br/>• <strong>Activo anticaída AnaGain</strong> con certificación COSMOS<br/>• <strong>96% ingredientes de origen natural</strong> (ISO 16128)<br/>• <strong>Estudio hipoalergénico</strong> con 0% reacciones adversas<br/>• <strong>Sin fragancia, sin siliconas, sin parabenos</strong></p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_sulfates",
+        "faq_hypo_shampoo",
+        "faq_cradle_cap",
+        "faq_age_shampoo",
+        "faq_glucosides",
+        "faq_anagain_detail",
+        "faq_pharmacy_shampoo"
+      ],
+      "settings": {
+        "heading": "Preguntas frecuentes",
+        "description": "<p>Todo lo que necesitas saber sobre nuestro shampoo y el cuidado del cuero cabelludo de tu bebé.</p>",
+        "uppercase_heading": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_bottom_shampoo": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 5,
+        "border_separator": true,
+        "border_separator_full": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Completa el cuidado de tu bebé",
+        "heading_left": false,
+        "description": "<p>Combina nuestro shampoo con la crema corporal Seqes para una rutina completa de protección e hidratación.</p>",
+        "full_width": false,
+        "mobile_swipe": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main-product",
+    "logo_list_shampoo",
+    "customer_reviews_shampoo",
+    "layered_images_shampoo",
+    "seqes_claims_marquee_shampoo",
+    "image_with_text_overlay_shampoo",
+    "gradient_fade_down_shampoo",
+    "ingredients_gallery_shampoo",
+    "gradient_fade_up_shampoo",
+    "results_stats_shampoo",
+    "comparison_table_shampoo",
+    "video_shampoo",
+    "multicolumn_shampoo",
+    "faq_shampoo",
+    "spacer_bottom_shampoo",
+    "product-recommendations"
+  ]
+}
