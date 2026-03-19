@@ -1,1 +1,322 @@
-{"sections":{"16479477632637c9a7":{"type":"slideshow","blocks":{"164794776393e76b8e-2":{"type":"slide","settings":{"slide_link":"","video_background":true,"video":"","subheading":"Clinica Veterinaria Las Condes","heading":"Nuevo nombre, Nueva Web","heading_size":"h1-xlarge","content":"Clínica Veterinaria Las Condes ahora es Vetlascondes","description_size":"large","content_position":"middle-center","text_alignment":"center","content_size":"medium","overlay_color":"#000000","overlay_opacity":100,"overlay_gradient":"linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)","button_1_text":"","button_1_link":"","button_1_outline":true,"button_2_text":"","button_2_link":"","button_2_outline":false}},"164794776393e76b8e-1":{"type":"slide","settings":{"slide_link":"","video_background":false,"video":"","subheading":"","heading":"¿Que podrás hacer ahora?","heading_size":"h1-xlarge","content":"Reservar hora con nuestros especialistas, acceso a promociones, noticias y mucho más!","description_size":"medium","content_position":"middle-center","text_alignment":"center","content_size":"medium","overlay_color":"#000000","overlay_opacity":20,"overlay_gradient":"","button_1_text":"Nuestro Especialistas","button_1_link":"shopify:\/\/collections\/nuestros-profesionales","button_1_outline":true,"button_2_text":"Nuestros Servicios","button_2_link":"shopify:\/\/collections\/especialidades-medicas","button_2_outline":false}}},"block_order":["164794776393e76b8e-2","164794776393e76b8e-1"],"settings":{"desktop_height":"desktop-height-550","mobile_height":"mobile-height-500","full_width":true,"autoplay":true,"autoplay_length":10,"transition":"swipe","disable_top_spacing":true,"disable_bottom_spacing":true}},"text_with_icons_LnLpLT":{"type":"text-with-icons","blocks":{"icon_XEwUyz":{"type":"icon","settings":{"icon":"ruler","heading":"Hospital Veterinario","text":"<p>Mon - Sat, 10am - 9pm<\/p>"}},"icon_9PGdGg":{"type":"icon","settings":{"icon":"ruler","heading":"Nutrición Profesional","text":""}},"icon_Leed3p":{"type":"icon","settings":{"icon":"ruler","heading":"Medicina Preventiva","text":""}},"icon_aR8RkC":{"type":"icon","settings":{"icon":"ruler","heading":"Cuidado","text":""}}},"block_order":["icon_XEwUyz","icon_9PGdGg","icon_Leed3p","icon_aR8RkC"],"settings":{"text_alignment":"left","icon_position":"left","icon_size":"xlarge","heading_size":"medium","mobile_swipe":false,"color_bg":"#ffffff","color_heading":"{{ shop.brand.colors.primary[0].background }}","color_text":"{{ shop.brand.colors.primary[0].background }}","disable_top_spacing":true,"disable_bottom_spacing":true}},"scrolling_images_VBUDfd":{"type":"scrolling-images","blocks":{"image_epKRim":{"type":"image","settings":{"link":"","heading":"","text":""}},"image_tdm7YY":{"type":"image","settings":{"link":"","heading":"","text":""}},"image_LTtknF":{"type":"image","settings":{"link":"","heading":"","text":""}}},"block_order":["image_epKRim","image_tdm7YY","image_LTtknF"],"settings":{"image_ratio":"adapt","column_spacing":"none","image_alignment":"top","direction":"left","speed":"50s","disable_top_spacing":true,"disable_bottom_spacing":true}},"16614195534fb74bc3":{"type":"collection-tabs","blocks":{"9dc5629d-3c1a-4dcc-b25a-0aa3972a2cb7":{"type":"collection","settings":{"collection":"especialidades-medicas","enable_promotion":false,"title":"Servicios Veterinarios","text":"","link_label":"Explore","content_position":"bottom-left","text_alignment":"left","link":"","use_text_button":false,"block_link":"","overlay_color":"{{ shop.brand.colors.primary[0].background }}","overlay_opacity":70}},"8695b758-8543-4e57-bb17-1249221a1269":{"type":"collection","settings":{"collection":"nuestros-profesionales","enable_promotion":false,"title":"Promotion heading","text":"Advertise a promotion or a sale","link_label":"Explore","content_position":"bottom-left","text_alignment":"left","link":"","use_text_button":false,"block_link":"","overlay_color":"#000000","overlay_opacity":70}}},"block_order":["9dc5629d-3c1a-4dcc-b25a-0aa3972a2cb7","8695b758-8543-4e57-bb17-1249221a1269"],"custom_css":[".price {display: none;}",".product-card-title {color: #0f32a5;}",".collection-tabs__list-link {color: #0f32a5;}"],"settings":{"heading":"¿En que te podemos ayudar?","heading_left":true,"description":"<p>Más abajo encontrarás nuestros servicios y a nuestros profesionales<\/p>","full_width":true,"product_limit":16,"columns_desktop":5,"show_view_all":false,"show_progress_bar":false,"disable_top_spacing":true,"disable_bottom_spacing":true}},"16626364694d37e9d5":{"type":"spacer","settings":{"spacer_mobile":30,"spacer_desktop":30,"border_separator":false,"border_separator_full":false}},"16615358507b6ff1a8":{"type":"testimonials","blocks":{"60961cb1-416e-4c98-a9ec-2a41dfae8911":{"type":"quote","settings":{"stars":"4.5","text":"Rocky fue diagnosticado con displasia de cadera y en Clínica Veterinaria Las Condes encontramos no solo un diagnóstico certero, sino también un plan integral de rehabilitación. El equipo de traumatología y fisioterapia fue increíble. Ahora Rocky camina mucho mejor y sin dolor. ¡Gracias por devolverle su calidad de vida!","author":"Carolina G. – Dueña de Rocky, labrador de 7 años"}},"2bf39bcc-dfc9-43ae-b6a4-9cecdb3197c9":{"type":"quote","settings":{"stars":"4","text":"Lila tuvo una caída y terminó con una fractura complicada. En la Clínica Veterinaria Las Condes la atendieron con cirugía ortopédica y el postoperatorio fue excelente. Se nota el nivel de especialización. Hoy está completamente recuperada y como si nada hubiera pasado.","author":"Andrés M. – Dueño de Lila, gata de 4 años"}},"f0e5414e-308c-4a64-91b5-1f08b8650731":{"type":"quote","settings":{"stars":"5","text":"Llevamos a Mía por una alergia persistente en la piel. Después de varios intentos fallidos en otros lugares, aquí nos atendió un dermatólogo veterinario que realmente supo lo que hacía. El tratamiento funcionó perfecto y ahora está feliz y sin picazón. 100% recomendados.","author":"Sebastián R. – Dueño de Mía, bulldog francés de 2 años"}},"quote_EV7gam":{"type":"quote","settings":{"stars":"4","text":"Mi gato fue diagnosticado con una miocardiopatía y gracias al cardiólogo de la clínica pudimos detectarlo a tiempo. Le hicieron un ecocardiograma y ahora está bajo tratamiento controlado. La atención fue muy clara y empática. Total confianza en el equipo.","author":"Patricia E. – Dueña de Coco, gato persa de 9 años"}},"quote_UB6inc":{"type":"quote","settings":{"stars":"4.5","text":"Nos preocupaba mucho la salud de Bruno por su edad y su insuficiencia renal. En la Clínica Las Condes nos ofrecieron un seguimiento especializado con medicina interna y nutrición clínica. El trato fue humano, cercano y muy profesional. Bruno está estable y con mejor ánimo que nunca.","author":"Fernanda L. – Dueña de Bruno, mestizo senior de 12 años"}},"quote_63waPK":{"type":"quote","settings":{"stars":"5","text":"Llevé a Nube para su esterilización y el proceso fue impecable. Desde la recepción hasta el postoperatorio. Me explicaron todo y estuvieron atentos a su recuperación. Además, el ambiente está diseñado para que los gatos estén tranquilos. ¡Volvería sin dudarlo!","author":"Joaquín T. – Dueño de Nube, gatita de 8 meses"}}},"block_order":["60961cb1-416e-4c98-a9ec-2a41dfae8911","2bf39bcc-dfc9-43ae-b6a4-9cecdb3197c9","f0e5414e-308c-4a64-91b5-1f08b8650731","quote_EV7gam","quote_UB6inc","quote_63waPK"],"settings":{"full_width":true,"text_size":"small","pagination":"dots","autoplay":true,"autoplay_length":5,"color_bg":"{{ shop.brand.colors.primary[0].background }}","color_text":"{{ shop.brand.colors.primary[0].foreground }}","disable_top_spacing":true,"disable_bottom_spacing":true}},"17448292357e3dbb0f":{"type":"apps","settings":{"section_width":"grid","disable_top_spacing":true,"disable_bottom_spacing":true}},"featured_blog_nKAWcc":{"type":"featured-blog","settings":{"heading":"","heading_left":true,"description":"","full_width":true,"blog":"blogs","post_limit":3,"columns_desktop":3,"mobile_swipe":true,"image_ratio":"adapt","show_date":false,"show_excerpt":true,"show_view_all":false,"disable_top_spacing":false,"disable_bottom_spacing":true}}},"order":["16479477632637c9a7","text_with_icons_LnLpLT","scrolling_images_VBUDfd","16614195534fb74bc3","16626364694d37e9d5","16615358507b6ff1a8","17448292357e3dbb0f","featured_blog_nKAWcc"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16479477632637c9a7": {
+      "type": "slideshow",
+      "blocks": {
+        "164794776393e76b8e-2": {
+          "type": "slide",
+          "settings": {
+            "slide_link": "",
+            "video_background": true,
+            "video": "",
+            "subheading": "Innovación dermocosmética hecha en Chile",
+            "heading": "Nuevo nombre, Nueva Web",
+            "heading_size": "h1-xlarge",
+            "content": "Clínica Veterinaria Las Condes ahora es Vetlascondes",
+            "description_size": "large",
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "content_size": "medium",
+            "overlay_color": "#000000",
+            "overlay_opacity": 100,
+            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_outline": true,
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "164794776393e76b8e-2"
+      ],
+      "settings": {
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "full_width": true,
+        "autoplay": true,
+        "autoplay_length": 10,
+        "transition": "swipe",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "text_with_icons_LnLpLT": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon_XEwUyz": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/logo_disenado_para_bebe.webp",
+            "heading": "Diseñados para Bebé",
+            "text": "<p>Mon - Sat, 10am - 9pm</p>"
+          }
+        },
+        "icon_9PGdGg": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/logo_indice_origen_natural.webp",
+            "heading": "Fórmulas Naturales",
+            "text": ""
+          }
+        },
+        "icon_Leed3p": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/logo_hecho_en_chile.webp",
+            "heading": "Hecho y Diseñado en Chile",
+            "text": ""
+          }
+        },
+        "icon_aR8RkC": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/logo_dermatologicamente_testeado.webp",
+            "heading": "Calidad certificada con Estudios Clínicos",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_XEwUyz",
+        "icon_9PGdGg",
+        "icon_Leed3p",
+        "icon_aR8RkC"
+      ],
+      "settings": {
+        "text_alignment": "left",
+        "icon_position": "left",
+        "icon_size": "xlarge",
+        "heading_size": "medium",
+        "mobile_swipe": false,
+        "color_bg": "#ffffff",
+        "color_heading": "{{ shop.brand.colors.primary[0].background }}",
+        "color_text": "{{ shop.brand.colors.primary[0].background }}",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "image_with_text_Yzgcbq": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_rfKN6i": {
+          "type": "subheading",
+          "settings": {
+            "text": "Add a tagline"
+          }
+        },
+        "heading_thYRDK": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text",
+            "heading_size": "h3"
+          }
+        },
+        "text_TLUjBG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "description_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_rfKN6i",
+        "heading_thYRDK",
+        "text_TLUjBG"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "video_controls": true,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "section_width": "grid",
+        "layout": "image_first",
+        "content_position": "text-left",
+        "color_bg": "#ffffff",
+        "color_text": "#151515",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "countdown_banner_c3jjcG": {
+      "type": "countdown-banner",
+      "name": "Countdown banner",
+      "settings": {
+        "section_width": "full-width-row-full",
+        "section_layout": "horizontal",
+        "desktop_height": "desktop-height-auto",
+        "mobile_height": "mobile-height-auto",
+        "subheading": "¿Listo/a para el lanzamiento?",
+        "heading": "¿Cuanto queda?",
+        "heading_size": "h2",
+        "content": "domingo 17 de mayo a las 21:00 hrs",
+        "content_size": "medium",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "timer_year": 2026,
+        "timer_month": "05",
+        "timer_day": "17",
+        "timer_hour": "21",
+        "timer_minute": "00",
+        "color_bg": "#f5f3ef",
+        "color_text": "#151515",
+        "overlay_color": "#000000",
+        "overlay_opacity": 10,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "image_banner_9JVY8Y": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_8zpFXU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_x3UQYr": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_7TYB6Y": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Crema Corporal",
+            "button_link_1": "shopify://products/crema-corporal",
+            "button_style_secondary_1": false,
+            "button_label_2": "Jabón & Shampoo",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8zpFXU",
+        "text_x3UQYr",
+        "buttons_7TYB6Y"
+      ],
+      "name": "Name",
+      "settings": {
+        "visibility": "always-display",
+        "image_1_visibility": "always-display",
+        "image_2_visibility": "always-display",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "bg_color": "#ffffff",
+        "text_color": "#003b3d",
+        "transparent_container_color": "white",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "16615358507b6ff1a8": {
+      "type": "testimonials",
+      "blocks": {
+        "60961cb1-416e-4c98-a9ec-2a41dfae8911": {
+          "type": "quote",
+          "settings": {
+            "stars": "4.5",
+            "text": "Rocky fue diagnosticado con displasia de cadera y en Clínica Veterinaria Las Condes encontramos no solo un diagnóstico certero, sino también un plan integral de rehabilitación. El equipo de traumatología y fisioterapia fue increíble. Ahora Rocky camina mucho mejor y sin dolor. ¡Gracias por devolverle su calidad de vida!",
+            "author": "Carolina G. – Dueña de Rocky, labrador de 7 años"
+          }
+        },
+        "2bf39bcc-dfc9-43ae-b6a4-9cecdb3197c9": {
+          "type": "quote",
+          "settings": {
+            "stars": "4",
+            "text": "Lila tuvo una caída y terminó con una fractura complicada. En la Clínica Veterinaria Las Condes la atendieron con cirugía ortopédica y el postoperatorio fue excelente. Se nota el nivel de especialización. Hoy está completamente recuperada y como si nada hubiera pasado.",
+            "author": "Andrés M. – Dueño de Lila, gata de 4 años"
+          }
+        },
+        "f0e5414e-308c-4a64-91b5-1f08b8650731": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Llevamos a Mía por una alergia persistente en la piel. Después de varios intentos fallidos en otros lugares, aquí nos atendió un dermatólogo veterinario que realmente supo lo que hacía. El tratamiento funcionó perfecto y ahora está feliz y sin picazón. 100% recomendados.",
+            "author": "Sebastián R. – Dueño de Mía, bulldog francés de 2 años"
+          }
+        },
+        "quote_EV7gam": {
+          "type": "quote",
+          "settings": {
+            "stars": "4",
+            "text": "Mi gato fue diagnosticado con una miocardiopatía y gracias al cardiólogo de la clínica pudimos detectarlo a tiempo. Le hicieron un ecocardiograma y ahora está bajo tratamiento controlado. La atención fue muy clara y empática. Total confianza en el equipo.",
+            "author": "Patricia E. – Dueña de Coco, gato persa de 9 años"
+          }
+        },
+        "quote_UB6inc": {
+          "type": "quote",
+          "settings": {
+            "stars": "4.5",
+            "text": "Nos preocupaba mucho la salud de Bruno por su edad y su insuficiencia renal. En la Clínica Las Condes nos ofrecieron un seguimiento especializado con medicina interna y nutrición clínica. El trato fue humano, cercano y muy profesional. Bruno está estable y con mejor ánimo que nunca.",
+            "author": "Fernanda L. – Dueña de Bruno, mestizo senior de 12 años"
+          }
+        },
+        "quote_63waPK": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Llevé a Nube para su esterilización y el proceso fue impecable. Desde la recepción hasta el postoperatorio. Me explicaron todo y estuvieron atentos a su recuperación. Además, el ambiente está diseñado para que los gatos estén tranquilos. ¡Volvería sin dudarlo!",
+            "author": "Joaquín T. – Dueño de Nube, gatita de 8 meses"
+          }
+        }
+      },
+      "block_order": [
+        "60961cb1-416e-4c98-a9ec-2a41dfae8911",
+        "2bf39bcc-dfc9-43ae-b6a4-9cecdb3197c9",
+        "f0e5414e-308c-4a64-91b5-1f08b8650731",
+        "quote_EV7gam",
+        "quote_UB6inc",
+        "quote_63waPK"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_size": "small",
+        "pagination": "dots",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "{{ shop.brand.colors.primary[0].background }}",
+        "color_text": "{{ shop.brand.colors.primary[0].foreground }}",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    }
+  },
+  "order": [
+    "16479477632637c9a7",
+    "text_with_icons_LnLpLT",
+    "image_with_text_Yzgcbq",
+    "countdown_banner_c3jjcG",
+    "image_banner_9JVY8Y",
+    "16615358507b6ff1a8"
+  ]
+}
