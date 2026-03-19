@@ -384,9 +384,11 @@
         "user_iktzdg": {
           "type": "user",
           "settings": {
-            "username": "username",
-            "verified": false,
+            "username": "cl89santeli",
+            "verified": true,
+            "profile_picture": "shopify://shop_images/Foto_Mujer_Chilena_3.webp",
             "close_friends": false,
+            "story_1_image": "shopify://shop_images/Foto_Mujer_Chilena_1.webp",
             "story_1_media_fit": "contain",
             "story_1_time_posted": "10m",
             "story_1_bg": "#282828",
@@ -401,8 +403,9 @@
         "user_aDnHLC": {
           "type": "user",
           "settings": {
-            "username": "username",
+            "username": "ramosilla",
             "verified": false,
+            "profile_picture": "shopify://shop_images/Foto_Hombre_Chileno_4.webp",
             "close_friends": false,
             "story_1_media_fit": "contain",
             "story_1_time_posted": "10m",
@@ -418,9 +421,10 @@
         "user_dTXRUG": {
           "type": "user",
           "settings": {
-            "username": "username",
-            "verified": false,
-            "close_friends": false,
+            "username": "arosa83",
+            "verified": true,
+            "profile_picture": "shopify://shop_images/Foto_Mujer_Chilena_5.webp",
+            "close_friends": true,
             "story_1_media_fit": "contain",
             "story_1_time_posted": "10m",
             "story_1_bg": "#282828",
@@ -441,169 +445,16 @@
       "name": "Instagram stories",
       "settings": {
         "visibility": "always-display",
-        "title": "Instagram stories",
+        "title": "Ellos se la jugaron primero",
         "heading_size": "h2",
-        "text": "<p>Display images and testimonials in a format familiar to your customers.</p>",
+        "text": "<p>Ahora no la cambian por nada</p>",
         "button_label": "",
         "link": "",
         "bg_color": "#ffffff",
-        "text_color": "#121212",
+        "text_color": "#003b3d",
         "autoplay_speed": 10,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "testimonials_3eWjHg": {
-      "type": "testimonials",
-      "blocks": {
-        "quote_ENNa6W": {
-          "type": "quote",
-          "settings": {
-            "stars": "4.5",
-            "text": "Cuando me contactaron pa probar la crema pense 'ya otra marca mas'. Pero la Emi tenia las piernitas super resecas y con Seqes se le noto la diferencia como a la semana. No tiene olor, se absorbe al toque y no deja esa cosa grasa. Ahora la recomiendo a todas las mamas del jardin.",
-            "author": "Valentina Espinoza, mamá de Emilia (8 meses)"
-          }
-        },
-        "quote_NPKM3M": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Mi señora me metio en esto de probar la crema y al principio era como ya dale. Pero despues de un mes la piel del Mati esta mas suavecita y sin rojeces. El formato 250ml se acaba rapido, ojala saquen uno mas grande. Pero el producto en si es brigido.",
-            "author": "Martín Sepúlveda, papá de Matías (14 meses)"
-          }
-        },
-        "quote_D3waLP": {
-          "type": "quote",
-          "settings": {
-            "stars": "4",
-            "text": "Me llego como 10 dias tarde asi q ahi le bajo la nota jaja. Pero la crema es otra cosa. Lei todos los ingredientes antes de usarla y todo se entiende, nada raro. La Isi tenia dermatitis y ahora esta mil veces mejor. Contenta de haber confiado.",
-            "author": "Francisca Retamal, mamá de Isidora (2 años)"
-          }
-        }
-      },
-      "block_order": [
-        "quote_ENNa6W",
-        "quote_NPKM3M",
-        "quote_D3waLP"
-      ],
-      "name": "Testimonials",
-      "settings": {
-        "full_width": true,
-        "text_size": "small",
-        "pagination": "dots",
-        "autoplay": true,
-        "autoplay_length": 7,
-        "color_bg": "#003b3d",
-        "color_text": "#ffffff",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "customer_reviews_social_proof": {
-      "type": "seqes-testimonials",
-      "blocks": {
-        "review_1": {
-          "type": "testimonial",
-          "settings": {
-            "stars": 5,
-            "text": "La piel de mi bebé estaba constantemente irritada y reseca. Desde que usamos Seqes, la diferencia se nota desde la primera semana. Por fin puedo estar tranquila después del baño.",
-            "author": "Valentina M., mamá de Emilia (8 meses)",
-            "verified": true,
-            "badge_text": "Compra verificada"
-          }
-        },
-        "review_2": {
-          "type": "testimonial",
-          "settings": {
-            "stars": 5,
-            "text": "Probé muchas cremas y todas tenían perfume o dejaban la piel grasa. Seqes no tiene aroma, se absorbe al toque y la piel de mi hijo queda suave todo el día. Cero irritación.",
-            "author": "Francisca R., mamá de Tomás (14 meses)",
-            "verified": true,
-            "badge_text": "Compra verificada"
-          }
-        },
-        "review_3": {
-          "type": "testimonial",
-          "settings": {
-            "stars": 5,
-            "text": "Mi dermatóloga me recomendó buscar una crema hipoalergénica sin parabenos para la dermatitis de mi hija. Seqes cumple con todo y además es natural. Totalmente recomendada.",
-            "author": "Carolina P., mamá de Isidora (2 años)",
-            "verified": true,
-            "badge_text": "Compra verificada"
-          }
-        },
-        "review_4": {
-          "type": "testimonial",
-          "settings": {
-            "stars": 5,
-            "text": "Lo que más me gusta es que puedo leer los ingredientes y entender qué le estoy poniendo a mi guagua. Se nota la calidad. La uso después de cada baño y la piel se ve sana y protegida.",
-            "author": "Javiera L., mamá de Matías (5 meses)",
-            "verified": true,
-            "badge_text": "Compra verificada"
-          }
-        }
-      },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3",
-        "review_4"
-      ],
-      "settings": {
-        "subheading": "Lo que dicen las mamás",
-        "heading": "Opiniones reales de quienes ya probaron Seqes",
-        "columns": 2,
-        "bg_color": "#f5f0eb",
-        "text_color": "#003b3d",
-        "accent_color": "#faa525",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "testimonials_tnxED7": {
-      "type": "testimonials",
-      "blocks": {
-        "quote_AKXP48": {
-          "type": "quote",
-          "settings": {
-            "stars": "4.5",
-            "text": "Add your customer or client quote here to showcase them.",
-            "author": "Testimonial author"
-          }
-        },
-        "quote_wERVwp": {
-          "type": "quote",
-          "settings": {
-            "stars": "",
-            "text": "Add your customer or client quote here to showcase them.",
-            "author": "Testimonial author"
-          }
-        },
-        "quote_BCawLX": {
-          "type": "quote",
-          "settings": {
-            "stars": "",
-            "text": "Add your customer or client quote here to showcase them.",
-            "author": "Testimonial author"
-          }
-        }
-      },
-      "block_order": [
-        "quote_AKXP48",
-        "quote_wERVwp",
-        "quote_BCawLX"
-      ],
-      "name": "Testimonials",
-      "settings": {
-        "full_width": true,
-        "text_size": "medium",
-        "pagination": "dots",
-        "autoplay": true,
-        "autoplay_length": 5,
-        "color_bg": "rgba(0,0,0,0)",
-        "color_text": "#151515",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "layered_images_with_text_tXj8WJ": {
@@ -657,6 +508,59 @@
         "disable_bottom_spacing": false
       }
     },
+    "image_with_text_overlay_HWBgTc": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_yJThir": {
+          "type": "subheading",
+          "settings": {
+            "text": "Biotecnología vegetal avanzada"
+          }
+        },
+        "heading_GJ9UWj": {
+          "type": "heading",
+          "settings": {
+            "text": "Células madre de Alerce milenario",
+            "heading_size": "h1-large"
+          }
+        },
+        "text_H9QAVW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mediante <strong>clonación de células madre vegetales</strong>, la ciencia permite replicar las propiedades regenerativas del Alerce — uno de los árboles más longevos del planeta — sin dañar el árbol original. Un proceso de <strong>biotecnología sostenible que ahorra un 99% de agua</strong> en su producción.</p><p></p>",
+            "description_size": "medium"
+          }
+        },
+        "button_rKfiTF": {
+          "type": "button",
+          "settings": {
+            "button_text": "Descubre más",
+            "button_link": "",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_yJThir",
+        "heading_GJ9UWj",
+        "text_H9QAVW",
+        "button_rKfiTF"
+      ],
+      "settings": {
+        "section_width": "full-width-row-full",
+        "image": "shopify://shop_images/long-forest-path.jpg",
+        "image_parallax": true,
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "content_width": "large",
+        "content_position": "bottom-center",
+        "text_alignment": "center",
+        "overlay_color": "#003b3d",
+        "overlay_opacity": 50,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "before_after_image_Qf9kMC": {
       "type": "before-after-image",
       "blocks": {
@@ -702,134 +606,114 @@
         "disable_bottom_spacing": false
       }
     },
+    "seqes_gradient_divider_9X8qrf": {
+      "type": "seqes-gradient-divider",
+      "settings": {
+        "color": "#003b3d",
+        "height": 100,
+        "direction": "bottom_to_top"
+      }
+    },
+    "testimonials_3eWjHg": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_ENNa6W": {
+          "type": "quote",
+          "settings": {
+            "stars": "4.5",
+            "text": "Cuando me contactaron pa probar la crema pense 'ya otra marca mas'. Pero la Emi tenia las piernitas super resecas y con Seqes se le noto la diferencia como a la semana. No tiene olor, se absorbe al toque y no deja esa cosa grasa. Ahora la recomiendo a todas las mamas del jardin.",
+            "author": "Valentina Espinoza, mamá de Emilia (8 meses)"
+          }
+        },
+        "quote_NPKM3M": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Mi señora me metio en esto de probar la crema y al principio era como ya dale. Pero despues de un mes la piel del Mati esta mas suavecita y sin rojeces. El formato 250ml se acaba rapido, ojala saquen uno mas grande. Pero el producto en si es brigido.",
+            "author": "Martín Sepúlveda, papá de Matías (14 meses)"
+          }
+        },
+        "quote_D3waLP": {
+          "type": "quote",
+          "settings": {
+            "stars": "4",
+            "text": "Me llego como 10 dias tarde asi q ahi le bajo la nota jaja. Pero la crema es otra cosa. Lei todos los ingredientes antes de usarla y todo se entiende, nada raro. La Isi tenia dermatitis y ahora esta mil veces mejor. Contenta de haber confiado.",
+            "author": "Francisca Retamal, mamá de Isidora (2 años)"
+          }
+        }
+      },
+      "block_order": [
+        "quote_ENNa6W",
+        "quote_NPKM3M",
+        "quote_D3waLP"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "full_width": true,
+        "text_size": "small",
+        "pagination": "dots",
+        "autoplay": true,
+        "autoplay_length": 7,
+        "color_bg": "#003b3d",
+        "color_text": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "seqes_gradient_divider_fanEdT": {
+      "type": "seqes-gradient-divider",
+      "settings": {
+        "color": "#003b3d",
+        "height": 100,
+        "direction": "top_to_bottom"
+      }
+    },
     "seqes_claims_marquee": {
       "type": "seqes-claims-marquee",
       "blocks": {
         "claim_1": {
           "type": "claim",
           "settings": {
-            "text": "Libre de Gluten"
-          }
-        },
-        "claim_2": {
-          "type": "claim",
-          "settings": {
-            "text": "Libre de Sulfatos"
+            "text": "Despacho gratis sobre $50.000"
           }
         },
         "claim_3": {
           "type": "claim",
           "settings": {
-            "text": "Libre de Parabenos"
+            "text": "Respaldada por Estudios Clínicos"
+          }
+        },
+        "claim_R89J3q": {
+          "type": "claim",
+          "settings": {
+            "text": "Garantía de satisfacción"
+          }
+        },
+        "claim_2": {
+          "type": "claim",
+          "settings": {
+            "text": "Despacho a todo Chile"
           }
         },
         "claim_4": {
           "type": "claim",
           "settings": {
-            "text": "Libre de Ftalatos"
-          }
-        },
-        "claim_5": {
-          "type": "claim",
-          "settings": {
-            "text": "Libre de Siliconas"
-          }
-        },
-        "claim_6": {
-          "type": "claim",
-          "settings": {
-            "text": "Libre de Fragancia"
-          }
-        },
-        "claim_7": {
-          "type": "claim",
-          "settings": {
-            "text": "Vegano"
-          }
-        },
-        "claim_8": {
-          "type": "claim",
-          "settings": {
-            "text": "Biodegradable"
+            "text": "Fórmula certificada por ISP"
           }
         }
       },
       "block_order": [
         "claim_1",
-        "claim_2",
         "claim_3",
-        "claim_4",
-        "claim_5",
-        "claim_6",
-        "claim_7",
-        "claim_8"
+        "claim_R89J3q",
+        "claim_2",
+        "claim_4"
       ],
       "settings": {
         "speed": "22s",
         "check_color": "#8e9f78",
         "font_size": 20,
         "section_width": "full-width-row"
-      }
-    },
-    "image_with_text_overlay_HWBgTc": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_yJThir": {
-          "type": "subheading",
-          "settings": {
-            "text": "Biotecnología vegetal avanzada"
-          }
-        },
-        "heading_GJ9UWj": {
-          "type": "heading",
-          "settings": {
-            "text": "Células madre de Alerce milenario",
-            "heading_size": "h1-large"
-          }
-        },
-        "text_H9QAVW": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Mediante <strong>clonación de células madre vegetales</strong>, la ciencia permite replicar las propiedades regenerativas del Alerce — uno de los árboles más longevos del planeta — sin dañar el árbol original. Un proceso de <strong>biotecnología sostenible que ahorra un 99% de agua</strong> en su producción.</p>",
-            "description_size": "medium"
-          }
-        },
-        "button_rKfiTF": {
-          "type": "button",
-          "settings": {
-            "button_text": "Descubre más",
-            "button_link": "",
-            "button_outline": false
-          }
-        }
-      },
-      "block_order": [
-        "subheading_yJThir",
-        "heading_GJ9UWj",
-        "text_H9QAVW",
-        "button_rKfiTF"
-      ],
-      "settings": {
-        "section_width": "grid",
-        "image": "shopify://shop_images/long-forest-path.jpg",
-        "image_parallax": false,
-        "desktop_height": "desktop-height-550",
-        "mobile_height": "mobile-height-500",
-        "content_width": "large",
-        "content_position": "bottom-center",
-        "text_alignment": "center",
-        "overlay_color": "#003b3d",
-        "overlay_opacity": 50,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "seqes_gradient_fade_down": {
-      "type": "seqes-gradient-divider",
-      "settings": {
-        "color": "#003b3d",
-        "height": 100,
-        "direction": "bottom_to_top"
       }
     },
     "ingredients_gallery": {
@@ -896,155 +780,6 @@
         "overlay_opacity": 50,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
-      }
-    },
-    "seqes_gradient_fade_up": {
-      "type": "seqes-gradient-divider",
-      "settings": {
-        "color": "#003b3d",
-        "height": 100,
-        "direction": "top_to_bottom"
-      }
-    },
-    "results_stats": {
-      "type": "results",
-      "blocks": {
-        "stat_natural": {
-          "type": "row",
-          "settings": {
-            "percentage": 96,
-            "row_text": "<p><strong>Ingredientes de origen natural</strong> certificados bajo norma ISO 16128. Fórmula basada en agua, aceite de almendras, manteca de karité y activos botánicos.</p>"
-          }
-        },
-        "stat_volunteers": {
-          "type": "row",
-          "settings": {
-            "percentage": 100,
-            "row_text": "<p><strong>Tolerancia cutánea confirmada</strong> en estudio clínico con 50 voluntarios (Instituto Orlandi). Cero reacciones adversas reportadas.</p>"
-          }
-        },
-        "stat_water": {
-          "type": "row",
-          "settings": {
-            "percentage": 99,
-            "row_text": "<p><strong>Ahorro de agua</strong> en la producción de nuestro activo estrella Cobiostem Alerce, obtenido mediante biotecnología vegetal sostenible.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "stat_natural",
-        "stat_volunteers",
-        "stat_water"
-      ],
-      "settings": {
-        "visibility": "always-display",
-        "title": "Respaldado por la ciencia",
-        "heading_size": "h1",
-        "text": "<p>Cada dato está documentado en fichas técnicas y estudios clínicos independientes. No hacemos afirmaciones sin respaldo.</p>",
-        "bg_color": "#003b3d",
-        "text_color": "#ffffff",
-        "layout": "results_second",
-        "results_headline": "Nuestros números",
-        "results_headline_size": "h2",
-        "results_headline_alignment": "left",
-        "caption": "<p>Fuentes: Estudio Hipoalergénico Orlandi, Dosier Cobiostem Alerce, Índice de Naturalidad ISO 16128.</p>",
-        "button_label": "",
-        "link": "",
-        "button_style_secondary": false,
-        "atc_button_label": "",
-        "atc_product": "",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "seqes_comparison_table_xBUAHL": {
-      "type": "seqes-comparison-table",
-      "blocks": {
-        "row_origin": {
-          "type": "row",
-          "settings": {
-            "feature": "Origen natural",
-            "seqes_text": "96% ingredientes de origen natural (ISO 16128)",
-            "market_text": "Porcentaje no declarado o inferior"
-          }
-        },
-        "row_fragrance": {
-          "type": "row",
-          "settings": {
-            "feature": "Fragancia",
-            "seqes_text": "Sin fragancia, sin perfume, sin colorantes",
-            "market_text": "Frecuentemente con perfume sintético"
-          }
-        },
-        "row_clinical": {
-          "type": "row",
-          "settings": {
-            "feature": "Testeo clínico",
-            "seqes_text": "Estudio hipoalergénico con 50 voluntarios (Inst. Orlandi)",
-            "market_text": "Sin estudios clínicos publicados"
-          }
-        },
-        "row_actives": {
-          "type": "row",
-          "settings": {
-            "feature": "Activos principales",
-            "seqes_text": "Células madre de Alerce + Murta + Hydrovance",
-            "market_text": "Ingredientes genéricos sin diferenciación"
-          }
-        },
-        "row_hydration": {
-          "type": "row",
-          "settings": {
-            "feature": "Hidratación",
-            "seqes_text": "Biomimética profunda — absorción inmediata, sin grasa",
-            "market_text": "Hidratación superficial, puede sentirse pesada"
-          }
-        },
-        "row_sustainability": {
-          "type": "row",
-          "settings": {
-            "feature": "Sustentabilidad",
-            "seqes_text": "Biotecnología con 99% ahorro de agua, fórmula biodegradable",
-            "market_text": "Sin compromiso ambiental declarado"
-          }
-        }
-      },
-      "block_order": [
-        "row_origin",
-        "row_fragrance",
-        "row_clinical",
-        "row_actives",
-        "row_hydration",
-        "row_sustainability"
-      ],
-      "settings": {
-        "eyebrow": "Lo que hace diferente a Seqes",
-        "title": "¿Por qué elegir Seqes?",
-        "intro": "<p>No todas las cremas hidratantes son iguales. La diferencia está en los ingredientes, los estudios que lo respaldan y el compromiso con la piel de tu bebé.</p>",
-        "seqes_heading": "Seqes",
-        "market_heading": "Muchas cremas del mercado",
-        "content_width": 1200,
-        "padding_top": 48,
-        "padding_bottom": 48,
-        "background_color": "#00393b",
-        "frame_color": "#a8e0c0",
-        "text_color": "#ffffff",
-        "muted_color": "#d4e1df",
-        "divider_color": "#2f5c5e"
-      }
-    },
-    "video_product": {
-      "type": "video",
-      "settings": {
-        "heading": "Mira cómo se aplica",
-        "heading_left": false,
-        "description": "<p>Textura ligera, absorción inmediata y sin residuo graso. Así se siente Seqes en la piel de tu bebé.</p>",
-        "section_width": "grid",
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": false,
-        "aspect_ratio": "16-9",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "multicolumn_fH3XAG": {
@@ -1123,6 +858,73 @@
         "show_progress_bar": true,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
+      }
+    },
+    "seqes_comparison_table_xBUAHL": {
+      "type": "seqes-comparison-table",
+      "blocks": {
+        "row_origin": {
+          "type": "row",
+          "settings": {
+            "feature": "Origen natural",
+            "seqes_text": "96% ingredientes de origen natural (ISO 16128)",
+            "market_text": "Porcentaje no declarado o inferior"
+          }
+        },
+        "row_fragrance": {
+          "type": "row",
+          "settings": {
+            "feature": "Fragancia",
+            "seqes_text": "Sin fragancia, sin perfume, sin colorantes",
+            "market_text": "Frecuentemente con perfume sintético"
+          }
+        },
+        "row_actives": {
+          "type": "row",
+          "settings": {
+            "feature": "Activos principales",
+            "seqes_text": "Células madre de Alerce + Murta + Hydrovance",
+            "market_text": "Ingredientes genéricos sin diferenciación"
+          }
+        },
+        "row_hydration": {
+          "type": "row",
+          "settings": {
+            "feature": "Hidratación",
+            "seqes_text": "Biomimética profunda — absorción inmediata, sin grasa",
+            "market_text": "Hidratación superficial, puede sentirse pesada"
+          }
+        },
+        "row_sustainability": {
+          "type": "row",
+          "settings": {
+            "feature": "Sustentabilidad",
+            "seqes_text": "Biotecnología con 99% ahorro de agua, fórmula biodegradable",
+            "market_text": "Sin compromiso ambiental declarado"
+          }
+        }
+      },
+      "block_order": [
+        "row_origin",
+        "row_fragrance",
+        "row_actives",
+        "row_hydration",
+        "row_sustainability"
+      ],
+      "settings": {
+        "eyebrow": "Lo que hace diferente a Seqes",
+        "title": "¿Por qué elegir Seqes?",
+        "intro": "<p>No todas las cremas hidratantes son iguales. La diferencia está en los ingredientes, los estudios que lo respaldan y el compromiso con la piel de tu bebé.</p>",
+        "seqes_heading": "Seqes",
+        "market_heading": "Muchas cremas del mercado",
+        "content_width": 1200,
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "background_color": "#00393b",
+        "frame_color": "#a8e0c0",
+        "text_color": "#ffffff",
+        "muted_color": "#d4e1df",
+        "divider_color": "#2f5c5e"
       }
     },
     "collapsible_content_KNxP6C": {
@@ -1227,6 +1029,7 @@
     },
     "product-recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "heading": "Completa el cuidado de tu bebé",
         "heading_left": false,
@@ -1243,20 +1046,16 @@
     "main-product",
     "logo_list_3g4EtA",
     "insta_stories_HYTmaT",
-    "testimonials_3eWjHg",
-    "customer_reviews_social_proof",
-    "testimonials_tnxED7",
     "layered_images_with_text_tXj8WJ",
-    "before_after_image_Qf9kMC",
-    "seqes_claims_marquee",
     "image_with_text_overlay_HWBgTc",
-    "seqes_gradient_fade_down",
+    "before_after_image_Qf9kMC",
+    "seqes_gradient_divider_9X8qrf",
+    "testimonials_3eWjHg",
+    "seqes_gradient_divider_fanEdT",
+    "seqes_claims_marquee",
     "ingredients_gallery",
-    "seqes_gradient_fade_up",
-    "results_stats",
-    "seqes_comparison_table_xBUAHL",
-    "video_product",
     "multicolumn_fH3XAG",
+    "seqes_comparison_table_xBUAHL",
     "collapsible_content_KNxP6C",
     "spacer_bottom",
     "product-recommendations"
