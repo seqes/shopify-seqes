@@ -244,7 +244,11 @@
             "side_panel_3_label": "Advertencias",
             "side_panel_3_icon": "seqes_warning",
             "side_panel_3_content": "<p>{{ product.metafields.custom.advertencias | metafield_tag }}</p>",
-            "side_panel_3_page": ""
+            "side_panel_3_page": "",
+            "layout": "horizontal",
+            "center_icons": true,
+            "button_font_size": 14,
+            "content_font_size": 14
           }
         },
         "text_guarantee": {
@@ -290,6 +294,27 @@
             "image": "shopify://shop_images/Ciencia_e_Innovacion.png",
             "position": "text-center",
             "image_link": ""
+          }
+        },
+        "side_panel_YWimqF": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Metodo de Pago",
+            "side_panel_1_icon": "seqes_formula",
+            "side_panel_1_content": "<p>adadadadsad</p>",
+            "side_panel_1_page": "",
+            "side_panel_2_label": "Despacho",
+            "side_panel_2_icon": "seqes_instructions",
+            "side_panel_2_content": "<p>{{ product.metafields.custom.modo_de_uso | metafield_tag }}</p>",
+            "side_panel_2_page": "",
+            "side_panel_3_label": "Cambios y Devoluciones",
+            "side_panel_3_icon": "seqes_warning",
+            "side_panel_3_content": "<p>{{ product.metafields.custom.advertencias | metafield_tag }}</p>",
+            "side_panel_3_page": "",
+            "layout": "horizontal",
+            "center_icons": true,
+            "button_font_size": 14,
+            "content_font_size": 14
           }
         },
         "collapsible_tab_RUpAe7": {
@@ -351,6 +376,7 @@
         "faq_fragrance",
         "faq_dry_skin",
         "image_fbM9GA",
+        "side_panel_YWimqF",
         "collapsible_tab_RUpAe7",
         "collapsible_tab_xcHRCU",
         "collapsible_tab_7hWjNc",
