@@ -129,11 +129,30 @@
             "show_gift_card_recipient": false
           }
         },
-        "text_guarantee": {
-          "type": "text",
+        "seqes_it_guarantee": {
+          "type": "seqes_icon_text",
           "settings": {
-            "text": "GARANTÍA DE 30 DÍAS · DESPACHO GRATIS SOBRE $50.000",
-            "text_style": "style_vendor"
+            "text": "Garantía de 30 días sin preguntas",
+            "text_color": "#003b3d",
+            "font_size": 14,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "theme_icon",
+            "icon": "return",
+            "icon_color": "#003b3d"
+          }
+        },
+        "seqes_it_shipping": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Despacho gratis en compras sobre $50.000",
+            "text_color": "#003b3d",
+            "font_size": 14,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "theme_icon",
+            "icon": "truck",
+            "icon_color": "#003b3d"
           }
         },
         "faq_safe_shampoo": {
@@ -200,7 +219,8 @@
         "description_shampoo",
         "variant_picker",
         "buy_buttons",
-        "text_guarantee",
+        "seqes_it_guarantee",
+        "seqes_it_shipping",
         "faq_safe_shampoo",
         "faq_sulfate_free",
         "faq_hair_loss",
