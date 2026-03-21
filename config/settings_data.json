@@ -91,29 +91,49 @@
           "03563edc-5c33-49b7-b848-878d67e0c6b4": {
             "type": "text",
             "settings": {
-              "icon": "ruler",
-              "text": "Add campaign text here.",
+              "icon": "leaf",
+              "text": "+95% Origen Natural",
               "link": ""
             }
           },
           "b122c7d9-bfb2-4e2f-9044-8b7d1b325ec6": {
             "type": "text",
             "settings": {
-              "icon": "ruler",
-              "text": "Add campaign text here.",
+              "icon": "check_mark",
+              "text": "Testeado Dermatológicamente",
+              "link": ""
+            }
+          },
+          "c3d4e5f6-7890-abcd-ef12-345678901234": {
+            "type": "text",
+            "settings": {
+              "icon": "truck",
+              "text": "Despacho Gratis sobre $50.000",
+              "link": ""
+            }
+          },
+          "d4e5f6a7-8901-bcde-f123-456789012345": {
+            "type": "text",
+            "settings": {
+              "icon": "return",
+              "text": "Garantía de 30 días",
               "link": ""
             }
           }
         },
         "block_order": [
           "03563edc-5c33-49b7-b848-878d67e0c6b4",
-          "b122c7d9-bfb2-4e2f-9044-8b7d1b325ec6"
+          "b122c7d9-bfb2-4e2f-9044-8b7d1b325ec6",
+          "c3d4e5f6-7890-abcd-ef12-345678901234",
+          "d4e5f6a7-8901-bcde-f123-456789012345"
         ],
         "settings": {
-          "announcement_bar": false,
+          "announcement_bar": true,
           "announcement_bar_homepage_only": false,
+          "announcement_bar_layout": "marquee",
           "direction": "left",
-          "speed": "20s"
+          "speed": "20s",
+          "font_bold": true
         }
       },
       "header": {

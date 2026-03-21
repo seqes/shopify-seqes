@@ -21,7 +21,7 @@
 	{%- if show_announcement_bar -%}
 		{{- 'announcement-bar.css' | asset_url | stylesheet_tag -}}
 		<div class="announcement-bar">
-			<div class="announcement-bar--inner direction-{{ direction }} announcement-bar--{{ announcement_bar_layout }}" style="--marquee-speed: {{ speed }}">
+			<div class="announcement-bar--inner direction-{{ direction }} announcement-bar--{{ announcement_bar_layout }}" style="--marquee-speed: {{ speed }}{% if section.settings.font_bold %}; font-weight: 700{% endif %}">
 				{%- if announcement_bar_layout == 'marquee' -%}
 					{%- capture scrolling_text -%}
 					<div>
@@ -99,6 +99,12 @@
 			],
 			"default": "marquee",
 			"label": "Layout"
+		},
+		{
+			"type": "checkbox",
+			"id": "font_bold",
+			"label": "Texto en negrita",
+			"default": true
 		},
 		{
 			"type": "header",
