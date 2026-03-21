@@ -111,49 +111,43 @@
         "disable_bottom_spacing": true
       }
     },
-    "image_with_text_Yzgcbq": {
-      "type": "image-with-text",
+    "layered_images_with_text_eLdqBB": {
+      "type": "layered-images-with-text",
       "blocks": {
-        "subheading_rfKN6i": {
+        "subheading_tVmhxC": {
           "type": "subheading",
           "settings": {
             "text": "Add a tagline"
           }
         },
-        "heading_thYRDK": {
+        "heading_4RinjK": {
           "type": "heading",
           "settings": {
             "text": "Image with text",
             "heading_size": "h3"
           }
         },
-        "text_TLUjBG": {
+        "text_nrdpe8": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "description_size": "medium"
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
           }
         }
       },
       "block_order": [
-        "subheading_rfKN6i",
-        "heading_thYRDK",
-        "text_TLUjBG"
+        "subheading_tVmhxC",
+        "heading_4RinjK",
+        "text_nrdpe8"
       ],
-      "name": "Image with text",
+      "name": "Layered images with text",
       "settings": {
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "section_width": "grid",
+        "image_ratio": "adapt",
+        "image_ratio_2": "adapt",
+        "image_ratio_3": "adapt",
+        "full_width": false,
         "layout": "image_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
-        "color_text": "#151515",
-        "color_border": "#e2e2e2",
+        "content_alignment": "text-left",
+        "content_position": "middle",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -186,56 +180,56 @@
         "disable_bottom_spacing": true
       }
     },
-    "image_banner_9JVY8Y": {
-      "type": "image-banner",
+    "gallery_UJ4CX6": {
+      "type": "gallery",
       "blocks": {
-        "heading_8zpFXU": {
-          "type": "heading",
+        "image_jDEkAT": {
+          "type": "image",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
+            "subheading": "Add a tagline",
+            "title": "Crema Corporal",
+            "text": "Pair text with an image to focus on your chosen image",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": [
+              "crema-corporal"
+            ]
           }
         },
-        "text_x3UQYr": {
-          "type": "text",
+        "image_yChpnn": {
+          "type": "image",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "buttons_7TYB6Y": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Crema Corporal",
-            "button_link_1": "shopify://products/crema-corporal",
-            "button_style_secondary_1": false,
-            "button_label_2": "Jabón & Shampoo",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "subheading": "Add a tagline",
+            "title": "Jabon & Champú",
+            "text": "Pair text with an image to focus on your chosen image",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
           }
         }
       },
       "block_order": [
-        "heading_8zpFXU",
-        "text_x3UQYr",
-        "buttons_7TYB6Y"
+        "image_jDEkAT",
+        "image_yChpnn"
       ],
-      "name": "Name",
+      "name": "Gallery",
       "settings": {
-        "visibility": "always-display",
-        "image_1_visibility": "always-display",
-        "image_2_visibility": "always-display",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "bg_color": "#ffffff",
-        "text_color": "#003b3d",
-        "transparent_container_color": "white",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "columns_desktop": 2,
+        "section_width": "full-width-row-full",
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "column_spacing": "small",
+        "heading_size": "h2",
+        "overlay_color": "#003b3d",
+        "overlay_opacity": 70,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     },
     "16615358507b6ff1a8": {
@@ -309,14 +303,35 @@
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
+    },
+    "featured_blog_6eB7mr": {
+      "type": "featured-blog",
+      "name": "Blog posts",
+      "settings": {
+        "heading": "Latest News",
+        "heading_left": false,
+        "description": "<p>Add a short description for your brand news</p>",
+        "full_width": true,
+        "blog": "",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "mobile_swipe": true,
+        "image_ratio": "square",
+        "show_date": true,
+        "show_excerpt": true,
+        "show_view_all": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
     "16479477632637c9a7",
     "text_with_icons_LnLpLT",
-    "image_with_text_Yzgcbq",
+    "layered_images_with_text_eLdqBB",
     "countdown_banner_c3jjcG",
-    "image_banner_9JVY8Y",
-    "16615358507b6ff1a8"
+    "gallery_UJ4CX6",
+    "16615358507b6ff1a8",
+    "featured_blog_6eB7mr"
   ]
 }
