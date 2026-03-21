@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "16479477632637c9a7": {
@@ -18,17 +9,17 @@
             "slide_link": "",
             "video_background": true,
             "video": "",
-            "subheading": "Innovación dermocosmética hecha en Chile",
-            "heading": "Nuevo nombre, Nueva Web",
+            "subheading": "Porque la piel de tu bebé merece más que una etiqueta bonita",
+            "heading": "Ciencia real. Naturaleza del sur de Chile.",
             "heading_size": "h1-xlarge",
-            "content": "Clínica Veterinaria Las Condes ahora es Vetlascondes",
+            "content": "Desarrollamos dermocosmética con respaldo científico, formulada para la piel más sensible del mundo.",
             "description_size": "large",
             "content_position": "middle-center",
             "text_alignment": "center",
             "content_size": "medium",
             "overlay_color": "#000000",
-            "overlay_opacity": 100,
-            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)",
+            "overlay_opacity": 45,
+            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5) 100%)",
             "button_1_text": "",
             "button_1_link": "",
             "button_1_outline": true,
@@ -61,7 +52,7 @@
             "icon": "ruler",
             "image": "shopify://shop_images/logo_disenado_para_bebe.webp",
             "heading": "Diseñados para Bebé",
-            "text": "<p>Mon - Sat, 10am - 9pm</p>"
+            "text": "<p>Formulados exclusivamente para la piel sensible e inmadura de bebés y niños.</p>"
           }
         },
         "icon_9PGdGg": {
@@ -69,8 +60,8 @@
           "settings": {
             "icon": "ruler",
             "image": "shopify://shop_images/logo_indice_origen_natural.webp",
-            "heading": "Fórmulas Naturales",
-            "text": ""
+            "heading": "+95% Origen Natural",
+            "text": "<p>Índice ISO 16128 certificado. Fórmula clean, biodegradable y sin ingredientes innecesarios.</p>"
           }
         },
         "icon_Leed3p": {
@@ -79,7 +70,7 @@
             "icon": "ruler",
             "image": "shopify://shop_images/logo_hecho_en_chile.webp",
             "heading": "Hecho y Diseñado en Chile",
-            "text": ""
+            "text": "<p>Desarrollado en Chile con activos nativos del sur y biotecnología de clase mundial.</p>"
           }
         },
         "icon_aR8RkC": {
@@ -87,8 +78,8 @@
           "settings": {
             "icon": "ruler",
             "image": "shopify://shop_images/logo_dermatologicamente_testeado.webp",
-            "heading": "Calidad certificada con Estudios Clínicos",
-            "text": ""
+            "heading": "Testeado Clínicamente",
+            "text": "<p>Dermatológicamente testeado e hipoalergénico con estudio clínico independiente.</p>"
           }
         }
       },
@@ -111,49 +102,60 @@
         "disable_bottom_spacing": true
       }
     },
-    "image_with_text_Yzgcbq": {
-      "type": "image-with-text",
+    "multicolumn_pilares": {
+      "type": "multicolumn",
       "blocks": {
-        "subheading_rfKN6i": {
-          "type": "subheading",
+        "col_biotecnologia": {
+          "type": "column",
           "settings": {
-            "text": "Add a tagline"
+            "image": "",
+            "heading": "Biotecnología del Alerce Milenario",
+            "text": "<p>Nuestras fórmulas incorporan células madre del Alerce Patagónico (<em>Fitzroya cupressoides</em>), uno de los árboles más longevos del planeta. Un activo biotecnológico único que solo nace en el sur de Chile.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "heading_thYRDK": {
-          "type": "heading",
+        "col_naturalidad": {
+          "type": "column",
           "settings": {
-            "text": "Image with text",
-            "heading_size": "h3"
+            "image": "",
+            "heading": "+95% Naturalidad Certificada",
+            "text": "<p>No basta con decir «natural» en la etiqueta. Nuestro índice de naturalidad ISO 16128 es verificable y publicado. Fórmulas limpias, biodegradables y sin fragancia, sulfatos, parabenos ni siliconas.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "text_TLUjBG": {
-          "type": "text",
+        "col_seguridad": {
+          "type": "column",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "description_size": "medium"
+            "image": "",
+            "heading": "Seguridad con Respaldo Científico",
+            "text": "<p>Dermatológicamente testeados e hipoalergénicos con estudio clínico independiente. Validados para piel sensible, con autorización de uso en niños menores de 6 años por el ISP.</p>",
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "subheading_rfKN6i",
-        "heading_thYRDK",
-        "text_TLUjBG"
+        "col_biotecnologia",
+        "col_naturalidad",
+        "col_seguridad"
       ],
-      "name": "Image with text",
+      "name": "Pilares de la marca",
       "settings": {
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "section_width": "grid",
-        "layout": "image_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
+        "heading": "Por qué SEQES es diferente",
+        "heading_left": false,
+        "description": "<p>Tres pilares que construyen una marca en la que los papás pueden confiar.</p>",
+        "full_width": true,
+        "display_type": "grid",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "mobile_swipe": false,
+        "button_label": "",
+        "button_link": "",
+        "color_bg": "#f5f3ef",
         "color_text": "#151515",
-        "color_border": "#e2e2e2",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -166,12 +168,12 @@
         "section_layout": "horizontal",
         "desktop_height": "desktop-height-auto",
         "mobile_height": "mobile-height-auto",
-        "subheading": "¿Listo/a para el lanzamiento?",
-        "heading": "¿Cuanto queda?",
+        "subheading": "El cuidado que tu bebé merece llega pronto",
+        "heading": "Lanzamiento Oficial SEQES",
         "heading_size": "h2",
         "content": "domingo 17 de mayo a las 21:00 hrs",
         "content_size": "medium",
-        "button_text": "Shop Now",
+        "button_text": "Quiero que me avisen",
         "button_link": "",
         "timer_year": 2026,
         "timer_month": "05",
@@ -192,26 +194,26 @@
         "heading_8zpFXU": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "Dos productos. Una piel más sana.",
             "heading_size": "h1"
           }
         },
         "text_x3UQYr": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "Formulados para bebés desde el primer día. Dermatológicamente testeados, con activos biotecnológicos chilenos y +95% de origen natural.",
             "text_style": "body"
           }
         },
         "buttons_7TYB6Y": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Crema Corporal",
+            "button_label_1": "Ver Crema Corporal",
             "button_link_1": "shopify://products/crema-corporal",
             "button_style_secondary_1": false,
-            "button_label_2": "Jabón & Shampoo",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label_2": "Ver Shampoo Bebé",
+            "button_link_2": "shopify://products/shampoo-hidratante-bebe",
+            "button_style_secondary_2": true
           }
         }
       },
@@ -220,7 +222,7 @@
         "text_x3UQYr",
         "buttons_7TYB6Y"
       ],
-      "name": "Name",
+      "name": "Nuestros productos",
       "settings": {
         "visibility": "always-display",
         "image_1_visibility": "always-display",
@@ -241,62 +243,53 @@
     "16615358507b6ff1a8": {
       "type": "testimonials",
       "blocks": {
-        "60961cb1-416e-4c98-a9ec-2a41dfae8911": {
-          "type": "quote",
-          "settings": {
-            "stars": "4.5",
-            "text": "Rocky fue diagnosticado con displasia de cadera y en Clínica Veterinaria Las Condes encontramos no solo un diagnóstico certero, sino también un plan integral de rehabilitación. El equipo de traumatología y fisioterapia fue increíble. Ahora Rocky camina mucho mejor y sin dolor. ¡Gracias por devolverle su calidad de vida!",
-            "author": "Carolina G. – Dueña de Rocky, labrador de 7 años"
-          }
-        },
-        "2bf39bcc-dfc9-43ae-b6a4-9cecdb3197c9": {
-          "type": "quote",
-          "settings": {
-            "stars": "4",
-            "text": "Lila tuvo una caída y terminó con una fractura complicada. En la Clínica Veterinaria Las Condes la atendieron con cirugía ortopédica y el postoperatorio fue excelente. Se nota el nivel de especialización. Hoy está completamente recuperada y como si nada hubiera pasado.",
-            "author": "Andrés M. – Dueño de Lila, gata de 4 años"
-          }
-        },
-        "f0e5414e-308c-4a64-91b5-1f08b8650731": {
+        "review_01": {
           "type": "quote",
           "settings": {
             "stars": "5",
-            "text": "Llevamos a Mía por una alergia persistente en la piel. Después de varios intentos fallidos en otros lugares, aquí nos atendió un dermatólogo veterinario que realmente supo lo que hacía. El tratamiento funcionó perfecto y ahora está feliz y sin picazón. 100% recomendados.",
-            "author": "Sebastián R. – Dueño de Mía, bulldog francés de 2 años"
+            "text": "Mi hija de 4 meses tenía la piel requete seca, casi descamada en los brazos. Probé varias cremas de farmacia y nada. Una amiga me recomendó SEQES y a la semana ya se notaba el cambio. La piel quedó suave, sin rojeces. Lloro de emoción cuando la veo así de bien.",
+            "author": "Valentina P. — mamá de Sofía, 4 meses"
           }
         },
-        "quote_EV7gam": {
-          "type": "quote",
-          "settings": {
-            "stars": "4",
-            "text": "Mi gato fue diagnosticado con una miocardiopatía y gracias al cardiólogo de la clínica pudimos detectarlo a tiempo. Le hicieron un ecocardiograma y ahora está bajo tratamiento controlado. La atención fue muy clara y empática. Total confianza en el equipo.",
-            "author": "Patricia E. – Dueña de Coco, gato persa de 9 años"
-          }
-        },
-        "quote_UB6inc": {
-          "type": "quote",
-          "settings": {
-            "stars": "4.5",
-            "text": "Nos preocupaba mucho la salud de Bruno por su edad y su insuficiencia renal. En la Clínica Las Condes nos ofrecieron un seguimiento especializado con medicina interna y nutrición clínica. El trato fue humano, cercano y muy profesional. Bruno está estable y con mejor ánimo que nunca.",
-            "author": "Fernanda L. – Dueña de Bruno, mestizo senior de 12 años"
-          }
-        },
-        "quote_63waPK": {
+        "review_02": {
           "type": "quote",
           "settings": {
             "stars": "5",
-            "text": "Llevé a Nube para su esterilización y el proceso fue impecable. Desde la recepción hasta el postoperatorio. Me explicaron todo y estuvieron atentos a su recuperación. Además, el ambiente está diseñado para que los gatos estén tranquilos. ¡Volvería sin dudarlo!",
-            "author": "Joaquín T. – Dueño de Nube, gatita de 8 meses"
+            "text": "No soy de las que leen etiquetas ni nada, pero cuando mi pediatra me dijo que la crema que usaba tenía parabenos me asusté harto. Busqué algo más limpio y llegué aquí. Desde que cambié, cero problemas de piel. Y la crema rinde caleta, el pomo dura meses.",
+            "author": "Francisca M. — mamá de Mateo, 8 meses"
+          }
+        },
+        "review_03": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Soy química farmacéutica y fui muy exigente antes de comprar. Revisé el INCI, el índice de naturalidad, el estudio hipoalergénico. Todo cuadra. Es uno de los pocos productos chilenos que de verdad cumple con lo que promete en términos técnicos. Impresionada.",
+            "author": "Catalina R. — mamá de Emilia, 11 meses"
+          }
+        },
+        "review_04": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Mi señora me pidió que buscara algo bueno para el bebé porque tenía la piel sensible. Le compré esto sin saber mucho, pero resultó ser un golazo. Ahora soy el experto en cremas de la casa jaja. Todos contentos.",
+            "author": "Rodrigo C. — papá de Tomás, 6 meses"
+          }
+        },
+        "review_05": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Recontra desconfiada de los productos «hechos en Chile», pensaba que era marketing nomás. Pero me convencí cuando vi los estudios clínicos en su web. Lo compré casi sin fe y quedé sorprendidísima. La textura, el olor (que no tiene, que es lo bueno), todo perfecto. Ya no compro otra.",
+            "author": "Daniela S. — mamá de Isidora, 2 años"
           }
         }
       },
       "block_order": [
-        "60961cb1-416e-4c98-a9ec-2a41dfae8911",
-        "2bf39bcc-dfc9-43ae-b6a4-9cecdb3197c9",
-        "f0e5414e-308c-4a64-91b5-1f08b8650731",
-        "quote_EV7gam",
-        "quote_UB6inc",
-        "quote_63waPK"
+        "review_01",
+        "review_02",
+        "review_03",
+        "review_04",
+        "review_05"
       ],
       "settings": {
         "full_width": true,
@@ -309,14 +302,35 @@
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
+    },
+    "featured_blog_home": {
+      "type": "featured-blog",
+      "name": "Blog posts",
+      "settings": {
+        "heading": "Aprende antes de elegir",
+        "heading_left": false,
+        "description": "<p>Información científica, honesta y en buen chileno para que tomes las mejores decisiones para la piel de tu bebé.</p>",
+        "full_width": true,
+        "blog": "noticias",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "mobile_swipe": true,
+        "image_ratio": "landscape",
+        "show_date": true,
+        "show_excerpt": true,
+        "show_view_all": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
     "16479477632637c9a7",
     "text_with_icons_LnLpLT",
-    "image_with_text_Yzgcbq",
+    "multicolumn_pilares",
     "countdown_banner_c3jjcG",
     "image_banner_9JVY8Y",
-    "16615358507b6ff1a8"
+    "16615358507b6ff1a8",
+    "featured_blog_home"
   ]
 }
