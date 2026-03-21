@@ -12,7 +12,10 @@
     }
   }
 
-  insta-stories { display: block; --pfp-size: 7rem; --ring-width: 0.3rem; --ring-offset: 0.3rem; }
+  insta-stories { display: block; --pfp-size: {{ section.settings.bubble_size_desktop }}rem; --ring-width: 0.3rem; --ring-offset: 0.3rem; }
+  @media screen and (max-width: 749px) {
+    insta-stories { --pfp-size: {{ section.settings.bubble_size_mobile }}rem; }
+  }
   .content-rte + insta-stories { margin-top: 2rem; }
   .insta-stories__open-buttons-and-arrows-container { position: relative; z-index: 0; }
   .insta-stories__open-buttons-container { overflow: hidden; display: flex; justify-content: center; }
@@ -422,6 +425,30 @@ if(!customElements.get("insta-stories")){class InstaStories extends HTMLElement{
       "id": "heading_color",
       "label": "Heading color",
       "info": "Overrides the heading color independently. Leave empty to inherit from Text color."
+    },
+    {
+      "type": "header",
+      "content": "Tamaño de burbujas"
+    },
+    {
+      "type": "range",
+      "id": "bubble_size_desktop",
+      "min": 4,
+      "max": 12,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Tamaño en desktop",
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "bubble_size_mobile",
+      "min": 4,
+      "max": 12,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Tamaño en móvil",
+      "default": 6
     },
     {
       "type": "header",
