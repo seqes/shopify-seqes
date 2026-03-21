@@ -132,8 +132,7 @@
           "announcement_bar_homepage_only": false,
           "announcement_bar_layout": "marquee",
           "direction": "left",
-          "speed": "20s",
-          "font_bold": true
+          "speed": "20s"
         }
       },
       "header": {

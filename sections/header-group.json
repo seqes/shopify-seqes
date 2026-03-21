@@ -17,32 +17,32 @@
         "5b1ab378-833d-4a94-a02e-8325ec1551d0": {
           "type": "text",
           "settings": {
-            "icon": "heart",
-            "text": "Pet Hospiital",
+            "icon": "leaf",
+            "text": "+95% Origen Natural",
             "link": ""
           }
         },
         "2f7893ee-7b84-4f15-911a-801b94ffa38e": {
           "type": "text",
           "settings": {
-            "icon": "paw_print",
-            "text": "Desde 1970",
+            "icon": "truck",
+            "text": "Despacho Gratis sobre $50.000",
             "link": ""
           }
         },
         "text_dQAMTK": {
           "type": "text",
           "settings": {
-            "icon": "stopwatch",
-            "text": "Reservas",
+            "icon": "check_mark",
+            "text": "Testeado Dermatológicamente",
             "link": ""
           }
         },
         "text_8gTzXC": {
           "type": "text",
           "settings": {
-            "icon": "star",
-            "text": "Especialistas",
+            "icon": "chat_bubble",
+            "text": "Garantía de 30 días",
             "link": ""
           }
         }
@@ -57,8 +57,9 @@
         "announcement_bar": true,
         "announcement_bar_homepage_only": true,
         "announcement_bar_layout": "marquee",
+        "font_bold": true,
         "direction": "left",
-        "speed": "10s",
+        "speed": "30s",
         "autoplay": true,
         "autoplay_length": 5
       }
