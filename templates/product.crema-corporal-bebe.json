@@ -247,7 +247,7 @@
             "side_panel_3_page": "",
             "layout": "horizontal",
             "center_icons": true,
-            "button_font_size": 14,
+            "button_font_size": 12,
             "content_font_size": 14
           }
         },
@@ -260,8 +260,10 @@
             "font_weight": "500",
             "font_style": "normal",
             "icon_type": "theme_icon",
+            "emoji": "",
             "icon": "return",
-            "icon_color": "#003b3d"
+            "icon_color": "#003b3d",
+            "enable_animation": false
           }
         },
         "seqes_it_shipping": {
@@ -273,8 +275,10 @@
             "font_weight": "500",
             "font_style": "normal",
             "icon_type": "theme_icon",
+            "emoji": "",
             "icon": "truck",
-            "icon_color": "#003b3d"
+            "icon_color": "#003b3d",
+            "enable_animation": false
           }
         },
         "faq_safe": {
@@ -318,7 +322,7 @@
         "side_panel_YWimqF": {
           "type": "side_panel",
           "settings": {
-            "side_panel_1_label": "Metodo de Pago",
+            "side_panel_1_label": "Método de Pago",
             "side_panel_1_icon": "price_tag",
             "side_panel_1_content": "<p>Puedes pagar todas tus compras de manera segura con Redcompra y Tarjeta de Crédito a través de Mercado Pago. </p><p>Pago 3 cuotas sin interés con Tarjeta de Débito, pago 24 cuotas con Tarjeta de Crédito o transferencia bancaria a través de Fintoc seleccionando la opción de pago vía Ventipay.</p><p>Tu pago está 100% protegido con nosotros. Contamos con certificado de seguridad SSL para proteger todos los datos de nuestros clientes.</p>",
             "side_panel_1_page": "",
@@ -332,7 +336,7 @@
             "side_panel_3_page": "",
             "layout": "horizontal",
             "center_icons": true,
-            "button_font_size": 14,
+            "button_font_size": 12,
             "content_font_size": 14
           }
         },
@@ -527,6 +531,8 @@
         "bg_color": "#003b3d",
         "text_color": "#ffffff",
         "heading_color": "#ffffff",
+        "bubble_size_desktop": 7,
+        "bubble_size_mobile": 6,
         "autoplay_speed": 10,
         "padding_top": 0,
         "padding_bottom": 0
@@ -737,11 +743,11 @@
         "icon_size": "large",
         "heading_size": "large",
         "mobile_swipe": true,
-        "color_bg": "transparent",
+        "color_bg": "rgba(0,0,0,0)",
         "color_heading": "#003b3d",
         "color_text": "#151515",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
       }
     },
     "seqes_gradient_divider_9X8qrf": {
