@@ -30,7 +30,7 @@
         "heading_jAcBtk": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "5 errores comunes al elegir una crema para tu bebé",
             "heading_size": "h1-xlarge"
           }
         }
@@ -60,7 +60,7 @@
         "text_kCAtMJ": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Elegir una crema para el bebé parece simple. Vas a la farmacia, buscas algo que diga «bebé» en la etiqueta, y listo. Pero lo que la mayoría de los papás no sabe es que <strong>gran parte de los productos del mercado no están formulados para las características reales de la piel infantil</strong>.</p><p>La piel de un bebé no es simplemente una versión pequeña de la piel adulta. Es estructuralmente diferente, más delgada, más permeable y con una barrera cutánea que todavía está en proceso de maduración. Esto significa que lo que le pongas encima importa mucho más de lo que crees.</p><p>Aquí van los 5 errores más comunes que cometen los papás al elegir, y cómo evitarlos.</p>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
@@ -72,7 +72,7 @@
       "name": "Rich text",
       "settings": {
         "section_width": "full-width-row-full",
-        "text_width": "medium",
+        "text_width": "grid",
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "#003b3d",
@@ -94,14 +94,14 @@
         "heading_atQPxU": {
           "type": "heading",
           "settings": {
-            "text": "Image with text",
+            "text": "Error 1: Elegir por el olor",
             "heading_size": "h3"
           }
         },
         "text_pNhXpN": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Es el error número uno y el más difícil de romper porque estamos condicionados a pensar que algo que «huele rico» es bueno. Pero <strong>la fragancia es uno de los ingredientes más irritantes que puede tener un producto para bebé</strong>.</p><p>Los aromas, tanto sintéticos como «naturales», son mezclas complejas de moléculas que en pieles sensibles pueden provocar dermatitis de contacto, rojeces e irritación. La OMS y la Academia Americana de Dermatología recomiendan evitar fragancias en productos para menores de 2 años.</p><p>Una buena crema para bebé <strong>no debería tener olor</strong>, o en todo caso un aroma casi imperceptible. Si lo primero que llama la atención es «qué rico huele», eso ya es una señal de alerta.</p>",
             "description_size": "medium"
           }
         }
@@ -141,14 +141,14 @@
         "heading_bKPgyE": {
           "type": "heading",
           "settings": {
-            "text": "Image with text",
+            "text": "Error 2: Creer que «natural» en la etiqueta es suficiente",
             "heading_size": "h3"
           }
         },
         "text_zMmf8z": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>«Natural», «orgánico», «a base de plantas»: estas palabras son marketing, no datos. <strong>No existe en Chile ni en la Unión Europea una regulación que obligue a demostrar qué porcentaje del producto es realmente de origen natural</strong> para poder usar estos términos.</p><p>Esto significa que un producto puede tener un 5% de extracto de manzanilla y el 95% restante de ingredientes sintéticos, y aun así llamarse «natural».</p><p>Lo que realmente importa es el <strong>Índice de Naturalidad ISO 16128</strong>, un estándar internacional que calcula de forma objetiva y verificable qué porcentaje de los ingredientes proviene de origen natural. Cuando un fabricante publica este dato, es porque tiene algo que mostrar.</p>",
             "description_size": "medium"
           }
         }
@@ -188,14 +188,14 @@
         "heading_EP3VLB": {
           "type": "heading",
           "settings": {
-            "text": "Image with text",
+            "text": "Error 3: Usar la misma crema que tú para el bebé",
             "heading_size": "h3"
           }
         },
         "text_JmAKYN": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Muchos papás primerizos usan cremas de adulto pensando que «si a mí no me hace daño, al bebé tampoco». Pero las diferencias son importantes.</p><p>La epidermis de un bebé es <strong>hasta 30% más delgada que la de un adulto</strong>, lo que significa que absorbe ingredientes con mucha mayor facilidad. Sustancias que en adultos no representan ningún riesgo pueden tener efectos distintos en una piel que todavía está desarrollando su barrera protectora natural.</p><p>Además, el pH de la piel del bebé y sus mecanismos de regulación hídrica son distintos. <strong>Una formulación pensada para adulto no está optimizada para las características específicas de la piel infantil</strong>, aunque sea de buena calidad.</p>",
             "description_size": "medium"
           }
         }
@@ -235,14 +235,14 @@
         "heading_TehFja": {
           "type": "heading",
           "settings": {
-            "text": "Image with text",
+            "text": "Error 4: No verificar si tiene estudios clínicos",
             "heading_size": "h3"
           }
         },
         "text_EeftNX": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Cualquier marca puede imprimir «Dermatológicamente testeado» en su empaque. La pregunta real es: <strong>¿testeado por quién, con qué protocolo y con qué resultados?</strong></p><p>Existen dos niveles de evidencia que deberías buscar:</p><p><strong>1. Dermatológicamente testeado</strong>: el producto fue evaluado por un médico dermatólogo que certificó su tolerancia cutánea. Es el mínimo exigible.</p><p><strong>2. Estudio hipoalergénico independiente</strong>: un estudio clínico controlado con un panel de personas con piel sensible, realizado por un laboratorio externo. Esto es el estándar más alto, y pocas marcas lo tienen.</p><p>Cuando un fabricante publica sus estudios o los pone a disposición del consumidor, es porque los resultados los respaldan. Exígelo como un estándar mínimo.</p>",
             "description_size": "medium"
           }
         }
@@ -282,14 +282,14 @@
         "heading_dMQyHP": {
           "type": "heading",
           "settings": {
-            "text": "Image with text",
+            "text": "Error 5: Ignorar los ingredientes que no deberían estar",
             "heading_size": "h3"
           }
         },
         "text_e9MXPF": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Más que buscar ingredientes «buenos», es igual de importante evitar los que no deberían estar en la piel de un bebé. Algunos de los más comunes en productos del mercado masivo:</p><p><strong>Sulfatos (SLS/SLES)</strong>: tensoactivos agresivos que eliminan la barrera lipídica natural de la piel. Son especialmente problemáticos en pieles secas o con tendencia a dermatitis.</p><p><strong>Parabenos</strong>: conservantes con potencial actividad estrogénica. Aunque el debate científico aún está abierto, el principio de precaución aconseja evitarlos en bebés.</p><p><strong>Siliconas</strong>: forman una capa oclusiva que da sensación de suavidad pero puede interferir en la respiración cutánea. No aportan beneficio real a la piel.</p><p><strong>Disruptores endocrinos</strong>: sustancias que pueden interferir con el sistema hormonal. La piel inmadura de un bebé absorbe más fácilmente lo que se le aplica, lo que hace que este punto sea especialmente relevante.</p><p>Revisar el INCI (lista de ingredientes) toma 2 minutos y puede marcar una diferencia importante.</p>",
             "description_size": "medium"
           }
         }
@@ -329,14 +329,14 @@
         "heading_GL4Xa8": {
           "type": "heading",
           "settings": {
-            "text": "Talk about your brand",
+            "text": "Una crema que responde a todos estos criterios",
             "size": "h3"
           }
         },
         "text_LGpnkL": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. Sin fragancia. Con índice de naturalidad ISO 16128 del 96%. Formulada específicamente para piel sensible infantil. Con estudio hipoalergénico clínico independiente. Y sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</p><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
