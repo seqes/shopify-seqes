@@ -1,44 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "16479477632637c9a7": {
-      "type": "slideshow",
-      "blocks": {
-        "164794776393e76b8e-2": {
-          "type": "slide",
-          "settings": {
-            "slide_link": "",
-            "video_background": true,
-            "video": "",
-            "subheading": "Porque la piel de tu bebé merece más que una etiqueta bonita",
-            "heading": "Ciencia real. Naturaleza del sur de Chile.",
-            "heading_size": "h1-xlarge",
-            "content": "Desarrollamos dermocosmética con respaldo científico, formulada para la piel más sensible del mundo.",
-            "description_size": "large",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "content_size": "medium",
-            "overlay_color": "#000000",
-            "overlay_opacity": 45,
-            "overlay_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5) 100%)",
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_1_outline": true,
-            "button_2_text": "",
-            "button_2_link": "",
-            "button_2_outline": false
-          }
-        }
-      },
-      "block_order": [
-        "164794776393e76b8e-2"
-      ],
+    "background_video_8YfVD7": {
+      "type": "background-video",
+      "name": "Background video",
       "settings": {
         "desktop_height": "desktop-height-550",
-        "mobile_height": "mobile-height-500",
+        "mobile_height": "mobile-height-350",
         "full_width": true,
-        "autoplay": true,
-        "autoplay_length": 10,
-        "transition": "swipe",
+        "subheading": "Porque la piel de tu bebé merece más que una etiqueta bonita",
+        "heading": "Ciencia real. Naturaleza del sur de Chile.",
+        "text": "Desarrollamos dermocosmética con respaldo científico, formulada para la piel más sensible del mundo.",
+        "lightbox_button": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Seqes Prueba 1 Webm.webm",
+        "overlay_opacity": 25,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -108,8 +92,10 @@
         "col_biotecnologia": {
           "type": "column",
           "settings": {
-            "image": "",
-            "heading": "Biotecnología del Alerce Milenario",
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "Column",
             "text": "<p>Nuestras fórmulas incorporan células madre del Alerce Patagónico (<em>Fitzroya cupressoides</em>), uno de los árboles más longevos del planeta. Un activo biotecnológico único que solo nace en el sur de Chile.</p>",
             "link_label": "",
             "link": ""
@@ -118,8 +104,10 @@
         "col_naturalidad": {
           "type": "column",
           "settings": {
-            "image": "",
-            "heading": "+95% Naturalidad Certificada",
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "Column",
             "text": "<p>No basta con decir «natural» en la etiqueta. Nuestro índice de naturalidad ISO 16128 es verificable y publicado. Fórmulas limpias, biodegradables y sin fragancia, sulfatos, parabenos ni siliconas.</p>",
             "link_label": "",
             "link": ""
@@ -128,8 +116,10 @@
         "col_seguridad": {
           "type": "column",
           "settings": {
-            "image": "",
-            "heading": "Seguridad con Respaldo Científico",
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "Column",
             "text": "<p>Dermatológicamente testeados e hipoalergénicos con estudio clínico independiente. Validados para piel sensible, con autorización de uso en niños menores de 6 años por el ISP.</p>",
             "link_label": "",
             "link": ""
@@ -150,12 +140,10 @@
         "display_type": "grid",
         "image_ratio": "adapt",
         "columns_desktop": 3,
-        "columns_mobile": "1",
+        "text_alignment": "left",
+        "heading_size": "h5",
         "mobile_swipe": false,
-        "button_label": "",
-        "button_link": "",
-        "color_bg": "#f5f3ef",
-        "color_text": "#151515",
+        "show_progress_bar": true,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -325,7 +313,7 @@
     }
   },
   "order": [
-    "16479477632637c9a7",
+    "background_video_8YfVD7",
     "text_with_icons_LnLpLT",
     "multicolumn_pilares",
     "countdown_banner_c3jjcG",
