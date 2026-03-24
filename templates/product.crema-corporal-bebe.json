@@ -602,55 +602,20 @@
         "disable_bottom_spacing": false
       }
     },
-    "image_with_text_overlay_HWBgTc": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_yJThir": {
-          "type": "subheading",
-          "settings": {
-            "text": "Biotecnología vegetal avanzada"
-          }
-        },
-        "heading_GJ9UWj": {
-          "type": "heading",
-          "settings": {
-            "text": "Células madre de Alerce milenario",
-            "heading_size": "h1-large"
-          }
-        },
-        "text_H9QAVW": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Mediante <strong>clonación de células madre vegetales</strong>, la ciencia permite replicar las propiedades regenerativas del Alerce — uno de los árboles más longevos del planeta — sin dañar el árbol original. Un proceso de <strong>biotecnología sostenible que ahorra un 99% de agua</strong> en su producción.</p><p></p>",
-            "description_size": "medium"
-          }
-        },
-        "button_rKfiTF": {
-          "type": "button",
-          "settings": {
-            "button_text": "Descubre más",
-            "button_link": "",
-            "button_outline": false
-          }
-        }
-      },
-      "block_order": [
-        "subheading_yJThir",
-        "heading_GJ9UWj",
-        "text_H9QAVW",
-        "button_rKfiTF"
-      ],
+    "background_video_H6Feae": {
+      "type": "background-video",
+      "name": "Background video",
       "settings": {
-        "section_width": "full-width-row-full",
-        "image": "shopify://shop_images/long-forest-path.jpg",
-        "image_parallax": true,
         "desktop_height": "desktop-height-550",
-        "mobile_height": "mobile-height-500",
-        "content_width": "large",
-        "content_position": "bottom-center",
-        "text_alignment": "center",
-        "overlay_color": "#003b3d",
-        "overlay_opacity": 50,
+        "mobile_height": "mobile-height-400",
+        "full_width": true,
+        "subheading": "Biotecnología vegetal avanzada",
+        "heading": "Células madre de Alerce milenario",
+        "text": "Mediante clonación de células madre vegetales, la ciencia permite replicar las propiedades regenerativas del Alerce — uno de los árboles más longevos del planeta — sin dañar el árbol original. Un proceso de biotecnología sostenible que ahorra un 99% de agua en su producción.",
+        "lightbox_button": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Navegacion Alerce Webm.webm",
+        "overlay_opacity": 25,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -1145,7 +1110,7 @@
     "insta_stories_HYTmaT",
     "section_divider_LrJCFH",
     "layered_images_with_text_tXj8WJ",
-    "image_with_text_overlay_HWBgTc",
+    "background_video_H6Feae",
     "before_after_image_Qf9kMC",
     "text_with_icons_q7yjEd",
     "seqes_gradient_divider_9X8qrf",
