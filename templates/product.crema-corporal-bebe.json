@@ -531,7 +531,7 @@
         "bg_color": "#003b3d",
         "text_color": "#ffffff",
         "heading_color": "#ffffff",
-        "bubble_size_desktop": 7,
+        "bubble_size_desktop": 5.5,
         "bubble_size_mobile": 6,
         "autoplay_speed": 10,
         "padding_top": 0,
