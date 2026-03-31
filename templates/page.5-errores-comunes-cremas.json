@@ -42,6 +42,7 @@
       "name": "Image with text overlay",
       "settings": {
         "section_width": "full-width-row-full",
+        "image": "{{ page.metafields.custom.foto_portada.value }}",
         "image_parallax": true,
         "desktop_height": "desktop-height-450",
         "mobile_height": "mobile-height-350",
