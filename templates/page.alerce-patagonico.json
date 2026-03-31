@@ -247,47 +247,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "image_with_text_GVAhJe": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_dMQyHP": {
-          "type": "heading",
-          "settings": {
-            "text": "Error 5: Ignorar los ingredientes que no deberían estar",
-            "heading_size": "h3"
-          }
-        },
-        "text_e9MXPF": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Más que buscar ingredientes <strong>buenos</strong>, es igual de importante evitar los que no deberían estar en la piel de un bebé. Algunos de los más comunes son:</p><p><strong>Sulfatos (SLS/SLES)</strong>: tensoactivos agresivos que eliminan la barrera lipídica natural de la piel.</p><p><strong>Parabenos</strong>: conservantes con potencial actividad estrogénica. </p><p><strong>Siliconas</strong>: forman una capa oclusiva que da sensación de suavidad pero puede interferir en la respiración cutánea.</p><p><strong>Disruptores endocrinos</strong>: sustancias que pueden interferir con el sistema hormonal. </p>",
-            "description_size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "heading_dMQyHP",
-        "text_e9MXPF"
-      ],
-      "name": "Image with text",
-      "settings": {
-        "image": "{{ page.metafields.custom.foto_5.value }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "small",
-        "desktop_image_width": "small",
-        "section_width": "full-width-row-full",
-        "layout": "image_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
-        "color_text": "#003b3d",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
     "image_with_text_overlay_RkEtYx": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -351,7 +310,6 @@
     "image_with_text_CG8i3V",
     "image_with_text_W7YH6i",
     "image_with_text_bxNBJL",
-    "image_with_text_GVAhJe",
     "image_with_text_overlay_RkEtYx"
   ]
 }
