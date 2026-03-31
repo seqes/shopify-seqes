@@ -79,23 +79,15 @@
     "image_with_text_VX9e9P": {
       "type": "image-with-text",
       "blocks": {
-        "heading_atQPxU": {
-          "type": "heading",
-          "settings": {
-            "text": "Error 1: Elegir por el olor",
-            "heading_size": "h3"
-          }
-        },
         "text_pNhXpN": {
           "type": "text",
           "settings": {
-            "text": "<p>Es el error número uno y el más difícil de romper porque estamos condicionados a pensar que algo que «huele rico» es bueno. Pero <strong>la fragancia es uno de los ingredientes más irritantes que puede tener un producto para bebé</strong>.</p><p>Los aromas, tanto sintéticos como «naturales», son mezclas complejas de moléculas que en pieles sensibles pueden provocar dermatitis de contacto, rojeces e irritación. La OMS y la Academia Americana de Dermatología recomiendan evitar fragancias en productos para menores de 2 años.</p><p>Una buena crema para bebé <strong>no debería tener olor</strong>, o en todo caso un aroma casi imperceptible. Si lo primero que llama la atención es «qué rico huele», eso ya es una señal de alerta.</p>",
+            "text": "{{ page.metafields.custom.texto_enriquecido_1 | metafield_tag }}",
             "description_size": "medium"
           }
         }
       },
       "block_order": [
-        "heading_atQPxU",
         "text_pNhXpN"
       ],
       "name": "Image with text",
@@ -120,23 +112,15 @@
     "image_with_text_CG8i3V": {
       "type": "image-with-text",
       "blocks": {
-        "heading_bKPgyE": {
-          "type": "heading",
-          "settings": {
-            "text": "Error 2: Creer que «natural» en la etiqueta es suficiente",
-            "heading_size": "h3"
-          }
-        },
         "text_zMmf8z": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Natural</strong>, <strong>orgánico</strong>, <strong>base de plantas:</strong> estas palabras son marketing, no datos. <strong>No existe en Chile ni en la Unión Europea una regulación que obligue a demostrar qué porcentaje del producto es realmente de origen natural</strong> para poder usar estos términos.</p><p>Esto significa que un producto puede tener un 5% de extracto de manzanilla y el 95% restante de ingredientes sintéticos, y aun así llamarse «natural».</p><p>Lo que realmente importa es el <strong>Índice de Naturalidad ISO 16128</strong>, un estándar internacional que calcula de forma objetiva y verificable qué porcentaje de los ingredientes proviene de origen natural. Cuando un fabricante publica este dato, es porque tiene algo que mostrar.</p>",
+            "text": "{{ page.metafields.custom.texto_enriquecido_2 | metafield_tag }}",
             "description_size": "medium"
           }
         }
       },
       "block_order": [
-        "heading_bKPgyE",
         "text_zMmf8z"
       ],
       "name": "Image with text",
@@ -161,23 +145,15 @@
     "image_with_text_W7YH6i": {
       "type": "image-with-text",
       "blocks": {
-        "heading_EP3VLB": {
-          "type": "heading",
-          "settings": {
-            "text": "Error 3: Usar la misma crema que tú para el bebé",
-            "heading_size": "h3"
-          }
-        },
         "text_JmAKYN": {
           "type": "text",
           "settings": {
-            "text": "<p>Muchos papás primerizos usan cremas de adulto pensando que «si a mí no me hace daño, al bebé tampoco». Pero las diferencias son importantes.</p><p>La epidermis de un bebé es <strong>hasta 30% más delgada que la de un adulto</strong>, lo que significa que absorbe ingredientes con mucha mayor facilidad. Sustancias que en adultos no representan ningún riesgo pueden tener efectos distintos en una piel que todavía está desarrollando su barrera protectora natural.</p><p>Además, el pH de la piel del bebé y sus mecanismos de regulación hídrica son distintos. <strong>Una formulación pensada para adulto no está optimizada para las características específicas de la piel infantil</strong>, aunque sea de buena calidad.</p>",
+            "text": "{{ page.metafields.custom.texto_enriquecido_3 | metafield_tag }}",
             "description_size": "medium"
           }
         }
       },
       "block_order": [
-        "heading_EP3VLB",
         "text_JmAKYN"
       ],
       "name": "Image with text",
@@ -202,23 +178,15 @@
     "image_with_text_bxNBJL": {
       "type": "image-with-text",
       "blocks": {
-        "heading_TehFja": {
-          "type": "heading",
-          "settings": {
-            "text": "Error 4: No verificar si tiene estudios clínicos",
-            "heading_size": "h3"
-          }
-        },
         "text_EeftNX": {
           "type": "text",
           "settings": {
-            "text": "<p>Cualquier marca puede imprimir <strong>Dermatológicamente testeado</strong> en su empaque. La pregunta real es: </p><p><strong>¿testeado por quién, con qué protocolo y con qué resultados?</strong></p><p>Existen dos niveles de evidencia que deberías buscar:</p><p><strong>1. Dermatológicamente testeado</strong>: el producto fue evaluado por un médico dermatólogo que certificó su tolerancia cutánea. Es el mínimo exigible.</p><p><strong>2. Estudio hipoalergénico independiente</strong>: un estudio clínico controlado con un panel de personas con piel sensible, realizado por un laboratorio externo. Esto es el estándar más alto, y pocas marcas lo tienen.</p>",
+            "text": "{{ page.metafields.custom.texto_enriquecido_4 | metafield_tag }}",
             "description_size": "medium"
           }
         }
       },
       "block_order": [
-        "heading_TehFja",
         "text_EeftNX"
       ],
       "name": "Image with text",
@@ -252,14 +220,14 @@
         "heading_7xGEqy": {
           "type": "heading",
           "settings": {
-            "text": "Una crema que responde a todos estos criterios",
+            "text": "Un cuidado pensado para una piel en desarrollo",
             "heading_size": "h1-xlarge"
           }
         },
         "text_ULxVXD": {
           "type": "text",
           "settings": {
-            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. </p><ul><li>Sin fragancia. </li><li>Con índice de naturalidad ISO 16128 del 96%. </li><li>Formulada específicamente para piel sensible infantil. </li><li>Con estudio hipoalergénico clínico independiente. </li><li>Sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</li></ul><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p><p></p>",
+            "text": "<p>Entender cómo funciona la piel de tu bebé es el primer paso para cuidarla mejor. Por eso en Seqes desarrollamos fórmulas que acompañan este proceso con suavidad, precisión y altos estándares de calidad.</p><p>Cada producto está diseñado para hidratar, proteger y respetar la piel delicada, con un enfoque que combina ciencia dermatológica y selección rigurosa de ingredientes.</p><p></p>",
             "description_size": "small"
           }
         },
