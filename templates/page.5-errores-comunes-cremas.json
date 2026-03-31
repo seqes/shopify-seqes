@@ -113,6 +113,7 @@
       ],
       "name": "Image with text",
       "settings": {
+        "image": "{{ page.metafields.custom.foto_1.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -160,6 +161,7 @@
       ],
       "name": "Image with text",
       "settings": {
+        "image": "{{ page.metafields.custom.foto_2.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -207,6 +209,7 @@
       ],
       "name": "Image with text",
       "settings": {
+        "image": "{{ page.metafields.custom.foto_3.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -254,6 +257,7 @@
       ],
       "name": "Image with text",
       "settings": {
+        "image": "{{ page.metafields.custom.foto_4.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -301,6 +305,7 @@
       ],
       "name": "Image with text",
       "settings": {
+        "image": "{{ page.metafields.custom.foto_5.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
