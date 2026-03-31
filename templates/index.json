@@ -14,7 +14,7 @@
       "name": "Background video",
       "settings": {
         "desktop_height": "desktop-height-550",
-        "mobile_height": "mobile-height-350",
+        "mobile_height": "mobile-height-500",
         "full_width": true,
         "subheading": "Porque la piel de tu bebé merece más que una etiqueta bonita",
         "heading": "Ciencia real. Naturaleza del sur de Chile.",
@@ -176,56 +176,67 @@
         "disable_bottom_spacing": true
       }
     },
-    "image_banner_9JVY8Y": {
-      "type": "image-banner",
+    "image_with_text_overlay_WmCi8P": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "heading_8zpFXU": {
+        "subheading_VrU4YN": {
+          "type": "subheading",
+          "settings": {
+            "text": "DERMOCOSMÉTICA CHILENA"
+          }
+        },
+        "heading_W3FrTx": {
           "type": "heading",
           "settings": {
-            "heading": "Dos productos. Una piel más sana.",
-            "heading_size": "h1"
+            "text": "Dos productos. Piel sensible sana.",
+            "heading_size": "h1-xlarge"
           }
         },
-        "text_x3UQYr": {
+        "text_BBjXUJ": {
           "type": "text",
           "settings": {
-            "text": "Formulados para bebés desde el primer día. Dermatológicamente testeados, con activos biotecnológicos chilenos y +95% de origen natural.",
-            "text_style": "body"
+            "text": "<p>Formulados para bebés desde el primer día. Dermatológicamente testeados, con activos biotecnológicos chilenos y +95% de origen natural.</p><p></p>",
+            "description_size": "medium"
           }
         },
-        "buttons_7TYB6Y": {
-          "type": "buttons",
+        "button_VhdHLg": {
+          "type": "button",
           "settings": {
-            "button_label_1": "Ver Crema Corporal",
-            "button_link_1": "shopify://products/crema-corporal",
-            "button_style_secondary_1": false,
-            "button_label_2": "Ver Shampoo Bebé",
-            "button_link_2": "shopify://products/shampoo-hidratante-bebe",
-            "button_style_secondary_2": true
+            "button_text": "Crema Corporal",
+            "button_link": "shopify://products/crema-corporal",
+            "button_outline": false
+          }
+        },
+        "button_3aDeP9": {
+          "type": "button",
+          "settings": {
+            "button_text": "Jabón & Champú",
+            "button_link": "",
+            "button_outline": false
           }
         }
       },
       "block_order": [
-        "heading_8zpFXU",
-        "text_x3UQYr",
-        "buttons_7TYB6Y"
+        "subheading_VrU4YN",
+        "heading_W3FrTx",
+        "text_BBjXUJ",
+        "button_VhdHLg",
+        "button_3aDeP9"
       ],
-      "name": "Nuestros productos",
+      "name": "Image with text overlay",
       "settings": {
-        "visibility": "always-display",
-        "image_1_visibility": "always-display",
-        "image_2_visibility": "always-display",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "bg_color": "#ffffff",
-        "text_color": "#003b3d",
-        "transparent_container_color": "white",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "section_width": "full-width-row-full",
+        "image": "shopify://shop_images/IMG_0559.jpg",
+        "image_parallax": false,
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "content_width": "large",
+        "content_position": "bottom-center",
+        "text_alignment": "center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
       }
     },
     "16615358507b6ff1a8": {
@@ -291,22 +302,64 @@
         "disable_bottom_spacing": true
       }
     },
-    "featured_blog_home": {
-      "type": "featured-blog",
-      "name": "Blog posts",
+    "multicolumn_JEwJh6": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_WmADhD": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "retina": false,
+            "title": "5 errores comunes al elegir una crema para tu bebé",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "Leer más",
+            "link": "shopify://pages/5-errores-comunes-al-elegir-una-crema-para-tu-bebe"
+          }
+        },
+        "column_7JwjrY": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "El Alerce Patagónico y la Biotecnología de Células Madres Vegetales",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "Leer más",
+            "link": "shopify://pages/el-alerce-patagonico-y-la-biotecnologia-de-celulas-madres-vegetales"
+          }
+        },
+        "column_EiDqyJ": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "La piel de un bebé: una barrera todavía en construcción",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "Leer más",
+            "link": "shopify://pages/la-piel-de-un-bebe-una-barrera-todavia-en-construccion"
+          }
+        }
+      },
+      "block_order": [
+        "column_WmADhD",
+        "column_7JwjrY",
+        "column_EiDqyJ"
+      ],
+      "name": "Multicolumn",
       "settings": {
-        "heading": "Aprende antes de elegir",
+        "heading": "Multicolumn",
         "heading_left": false,
-        "description": "<p>Información científica, honesta y en buen chileno para que tomes las mejores decisiones para la piel de tu bebé.</p>",
+        "description": "<p>Add a short description for this section</p>",
         "full_width": true,
-        "blog": "noticias",
-        "post_limit": 3,
+        "display_type": "carousel",
+        "image_ratio": "adapt",
         "columns_desktop": 3,
+        "text_alignment": "left",
+        "heading_size": "h5",
         "mobile_swipe": true,
-        "image_ratio": "landscape",
-        "show_date": true,
-        "show_excerpt": true,
-        "show_view_all": true,
+        "show_progress_bar": false,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -317,8 +370,8 @@
     "text_with_icons_LnLpLT",
     "multicolumn_pilares",
     "countdown_banner_c3jjcG",
-    "image_banner_9JVY8Y",
+    "image_with_text_overlay_WmCi8P",
     "16615358507b6ff1a8",
-    "featured_blog_home"
+    "multicolumn_JEwJh6"
   ]
 }
