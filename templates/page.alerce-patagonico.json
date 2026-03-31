@@ -21,22 +21,15 @@
     "image_with_text_overlay_eDAPhR": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_kfw6gP": {
-          "type": "subheading",
-          "settings": {
-            "text": "Add a tagline"
-          }
-        },
         "heading_jAcBtk": {
           "type": "heading",
           "settings": {
-            "text": "5 errores comunes al elegir una crema para tu bebé",
+            "text": "{{ page.title }}",
             "heading_size": "h1-xlarge"
           }
         }
       },
       "block_order": [
-        "subheading_kfw6gP",
         "heading_jAcBtk"
       ],
       "name": "Image with text overlay",
@@ -61,7 +54,7 @@
         "text_kCAtMJ": {
           "type": "text",
           "settings": {
-            "text": "<p>Elegir una crema para el bebé parece simple. Vas a la farmacia, buscas algo que diga «bebé» en la etiqueta, y listo. Pero lo que la mayoría de los papás no sabe es que <strong>gran parte de los productos del mercado no están formulados para las características reales de la piel infantil</strong>.</p><p>La piel de un bebé no es simplemente una versión pequeña de la piel adulta. Es estructuralmente diferente, más delgada, más permeable y con una barrera cutánea que todavía está en proceso de maduración. Esto significa que lo que le pongas encima importa mucho más de lo que crees.</p><p>Aquí van los 5 errores más comunes que cometen los papás al elegir, y cómo evitarlos.</p>",
+            "text": "{{ page.content }}",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
