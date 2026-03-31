@@ -137,7 +137,7 @@
         "heading_left": false,
         "description": "<p>Tres pilares que construyen una marca en la que los papás pueden confiar.</p>",
         "full_width": true,
-        "display_type": "grid",
+        "display_type": "carousel",
         "image_ratio": "adapt",
         "columns_desktop": 3,
         "text_alignment": "left",
@@ -296,8 +296,8 @@
         "pagination": "dots",
         "autoplay": true,
         "autoplay_length": 5,
-        "color_bg": "{{ shop.brand.colors.primary[0].background }}",
-        "color_text": "{{ shop.brand.colors.primary[0].foreground }}",
+        "color_bg": "#ffffff",
+        "color_text": "#003b3d",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -336,7 +336,7 @@
             "image_link": "",
             "retina": true,
             "title": "La piel de un bebé: una barrera todavía en construcción",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>a piel de tu bebé aún está en desarrollo y cumple funciones esenciales desde el primer día. Entender cómo funciona te permitirá elegir mejor y acompañar su cuidado de forma segura y respetuosa.</p>",
             "link_label": "Leer más",
             "link": "shopify://pages/la-piel-de-un-bebe-una-barrera-todavia-en-construccion"
           }
@@ -349,9 +349,9 @@
       ],
       "name": "Multicolumn",
       "settings": {
-        "heading": "Multicolumn",
+        "heading": "Aprende sobre el cuidado de la piel",
         "heading_left": false,
-        "description": "<p>Add a short description for this section</p>",
+        "description": "<p>Descubre contenido, consejos y ciencia para cuidar mejor desde el comienzo.</p>",
         "full_width": true,
         "display_type": "carousel",
         "image_ratio": "adapt",
