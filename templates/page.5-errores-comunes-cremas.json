@@ -85,12 +85,6 @@
     "image_with_text_VX9e9P": {
       "type": "image-with-text",
       "blocks": {
-        "subheading_wzC94r": {
-          "type": "subheading",
-          "settings": {
-            "text": "Add a tagline"
-          }
-        },
         "heading_atQPxU": {
           "type": "heading",
           "settings": {
@@ -107,7 +101,6 @@
         }
       },
       "block_order": [
-        "subheading_wzC94r",
         "heading_atQPxU",
         "text_pNhXpN"
       ],
@@ -116,10 +109,10 @@
         "image": "{{ page.metafields.custom.foto_1.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "adapt",
-        "desktop_image_width": "medium",
+        "video_autoplay": false,
+        "video_controls": false,
+        "height": "small",
+        "desktop_image_width": "small",
         "section_width": "full-width-row-full",
         "layout": "image_first",
         "content_position": "text-left",
@@ -127,18 +120,12 @@
         "color_text": "#003b3d",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "image_with_text_CG8i3V": {
       "type": "image-with-text",
       "blocks": {
-        "subheading_UL8Nb9": {
-          "type": "subheading",
-          "settings": {
-            "text": "Add a tagline"
-          }
-        },
         "heading_bKPgyE": {
           "type": "heading",
           "settings": {
@@ -155,7 +142,6 @@
         }
       },
       "block_order": [
-        "subheading_UL8Nb9",
         "heading_bKPgyE",
         "text_zMmf8z"
       ],
@@ -166,8 +152,8 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
         "video_controls": true,
-        "height": "adapt",
-        "desktop_image_width": "medium",
+        "height": "small",
+        "desktop_image_width": "small",
         "section_width": "full-width-row-full",
         "layout": "text_first",
         "content_position": "text-left",
@@ -175,18 +161,12 @@
         "color_text": "#003b3d",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "image_with_text_W7YH6i": {
       "type": "image-with-text",
       "blocks": {
-        "subheading_Wx9gdX": {
-          "type": "subheading",
-          "settings": {
-            "text": "Add a tagline"
-          }
-        },
         "heading_EP3VLB": {
           "type": "heading",
           "settings": {
@@ -203,7 +183,6 @@
         }
       },
       "block_order": [
-        "subheading_Wx9gdX",
         "heading_EP3VLB",
         "text_JmAKYN"
       ],
@@ -214,8 +193,8 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
         "video_controls": true,
-        "height": "adapt",
-        "desktop_image_width": "medium",
+        "height": "small",
+        "desktop_image_width": "small",
         "section_width": "full-width-row-full",
         "layout": "image_first",
         "content_position": "text-left",
@@ -223,18 +202,12 @@
         "color_text": "#003b3d",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "image_with_text_bxNBJL": {
       "type": "image-with-text",
       "blocks": {
-        "subheading_wXQjjL": {
-          "type": "subheading",
-          "settings": {
-            "text": "Add a tagline"
-          }
-        },
         "heading_TehFja": {
           "type": "heading",
           "settings": {
@@ -245,13 +218,12 @@
         "text_EeftNX": {
           "type": "text",
           "settings": {
-            "text": "<p>Cualquier marca puede imprimir «Dermatológicamente testeado» en su empaque. La pregunta real es: <strong>¿testeado por quién, con qué protocolo y con qué resultados?</strong></p><p>Existen dos niveles de evidencia que deberías buscar:</p><p><strong>1. Dermatológicamente testeado</strong>: el producto fue evaluado por un médico dermatólogo que certificó su tolerancia cutánea. Es el mínimo exigible.</p><p><strong>2. Estudio hipoalergénico independiente</strong>: un estudio clínico controlado con un panel de personas con piel sensible, realizado por un laboratorio externo. Esto es el estándar más alto, y pocas marcas lo tienen.</p><p>Cuando un fabricante publica sus estudios o los pone a disposición del consumidor, es porque los resultados los respaldan. Exígelo como un estándar mínimo.</p>",
+            "text": "<p>Cualquier marca puede imprimir <strong>Dermatológicamente testeado</strong> en su empaque. La pregunta real es: </p><p><strong>¿testeado por quién, con qué protocolo y con qué resultados?</strong></p><p>Existen dos niveles de evidencia que deberías buscar:</p><p><strong>1. Dermatológicamente testeado</strong>: el producto fue evaluado por un médico dermatólogo que certificó su tolerancia cutánea. Es el mínimo exigible.</p><p><strong>2. Estudio hipoalergénico independiente</strong>: un estudio clínico controlado con un panel de personas con piel sensible, realizado por un laboratorio externo. Esto es el estándar más alto, y pocas marcas lo tienen.</p>",
             "description_size": "medium"
           }
         }
       },
       "block_order": [
-        "subheading_wXQjjL",
         "heading_TehFja",
         "text_EeftNX"
       ],
@@ -262,8 +234,8 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
         "video_controls": true,
-        "height": "adapt",
-        "desktop_image_width": "medium",
+        "height": "small",
+        "desktop_image_width": "small",
         "section_width": "full-width-row-full",
         "layout": "text_first",
         "content_position": "text-left",
@@ -271,18 +243,12 @@
         "color_text": "#003b3d",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "image_with_text_GVAhJe": {
       "type": "image-with-text",
       "blocks": {
-        "subheading_cX74Wd": {
-          "type": "subheading",
-          "settings": {
-            "text": "Add a tagline"
-          }
-        },
         "heading_dMQyHP": {
           "type": "heading",
           "settings": {
@@ -293,13 +259,12 @@
         "text_e9MXPF": {
           "type": "text",
           "settings": {
-            "text": "<p>Más que buscar ingredientes «buenos», es igual de importante evitar los que no deberían estar en la piel de un bebé. Algunos de los más comunes en productos del mercado masivo:</p><p><strong>Sulfatos (SLS/SLES)</strong>: tensoactivos agresivos que eliminan la barrera lipídica natural de la piel. Son especialmente problemáticos en pieles secas o con tendencia a dermatitis.</p><p><strong>Parabenos</strong>: conservantes con potencial actividad estrogénica. Aunque el debate científico aún está abierto, el principio de precaución aconseja evitarlos en bebés.</p><p><strong>Siliconas</strong>: forman una capa oclusiva que da sensación de suavidad pero puede interferir en la respiración cutánea. No aportan beneficio real a la piel.</p><p><strong>Disruptores endocrinos</strong>: sustancias que pueden interferir con el sistema hormonal. La piel inmadura de un bebé absorbe más fácilmente lo que se le aplica, lo que hace que este punto sea especialmente relevante.</p><p>Revisar el INCI (lista de ingredientes) toma 2 minutos y puede marcar una diferencia importante.</p>",
+            "text": "<p>Más que buscar ingredientes <strong>buenos</strong>, es igual de importante evitar los que no deberían estar en la piel de un bebé. Algunos de los más comunes son:</p><p><strong>Sulfatos (SLS/SLES)</strong>: tensoactivos agresivos que eliminan la barrera lipídica natural de la piel.</p><p><strong>Parabenos</strong>: conservantes con potencial actividad estrogénica. </p><p><strong>Siliconas</strong>: forman una capa oclusiva que da sensación de suavidad pero puede interferir en la respiración cutánea.</p><p><strong>Disruptores endocrinos</strong>: sustancias que pueden interferir con el sistema hormonal. </p>",
             "description_size": "medium"
           }
         }
       },
       "block_order": [
-        "subheading_cX74Wd",
         "heading_dMQyHP",
         "text_e9MXPF"
       ],
@@ -310,8 +275,8 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
         "video_controls": true,
-        "height": "adapt",
-        "desktop_image_width": "medium",
+        "height": "small",
+        "desktop_image_width": "small",
         "section_width": "full-width-row-full",
         "layout": "image_first",
         "content_position": "text-left",
@@ -319,7 +284,7 @@
         "color_text": "#003b3d",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "image_with_text_overlay_RkEtYx": {
