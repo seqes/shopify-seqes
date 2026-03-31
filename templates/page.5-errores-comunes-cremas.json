@@ -307,8 +307,8 @@
         "text_ULxVXD": {
           "type": "text",
           "settings": {
-            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. Sin fragancia. Con índice de naturalidad ISO 16128 del 96%. Formulada específicamente para piel sensible infantil. Con estudio hipoalergénico clínico independiente. Y sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</p><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p><p></p>",
-            "description_size": "medium"
+            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. </p><ul><li>Sin fragancia. </li><li>Con índice de naturalidad ISO 16128 del 96%. </li><li>Formulada específicamente para piel sensible infantil. </li><li>Con estudio hipoalergénico clínico independiente. </li><li>Sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</li></ul><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p><p></p>",
+            "description_size": "small"
           }
         },
         "button_pLLpNg": {
@@ -331,8 +331,8 @@
         "section_width": "full-width-row-full",
         "image": "shopify://shop_images/IMG_0645.jpg",
         "image_parallax": true,
-        "desktop_height": "desktop-height-650",
-        "mobile_height": "mobile-height-500",
+        "desktop_height": "desktop-height-450",
+        "mobile_height": "mobile-height-auto",
         "content_width": "large",
         "content_position": "bottom-center",
         "text_alignment": "center",
