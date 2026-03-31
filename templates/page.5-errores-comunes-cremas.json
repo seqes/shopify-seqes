@@ -322,56 +322,58 @@
         "disable_bottom_spacing": false
       }
     },
-    "rich_text_kDjTPg": {
-      "type": "rich-text",
+    "image_with_text_overlay_RkEtYx": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_iiBL8j": {
+        "subheading_YhF8XH": {
           "type": "subheading",
           "settings": {
-            "text": "Subheading for this section"
+            "text": "DERMOCOSMÉTICA CHILENA"
           }
         },
-        "heading_GL4Xa8": {
+        "heading_7xGEqy": {
           "type": "heading",
           "settings": {
             "text": "Una crema que responde a todos estos criterios",
-            "size": "h3"
+            "heading_size": "h1-xlarge"
           }
         },
-        "text_LGpnkL": {
+        "text_ULxVXD": {
           "type": "text",
           "settings": {
-            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. Sin fragancia. Con índice de naturalidad ISO 16128 del 96%. Formulada específicamente para piel sensible infantil. Con estudio hipoalergénico clínico independiente. Y sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</p><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p>",
-            "custom_liquid": "",
-            "size": "text-size-regular"
+            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. Sin fragancia. Con índice de naturalidad ISO 16128 del 96%. Formulada específicamente para piel sensible infantil. Con estudio hipoalergénico clínico independiente. Y sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</p><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p><p></p>",
+            "description_size": "medium"
           }
         },
-        "button_zgtjFn": {
+        "button_pLLpNg": {
           "type": "button",
           "settings": {
-            "link_label": "Learn More",
-            "link": "",
+            "button_text": "QUiero saber más de la crema corporal",
+            "button_link": "shopify://products/crema-corporal",
             "button_outline": false
           }
         }
       },
       "block_order": [
-        "subheading_iiBL8j",
-        "heading_GL4Xa8",
-        "text_LGpnkL",
-        "button_zgtjFn"
+        "subheading_YhF8XH",
+        "heading_7xGEqy",
+        "text_ULxVXD",
+        "button_pLLpNg"
       ],
-      "name": "Rich text",
+      "name": "Image with text overlay",
       "settings": {
-        "section_width": "grid",
-        "text_width": "medium",
-        "text_position": "center",
+        "section_width": "full-width-row-full",
+        "image": "shopify://shop_images/IMG_0645.jpg",
+        "image_parallax": true,
+        "desktop_height": "desktop-height-650",
+        "mobile_height": "mobile-height-500",
+        "content_width": "large",
+        "content_position": "bottom-center",
         "text_alignment": "center",
-        "color_bg": "#f5f3ef",
-        "color_text": "#003b3d",
-        "color_links": "#003b3d",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     }
   },
@@ -384,6 +386,6 @@
     "image_with_text_W7YH6i",
     "image_with_text_bxNBJL",
     "image_with_text_GVAhJe",
-    "rich_text_kDjTPg"
+    "image_with_text_overlay_RkEtYx"
   ]
 }
