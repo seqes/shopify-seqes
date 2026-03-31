@@ -378,7 +378,7 @@
         "enable_sticky_info": true,
         "enable_sticky_add_to_cart": true,
         "show_taxes_included": true,
-        "media_layout": "thumbnails",
+        "media_layout": "grid",
         "display_slider_pagination": true,
         "media_aspect_ratio": "adapt",
         "display_captions": true,
@@ -769,6 +769,14 @@
         "disable_bottom_spacing": true
       }
     },
+    "seqes_gradient_divider_fanEdT": {
+      "type": "seqes-gradient-divider",
+      "settings": {
+        "color": "#003b3d",
+        "height": 50,
+        "direction": "top_to_bottom"
+      }
+    },
     "ingredients_gallery": {
       "type": "gallery",
       "blocks": {
@@ -833,14 +841,6 @@
         "overlay_opacity": 50,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
-      }
-    },
-    "seqes_gradient_divider_fanEdT": {
-      "type": "seqes-gradient-divider",
-      "settings": {
-        "color": "#003b3d",
-        "height": 50,
-        "direction": "top_to_bottom"
       }
     },
     "multicolumn_fH3XAG": {
@@ -919,73 +919,6 @@
         "show_progress_bar": true,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
-      }
-    },
-    "seqes_comparison_table_xBUAHL": {
-      "type": "seqes-comparison-table",
-      "blocks": {
-        "row_origin": {
-          "type": "row",
-          "settings": {
-            "feature": "Origen natural",
-            "seqes_text": "96% ingredientes de origen natural (ISO 16128)",
-            "market_text": "Porcentaje no declarado o inferior"
-          }
-        },
-        "row_fragrance": {
-          "type": "row",
-          "settings": {
-            "feature": "Fragancia",
-            "seqes_text": "Sin fragancia, sin perfume, sin colorantes",
-            "market_text": "Frecuentemente con perfume sintético"
-          }
-        },
-        "row_actives": {
-          "type": "row",
-          "settings": {
-            "feature": "Activos principales",
-            "seqes_text": "Células madre de Alerce + Murta + Hydrovance",
-            "market_text": "Ingredientes genéricos sin diferenciación"
-          }
-        },
-        "row_hydration": {
-          "type": "row",
-          "settings": {
-            "feature": "Hidratación",
-            "seqes_text": "Biomimética profunda — absorción inmediata, sin grasa",
-            "market_text": "Hidratación superficial, puede sentirse pesada"
-          }
-        },
-        "row_sustainability": {
-          "type": "row",
-          "settings": {
-            "feature": "Sustentabilidad",
-            "seqes_text": "Biotecnología con 99% ahorro de agua, fórmula biodegradable",
-            "market_text": "Sin compromiso ambiental declarado"
-          }
-        }
-      },
-      "block_order": [
-        "row_origin",
-        "row_fragrance",
-        "row_actives",
-        "row_hydration",
-        "row_sustainability"
-      ],
-      "settings": {
-        "eyebrow": "Lo que hace diferente a Seqes",
-        "title": "¿Por qué elegir Seqes?",
-        "intro": "<p>No todas las cremas hidratantes son iguales. La diferencia está en los ingredientes, los estudios que lo respaldan y el compromiso con la piel de tu bebé.</p>",
-        "seqes_heading": "Seqes",
-        "market_heading": "Muchas cremas del mercado",
-        "content_width": 1200,
-        "padding_top": 48,
-        "padding_bottom": 48,
-        "background_color": "#00393b",
-        "frame_color": "#a8e0c0",
-        "text_color": "#ffffff",
-        "muted_color": "#d4e1df",
-        "divider_color": "#2f5c5e"
       }
     },
     "collapsible_content_KNxP6C": {
@@ -1115,10 +1048,9 @@
     "text_with_icons_q7yjEd",
     "seqes_gradient_divider_9X8qrf",
     "testimonials_3eWjHg",
-    "ingredients_gallery",
     "seqes_gradient_divider_fanEdT",
+    "ingredients_gallery",
     "multicolumn_fH3XAG",
-    "seqes_comparison_table_xBUAHL",
     "collapsible_content_KNxP6C",
     "spacer_bottom",
     "product-recommendations"
