@@ -41,7 +41,7 @@
     "color_header_links": "{{ shop.brand.colors.primary[0].foreground }}",
     "color_header_links_hover": "{{ shop.brand.colors.secondary[0].background }}",
     "color_header_icons": "{{ shop.brand.colors.primary[0].foreground }}",
-    "color_header_border": "{{ shop.brand.colors.secondary[0].foreground }}",
+    "color_header_border": "#003b3d",
     "solid_button_background": "#003b3d",
     "solid_button_label": "#ffffff",
     "outline_button_label": "{{ shop.brand.colors.primary[0].background }}",
