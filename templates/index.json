@@ -168,9 +168,9 @@
         "timer_day": "17",
         "timer_hour": "21",
         "timer_minute": "00",
-        "color_bg": "#f5f3ef",
-        "color_text": "#151515",
-        "overlay_color": "#000000",
+        "color_bg": "#ffe6a7",
+        "color_text": "#003b3d",
+        "overlay_color": "#003b3d",
         "overlay_opacity": 10,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -188,15 +188,8 @@
         "heading_W3FrTx": {
           "type": "heading",
           "settings": {
-            "text": "Dos productos. Piel sensible sana.",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "text_BBjXUJ": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Formulados para bebés desde el primer día. Dermatológicamente testeados, con activos biotecnológicos chilenos y +95% de origen natural.</p><p></p>",
-            "description_size": "medium"
+            "text": "Dos productos: Piel sensible sana.",
+            "heading_size": "h1-large"
           }
         },
         "button_VhdHLg": {
@@ -205,6 +198,13 @@
             "button_text": "Crema Corporal",
             "button_link": "shopify://products/crema-corporal",
             "button_outline": false
+          }
+        },
+        "text_BBjXUJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p></p><p>Formulados para bebés desde el primer día. Dermatológicamente testeados, con activos biotecnológicos chilenos y +95% de origen natural.</p><p></p>",
+            "description_size": "medium"
           }
         },
         "button_3aDeP9": {
@@ -219,8 +219,8 @@
       "block_order": [
         "subheading_VrU4YN",
         "heading_W3FrTx",
-        "text_BBjXUJ",
         "button_VhdHLg",
+        "text_BBjXUJ",
         "button_3aDeP9"
       ],
       "name": "Image with text overlay",
@@ -236,7 +236,7 @@
         "overlay_color": "#000000",
         "overlay_opacity": 30,
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "16615358507b6ff1a8": {
@@ -296,8 +296,8 @@
         "pagination": "dots",
         "autoplay": true,
         "autoplay_length": 5,
-        "color_bg": "#ffffff",
-        "color_text": "#003b3d",
+        "color_bg": "#003b3d",
+        "color_text": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
