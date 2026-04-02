@@ -72,7 +72,7 @@
         "logo_height_range": 60,
         "logo_height_range_mobile": 60,
         "style": "style1",
-        "header_shadow": "header--shadow-small",
+        "header_shadow": "header--shadow-large",
         "menu": "main-menu",
         "cart_icon": "frame_bag",
         "use_icon_account": true,
