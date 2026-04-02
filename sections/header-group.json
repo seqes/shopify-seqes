@@ -68,6 +68,7 @@
       "type": "header",
       "settings": {
         "sticky_header": true,
+        "logo": "shopify://shop_images/LOGO_SEQES_BLANCO0_0f2de111-f326-4d12-a919-b240c9effce7.png",
         "logo_height_range": 60,
         "logo_height_range_mobile": 60,
         "style": "style1",
