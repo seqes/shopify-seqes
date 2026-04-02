@@ -92,11 +92,12 @@
         "col_biotecnologia": {
           "type": "column",
           "settings": {
-            "image_full_width": false,
+            "image": "shopify://shop_images/Cloning_cells_webp.webp",
+            "image_full_width": true,
             "image_link": "",
             "retina": true,
-            "title": "Column",
-            "text": "<p>Nuestras fórmulas incorporan células madre del Alerce Patagónico (<em>Fitzroya cupressoides</em>), uno de los árboles más longevos del planeta. Un activo biotecnológico único que solo nace en el sur de Chile.</p>",
+            "title": "Ciencia real, hecha para cuidar",
+            "text": "<p>Desarrollamos fórmulas con ingredientes que cumplen una función clara en la piel. Más que promesas, buscamos resultados que se sienten desde el primer uso.</p>",
             "link_label": "",
             "link": ""
           }
@@ -104,11 +105,12 @@
         "col_naturalidad": {
           "type": "column",
           "settings": {
-            "image_full_width": false,
+            "image": "shopify://shop_images/baby_holding_hand_webp.webp",
+            "image_full_width": true,
             "image_link": "",
             "retina": true,
-            "title": "Column",
-            "text": "<p>No basta con decir «natural» en la etiqueta. Nuestro índice de naturalidad ISO 16128 es verificable y publicado. Fórmulas limpias, biodegradables y sin fragancia, sulfatos, parabenos ni siliconas.</p>",
+            "title": "Seguridad real, para usar con tranquilidad",
+            "text": "<p>Cada ingrediente es seleccionado pensando en piel sensible y en desarrollo. Fórmulas suaves, compatibles y seguras para el uso diario.</p>",
             "link_label": "",
             "link": ""
           }
@@ -116,11 +118,12 @@
         "col_seguridad": {
           "type": "column",
           "settings": {
-            "image_full_width": false,
+            "image": "shopify://shop_images/tree_sample_webbp.webp",
+            "image_full_width": true,
             "image_link": "",
             "retina": true,
-            "title": "Column",
-            "text": "<p>Dermatológicamente testeados e hipoalergénicos con estudio clínico independiente. Validados para piel sensible, con autorización de uso en niños menores de 6 años por el ISP.</p>",
+            "title": "Activos reales, que sí aportan",
+            "text": "<p>Usamos ingredientes que realmente entregan beneficios a la piel, desde hidratación profunda hasta protección y regeneración.</p>",
             "link_label": "",
             "link": ""
           }
@@ -138,12 +141,12 @@
         "description": "<p>Tres pilares que construyen una marca en la que los papás pueden confiar.</p>",
         "full_width": true,
         "display_type": "carousel",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "columns_desktop": 3,
         "text_alignment": "left",
         "heading_size": "h5",
-        "mobile_swipe": false,
-        "show_progress_bar": true,
+        "mobile_swipe": true,
+        "show_progress_bar": false,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
