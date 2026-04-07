@@ -445,5 +445,12 @@
       "send_on": "AAAA-MM-DD",
       "send_on_label": "Enviar el (opcional)"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "city_label": "Ciudad / Comuna"
+      }
+    }
   }
 }
