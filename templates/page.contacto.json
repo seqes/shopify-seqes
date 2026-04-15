@@ -18,293 +18,48 @@
         "disable_bottom_spacing": true
       }
     },
-    "image_with_text_overlay_eDAPhR": {
-      "type": "image-with-text-overlay",
+    "contact_form_QPyUBB": {
+      "type": "contact-form",
       "blocks": {
-        "heading_jAcBtk": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ page.title }}",
-            "heading_size": "h1-xlarge"
-          }
-        }
-      },
-      "block_order": [
-        "heading_jAcBtk"
-      ],
-      "name": "Image with text overlay",
-      "settings": {
-        "section_width": "full-width-row-full",
-        "image": "{{ page.metafields.custom.foto_portada.value }}",
-        "image_parallax": true,
-        "desktop_height": "desktop-height-450",
-        "mobile_height": "mobile-height-350",
-        "content_width": "large",
-        "content_position": "middle-center",
-        "text_alignment": "center",
-        "overlay_color": "#000000",
-        "overlay_opacity": 35,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "rich_text_68nNBW": {
-      "type": "rich-text",
-      "blocks": {
-        "text_kCAtMJ": {
+        "text_BQG3Qx": {
           "type": "text",
           "settings": {
-            "text": "{{ page.content }}",
-            "custom_liquid": "",
-            "size": "text-size-regular"
+            "heading": "¿Problemas al comprar?",
+            "text": "<p>Si tienes dudas en el proceso de compra, estamos aquí para ayudarte.</p>"
+          }
+        },
+        "text_EBr4P6": {
+          "type": "text",
+          "settings": {
+            "heading": "Respondemos rápido",
+            "text": "<p>Te respondemos en menos de 48 horas hábiles. Queremos ayudarte lo antes posible.</p>"
+          }
+        },
+        "text_BdUctM": {
+          "type": "text",
+          "settings": {
+            "heading": "Estamos después de la compra",
+            "text": "<p>Si ya compraste y tienes preguntas, también te acompañamos.</p>"
           }
         }
       },
       "block_order": [
-        "text_kCAtMJ"
+        "text_BQG3Qx",
+        "text_EBr4P6",
+        "text_BdUctM"
       ],
-      "name": "Rich text",
+      "name": "Contact form",
       "settings": {
-        "section_width": "full-width-row-full",
-        "text_width": "grid",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#003b3d",
-        "color_text": "#ffffff",
-        "color_links": "#003b3d",
+        "heading": "¿Tienes dudas? Estamos para ayudarte",
+        "description": "<p><br/>Si tienes preguntas sobre nuestros productos, ingredientes o cómo cuidar la piel de tu guagua, escríbenos. Te vamos a responder lo antes posible.<br/><br/></p>",
+        "show_phone_number": true,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
-      }
-    },
-    "image_with_text_VX9e9P": {
-      "type": "image-with-text",
-      "blocks": {
-        "text_pNhXpN": {
-          "type": "text",
-          "settings": {
-            "text": "{{ page.metafields.custom.texto_enriquecido_1 | metafield_tag }}",
-            "description_size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "text_pNhXpN"
-      ],
-      "name": "Image with text",
-      "settings": {
-        "image": "{{ page.metafields.custom.foto_1.value }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": false,
-        "video_controls": false,
-        "height": "small",
-        "desktop_image_width": "small",
-        "section_width": "full-width-row-full",
-        "layout": "image_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
-        "color_text": "#003b3d",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "image_with_text_CG8i3V": {
-      "type": "image-with-text",
-      "blocks": {
-        "text_zMmf8z": {
-          "type": "text",
-          "settings": {
-            "text": "{{ page.metafields.custom.texto_enriquecido_2 | metafield_tag }}",
-            "description_size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "text_zMmf8z"
-      ],
-      "name": "Image with text",
-      "settings": {
-        "image": "{{ page.metafields.custom.foto_2.value }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "small",
-        "desktop_image_width": "small",
-        "section_width": "full-width-row-full",
-        "layout": "text_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
-        "color_text": "#003b3d",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "image_with_text_W7YH6i": {
-      "type": "image-with-text",
-      "blocks": {
-        "text_JmAKYN": {
-          "type": "text",
-          "settings": {
-            "text": "{{ page.metafields.custom.texto_enriquecido_3 | metafield_tag }}",
-            "description_size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "text_JmAKYN"
-      ],
-      "name": "Image with text",
-      "settings": {
-        "image": "{{ page.metafields.custom.foto_3.value }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "small",
-        "desktop_image_width": "small",
-        "section_width": "full-width-row-full",
-        "layout": "image_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
-        "color_text": "#003b3d",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "image_with_text_bxNBJL": {
-      "type": "image-with-text",
-      "blocks": {
-        "text_EeftNX": {
-          "type": "text",
-          "settings": {
-            "text": "{{ page.metafields.custom.texto_enriquecido_4 | metafield_tag }}",
-            "description_size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "text_EeftNX"
-      ],
-      "name": "Image with text",
-      "settings": {
-        "image": "{{ page.metafields.custom.foto_4.value }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "small",
-        "desktop_image_width": "small",
-        "section_width": "full-width-row-full",
-        "layout": "text_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
-        "color_text": "#003b3d",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "image_with_text_GVAhJe": {
-      "type": "image-with-text",
-      "blocks": {
-        "text_e9MXPF": {
-          "type": "text",
-          "settings": {
-            "text": "{{ page.metafields.custom.texto_enriquecido_5 | metafield_tag }}",
-            "description_size": "medium"
-          }
-        }
-      },
-      "block_order": [
-        "text_e9MXPF"
-      ],
-      "name": "Image with text",
-      "settings": {
-        "image": "{{ page.metafields.custom.foto_5.value }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "video_controls": true,
-        "height": "small",
-        "desktop_image_width": "small",
-        "section_width": "full-width-row-full",
-        "layout": "image_first",
-        "content_position": "text-left",
-        "color_bg": "#ffffff",
-        "color_text": "#003b3d",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "image_with_text_overlay_RkEtYx": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_YhF8XH": {
-          "type": "subheading",
-          "settings": {
-            "text": "DERMOCOSMÉTICA CHILENA"
-          }
-        },
-        "heading_7xGEqy": {
-          "type": "heading",
-          "settings": {
-            "text": "Una crema que responde a todos estos criterios",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "text_ULxVXD": {
-          "type": "text",
-          "settings": {
-            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. </p><ul><li>Sin fragancia. </li><li>Con índice de naturalidad ISO 16128 del 96%. </li><li>Formulada específicamente para piel sensible infantil. </li><li>Con estudio hipoalergénico clínico independiente. </li><li>Sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</li></ul><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p><p></p>",
-            "description_size": "small"
-          }
-        },
-        "button_pLLpNg": {
-          "type": "button",
-          "settings": {
-            "button_text": "QUiero saber más de la crema corporal",
-            "button_link": "shopify://products/crema-corporal",
-            "button_outline": false
-          }
-        }
-      },
-      "block_order": [
-        "subheading_YhF8XH",
-        "heading_7xGEqy",
-        "text_ULxVXD",
-        "button_pLLpNg"
-      ],
-      "name": "Image with text overlay",
-      "settings": {
-        "section_width": "full-width-row-full",
-        "image": "shopify://shop_images/IMG_0645.jpg",
-        "image_parallax": true,
-        "desktop_height": "desktop-height-450",
-        "mobile_height": "mobile-height-auto",
-        "content_width": "large",
-        "content_position": "bottom-center",
-        "text_alignment": "left",
-        "overlay_color": "#000000",
-        "overlay_opacity": 50,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
       }
     }
   },
   "order": [
     "main",
-    "image_with_text_overlay_eDAPhR",
-    "rich_text_68nNBW",
-    "image_with_text_VX9e9P",
-    "image_with_text_CG8i3V",
-    "image_with_text_W7YH6i",
-    "image_with_text_bxNBJL",
-    "image_with_text_GVAhJe",
-    "image_with_text_overlay_RkEtYx"
+    "contact_form_QPyUBB"
   ]
 }
