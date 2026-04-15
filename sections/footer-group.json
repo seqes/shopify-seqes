@@ -20,19 +20,6 @@
             "formId": "Ykb8Xi"
           }
         },
-        "text_E7Gcjg": {
-          "type": "text",
-          "settings": {
-            "column_size": "small",
-            "title": "",
-            "image": "shopify://shop_images/TRONCO_BLANCO.webp",
-            "text": "",
-            "text_size": "medium",
-            "button_text": "",
-            "button_link": "",
-            "show_social_links": false
-          }
-        },
         "menu_nWDeMm": {
           "type": "menu",
           "settings": {
@@ -51,7 +38,6 @@
       },
       "block_order": [
         "klaviyo_email_marketing_sms_form_embed_block_xUV9VV",
-        "text_E7Gcjg",
         "menu_nWDeMm",
         "social_EnGpgj"
       ],
