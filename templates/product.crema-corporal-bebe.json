@@ -777,20 +777,6 @@
             "product_list": []
           }
         },
-        "6bdc1221-3d9f-4be8-b482-80341e02abcf": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Murta_Webp_Square.webp",
-            "subheading": "Fruto nativo chileno",
-            "title": "Extracto de Murta",
-            "text": "Rico en antioxidantes y vitamina C. Ingrediente botánico endémico que ayuda a proteger y fortalecer la barrera cutánea del bebé.",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "product_list": []
-          }
-        },
         "94831cdf-9641-4e12-9506-e140c83f2870": {
           "type": "image",
           "settings": {
@@ -804,12 +790,26 @@
             "block_link": "",
             "product_list": []
           }
+        },
+        "6bdc1221-3d9f-4be8-b482-80341e02abcf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Aceite_de_Almendras_Webp.webp",
+            "subheading": "Nutrición y suavidad",
+            "title": "Aceite de Almendras",
+            "text": "Aporta nutrición profunda y ayuda a suavizar la piel, manteniendo la hidratación y protegiendo la barrera cutánea en pieles delicadas.",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
         }
       },
       "block_order": [
         "ddd1f3e8-2747-4567-b26e-30f23493a5cf",
-        "6bdc1221-3d9f-4be8-b482-80341e02abcf",
-        "94831cdf-9641-4e12-9506-e140c83f2870"
+        "94831cdf-9641-4e12-9506-e140c83f2870",
+        "6bdc1221-3d9f-4be8-b482-80341e02abcf"
       ],
       "settings": {
         "columns_desktop": 3,
