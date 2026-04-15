@@ -310,9 +310,9 @@
         "faq_dry_skin": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Sirve si tiene costra láctea?",
+            "heading": "¿Se puede usar todos los días?",
             "open": false,
-            "content": "<p>Sí puede ayudar. La idea no es “sacarla a la fuerza”, sino limpiar suave y mantener el equilibrio del cuero cabelludo para que mejore de forma progresiva.</p>",
+            "content": "<p>Sí. Está pensado para uso frecuente, ya que limpia sin resecar ni alterar el equilibrio natural del cuero cabelludo.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -522,9 +522,9 @@
       "name": "Instagram stories",
       "settings": {
         "visibility": "always-display",
-        "title": "Ellos se la jugaron primero",
+        "title": "Más que opiniones, resultados",
         "heading_size": "h2",
-        "text": "<p>Ahora no la cambian por nada</p>",
+        "text": "<p>Testimonios reales de uso en piel sensible, donde la formulación hace la diferencia.</p>",
         "button_label": "",
         "link": "",
         "bg_color": "#003b3d",
