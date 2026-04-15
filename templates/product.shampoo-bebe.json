@@ -1,0 +1,1009 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "sku_ghdKTc": {
+          "type": "sku",
+          "settings": {
+            "sku_style": "style_vendor"
+          }
+        },
+        "rating_stars_KGbTcc": {
+          "type": "rating_stars",
+          "settings": {
+            "rating": 4.8,
+            "label": "4.8/5 (120 reviews)",
+            "star_color": "#ffb800",
+            "bg_star_color": "#e0e0e0",
+            "size": 18,
+            "alignment": "flex-start"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "uppercase": false,
+            "show_products_rating": true,
+            "show_custom_badges": false
+          }
+        },
+        "urgency_text_bk4yJw": {
+          "type": "urgency_text",
+          "settings": {
+            "text": "250ml FORMATO DE LANZAMIENTO",
+            "icon": "sell",
+            "filled_icon": true,
+            "text_color": "#003b3d",
+            "font_size": 14,
+            "font_weight": "bold"
+          }
+        },
+        "text_nkpTCr": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "style_body"
+          }
+        },
+        "seqes_it_skin_badge": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Para pieles secas y muy sensibles",
+            "text_color": "#faa525",
+            "font_size": 17,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "none",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": false
+          }
+        },
+        "seqes_it_claim_5": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Permitido su uso en niños menores de 6 años",
+            "text_color": "",
+            "font_size": 14,
+            "font_weight": "400",
+            "font_style": "normal",
+            "icon_type": "none",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "text_ntWDmi": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "style_body"
+          }
+        },
+        "seqes_it_claim_1": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Dermatológicamente testeado",
+            "text_color": "",
+            "font_size": 15,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_2": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Hipoalergénico — estudio clínico",
+            "text_color": "",
+            "font_size": 15,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_3": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Sin aroma ni colorantes",
+            "text_color": "",
+            "font_size": 15,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "seqes_it_claim_4": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "96% ingredientes de origen natural",
+            "text_color": "",
+            "font_size": 15,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "bullet",
+            "emoji": "",
+            "icon": "none",
+            "icon_color": "#00393b",
+            "enable_animation": true
+          }
+        },
+        "text_dFTTTa": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "style_body"
+          }
+        },
+        "description_rTYcfB": {
+          "type": "description",
+          "settings": {
+            "seo_text_max_height": 400,
+            "seo_text_read_more": "Leer más",
+            "seo_text_read_less": "Leer menos"
+          }
+        },
+        "reviews_slideshow_qrrpKE": {
+          "type": "reviews_slideshow",
+          "settings": {
+            "bg_color": "#f5f0eb",
+            "bg_opacity": 100,
+            "text_color": "#003b3d",
+            "star_color": "#faa525",
+            "photo_size": 44,
+            "text_size": 14,
+            "max_chars": 200,
+            "autoplay_speed": 5,
+            "badge_logo": "shopify://shop_images/Logo_Google.webp",
+            "badge_text": "Reseñas verificadas de Google",
+            "review_1_image": "shopify://shop_images/Foto_Mujer_Chilena_1.webp",
+            "review_1_name": "Catalina Muñoz",
+            "review_1_text": "La probe antes del lanzamiento y no la cambio por nada. Sin olor, sin quimicos raros hace rato vuscaba algo asi",
+            "review_1_stars": 5,
+            "review_2_image": "shopify://shop_images/Foto_Hombre_Chileno_2.webp",
+            "review_2_name": "Sebastián Arriagada",
+            "review_2_text": "Yo no cacho nada de cremas pero odio que me quede la piel grasa. La piel del benja quedo filete.",
+            "review_2_stars": 4,
+            "review_3_image": "shopify://shop_images/Foto_Mujer_Chilena_4.webp",
+            "review_3_name": "Fernanda Soto",
+            "review_3_text": "Mi hija tiene piel atopica y ninguna crema le hacia. Me invitaron a probarla y la verdad que la cagó",
+            "review_3_stars": 5,
+            "review_4_name": "",
+            "review_4_text": "",
+            "review_4_stars": 5,
+            "review_5_name": "",
+            "review_5_text": "",
+            "review_5_stars": 5,
+            "review_6_name": "",
+            "review_6_text": "",
+            "review_6_stars": 5
+          }
+        },
+        "klaviyo_email_marketing_sms_form_embed_block_YHdU6T": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "01KP7F7SFN0PV4054WN2XZ8J9S"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_size": "regular",
+            "color_picker_use_variants": false,
+            "variant_is_disabled": true,
+            "sizing_guide_variant": "Size",
+            "sizing_guide_text": "",
+            "sizing_guide_icon": "none",
+            "sizing_guide_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "outline_button": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "95b7e00a-0453-4eb0-9cf0-1dae84d8b822": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Ingredientes",
+            "side_panel_1_icon": "seqes_formula",
+            "side_panel_1_content": "<p>{{ product.metafields.custom.ingredientes | metafield_tag }}</p>",
+            "side_panel_1_page": "",
+            "side_panel_2_label": "Modo de Uso",
+            "side_panel_2_icon": "seqes_instructions",
+            "side_panel_2_content": "<p>{{ product.metafields.custom.modo_de_uso | metafield_tag }}</p>",
+            "side_panel_2_page": "",
+            "side_panel_3_label": "Advertencias",
+            "side_panel_3_icon": "seqes_warning",
+            "side_panel_3_content": "<p>{{ product.metafields.custom.advertencias | metafield_tag }}</p>",
+            "side_panel_3_page": "",
+            "layout": "horizontal",
+            "center_icons": true,
+            "button_font_size": 12,
+            "content_font_size": 14
+          }
+        },
+        "seqes_it_guarantee": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Garantía de 30 días sin preguntas",
+            "text_color": "#003b3d",
+            "font_size": 14,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "theme_icon",
+            "emoji": "",
+            "icon": "return",
+            "icon_color": "#003b3d",
+            "enable_animation": false
+          }
+        },
+        "seqes_it_shipping": {
+          "type": "seqes_icon_text",
+          "settings": {
+            "text": "Despacho gratis en compras sobre $50.000",
+            "text_color": "#003b3d",
+            "font_size": 14,
+            "font_weight": "500",
+            "font_style": "normal",
+            "icon_type": "theme_icon",
+            "emoji": "",
+            "icon": "truck",
+            "icon_color": "#003b3d",
+            "enable_animation": false
+          }
+        },
+        "faq_safe": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Puedo usarla si soy adulto con piel sensible o alérgica?",
+            "open": false,
+            "content": "<p>Totalmente. Si una fórmula pasa las exigencias de seguridad para la piel de un recién nacido— que es hasta un 30% más delgada y reactiva que la de un adulto — imagina lo que puede hacer por tu piel. Seqes es hipoalergénica con 0% de reacciones adversas en estudios clínicos, sin fragancia, sin parabenos y sin sulfatos. Funciona en cuerpo y rostro. Si tu piel reacciona a todo imagina que esta crema fue hecha para lo más exigente que existe: la piel de una guagua.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_fragrance": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Necesito una crema especial si la piel de mi guagua se ve bien?",
+            "open": false,
+            "content": "<p>Sí. La piel de tu guagua es hasta un 30% más delgada que la de un adulto y pierde humedad mucho más rápido. Aunque se vea bien hoy, sin una hidratación adecuada puede desarrollar sequedad, irritación o rojeces. Seqes actúa como protección preventiva, no solo como solución cuando ya hay un problema.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_dry_skin": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Por qué elegir estasi hay tantas cremas disponibles?",
+            "open": false,
+            "content": "<p>Porque lo que le pones a la piel de tu guagua no debería ser lo mismo que compras al paso. Seqes tiene células madre de Alerce obtenidas por biotecnología, extracto de Murta chilena, hidratación biomimética con Hydrovance y manteca de karité. Todo respaldado por estudios clínicos con 0% de reacciones adversas. No es una crema más con un envase bonito: es lo que lleva adentro lo que la hace distinta.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "image_fbM9GA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Ciencia_e_Innovacion.png",
+            "position": "text-center",
+            "image_link": ""
+          }
+        },
+        "side_panel_YWimqF": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Método de Pago",
+            "side_panel_1_icon": "price_tag",
+            "side_panel_1_content": "<p>Puedes pagar todas tus compras de manera segura con Redcompra y Tarjeta de Crédito a través de Mercado Pago. </p><p>Pago 3 cuotas sin interés con Tarjeta de Débito, pago 24 cuotas con Tarjeta de Crédito o transferencia bancaria a través de Fintoc seleccionando la opción de pago vía Ventipay.</p><p>Tu pago está 100% protegido con nosotros. Contamos con certificado de seguridad SSL para proteger todos los datos de nuestros clientes.</p>",
+            "side_panel_1_page": "",
+            "side_panel_2_label": "Despacho",
+            "side_panel_2_icon": "truck",
+            "side_panel_2_content": "<p>Actualmente contamos con 2 métodos de envío:<br/></p><ul><li><strong>Blue Express:</strong> Disponible para todo Chile Continental.</li><li><strong>Envío Express ⚡️:</strong> Disponible, según stock en Punto de Venta (tiendas), para RM, Viña del Mar, Antofagasta y Concepción.</li></ul><p></p><p><em><strong>**Envío Express ⚡️ no aplican para envíos gratuitos</strong></em><em>.</em><em><strong>**<br/><br/></strong></em><strong>Tiempo de envío:</strong></p><ul><li><strong>Blue Express RM:</strong> 2 a 5 días hábiles</li><li><strong>Blue Express regiones norte, centro y sur:</strong> 3 a 7 días hábiles.</li><li><strong>Blue Express regiones extremas:</strong> 10 a 15 días hábiles.</li><li><strong>Envío Express ⚡️:</strong> Entrega en un máximo de 3 horas</li></ul><p><strong>*En caso de combinar este producto con el Calendario de Adviento, será despachado en 1 solo envío, a partir del 29 de septiembre*</strong></p><p>Durante eventos de alta demanda como <strong>Cyber Days, Navidad o Black Friday</strong>, los tiempos de<strong> despacho pueden extenderse</strong> debido al alto volumen de pedidos y la saturación de las empresas de transporte.</p><p>Por esta razón, es importante considerar <strong>entre 2 a 3 días hábiles adicionales</strong> al plazo de entrega habitual.</p><p>En el caso de los envíos exprés, se recomienda contemplar <strong>hasta 3 horas adicionales</strong> sobre el tiempo originalmente estimado.</p>",
+            "side_panel_2_page": "",
+            "side_panel_3_label": "Garantias",
+            "side_panel_3_icon": "return",
+            "side_panel_3_content": "<p>Puedes optar a la garantía de cambio o devolución<strong> </strong><em><strong>siempre que el producto esté sellado, con su empaque original intacto y sin uso</strong></em>, <em>hasta 30 días después de la fecha en que este haya sido recibido</em>, en el lugar donde el producto fue despachado.</p><p>Para cambios por motivos personales, será necesario realizar el pago del envío de la devolución hacia el lugar de origen, así como también el pago del reenvío del producto cambiado. El valor de cada uno va acorde a las tarifas establecidas en nuestra página web.</p><p>Si tu producto cumple con las condiciones de cambio y devolución, por favor escríbenos a hola@sokobox.cl para guiarte en el proceso.</p>",
+            "side_panel_3_page": "",
+            "layout": "horizontal",
+            "center_icons": true,
+            "button_font_size": 12,
+            "content_font_size": 14
+          }
+        },
+        "4fd23485-293f-46a0-8a4c-34d0e25ea41b": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "sku_ghdKTc",
+        "rating_stars_KGbTcc",
+        "title",
+        "urgency_text_bk4yJw",
+        "text_nkpTCr",
+        "seqes_it_skin_badge",
+        "seqes_it_claim_5",
+        "text_ntWDmi",
+        "seqes_it_claim_1",
+        "seqes_it_claim_2",
+        "seqes_it_claim_3",
+        "seqes_it_claim_4",
+        "text_dFTTTa",
+        "description_rTYcfB",
+        "reviews_slideshow_qrrpKE",
+        "klaviyo_email_marketing_sms_form_embed_block_YHdU6T",
+        "variant_picker",
+        "buy_buttons",
+        "95b7e00a-0453-4eb0-9cf0-1dae84d8b822",
+        "seqes_it_guarantee",
+        "seqes_it_shipping",
+        "faq_safe",
+        "faq_fragrance",
+        "faq_dry_skin",
+        "image_fbM9GA",
+        "side_panel_YWimqF",
+        "4fd23485-293f-46a0-8a4c-34d0e25ea41b"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_sticky_info": true,
+        "enable_sticky_add_to_cart": true,
+        "show_taxes_included": true,
+        "media_layout": "grid",
+        "display_slider_pagination": true,
+        "media_aspect_ratio": "adapt",
+        "display_captions": true,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": false
+      }
+    },
+    "logo_list_3g4EtA": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_RLLtmX": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_sulfatos.webp",
+            "link": ""
+          }
+        },
+        "logo_Pw4iVy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_siliconas.webp",
+            "link": ""
+          }
+        },
+        "logo_CwQrwD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_parabenos.webp",
+            "link": ""
+          }
+        },
+        "logo_PGm3XA": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Logo_Libre_de_Disruptorees_Hormonales.webp",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_RLLtmX",
+        "logo_Pw4iVy",
+        "logo_CwQrwD",
+        "logo_PGm3XA"
+      ],
+      "settings": {
+        "heading": "Libre de lo que sobra, llena de lo que importa",
+        "description": "<p>Todo lo que eliminamos para proteger su piel</p>",
+        "columns": 4,
+        "mobile_swipe": false,
+        "center_align": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "section_divider_Bky4ga": {
+      "type": "section-divider",
+      "name": "Section divider",
+      "settings": {
+        "shape": "waves_3",
+        "flip_horizontal": false,
+        "flip_vertical": false,
+        "shape_color": "#003b3d",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "insta_stories_HYTmaT": {
+      "type": "insta-stories",
+      "blocks": {
+        "user_iktzdg": {
+          "type": "user",
+          "settings": {
+            "username": "cl89santeli",
+            "verified": true,
+            "profile_picture": "shopify://shop_images/Foto_Mujer_Chilena_3.webp",
+            "close_friends": false,
+            "story_1_video": "shopify://files/videos/Crema Video 1 Webm.webm",
+            "story_1_media_fit": "cover",
+            "story_1_time_posted": "10m",
+            "story_1_bg": "#282828",
+            "story_2_media_fit": "contain",
+            "story_2_time_posted": "1h",
+            "story_2_bg": "#282828",
+            "story_3_media_fit": "contain",
+            "story_3_time_posted": "4h",
+            "story_3_bg": "#282828"
+          }
+        },
+        "user_aDnHLC": {
+          "type": "user",
+          "settings": {
+            "username": "ramosilla",
+            "verified": false,
+            "profile_picture": "shopify://shop_images/Foto_Hombre_Chileno_4.webp",
+            "close_friends": false,
+            "story_1_media_fit": "contain",
+            "story_1_time_posted": "10m",
+            "story_1_bg": "#282828",
+            "story_2_media_fit": "contain",
+            "story_2_time_posted": "1h",
+            "story_2_bg": "#282828",
+            "story_3_media_fit": "contain",
+            "story_3_time_posted": "4h",
+            "story_3_bg": "#282828"
+          }
+        },
+        "user_dTXRUG": {
+          "type": "user",
+          "settings": {
+            "username": "arosa83",
+            "verified": true,
+            "profile_picture": "shopify://shop_images/Foto_Mujer_Chilena_5.webp",
+            "close_friends": true,
+            "story_1_media_fit": "contain",
+            "story_1_time_posted": "10m",
+            "story_1_bg": "#282828",
+            "story_2_media_fit": "contain",
+            "story_2_time_posted": "1h",
+            "story_2_bg": "#282828",
+            "story_3_media_fit": "contain",
+            "story_3_time_posted": "4h",
+            "story_3_bg": "#282828"
+          }
+        }
+      },
+      "block_order": [
+        "user_iktzdg",
+        "user_aDnHLC",
+        "user_dTXRUG"
+      ],
+      "name": "Instagram stories",
+      "settings": {
+        "visibility": "always-display",
+        "title": "Ellos se la jugaron primero",
+        "heading_size": "h2",
+        "text": "<p>Ahora no la cambian por nada</p>",
+        "button_label": "",
+        "link": "",
+        "bg_color": "#003b3d",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "bubble_size_desktop": 5.5,
+        "bubble_size_mobile": 6,
+        "autoplay_speed": 10,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section_divider_LrJCFH": {
+      "type": "section-divider",
+      "name": "Section divider",
+      "settings": {
+        "shape": "waves_3",
+        "flip_horizontal": false,
+        "flip_vertical": true,
+        "shape_color": "#003b3d",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "layered_images_with_text_tXj8WJ": {
+      "type": "layered-images-with-text",
+      "blocks": {
+        "subheading_gULkCL": {
+          "type": "subheading",
+          "settings": {
+            "text": "Piel más delicada"
+          }
+        },
+        "heading_jMdrqh": {
+          "type": "heading",
+          "settings": {
+            "text": "La piel del bebé necesita un cuidado diferente",
+            "heading_size": "h3"
+          }
+        },
+        "text_RnzK9d": {
+          "type": "text",
+          "settings": {
+            "text": "<p>La piel de los bebés es hasta un <strong>30% más delgada</strong> que la piel adulta y pierde humedad más fácilmente.</p><p>Esto puede provocar <strong>sequedad, irritación o rojeces</strong>, especialmente en zonas como mejillas, pliegues y piernas.</p><p>Una crema hidratante adecuada ayuda a <strong>restaurar la barrera cutánea</strong> y mantener la piel protegida desde los primeros días.</p><p></p>"
+          }
+        },
+        "button_hJaUiD": {
+          "type": "button",
+          "settings": {
+            "button_text": "Conoce nuestra fórmula",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_gULkCL",
+        "heading_jMdrqh",
+        "text_RnzK9d",
+        "button_hJaUiD"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Baby_Lotion_Webp.webp",
+        "image_ratio": "square",
+        "image_2": "shopify://shop_images/2616858.webp",
+        "image_ratio_2": "adapt",
+        "image_3": "shopify://shop_images/newborn-skin-peeling-1165471859-770x533-1_jpg.webp",
+        "image_ratio_3": "adapt",
+        "full_width": true,
+        "layout": "image_first",
+        "content_alignment": "text-left",
+        "content_position": "middle",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "background_video_H6Feae": {
+      "type": "background-video",
+      "name": "Background video",
+      "settings": {
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "full_width": true,
+        "subheading": "Biotecnología vegetal avanzada",
+        "heading": "Células madre de Alerce milenario",
+        "text": "Mediante clonación de células madre vegetales, la ciencia permite replicar las propiedades regenerativas del Alerce — uno de los árboles más longevos del planeta — sin dañar el árbol original. Un proceso de biotecnología sostenible que ahorra un 99% de agua en su producción.",
+        "lightbox_button": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Navegacion Alerce Webm.webm",
+        "overlay_opacity": 25,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "before_after_image_Qf9kMC": {
+      "type": "before-after-image",
+      "blocks": {
+        "image_VVqgxA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/child-rash-cchn.webp",
+            "title": "Piel irritada",
+            "heading_size": "h3",
+            "heading_position": "top",
+            "text_color": "#003b3d",
+            "overlay_color": "#ffffff",
+            "overlay_opacity": 0
+          }
+        },
+        "image_cRFMkT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/gemini_baby_leg_healthy.webp",
+            "title": "Piel equilibrada",
+            "heading_size": "h3",
+            "heading_position": "top",
+            "text_color": "#003b3d",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_VVqgxA",
+        "image_cRFMkT"
+      ],
+      "settings": {
+        "heading": "¿Has visto esto en la piel de tu bebé?",
+        "heading_left": false,
+        "description": "<p>La <strong>sequedad, rojeces o irritación</strong> son señales de una barrera cutánea debilitada que necesita protección e hidratación adecuadas.</p>",
+        "desktop_height": "desktop-height-450",
+        "mobile_height": "mobile-height-350",
+        "full_width": true,
+        "initial_position": 75,
+        "line_color": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "text_with_icons_q7yjEd": {
+      "type": "text-with-icons",
+      "blocks": {
+        "icon_MQMEz6": {
+          "type": "icon",
+          "settings": {
+            "icon": "truck",
+            "image": "shopify://shop_images/Icon_Delivery_Truck.webp",
+            "heading": "DESPACHOS GRATIS",
+            "text": "<p>Por compras sobre $50.000</p>"
+          }
+        },
+        "icon_JTNVmQ": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/Icon_Chile.webp",
+            "heading": "A TODO CHILE",
+            "text": "<p>De Arica a Punta Arenas</p>"
+          }
+        },
+        "icon_nrMNYB": {
+          "type": "icon",
+          "settings": {
+            "icon": "ruler",
+            "image": "shopify://shop_images/Icon_Warranty.webp",
+            "heading": "Pago 100% seguro",
+            "text": "<p>Tarjeta de Crédito, débito o transferencia</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_MQMEz6",
+        "icon_JTNVmQ",
+        "icon_nrMNYB"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "text_alignment": "left",
+        "icon_position": "left",
+        "icon_size": "large",
+        "heading_size": "large",
+        "mobile_swipe": true,
+        "color_bg": "#ffffff",
+        "color_heading": "#003b3d",
+        "color_text": "#003b3d",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "testimonials_3eWjHg": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_ENNa6W": {
+          "type": "quote",
+          "settings": {
+            "stars": "4.5",
+            "text": "Cuando me contactaron pa probar la crema pense 'ya otra marca mas'. Pero la Emi tenia las piernitas super resecas y con Seqes se le noto la diferencia como a la semana. No tiene olor, se absorbe al toque y no deja esa cosa grasa. Ahora la recomiendo a todas las mamas del jardin.",
+            "author": "Valentina Espinoza, mamá de Emilia (8 meses)"
+          }
+        },
+        "quote_NPKM3M": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Mi señora me metio en esto de probar la crema y al principio era como ya dale. Pero despues de un mes la piel del Mati esta mas suavecita y sin rojeces. El formato 250ml se acaba rapido, ojala saquen uno mas grande. Pero el producto en si es brigido.",
+            "author": "Martín Sepúlveda, papá de Matías (14 meses)"
+          }
+        },
+        "quote_D3waLP": {
+          "type": "quote",
+          "settings": {
+            "stars": "4",
+            "text": "Me llego como 10 dias tarde asi q ahi le bajo la nota jaja. Pero la crema es otra cosa. Lei todos los ingredientes antes de usarla y todo se entiende, nada raro. La Isi tenia dermatitis y ahora esta mil veces mejor. Contenta de haber confiado.",
+            "author": "Francisca Retamal, mamá de Isidora (2 años)"
+          }
+        }
+      },
+      "block_order": [
+        "quote_ENNa6W",
+        "quote_NPKM3M",
+        "quote_D3waLP"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "full_width": true,
+        "text_size": "small",
+        "pagination": "dots",
+        "autoplay": true,
+        "autoplay_length": 7,
+        "color_bg": "#ffffff",
+        "color_text": "#003b3d",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "ingredients_gallery": {
+      "type": "gallery",
+      "blocks": {
+        "ddd1f3e8-2747-4567-b26e-30f23493a5cf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Alerce_Webp_Square.webp",
+            "subheading": "Protección antioxidante",
+            "title": "Células madre de Alerce",
+            "text": "Activo obtenido por biotecnología sostenible (Cobiostem). Ayuda a proteger la piel frente al estrés oxidativo y a mantener su equilibrio natural.",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "6bdc1221-3d9f-4be8-b482-80341e02abcf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Murta_Webp_Square.webp",
+            "subheading": "Fruto nativo chileno",
+            "title": "Extracto de Murta",
+            "text": "Rico en antioxidantes y vitamina C. Ingrediente botánico endémico que ayuda a proteger y fortalecer la barrera cutánea del bebé.",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "94831cdf-9641-4e12-9506-e140c83f2870": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Skin_Hydration_Webp_Square.webp",
+            "subheading": "Hidratación profunda y duradera",
+            "title": "Hydrovance + Manteca de Karité",
+            "text": "Humectantes biomiméticos que retienen la humedad en la piel sin dejar sensación grasa. Absorción inmediata y suavidad duradera.",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "ddd1f3e8-2747-4567-b26e-30f23493a5cf",
+        "6bdc1221-3d9f-4be8-b482-80341e02abcf",
+        "94831cdf-9641-4e12-9506-e140c83f2870"
+      ],
+      "settings": {
+        "columns_desktop": 3,
+        "section_width": "full-width-row-full",
+        "mobile_swipe": false,
+        "image_ratio": "square",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "column_spacing": "none",
+        "heading_size": "h3",
+        "overlay_color": "#003b3d",
+        "overlay_opacity": 50,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "logo_list_7UUDBA": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_eVJG3L": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Logo_Libre_de_Disruptorees_Hormonales.webp",
+            "link": ""
+          }
+        },
+        "logo_MHyfdt": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_indice_origen_natural.webp",
+            "link": ""
+          }
+        },
+        "logo_Bxei7j": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_libre_de_crueldad_animal.webp",
+            "link": ""
+          }
+        },
+        "logo_CLnNBN": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_hecho_en_chile.webp",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_eVJG3L",
+        "logo_MHyfdt",
+        "logo_Bxei7j",
+        "logo_CLnNBN"
+      ],
+      "settings": {
+        "heading": "¿Confiarías cualquier crema para la piel de tu guagua?",
+        "description": "<p>Compromisos que puedes verificar</p>",
+        "columns": 4,
+        "mobile_swipe": false,
+        "center_align": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "collapsible_content_KNxP6C": {
+      "type": "collapsible-content",
+      "blocks": {
+        "faq_ingredients_avoid": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Qué ingredientes debería evitar una crema para bebé?",
+            "open": false,
+            "content": "<p>Es recomendable evitar <strong>parabenos</strong> (metilparabeno, propilparabeno), <strong>sulfatos</strong> (SLS, SLES), <strong>ftalatos</strong>, <strong>fragancias sintéticas</strong> y <strong>colorantes artificiales</strong>. Estos ingredientes pueden irritar o sensibilizar la piel delicada de los bebés.</p><p>Seqes no contiene ninguno de estos ingredientes. Nuestra fórmula está compuesta en un <strong>96% por ingredientes de origen natural</strong>, incluyendo agua, aceite de almendras dulces, manteca de karité y glicerina vegetal.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_hypoallergenic": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Qué significa que una crema sea hipoalergénica?",
+            "open": false,
+            "content": "<p>Significa que la fórmula ha sido diseñada y <strong>evaluada clínicamente</strong> para minimizar el riesgo de provocar reacciones alérgicas.</p><p>En el caso de Seqes, el perfil hipoalergénico fue confirmado mediante un <strong>estudio clínico independiente realizado por el Instituto Orlandi</strong> con 50 voluntarios. Los resultados mostraron <strong>0% de reacciones adversas</strong>, validando la seguridad de la fórmula para pieles sensibles.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_natural_better": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Las cremas naturales son realmente mejores para bebés?",
+            "open": false,
+            "content": "<p>Depende de la formulación. Una crema con alto porcentaje de ingredientes naturales <strong>reduce la exposición a químicos innecesarios</strong>, pero lo importante es que la fórmula completa sea segura y eficaz.</p><p>Seqes combina lo mejor de ambos mundos: una <strong>base natural del 96%</strong> (ISO 16128) con activos funcionales de última generación como <strong>Hydrovance</strong> (hidratación biomimética) que potencian los resultados sin comprometer la seguridad.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_age": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Desde qué edad se puede usar?",
+            "open": false,
+            "content": "<p>Seqes puede utilizarse <strong>desde los primeros meses de vida</strong>. Está especialmente formulada para la piel delicada de bebés y niños menores de 6 años, y también es adecuada para adultos con piel sensible.</p><p>Al no contener fragancia, colorantes ni ingredientes agresivos, minimiza el riesgo de irritación incluso en recién nacidos.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_atopic": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Es adecuada para piel atópica o con dermatitis?",
+            "open": false,
+            "content": "<p>Sí. La fórmula fue diseñada pensando en pieles secas, sensibles y con tendencia atópica. Combina <strong>células madre de Alerce</strong> (protección antioxidante), <strong>extracto de Murta</strong> (defensa natural) y <strong>Hydrovance + manteca de karité</strong> (hidratación profunda).</p><p>Su perfil hipoalergénico confirmado clínicamente la hace una opción segura para pieles que reaccionan fácilmente a productos convencionales.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_pharmacy": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Cuál es la diferencia con cremas de farmacia?",
+            "open": false,
+            "content": "<p>La mayoría de cremas de farmacia para bebé utilizan fórmulas genéricas con fragancias, parabenos o derivados del petróleo. Seqes se diferencia por:</p><p>• <strong>96% ingredientes de origen natural</strong> (certificado ISO 16128)<br/>• <strong>Activos de biotecnología</strong> (Cobiostem Alerce) en vez de ingredientes estándar<br/>• <strong>Estudio clínico hipoalergénico</strong> con 0% reacciones adversas<br/>• <strong>Sin fragancia, sin parabenos, sin sulfatos</strong><br/>• Fórmula <strong>biodegradable y vegana</strong></p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "faq_when_apply": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Cuándo y cómo aplicar la crema?",
+            "open": false,
+            "content": "<p>El mejor momento es <strong>después del baño</strong>, con la piel limpia y ligeramente húmeda, para sellar la hidratación. También puede aplicarse en cualquier momento del día cuando la piel se vea seca o irritada.</p><p>Aplica una cantidad generosa en manos y extiende con movimientos suaves sobre el cuerpo del bebé, prestando especial atención a mejillas, pliegues y zonas expuestas.</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_ingredients_avoid",
+        "faq_hypoallergenic",
+        "faq_natural_better",
+        "faq_age",
+        "faq_atopic",
+        "faq_pharmacy",
+        "faq_when_apply"
+      ],
+      "settings": {
+        "heading": "Preguntas frecuentes",
+        "description": "<p>Todo lo que necesitas saber sobre nuestra crema y el cuidado de la piel sensible de tu bebé.</p>",
+        "uppercase_heading": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_bottom": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 5,
+        "border_separator": true,
+        "border_separator_full": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "Completa el cuidado de tu bebé",
+        "heading_left": false,
+        "description": "<p>Descubre más productos Seqes diseñados para la piel más delicada.</p>",
+        "full_width": false,
+        "mobile_swipe": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main-product",
+    "logo_list_3g4EtA",
+    "section_divider_Bky4ga",
+    "insta_stories_HYTmaT",
+    "section_divider_LrJCFH",
+    "layered_images_with_text_tXj8WJ",
+    "background_video_H6Feae",
+    "before_after_image_Qf9kMC",
+    "text_with_icons_q7yjEd",
+    "testimonials_3eWjHg",
+    "ingredients_gallery",
+    "logo_list_7UUDBA",
+    "collapsible_content_KNxP6C",
+    "spacer_bottom",
+    "product-recommendations"
+  ]
+}
