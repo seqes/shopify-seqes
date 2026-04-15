@@ -62,7 +62,7 @@
         "seqes_it_skin_badge": {
           "type": "seqes_icon_text",
           "settings": {
-            "text": "Para pieles secas y muy sensibles",
+            "text": "Limpieza e hidratación para el cabello",
             "text_color": "#faa525",
             "font_size": 17,
             "font_weight": "500",
@@ -184,17 +184,17 @@
             "autoplay_speed": 5,
             "badge_logo": "shopify://shop_images/Logo_Google.webp",
             "badge_text": "Reseñas verificadas de Google",
-            "review_1_image": "shopify://shop_images/Foto_Mujer_Chilena_1.webp",
-            "review_1_name": "Catalina Muñoz",
-            "review_1_text": "La probe antes del lanzamiento y no la cambio por nada. Sin olor, sin quimicos raros hace rato vuscaba algo asi",
+            "review_1_image": "shopify://shop_images/Foto_Mujer_Chilena_2.webp",
+            "review_1_name": "Rossana Ergas",
+            "review_1_text": "me tincó altiro, le dejó el pelo suave y no se le irritó nada el cuerito",
             "review_1_stars": 5,
-            "review_2_image": "shopify://shop_images/Foto_Hombre_Chileno_2.webp",
+            "review_2_image": "shopify://shop_images/Foto_Hombre_Chileno_3.webp",
             "review_2_name": "Sebastián Arriagada",
-            "review_2_text": "Yo no cacho nada de cremas pero odio que me quede la piel grasa. La piel del benja quedo filete.",
+            "review_2_text": "había probado varios y siempre le quedaba medio seco… con este no, se nota la diferencia",
             "review_2_stars": 4,
-            "review_3_image": "shopify://shop_images/Foto_Mujer_Chilena_4.webp",
+            "review_3_image": "shopify://shop_images/Mujer_webp_4.webp",
             "review_3_name": "Fernanda Soto",
-            "review_3_text": "Mi hija tiene piel atopica y ninguna crema le hacia. Me invitaron a probarla y la verdad que la cagó",
+            "review_3_text": "al fin uno que no le deja la piel roja dsp del baño, me dio ene tranquilidad",
             "review_3_stars": 5,
             "review_4_name": "",
             "review_4_text": "",
@@ -290,9 +290,9 @@
         "faq_safe": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Puedo usarla si soy adulto con piel sensible o alérgica?",
+            "heading": "¿Es apto para piel sensible?",
             "open": false,
-            "content": "<p>Totalmente. Si una fórmula pasa las exigencias de seguridad para la piel de un recién nacido— que es hasta un 30% más delgada y reactiva que la de un adulto — imagina lo que puede hacer por tu piel. Seqes es hipoalergénica con 0% de reacciones adversas en estudios clínicos, sin fragancia, sin parabenos y sin sulfatos. Funciona en cuerpo y rostro. Si tu piel reacciona a todo imagina que esta crema fue hecha para lo más exigente que existe: la piel de una guagua.</p>",
+            "content": "<p>Sí. Está formulado justamente para eso. Sabemos que muchas guaguas reaccionan fácil, por eso usamos ingredientes más suaves y evitamos lo que normalmente irrita.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -300,9 +300,9 @@
         "faq_fragrance": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Necesito una crema especial si la piel de mi guagua se ve bien?",
+            "heading": "¿Le puede arder en los ojos?",
             "open": false,
-            "content": "<p>Sí. La piel de tu guagua es hasta un 30% más delgada que la de un adulto y pierde humedad mucho más rápido. Aunque se vea bien hoy, sin una hidratación adecuada puede desarrollar sequedad, irritación o rojeces. Seqes actúa como protección preventiva, no solo como solución cuando ya hay un problema.</p>",
+            "content": "<p>Está formulado para ser suave, pero igual recomendamos evitar el contacto directo. En general no genera molestia, pero cada guagua es distinta.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -310,9 +310,9 @@
         "faq_dry_skin": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Por qué elegir estasi hay tantas cremas disponibles?",
+            "heading": "¿Sirve si tiene costra láctea?",
             "open": false,
-            "content": "<p>Porque lo que le pones a la piel de tu guagua no debería ser lo mismo que compras al paso. Seqes tiene células madre de Alerce obtenidas por biotecnología, extracto de Murta chilena, hidratación biomimética con Hydrovance y manteca de karité. Todo respaldado por estudios clínicos con 0% de reacciones adversas. No es una crema más con un envase bonito: es lo que lleva adentro lo que la hace distinta.</p>",
+            "content": "<p>Sí puede ayudar. La idea no es “sacarla a la fuerza”, sino limpiar suave y mantener el equilibrio del cuero cabelludo para que mejore de forma progresiva.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -463,7 +463,7 @@
           "settings": {
             "username": "cl89santeli",
             "verified": true,
-            "profile_picture": "shopify://shop_images/Foto_Mujer_Chilena_3.webp",
+            "profile_picture": "shopify://shop_images/Mujer_webp_3.webp",
             "close_friends": false,
             "story_1_video": "shopify://files/videos/Crema Video 1 Webm.webm",
             "story_1_media_fit": "cover",
@@ -482,7 +482,7 @@
           "settings": {
             "username": "ramosilla",
             "verified": false,
-            "profile_picture": "shopify://shop_images/Foto_Hombre_Chileno_4.webp",
+            "profile_picture": "shopify://shop_images/Hombre_webp_6.webp",
             "close_friends": false,
             "story_1_media_fit": "contain",
             "story_1_time_posted": "10m",
@@ -500,7 +500,7 @@
           "settings": {
             "username": "arosa83",
             "verified": true,
-            "profile_picture": "shopify://shop_images/Foto_Mujer_Chilena_5.webp",
+            "profile_picture": "shopify://shop_images/Mujer_webp_9.webp",
             "close_friends": true,
             "story_1_media_fit": "contain",
             "story_1_time_posted": "10m",
