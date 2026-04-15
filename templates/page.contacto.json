@@ -21,6 +21,13 @@
     "contact_form_QPyUBB": {
       "type": "contact-form",
       "blocks": {
+        "text_pQDNg3": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "text": ""
+          }
+        },
         "text_BQG3Qx": {
           "type": "text",
           "settings": {
@@ -44,6 +51,7 @@
         }
       },
       "block_order": [
+        "text_pQDNg3",
         "text_BQG3Qx",
         "text_EBr4P6",
         "text_BdUctM"
