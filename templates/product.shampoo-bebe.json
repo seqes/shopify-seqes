@@ -758,10 +758,10 @@
         "ddd1f3e8-2747-4567-b26e-30f23493a5cf": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Alerce_Webp_Square.webp",
-            "subheading": "Protección antioxidante",
-            "title": "Células madre de Alerce",
-            "text": "Activo obtenido por biotecnología sostenible (Cobiostem). Ayuda a proteger la piel frente al estrés oxidativo y a mantener su equilibrio natural.",
+            "image": "shopify://shop_images/Pissum_Sativum_Webp.webp",
+            "subheading": "Fortaleza y suavidad",
+            "title": "Péptidos de Arveja",
+            "text": "Ayudan a fortalecer la fibra capilar, mejorar la suavidad del cabello y proteger el cuero cabelludo sin alterar su equilibrio natural.",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -775,7 +775,7 @@
             "image": "shopify://shop_images/Murta_Webp_Square.webp",
             "subheading": "Fruto nativo chileno",
             "title": "Extracto de Murta",
-            "text": "Rico en antioxidantes y vitamina C. Ingrediente botánico endémico que ayuda a proteger y fortalecer la barrera cutánea del bebé.",
+            "text": "Ingrediente botánico reconocido por sus propiedades antioxidantes, que ayudan a proteger el cuero cabelludo y mantener su equilibrio.",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -786,10 +786,10 @@
         "94831cdf-9641-4e12-9506-e140c83f2870": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Skin_Hydration_Webp_Square.webp",
-            "subheading": "Hidratación profunda y duradera",
-            "title": "Hydrovance + Manteca de Karité",
-            "text": "Humectantes biomiméticos que retienen la humedad en la piel sin dejar sensación grasa. Absorción inmediata y suavidad duradera.",
+            "image": "shopify://shop_images/Aceite_de_Almendras_Webp.webp",
+            "subheading": "Nutrición y cuidado",
+            "title": "Aceite de Almendras",
+            "text": "Aporta nutrición y suavidad al cabello, ayudando a mantener la hidratación y a evitar la resequedad del cuero cabelludo.",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -857,7 +857,7 @@
         "logo_CLnNBN"
       ],
       "settings": {
-        "heading": "¿Confiarías cualquier crema para la piel de tu guagua?",
+        "heading": "¿Confiarías cualquier jabón y champú para el cabello de tu guagua?",
         "description": "<p>Compromisos que puedes verificar</p>",
         "columns": 4,
         "mobile_swipe": false,
@@ -872,9 +872,9 @@
         "faq_ingredients_avoid": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Qué ingredientes debería evitar una crema para bebé?",
+            "heading": "¿Este shampoo para bebé es apto para piel sensible?",
             "open": false,
-            "content": "<p>Es recomendable evitar <strong>parabenos</strong> (metilparabeno, propilparabeno), <strong>sulfatos</strong> (SLS, SLES), <strong>ftalatos</strong>, <strong>fragancias sintéticas</strong> y <strong>colorantes artificiales</strong>. Estos ingredientes pueden irritar o sensibilizar la piel delicada de los bebés.</p><p>Seqes no contiene ninguno de estos ingredientes. Nuestra fórmula está compuesta en un <strong>96% por ingredientes de origen natural</strong>, incluyendo agua, aceite de almendras dulces, manteca de karité y glicerina vegetal.</p>",
+            "content": "<p>Sí. Este shampoo para bebé está formulado especialmente para piel sensible, utilizando ingredientes suaves que ayudan a limpiar el cuero cabelludo sin irritar ni alterar su equilibrio natural. Está pensado para bebés que reaccionan fácilmente a productos más agresivos.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -882,9 +882,9 @@
         "faq_hypoallergenic": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Qué significa que una crema sea hipoalergénica?",
+            "heading": "¿Se puede usar este shampoo de bebé todos los días?",
             "open": false,
-            "content": "<p>Significa que la fórmula ha sido diseñada y <strong>evaluada clínicamente</strong> para minimizar el riesgo de provocar reacciones alérgicas.</p><p>En el caso de Seqes, el perfil hipoalergénico fue confirmado mediante un <strong>estudio clínico independiente realizado por el Instituto Orlandi</strong> con 50 voluntarios. Los resultados mostraron <strong>0% de reacciones adversas</strong>, validando la seguridad de la fórmula para pieles sensibles.</p>",
+            "content": "<p>Sí, este shampoo para bebé puede usarse a diario. Su fórmula limpia suavemente sin resecar el cuero cabelludo, ayudando a mantener la hidratación y el equilibrio natural de la piel incluso con uso frecuente.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -892,9 +892,9 @@
         "faq_natural_better": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Las cremas naturales son realmente mejores para bebés?",
+            "heading": "¿Este shampoo para bebé puede causar irritación en los ojos?",
             "open": false,
-            "content": "<p>Depende de la formulación. Una crema con alto porcentaje de ingredientes naturales <strong>reduce la exposición a químicos innecesarios</strong>, pero lo importante es que la fórmula completa sea segura y eficaz.</p><p>Seqes combina lo mejor de ambos mundos: una <strong>base natural del 96%</strong> (ISO 16128) con activos funcionales de última generación como <strong>Hydrovance</strong> (hidratación biomimética) que potencian los resultados sin comprometer la seguridad.</p>",
+            "content": "<p>Está formulado para ser suave y respetuoso con la piel del bebé, pero siempre recomendamos evitar el contacto directo con los ojos. En general, no genera molestias, ya que no contiene agentes limpiadores agresivos.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -902,9 +902,9 @@
         "faq_age": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Desde qué edad se puede usar?",
+            "heading": "¿Desde qué edad se puede usar un shampoo para bebé como este?",
             "open": false,
-            "content": "<p>Seqes puede utilizarse <strong>desde los primeros meses de vida</strong>. Está especialmente formulada para la piel delicada de bebés y niños menores de 6 años, y también es adecuada para adultos con piel sensible.</p><p>Al no contener fragancia, colorantes ni ingredientes agresivos, minimiza el riesgo de irritación incluso en recién nacidos.</p>",
+            "content": "<p>Este shampoo para bebé puede utilizarse desde los primeros meses de vida, ya que está diseñado para la piel delicada del cuero cabelludo del bebé y no contiene ingredientes agresivos que puedan afectar su barrera cutánea.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -912,9 +912,9 @@
         "faq_atopic": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Es adecuada para piel atópica o con dermatitis?",
+            "heading": "¿Por qué este shampoo hace menos espuma que otros shampoos de bebé?",
             "open": false,
-            "content": "<p>Sí. La fórmula fue diseñada pensando en pieles secas, sensibles y con tendencia atópica. Combina <strong>células madre de Alerce</strong> (protección antioxidante), <strong>extracto de Murta</strong> (defensa natural) y <strong>Hydrovance + manteca de karité</strong> (hidratación profunda).</p><p>Su perfil hipoalergénico confirmado clínicamente la hace una opción segura para pieles que reaccionan fácilmente a productos convencionales.</p>",
+            "content": "<p>Este shampoo utiliza agentes de limpieza más suaves, por lo que genera una espuma más ligera. A diferencia de otros shampoos con tensioactivos más fuertes, limpia eficazmente sin resecar ni dañar el cuero cabelludo del bebé.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -922,9 +922,9 @@
         "faq_pharmacy": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Cuál es la diferencia con cremas de farmacia?",
+            "heading": "¿Este shampoo para bebé ayuda a evitar la resequedad del cuero cabelludo?",
             "open": false,
-            "content": "<p>La mayoría de cremas de farmacia para bebé utilizan fórmulas genéricas con fragancias, parabenos o derivados del petróleo. Seqes se diferencia por:</p><p>• <strong>96% ingredientes de origen natural</strong> (certificado ISO 16128)<br/>• <strong>Activos de biotecnología</strong> (Cobiostem Alerce) en vez de ingredientes estándar<br/>• <strong>Estudio clínico hipoalergénico</strong> con 0% reacciones adversas<br/>• <strong>Sin fragancia, sin parabenos, sin sulfatos</strong><br/>• Fórmula <strong>biodegradable y vegana</strong></p>",
+            "content": "<p>Sí. Su fórmula incluye ingredientes humectantes que ayudan a mantener la hidratación natural del cuero cabelludo del bebé, evitando la resequedad y ayudando a proteger la barrera cutánea.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -932,9 +932,9 @@
         "faq_when_apply": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Cuándo y cómo aplicar la crema?",
+            "heading": "¿Qué hace diferente a este shampoo para bebé frente a otros del mercado?",
             "open": false,
-            "content": "<p>El mejor momento es <strong>después del baño</strong>, con la piel limpia y ligeramente húmeda, para sellar la hidratación. También puede aplicarse en cualquier momento del día cuando la piel se vea seca o irritada.</p><p>Aplica una cantidad generosa en manos y extiende con movimientos suaves sobre el cuerpo del bebé, prestando especial atención a mejillas, pliegues y zonas expuestas.</p>",
+            "content": "<p>La diferencia está en la formulación. Este shampoo para bebé está desarrollado para respetar la barrera cutánea, utilizar ingredientes de alta calidad y cuidar la piel sensible del bebé, no solo limpiar. Está pensado para un uso seguro y constante.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -951,7 +951,7 @@
       ],
       "settings": {
         "heading": "Preguntas frecuentes",
-        "description": "<p>Todo lo que necesitas saber sobre nuestra crema y el cuidado de la piel sensible de tu bebé.</p>",
+        "description": "<p>Todo lo que necesitas saber sobre nuestro jabón y champú y el cuidado del cuero cabelludo y pelo de tu bebé.</p>",
         "uppercase_heading": true,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
