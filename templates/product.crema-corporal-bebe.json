@@ -418,13 +418,6 @@
             "link": ""
           }
         },
-        "logo_JzWMNi": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo_libre_de_gluten.webp",
-            "link": ""
-          }
-        },
         "logo_PGm3XA": {
           "type": "logo",
           "settings": {
@@ -437,14 +430,13 @@
         "logo_RLLtmX",
         "logo_Pw4iVy",
         "logo_CwQrwD",
-        "logo_JzWMNi",
         "logo_PGm3XA"
       ],
       "settings": {
         "heading": "Libre de lo que sobra, llena de lo que importa",
         "description": "<p>Todo lo que eliminamos para proteger su piel</p>",
-        "columns": 5,
-        "mobile_swipe": true,
+        "columns": 4,
+        "mobile_swipe": false,
         "center_align": true,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
@@ -834,129 +826,52 @@
         "disable_bottom_spacing": true
       }
     },
-    "text_with_icons_wGm9zn": {
-      "type": "text-with-icons",
+    "logo_list_7UUDBA": {
+      "type": "logo-list",
       "blocks": {
-        "icon_QxadRi": {
-          "type": "icon",
+        "logo_eVJG3L": {
+          "type": "logo",
           "settings": {
-            "icon": "ruler",
-            "heading": "Heading",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+            "image": "shopify://shop_images/Logo_Libre_de_Disruptorees_Hormonales.webp",
+            "link": ""
           }
         },
-        "icon_Vjaddi": {
-          "type": "icon",
-          "settings": {
-            "icon": "ruler",
-            "heading": "Heading",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
-          }
-        },
-        "icon_8pDib6": {
-          "type": "icon",
-          "settings": {
-            "icon": "ruler",
-            "heading": "Heading",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "icon_QxadRi",
-        "icon_Vjaddi",
-        "icon_8pDib6"
-      ],
-      "name": "Text with icons",
-      "settings": {
-        "text_alignment": "left",
-        "icon_position": "left",
-        "icon_size": "large",
-        "heading_size": "large",
-        "mobile_swipe": false,
-        "color_bg": "transparent",
-        "color_heading": "#151515",
-        "color_text": "#151515",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "multicolumn_fH3XAG": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_cabQDp": {
-          "type": "column",
+        "logo_MHyfdt": {
+          "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_indice_origen_natural.webp",
-            "image_full_width": false,
-            "image_link": "",
-            "retina": true,
-            "title": "+95% origen natural",
-            "text": "<p>Ingredientes de origen natural. Verificable, no autodeclarado.<br/><br/></p>",
-            "link_label": "",
             "link": ""
           }
         },
-        "column_ccCP4p": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/logo_hecho_en_chile.webp",
-            "image_full_width": false,
-            "image_link": "",
-            "retina": true,
-            "title": "Activos botánicos chilenos",
-            "text": "<p>Desarrollada y producida en Chile con activos botánicos nativos.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_tz9DdA": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/logo_materiales_sustentables.webp",
-            "image_full_width": false,
-            "image_link": "",
-            "retina": true,
-            "title": "Fórmula biodegradable",
-            "text": "<p>Biotecnología con 99% de ahorro de agua. Envase reciclable.<br/><br/></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_dcQatg": {
-          "type": "column",
+        "logo_Bxei7j": {
+          "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_libre_de_crueldad_animal.webp",
-            "image_full_width": false,
-            "image_link": "",
-            "retina": true,
-            "title": "Vegana y Cruelty Free",
-            "text": "<p>Sin testeo en animales. Ni en desarrollo ni en producción.<br/><br/></p>",
-            "link_label": "",
+            "link": ""
+          }
+        },
+        "logo_CLnNBN": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo_hecho_en_chile.webp",
             "link": ""
           }
         }
       },
       "block_order": [
-        "column_cabQDp",
-        "column_ccCP4p",
-        "column_tz9DdA",
-        "column_dcQatg"
+        "logo_eVJG3L",
+        "logo_MHyfdt",
+        "logo_Bxei7j",
+        "logo_CLnNBN"
       ],
       "settings": {
         "heading": "¿Confiarías cualquier crema para la piel de tu guagua?",
-        "heading_left": false,
         "description": "<p>Compromisos que puedes verificar</p>",
-        "full_width": true,
-        "display_type": "carousel",
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "text_alignment": "center",
-        "heading_size": "h5",
-        "mobile_swipe": true,
-        "show_progress_bar": true,
+        "columns": 4,
+        "mobile_swipe": false,
+        "center_align": true,
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
+        "disable_bottom_spacing": false
       }
     },
     "collapsible_content_KNxP6C": {
@@ -1086,8 +1001,7 @@
     "text_with_icons_q7yjEd",
     "testimonials_3eWjHg",
     "ingredients_gallery",
-    "text_with_icons_wGm9zn",
-    "multicolumn_fH3XAG",
+    "logo_list_7UUDBA",
     "collapsible_content_KNxP6C",
     "spacer_bottom",
     "product-recommendations"
