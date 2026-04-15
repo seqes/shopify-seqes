@@ -556,35 +556,27 @@
         "subheading_gULkCL": {
           "type": "subheading",
           "settings": {
-            "text": "Piel más delicada"
+            "text": "Más sensible de lo que parece"
           }
         },
         "heading_jMdrqh": {
           "type": "heading",
           "settings": {
-            "text": "La piel del bebé necesita un cuidado diferente",
+            "text": "El cuero cabelludo también necesita cuidado",
             "heading_size": "h3"
           }
         },
         "text_RnzK9d": {
           "type": "text",
           "settings": {
-            "text": "<p>La piel de los bebés es hasta un <strong>30% más delgada</strong> que la piel adulta y pierde humedad más fácilmente.</p><p>Esto puede provocar <strong>sequedad, irritación o rojeces</strong>, especialmente en zonas como mejillas, pliegues y piernas.</p><p>Una crema hidratante adecuada ayuda a <strong>restaurar la barrera cutánea</strong> y mantener la piel protegida desde los primeros días.</p><p></p>"
-          }
-        },
-        "button_hJaUiD": {
-          "type": "button",
-          "settings": {
-            "button_text": "Conoce nuestra fórmula",
-            "button_link": ""
+            "text": "<p>El cuero cabelludo del bebé es <strong>más delgado y sensible que el de un adulto</strong>, por lo que puede perder hidratación con mayor facilidad y reaccionar frente a productos demasiado agresivos.<br/><br/>Esto puede generar <strong>resequedad, irritación o incomodidad</strong>, incluso cuando no es evidente a simple vista.<br/><br/>Un shampoo adecuado ayuda a limpiar suavemente, <strong>respetar el equilibrio natural de la piel y mantener el cuero cabelludo protegido</strong> desde los primeros usos.<br/><br/></p>"
           }
         }
       },
       "block_order": [
         "subheading_gULkCL",
         "heading_jMdrqh",
-        "text_RnzK9d",
-        "button_hJaUiD"
+        "text_RnzK9d"
       ],
       "settings": {
         "image": "shopify://shop_images/Baby_Lotion_Webp.webp",
@@ -609,8 +601,8 @@
         "mobile_height": "mobile-height-500",
         "full_width": true,
         "subheading": "Biotecnología vegetal avanzada",
-        "heading": "Células madre de Alerce milenario",
-        "text": "Mediante clonación de células madre vegetales, la ciencia permite replicar las propiedades regenerativas del Alerce — uno de los árboles más longevos del planeta — sin dañar el árbol original. Un proceso de biotecnología sostenible que ahorra un 99% de agua en su producción.",
+        "heading": "Péptidos de arveja de alta pureza",
+        "text": "Mediante procesos de biotecnología, las proteínas de arveja (Pisum sativum) se transforman en péptidos de bajo peso molecular capaces de interactuar con la fibra capilar y el cuero cabelludo.\nEste activo ayuda a mejorar la resistencia del cabello, aportar suavidad y mantener el equilibrio natural de la piel, combinando eficacia y origen vegetal en una sola fórmula.",
         "lightbox_button": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Navegacion Alerce Webm.webm",
@@ -626,7 +618,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/child-rash-cchn.webp",
-            "title": "Piel irritada",
+            "title": "Cuero Cabelludo Dañado",
             "heading_size": "h3",
             "heading_position": "top",
             "text_color": "#003b3d",
@@ -638,7 +630,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/gemini_baby_leg_healthy.webp",
-            "title": "Piel equilibrada",
+            "title": "Cuero Cabelludo Sano",
             "heading_size": "h3",
             "heading_position": "top",
             "text_color": "#003b3d",
@@ -652,9 +644,9 @@
         "image_cRFMkT"
       ],
       "settings": {
-        "heading": "¿Has visto esto en la piel de tu bebé?",
+        "heading": "¿Has visto esto en el cuero cabelludo de tu bebé?",
         "heading_left": false,
-        "description": "<p>La <strong>sequedad, rojeces o irritación</strong> son señales de una barrera cutánea debilitada que necesita protección e hidratación adecuadas.</p>",
+        "description": "<p>La <strong>resequedad, descamación o falta de suavidad</strong> pueden ser señales de un cuero cabelludo desequilibrado que necesita limpieza suave y cuidado adecuado.<br/></p>",
         "desktop_height": "desktop-height-450",
         "mobile_height": "mobile-height-350",
         "full_width": true,
@@ -721,24 +713,24 @@
           "type": "quote",
           "settings": {
             "stars": "4.5",
-            "text": "Cuando me contactaron pa probar la crema pense 'ya otra marca mas'. Pero la Emi tenia las piernitas super resecas y con Seqes se le noto la diferencia como a la semana. No tiene olor, se absorbe al toque y no deja esa cosa grasa. Ahora la recomiendo a todas las mamas del jardin.",
-            "author": "Valentina Espinoza, mamá de Emilia (8 meses)"
+            "text": "me pasaba que le lavaba el pelo y le quedaba como áspero, y a veces medio seco el cuerito… probé varios shampoos de guagua y eran todos más o menos iguales. Con este noté el cambio altiro, le deja el pelo suave y no le irrita nada. Me dio mucha más tranquilidad seguir usándolo.",
+            "author": "Raquel Espinoza, mamá de Emilia (8 meses)"
           }
         },
         "quote_NPKM3M": {
           "type": "quote",
           "settings": {
             "stars": "5",
-            "text": "Mi señora me metio en esto de probar la crema y al principio era como ya dale. Pero despues de un mes la piel del Mati esta mas suavecita y sin rojeces. El formato 250ml se acaba rapido, ojala saquen uno mas grande. Pero el producto en si es brigido.",
-            "author": "Martín Sepúlveda, papá de Matías (14 meses)"
+            "text": "al principio dudé caleta porque hay miles de shampoos y todos dicen ser suaves… pero este se siente distinto. No hace tanta espuma como otros, pero deja el pelo limpio de verdad y no le reseca. Siento que está mejor formulado, no es solo marketing.",
+            "author": "Camilo Rojas, papá de Mateo (1 año)"
           }
         },
         "quote_D3waLP": {
           "type": "quote",
           "settings": {
             "stars": "4",
-            "text": "Me llego como 10 dias tarde asi q ahi le bajo la nota jaja. Pero la crema es otra cosa. Lei todos los ingredientes antes de usarla y todo se entiende, nada raro. La Isi tenia dermatitis y ahora esta mil veces mejor. Contenta de haber confiado.",
-            "author": "Francisca Retamal, mamá de Isidora (2 años)"
+            "text": "mi hija tiene la piel súper sensible y siempre me daba miedo probar cosas nuevas… pero este me tincó por los ingredientes. Lo probé de a poco y cero reacción, al contrario, le dejó el pelo más suave y el cuero cabelludo mucho más normal. Ya no lo cambio.",
+            "author": "Javiera Morales, mamá de Sofía (19 meses)"
           }
         }
       },
