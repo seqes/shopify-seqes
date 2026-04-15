@@ -579,11 +579,11 @@
         "text_RnzK9d"
       ],
       "settings": {
-        "image": "shopify://shop_images/Baby_Lotion_Webp.webp",
+        "image": "shopify://shop_images/baby-scratching-head_webp.webp",
         "image_ratio": "square",
-        "image_2": "shopify://shop_images/2616858.webp",
+        "image_2": "shopify://shop_images/Baby_Bathing_1_Webp.webp",
         "image_ratio_2": "adapt",
-        "image_3": "shopify://shop_images/newborn-skin-peeling-1165471859-770x533-1_jpg.webp",
+        "image_3": "shopify://shop_images/Baby_Bathing_2_Webp.webp",
         "image_ratio_3": "adapt",
         "full_width": true,
         "layout": "image_first",
@@ -617,7 +617,7 @@
         "image_VVqgxA": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/child-rash-cchn.webp",
+            "image": "shopify://shop_images/allergiic_scalp_webp.webp",
             "title": "Cuero Cabelludo Dañado",
             "heading_size": "h3",
             "heading_position": "top",
