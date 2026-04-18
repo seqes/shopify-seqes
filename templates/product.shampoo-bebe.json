@@ -621,7 +621,7 @@
             "title": "Cuero Cabelludo Dañado",
             "heading_size": "h3",
             "heading_position": "top",
-            "text_color": "#003b3d",
+            "text_color": "#ffffff",
             "overlay_color": "#ffffff",
             "overlay_opacity": 0
           }
@@ -633,7 +633,7 @@
             "title": "Cuero Cabelludo Sano",
             "heading_size": "h3",
             "heading_position": "top",
-            "text_color": "#003b3d",
+            "text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
