@@ -523,7 +523,7 @@
       "settings": {
         "visibility": "always-display",
         "title": "Más que opiniones, resultados",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "text": "<p>Testimonios reales de uso en piel sensible, donde la formulación hace la diferencia.</p>",
         "button_label": "",
         "link": "",
@@ -532,7 +532,7 @@
         "heading_color": "#ffffff",
         "bubble_size_desktop": 5.5,
         "bubble_size_mobile": 6,
-        "autoplay_speed": 10,
+        "autoplay_speed": 5,
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -542,7 +542,7 @@
       "name": "Section divider",
       "settings": {
         "shape": "waves_3",
-        "flip_horizontal": false,
+        "flip_horizontal": true,
         "flip_vertical": true,
         "shape_color": "#003b3d",
         "background_color": "#ffffff",
