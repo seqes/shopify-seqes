@@ -273,18 +273,31 @@
 		<div class="click-capture"></div>
 	</div>
 
-	<script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
+	{%- comment -%}
+	  IMPORTANT: vendor.min.js (GSAP core) and animations.min.js
+	  (ScrollTrigger + SplitText + theme animations) MUST be loaded
+	  synchronously here, NOT with defer. Per-section scripts
+	  (e.g. image-with-text-overlay.js) are loaded with `defer`
+	  earlier in the DOM (inside each section). Because defer scripts
+	  execute in document order after parsing, making vendor/animations
+	  defer causes them to run AFTER section scripts have already
+	  tried to use `gsap`/`ScrollTrigger`, leaving heading/body text
+	  stuck at `visibility: hidden` (set by image-with-text-overlay.css
+	  when `animations-true` is on <body>). Synchronous loading at the
+	  bottom of <body> has negligible LCP impact since parsing is
+	  almost complete at this point.
+	{%- endcomment -%}
+	{{ 'vendor.min.js' | asset_url | script_tag }}
 	{% if settings.animations %}
-		<script src="{{ 'animations.min.js' | asset_url }}" defer="defer"></script>
+		{{ 'animations.min.js' | asset_url | script_tag }}
 		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				if (typeof gsap === 'undefined') return;
+			if (typeof gsap !== 'undefined') {
 				gsap.defaults({ ease: Power4.easeOut });
 				gsap.config({ nullTargetWarn: false });
 				if (typeof ScrollTrigger !== 'undefined') {
 					gsap.registerPlugin(ScrollTrigger);
 				}
-			});
+			}
 		</script>
 	{% endif %}
 	{%- comment -%}
