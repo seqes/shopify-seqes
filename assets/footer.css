@@ -231,6 +231,24 @@
     .signup-container--terms input {
       width: auto;
       margin-right: 8px; }
+  .signup-container input::placeholder {
+    color: currentColor;
+    opacity: 0.55; }
+  .signup-container input::-webkit-input-placeholder {
+    color: currentColor;
+    opacity: 0.55; }
+
+.widget--signup .widget--signup__title {
+  margin-bottom: 8px; }
+.widget--signup .widget--signup__subtitle {
+  margin: 0 0 16px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.8; }
+  .widget--signup .widget--signup__subtitle p {
+    margin: 0 0 8px; }
+  .widget--signup .widget--signup__subtitle p:last-child {
+    margin-bottom: 0; }
 
 .social-links {
   list-style: none;

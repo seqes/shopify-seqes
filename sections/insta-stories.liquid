@@ -152,9 +152,25 @@
     .insta-stories__modal { --story-height: 100vh; --story-width: 100vw; }
     .insta-story { transform: scale(1); }
     .insta-story__inactive-overlay { pointer-events: none; }
-    .insta-story__info__close-btn { display: block; }
     .insta-stories__open-buttons-and-arrows-container .insta-stories__open-btns-prev { left: -1rem; }
     .insta-stories__open-buttons-and-arrows-container .insta-stories__open-btns-next { right: -1rem; }
+
+    /* Only the in-story close button is shown on mobile; hide the floating
+       modal-level X so they don't overlap. Higher specificity + !important
+       defeats `display: grid` declared earlier in this same <style> block. */
+    .insta-stories__modal .insta-stories__modal__close { display: none !important; }
+    .insta-story__info__close-btn { display: block; }
+
+    /* Scale down the top info bar so username + icons don't look oversized
+       on small screens. */
+    .insta-story__top { padding: 1.2rem 1.2rem 0; }
+    .insta-story__info { --pfp-size: 3.2rem; padding-top: 0.6rem; }
+    .insta-story__info__text,
+    .insta-story__info__text .material-icon { font-size: 1.3rem; }
+    .insta-story__info__btn { padding: 0.4rem; }
+    .insta-story__info__btn .material-icon { font-size: 2rem; }
+    .insta-story__info__close-btn .material-icon { font-size: 2.2rem; }
+    .insta-story__progress-item { height: 0.2rem; }
   }
 {%- endstyle -%}
 

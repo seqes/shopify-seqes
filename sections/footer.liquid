@@ -116,10 +116,10 @@
 				<div class="{{ column_class | escape }} columns" {{ block.shopify_attributes }}>
 					<div class="widget widget--signup">
 						{% if block.settings.title != blank %}
-							<div class="thb-widget-title">{{ block.settings.title }}</div>
+							<div class="thb-widget-title widget--signup__title">{{ block.settings.title }}</div>
 						{% endif %}
 						{% if block.settings.text != blank %}
-							{{ block.settings.text }}
+							<div class="widget--signup__subtitle rte">{{ block.settings.text }}</div>
 						{% endif %}
 						{% render 'email-signup-form' %}
 					</div>
@@ -398,13 +398,16 @@
 					{
             "id": "title",
             "type": "text",
-            "label": "Title"
+            "label": "Title",
+            "info": "Main heading shown above the email input.",
+            "default": "Sumate a nuestra comunidad"
           },
 					{
             "type": "richtext",
             "id": "text",
-            "label": "Text",
-            "default": "<p>Add a text to attract more customers to <strong>sign up!</strong></p>"
+            "label": "Subtitle",
+            "info": "Short text below the title to entice customers to subscribe.",
+            "default": "<p>Recibí ofertas exclusivas, novedades y un <strong>10% off</strong> en tu primera compra.</p>"
           }
 				]
       },
