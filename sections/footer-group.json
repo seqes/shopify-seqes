@@ -28,11 +28,20 @@
             "column_size": "medium",
             "title": ""
           }
+        },
+        "signup_keJmdR": {
+          "type": "signup",
+          "settings": {
+            "column_size": "large",
+            "title": "adsadsa",
+            "text": "<p>Add a text to attract more customers to <strong>sign up!</strong></p>"
+          }
         }
       },
       "block_order": [
         "menu_nWDeMm",
-        "social_EnGpgj"
+        "social_EnGpgj",
+        "signup_keJmdR"
       ],
       "settings": {
         "full_width": true,
