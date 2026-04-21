@@ -89,7 +89,10 @@ if (!customElements.get('slide-show')) {
               });
               dots[this.selectedIndex].classList.add('is-selected');
             }
-            document.fonts.ready.then(function () {
+            ((typeof window.SeqesFontsReady === 'function')
+              ? window.SeqesFontsReady(1500)
+              : (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve())
+            ).then(function () {
               flkty.resize();
             });
 
@@ -333,7 +336,10 @@ if (!customElements.get('slide-show')) {
       }
     }
     animateSlides(i, animations) {
-      document.fonts.ready.then(function () {
+      const fontsReady = (typeof window.SeqesFontsReady === 'function')
+        ? window.SeqesFontsReady(1500)
+        : (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve());
+      fontsReady.then(function () {
         animations[i].timeScale(1).restart();
       });
     }

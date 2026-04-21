@@ -301,6 +301,22 @@
 		</script>
 	{% endif %}
 	{%- comment -%}
+	  Shared helper: resolves when document.fonts.ready resolves OR after
+	  a max wait (default 1500ms), whichever comes first. Section scripts
+	  use this instead of document.fonts.ready directly so that text reveals
+	  are not blocked indefinitely if a font file stalls. Defined here so it
+	  is synchronously available to any deferred per-section script.
+	{%- endcomment -%}
+	<script>
+		window.SeqesFontsReady = function (maxWait) {
+			if (!document.fonts || !document.fonts.ready) return Promise.resolve();
+			return Promise.race([
+				document.fonts.ready,
+				new Promise(function (resolve) { setTimeout(resolve, maxWait || 1500); })
+			]);
+		};
+	</script>
+	{%- comment -%}
 	  slideshow.js defines <slide-show>. Instead of loading it on every
 	  page (13 KB), register it with the lazy-hydrate helper so it is only
 	  fetched when a <slide-show> element actually appears in the current

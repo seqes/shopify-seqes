@@ -49,11 +49,11 @@ if (!customElements.get('pagination')) {
     infinite() {
       let base = this;
       base.observer = new IntersectionObserver(function (entries) {
-        if (entries[0].intersectionRatio === 1) {
+        if (entries[0].isIntersecting) {
           base.loadProducts();
         }
       }, {
-        threshold: [0, 1]
+        rootMargin: '200px 0px'
       });
       base.observer.observe(base);
     }

@@ -18,27 +18,27 @@ if (!customElements.get('featured-product-card')) {
     }
     disconnectedCallback() {
       if (document.body.classList.contains('animations-true') && typeof gsap !== 'undefined') {
-        this.tl.kill();
-        this.splittext.revert();
+        if (this.tl) this.tl.kill();
+        if (this.splittext) this.splittext.revert();
       }
     }
     prepareAnimations() {
       let section = this,
-        button_offset = 0,
         property = (gsap.getProperty("html", "--header-height") + gsap.getProperty("html", "--header-offset")) + 'px';
 
-      section.tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top center"
-        }
-      });
+      const fontsReady = (typeof window.SeqesFontsReady === 'function')
+        ? window.SeqesFontsReady(1500)
+        : (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve());
 
-      document.fonts.ready.then(function () {
+      fontsReady.then(function () {
+        let button_offset = 0;
+
         section.splittext = new SplitText(section.querySelectorAll('.featured-product-card--heading, p:not(.subheading)'), {
           type: 'lines, words',
           linesClass: 'line-child'
         });
+
+        section.tl = gsap.timeline({ paused: true });
 
         if (section.querySelector('.subheading')) {
           section.tl
@@ -77,7 +77,7 @@ if (!customElements.get('featured-product-card')) {
             }, 0);
           button_offset += p_duration;
         }
-        if (section.querySelectorAll('.button')) {
+        if (section.querySelectorAll('.button').length) {
           let i = 1;
           section.querySelectorAll('.button').forEach((item) => {
             section.tl.fromTo(item, {
@@ -90,6 +90,17 @@ if (!customElements.get('featured-product-card')) {
           });
         }
 
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.create({
+            trigger: section,
+            start: "top center",
+            onEnter: function () { section.tl.play(); }
+          });
+        }
+
+        if (section.getBoundingClientRect().top < window.innerHeight * 0.5) {
+          section.tl.play();
+        }
       });
 
       if (section.querySelector('.thb-parallax-image')) {
