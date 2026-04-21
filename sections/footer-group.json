@@ -14,12 +14,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "klaviyo_email_marketing_sms_form_embed_block_xUV9VV": {
-          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
-          "settings": {
-            "formId": "Ykb8Xi"
-          }
-        },
         "menu_nWDeMm": {
           "type": "menu",
           "settings": {
@@ -37,7 +31,6 @@
         }
       },
       "block_order": [
-        "klaviyo_email_marketing_sms_form_embed_block_xUV9VV",
         "menu_nWDeMm",
         "social_EnGpgj"
       ],
