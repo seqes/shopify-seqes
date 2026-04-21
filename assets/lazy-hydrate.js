@@ -30,7 +30,12 @@
 (function () {
   'use strict';
 
-  if (window.SeqesLazy) return;
+  // Drain any registrations queued by the inline bootstrap stub in
+  // layout/theme.liquid. Sections may call SeqesLazy.register(...) from
+  // inline scripts that run during HTML parsing, which is BEFORE this
+  // deferred file executes. Without the bootstrap stub those calls would
+  // silently no-op.
+  var earlyQueue = (window.SeqesLazy && window.SeqesLazy._queue) || [];
 
   var loaded = Object.create(null);
   var queue = [];
@@ -113,6 +118,8 @@
     register: register,
     load: loadAsset
   };
+
+  for (var qi = 0; qi < earlyQueue.length; qi++) register(earlyQueue[qi]);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', flush, { once: true });

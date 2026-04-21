@@ -226,10 +226,16 @@
 
 	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 	{%- comment -%}
-	  lazy-hydrate.js is loaded early (but still deferred) so any
-	  SeqesLazy.register(...) calls emitted by individual sections further down
-	  the document are picked up on the first flush (DOMContentLoaded).
+	  Inline bootstrap stub for SeqesLazy. Runs synchronously during HTML
+	  parsing so sections that call window.SeqesLazy.register(...) from
+	  their own inline scripts (which also run during parsing, before any
+	  deferred script loads) queue their entries safely. The real
+	  implementation in lazy-hydrate.js drains window.SeqesLazy._queue on
+	  boot and replaces the stub.
 	{%- endcomment -%}
+	<script>
+	  window.SeqesLazy = window.SeqesLazy || { _queue: [], register: function (e) { this._queue.push(e); } };
+	</script>
 	<script src="{{ 'lazy-hydrate.js' | asset_url }}" defer="defer"></script>
 	{{ settings.custom_html_head }}
 
@@ -284,15 +290,12 @@
 	  the selector.
 	{%- endcomment -%}
 	<script>
-	  (function () {
-	    if (!window.SeqesLazy) return;
-	    window.SeqesLazy.register({
-	      id: 'slideshow',
-	      selector: 'slide-show',
-	      rootMargin: '400px 0px',
-	      assets: ['{{ 'slideshow.js' | asset_url }}']
-	    });
-	  })();
+	  window.SeqesLazy.register({
+	    id: 'slideshow',
+	    selector: 'slide-show',
+	    rootMargin: '400px 0px',
+	    assets: ['{{ 'slideshow.js' | asset_url }}']
+	  });
 	</script>
 	<script src="{{ 'app.js' | asset_url }}" defer="defer"></script>
 	{%- liquid

@@ -381,15 +381,12 @@
 </div>
 
 <script>
-  (function () {
-    if (!window.SeqesLazy) return;
-    window.SeqesLazy.register({
-      id: 'insta-stories',
-      selector: 'insta-stories',
-      rootMargin: '400px 0px',
-      assets: ['{{ 'insta-stories.js' | asset_url }}']
-    });
-  })();
+  window.SeqesLazy.register({
+    id: 'insta-stories',
+    selector: 'insta-stories',
+    rootMargin: '400px 0px',
+    assets: ['{{ 'insta-stories.js' | asset_url }}']
+  });
 </script>
 
 {% schema %}

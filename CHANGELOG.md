@@ -35,6 +35,7 @@ Git tags:
 - **`layout/theme.liquid`**: loads `lazy-hydrate.js` early with `defer`, before other deferred scripts, so any `SeqesLazy.register(...)` calls in sections queue during HTML parse and flush at `DOMContentLoaded`.
 - **`assets/insta-stories.js`** (new): extracted the 15 KB inline custom element from `sections/insta-stories.liquid`. Previously every page with Instagram stories shipped this JS inline in the HTML payload; now it is a cacheable asset.
 - **`sections/insta-stories.liquid`**: replaced the inline `InstaStories` class body with a `SeqesLazy.register({ id:'insta-stories', selector:'insta-stories', assets:['insta-stories.js'], rootMargin:'400px 0px' })` stub. The heavy JS now loads only when the stories strip is about to enter the viewport.
+- **Hotfix**: section-level `SeqesLazy.register(...)` calls run during HTML parsing, before the deferred `lazy-hydrate.js` boots. Added a synchronous inline bootstrap stub in `layout/theme.liquid` that creates `window.SeqesLazy = { _queue: [], register(e){ this._queue.push(e); } }`, and updated `assets/lazy-hydrate.js` to drain `window.SeqesLazy._queue` when it initializes. Without this fix, Instagram stories and the lazy slideshow registration silently no-op'd and story thumbnails didn't open when clicked.
 
 ### Phase 3 - CSS critical split
 
