@@ -482,8 +482,9 @@
           "settings": {
             "username": "ramosilla",
             "verified": false,
-            "profile_picture": "shopify://shop_images/Foto_Hombre_Chileno_4.webp",
+            "profile_picture": "shopify://shop_images/Mujer_webp_1.webp",
             "close_friends": false,
+            "story_1_video": "shopify://files/videos/Crema Video IG 2 webm.webm",
             "story_1_media_fit": "contain",
             "story_1_time_posted": "10m",
             "story_1_bg": "#282828",
@@ -502,6 +503,7 @@
             "verified": true,
             "profile_picture": "shopify://shop_images/Foto_Mujer_Chilena_5.webp",
             "close_friends": true,
+            "story_1_video": "shopify://files/videos/Shampoo Video 3 webm.webm",
             "story_1_media_fit": "contain",
             "story_1_time_posted": "10m",
             "story_1_bg": "#282828",
