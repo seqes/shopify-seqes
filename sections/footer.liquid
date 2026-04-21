@@ -165,6 +165,13 @@
 					</div>
 				</div>
 			{%- endif -%}
+			{%- if block.type == '@app' -%}
+				<div class="small-12 medium-4 columns widget--app" {{ block.shopify_attributes }}>
+					<div class="widget widget--app-block">
+						{% render block %}
+					</div>
+				</div>
+			{%- endif -%}
 		{%- endfor -%}
 	</div>
 	<div class="sub-footer">
