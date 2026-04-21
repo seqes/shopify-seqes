@@ -70,17 +70,27 @@
 	assign body_font_style = body_font.style
 	assign body_font_weight = body_font.weight
 
+	# ----------------------------------------------------------------
+	# Gilroy self-hosted font (assets/Gilroy-*.woff2).
+	#
+	# Weight coverage currently shipped:
+	#   300 Light    + LightItalic
+	#   400 Regular  + RegularItalic   <-- body default
+	#   500 Medium   + MediumItalic    <-- nav / UI / emphasis
+	#   700 Bold     + BoldItalic      <-- headings / strong
+	#
+	# Mapping used in gilroy mode (every weight points at a real file,
+	# no browser synthesis):
+	#   body     -> 400 (Regular)
+	#   heading  -> 700 (Bold)
+	#   "medium" -> 500 (Medium)
+	#   "bold"   -> 700 (Bold)
+	# ----------------------------------------------------------------
 	if settings.custom_heading_font_choice == 'gilroy'
 		assign heading_font_family = '"Gilroy"'
 		assign heading_font_fallback = 'sans-serif'
 		assign heading_font_style = 'normal'
-		if settings.gilroy_semibold_url != blank
-			assign heading_font_weight = '600'
-		elsif settings.gilroy_bold_url != blank
-			assign heading_font_weight = '700'
-		else
-			assign heading_font_weight = '500'
-		endif
+		assign heading_font_weight = '700'
 	endif
 
 	if settings.custom_body_font_choice == 'gilroy'
@@ -93,51 +103,76 @@
 
 {% style %}
 	{%- comment -%}
-	Custom font support:
-	1) Upload your Gilroy files to Shopify Content > Files.
-	2) Paste the full CDN URLs into Theme settings > Typography.
-	3) Choose "Gilroy" in the custom font selectors for heading/body.
+	Gilroy is self-hosted from the theme's /assets folder.
+	To change weights, drop new Gilroy-*.woff2 files into /assets
+	and add/update the @font-face blocks below. Only reference weights
+	in CSS that are actually declared here, otherwise the browser will
+	synthesize them (blurry fake bold / fake italic).
 	{%- endcomment -%}
 
-	{%- if settings.gilroy_regular_url != blank -%}
 	@font-face {
 		font-family: "Gilroy";
-		src: url("{{ settings.gilroy_regular_url }}");
+		src: url("{{ 'Gilroy-Light.woff2' | asset_url }}") format("woff2");
+		font-weight: 300;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Gilroy";
+		src: url("{{ 'Gilroy-LightItalic.woff2' | asset_url }}") format("woff2");
+		font-weight: 300;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Gilroy";
+		src: url("{{ 'Gilroy-Regular.woff2' | asset_url }}") format("woff2");
 		font-weight: 400;
 		font-style: normal;
 		font-display: swap;
 	}
-	{%- endif -%}
 
-	{%- if settings.gilroy_medium_url != blank -%}
 	@font-face {
 		font-family: "Gilroy";
-		src: url("{{ settings.gilroy_medium_url }}");
+		src: url("{{ 'Gilroy-RegularItalic.woff2' | asset_url }}") format("woff2");
+		font-weight: 400;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Gilroy";
+		src: url("{{ 'Gilroy-Medium.woff2' | asset_url }}") format("woff2");
 		font-weight: 500;
 		font-style: normal;
 		font-display: swap;
 	}
-	{%- endif -%}
 
-	{%- if settings.gilroy_semibold_url != blank -%}
 	@font-face {
 		font-family: "Gilroy";
-		src: url("{{ settings.gilroy_semibold_url }}");
-		font-weight: 600;
-		font-style: normal;
+		src: url("{{ 'Gilroy-MediumItalic.woff2' | asset_url }}") format("woff2");
+		font-weight: 500;
+		font-style: italic;
 		font-display: swap;
 	}
-	{%- endif -%}
 
-	{%- if settings.gilroy_bold_url != blank -%}
 	@font-face {
 		font-family: "Gilroy";
-		src: url("{{ settings.gilroy_bold_url }}");
+		src: url("{{ 'Gilroy-Bold.woff2' | asset_url }}") format("woff2");
 		font-weight: 700;
 		font-style: normal;
 		font-display: swap;
 	}
-	{%- endif -%}
+
+	@font-face {
+		font-family: "Gilroy";
+		src: url("{{ 'Gilroy-BoldItalic.woff2' | asset_url }}") format("woff2");
+		font-weight: 700;
+		font-style: italic;
+		font-display: swap;
+	}
 
 	{%- if settings.custom_body_font_choice != 'gilroy' -%}
 		{{ body_font | font_face: font_display: 'swap' }}

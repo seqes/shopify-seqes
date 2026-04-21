@@ -1,0 +1,22 @@
+# Don't format these
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.parcel-cache/
+.shopify/
+context/
+
+# Auto-generated or vendored assets
+assets/*.min.js
+assets/*.min.css
+assets/vendor-*.js
+assets/animations.min.js
+assets/instant-page.js
+
+# Locale files are edited in Shopify admin; keep untouched
+locales/
+
+# Config touched by Shopify admin
+config/settings_data.json

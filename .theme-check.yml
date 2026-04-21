@@ -1,0 +1,76 @@
+# Shopify Theme Check configuration
+# See: https://shopify.dev/docs/themes/tools/theme-check/configuration
+
+root: "."
+
+extends: :theme_app_extension
+
+ignore:
+  - "context/**/*"
+  - "node_modules/**/*"
+  - "dist/**/*"
+  - "build/**/*"
+
+# Severity tuning for the Seqes theme. These are relaxed to avoid noisy
+# failures on pre-existing patterns while still catching real issues in
+# new code. Tighten over time.
+AssetSizeCSS:
+  enabled: true
+  threshold_in_bytes: 200000
+
+AssetSizeJavaScript:
+  enabled: true
+  threshold_in_bytes: 120000
+
+AssetSizeAppBlockCSS:
+  enabled: true
+
+AssetSizeAppBlockJavaScript:
+  enabled: true
+
+# Accessibility: enforce alt, role, labels
+ImgLazyLoading:
+  enabled: true
+
+ImgWidthAndHeight:
+  enabled: true
+
+# Performance
+ParserBlockingScript:
+  enabled: true
+
+RemoteAsset:
+  enabled: true
+
+# Liquid correctness
+UnusedAssign:
+  enabled: true
+
+UnusedSnippet:
+  enabled: true
+
+UndefinedObject:
+  enabled: true
+
+# Deprecations
+DeprecatedFilter:
+  enabled: true
+
+DeprecatedGlobalAppBlockType:
+  enabled: true
+
+DeprecateBgsizes:
+  enabled: true
+
+DeprecateLazysizes:
+  enabled: true
+
+# Shopify CLI
+ValidJSON:
+  enabled: true
+
+ValidSchema:
+  enabled: true
+
+ValidHTMLTranslation:
+  enabled: true

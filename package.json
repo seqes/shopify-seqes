@@ -1,0 +1,33 @@
+{
+  "name": "shopify-seqes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Seqes Shopify theme (Shrine-based) with hardening, lazy hydration, and accessibility improvements.",
+  "scripts": {
+    "theme:dev": "shopify theme dev",
+    "theme:push": "shopify theme push",
+    "theme:pull": "shopify theme pull",
+    "theme:check": "shopify theme check",
+    "theme:check:fail-level": "shopify theme check --fail-level=error",
+    "format": "prettier --write \"**/*.{liquid,js,css,scss,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{liquid,js,css,scss,json,md,yml,yaml}\"",
+    "lint": "npm run theme:check && npm run format:check",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3.68.0",
+    "@shopify/theme": "^3.68.0",
+    "@shopify/prettier-plugin-liquid": "^1.5.0",
+    "prettier": "^3.3.3",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
+  },
+  "lint-staged": {
+    "*.{liquid,js,css,scss,json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

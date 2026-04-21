@@ -169,29 +169,11 @@
 </div>
 
 <script>
-if(!customElements.get('internal-video')){
-  class InternalVideo extends HTMLElement{
-    connectedCallback(){
-      this.video=this.querySelector('video');
-      if(!this.video)return;
-      const autoplay=this.dataset.autoplay==='true';
-      const sources=this.video.querySelectorAll('source[data-src]');
-      if(sources.length===0&&autoplay){this.video.play().catch(()=>{});return;}
-      const observer=new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            sources.forEach(s=>{if(s.dataset.src){s.src=s.dataset.src;s.removeAttribute('data-src');}});
-            this.video.load();
-            if(autoplay)this.video.play().catch(()=>{});
-            observer.disconnect();
-          }
-        });
-      },{threshold:0.1});
-      observer.observe(this);
-    }
-  }
-  customElements.define('internal-video',InternalVideo);
-}
+  window.SeqesLazy.register({
+    id: 'internal-video',
+    selector: 'internal-video',
+    assets: ['{{ 'internal-video.js' | asset_url }}']
+  });
 </script>
 
 {% schema %}

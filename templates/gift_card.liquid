@@ -97,8 +97,8 @@
 	            <span>{{ 'gift_cards.issued.shop_link' | t }}</span>
 	          </a>
 	          <button
-	            class="button accent2"
-	            onclick="window.print();"
+	            type="button"
+	            class="button accent2 js-print-gift-card"
 	          >
 	            <span>{{ 'gift_cards.issued.print_gift_card' | t }}</span>
 	          </button>
@@ -123,6 +123,11 @@
     imageAltText: string.qrImageAlt
     });
   });
+
+  var printBtn = document.querySelector('.js-print-gift-card');
+  if (printBtn) {
+    printBtn.addEventListener('click', function () { window.print(); });
+  }
 
   var template = document.getElementsByTagName("template")[0];
   var clonedTemplate = template.content.cloneNode(true);

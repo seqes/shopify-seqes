@@ -145,14 +145,16 @@
       {% unless section.settings.content_bg_image == blank %}
         <div class="vertical-ticker-content__bg">
           <img
-            src="{{ section.settings.content_bg_image | image_url }}"
+            src="{{ section.settings.content_bg_image | image_url: width: 1600 }}"
+            srcset="{{ section.settings.content_bg_image | image_url: width: 800 }} 800w, {{ section.settings.content_bg_image | image_url: width: 1200 }} 1200w, {{ section.settings.content_bg_image | image_url: width: 1600 }} 1600w"
+            sizes="100vw"
+            width="{{ section.settings.content_bg_image.width }}"
+            height="{{ section.settings.content_bg_image.height }}"
             {% if section.settings.content_bg_image.alt != blank %}
-              alt="{{ section.settings.image.alt | escape }}"
+              alt="{{ section.settings.content_bg_image.alt | escape }}"
             {% else %}
-              role="presentation"
+              alt="" role="presentation"
             {% endif %}
-            height="auto"
-            width="auto"
             loading="lazy"
           >
           <div class="vertical-ticker-content__bg-overlay{{ section.id }}">&nbsp</div>

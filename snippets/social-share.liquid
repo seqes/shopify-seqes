@@ -10,13 +10,13 @@
 	<label>{{ 'blogs.article.share_this_article' | t }}</label>
 	{%- endif -%}
   {%- if share_facebook -%}
-  <a href="http://www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" class="facebook social" aria-label="{{ 'social.links.facebook' | t }}">{% render 'svg-icons' with 'facebook' %}</a>
+  <a href="https://www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" class="facebook social" target="_blank" rel="noopener noreferrer" aria-label="{{ 'social.links.facebook' | t }}">{% render 'svg-icons' with 'facebook' %}</a>
   {%- endif %}
   {%- if share_twitter -%}
-  <a href="https://twitter.com/intent/tweet?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" class="twitter social" aria-label="{{ 'social.links.twitter' | t }}">{% render 'svg-icons' with 'twitter' %}</a>
+  <a href="https://twitter.com/intent/tweet?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" class="twitter social" target="_blank" rel="noopener noreferrer" aria-label="{{ 'social.links.twitter' | t }}">{% render 'svg-icons' with 'twitter' %}</a>
   {%- endif %}
   {%- if share_pinterest -%}
-  <a href="http://pinterest.com/pin/create/link/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | image_url: width: 1024, height: 1024 }}&amp;description={{ share_title | url_param_escape }}" class="pinterest social" data-pin-no-hover="true" aria-label="{{ 'social.links.pinterest' | t }}">{% render 'svg-icons' with 'pinterest' %}</a>
+  <a href="https://pinterest.com/pin/create/link/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | image_url: width: 1024, height: 1024 }}&amp;description={{ share_title | url_param_escape }}" class="pinterest social" target="_blank" rel="noopener noreferrer" data-pin-no-hover="true" aria-label="{{ 'social.links.pinterest' | t }}">{% render 'svg-icons' with 'pinterest' %}</a>
   {%- endif -%}
   {%- if share_whatsapp -%}
   <a href="whatsapp://send?text={{ share_title | url_param_escape }}, {{ shop.url | append: share_permalink }}" class="whatsapp social" aria-label="{{ 'social.links.whatsapp' | t }}"  data-action="share/whatsapp/share">{% render 'svg-icons' with 'whatsapp' %}</a>

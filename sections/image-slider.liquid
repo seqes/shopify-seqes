@@ -139,7 +139,7 @@
   </div>
 </div>
 
-<script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
+{%- render 'shrine-components-lazy' -%}
 
 {% schema %}
 {"name":"Image/Video Slider","class":"section","tag":"section","disabled_on": {"groups": ["header","footer"

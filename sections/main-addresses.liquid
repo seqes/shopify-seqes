@@ -58,28 +58,28 @@
 						{%- form 'customer_address', address -%}
 							<div class="fields">
 								<div class="field">
-									<input type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}" class="full">
+									<input type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name | escape }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}" class="full">
 										<label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
 								</div>
 								<div class="field">
-									<input type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" class="full">
+									<input type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name | escape }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" class="full">
 										<label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
 								</div>
 							</div>
 							<div class="field">
-								<input type="text" id="AddressCompany_{{ form.id }}" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}" class="full">
+								<input type="text" id="AddressCompany_{{ form.id }}" name="address[company]" value="{{ form.company | escape }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}" class="full">
 									<label for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
 							</div>
 							<div class="field">
-								<input type="text" id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}" class="full">
+								<input type="text" id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 | escape }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}" class="full">
 									<label for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
 							</div>
 							<div class="field">
-								<input type="text" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}" class="full">
+								<input type="text" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 | escape }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}" class="full">
 									<label for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
 							</div>
 							<div class="field">
-								<input type="text" id="AddressCity_{{ form.id }}" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}" class="full">
+								<input type="text" id="AddressCity_{{ form.id }}" name="address[city]" value="{{ form.city | escape }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}" class="full">
 									<label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
 							</div>
 							<div class="field">
@@ -114,11 +114,11 @@
 								<div class="select-arrow">{%- render 'svg-icons' with 'thb-select' -%}</div>
 							</div>
 							<div class="field">
-								<input type="text" id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}" class="full">
+								<input type="text" id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip | escape }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}" class="full">
 									<label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
 							</div>
 							<div class="field">
-								<input type="tel" id="AddressPhone_{{ form.id }}"  name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}" class="full">
+								<input type="tel" id="AddressPhone_{{ form.id }}"  name="address[phone]" value="{{ form.phone | escape }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}" class="full">
 									<label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
 							</div>
 							<div>
@@ -160,28 +160,28 @@
 		{%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
 			<div class="fields">
 	      <div class="field">
-	        <input type="text" id="AddressFirstNameNew" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}" class="full">
+	        <input type="text" id="AddressFirstNameNew" name="address[first_name]" value="{{ form.first_name | escape }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}" class="full">
 						<label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
 	      </div>
 	      <div class="field">
-	        <input type="text" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" class="full">
+	        <input type="text" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name | escape }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" class="full">
 						<label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
 	      </div>
 			</div>
       <div class="field">
-        <input type="text" id="AddressCompanyNew" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}" class="full">
+        <input type="text" id="AddressCompanyNew" name="address[company]" value="{{ form.company | escape }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}" class="full">
 					<label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
       </div>
       <div class="field">
-        <input type="text" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}" class="full">
+        <input type="text" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 | escape }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}" class="full">
 					<label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
       </div>
       <div class="field">
-        <input type="text" id="AddressAddress2New" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}" class="full">
+        <input type="text" id="AddressAddress2New" name="address[address2]" value="{{ form.address2 | escape }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}" class="full">
 					<label for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
       </div>
       <div class="field">
-        <input type="text" id="AddressCityNew" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}" class="full">
+        <input type="text" id="AddressCityNew" name="address[city]" value="{{ form.city | escape }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}" class="full">
 					<label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
       </div>
       <div class="field">
@@ -210,11 +210,11 @@
 				<div class="select-arrow">{%- render 'svg-icons' with 'thb-select' -%}</div>
       </div>
       <div class="field">
-        <input type="text" id="AddressZipNew" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}" class="full">
+        <input type="text" id="AddressZipNew" name="address[zip]" value="{{ form.zip | escape }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}" class="full">
 					<label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
       </div>
       <div class="field">
-        <input type="tel" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}" class="full">
+        <input type="tel" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone | escape }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}" class="full">
 					<label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
       </div>
       <div>

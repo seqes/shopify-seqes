@@ -1,0 +1,45 @@
+# Files and folders that should NOT be uploaded to the Shopify store by the CLI.
+# Shopify CLI respects this file similarly to .gitignore.
+
+# Internal context / notes that are not part of the theme
+context/
+
+# Tooling / package manager
+node_modules/
+package.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Linter / formatter configs (stay local)
+.theme-check.yml
+.prettierrc
+.prettierrc.js
+.prettierrc.json
+.prettierignore
+.editorconfig
+.eslintrc
+.eslintrc.*
+
+# Git / VCS
+.git/
+.gitattributes
+.gitignore
+
+# CI
+.github/
+.husky/
+
+# Docs not needed in-store
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+.vscode/
+.idea/
+*.log

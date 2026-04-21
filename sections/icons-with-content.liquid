@@ -112,7 +112,7 @@
             {%- if section.settings.icon_position != 'next-to-title' -%}
               <div class="iwc__icon-img iwc__icon-img--{{ section.settings.icon_size }}" style="color:{{ section.settings.icon_color }}">
                 {%- if block.settings.image != blank -%}
-                  <img src="{{ block.settings.image | image_url: width: 300 }}" {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}role="presentation"{% endif %} loading="lazy">
+                  <img src="{{ block.settings.image | image_url: width: 300 }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" sizes="150px" {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}alt="" role="presentation"{% endif %} loading="lazy">
                 {%- elsif block.settings.icon != blank -%}
                   {%- render 'material-icon', icon: block.settings.icon, filled: block.settings.filled_icon -%}
                 {%- endif -%}
@@ -124,7 +124,7 @@
                   {%- if section.settings.icon_position == 'next-to-title' -%}
                     <span class="iwc__icon-img iwc__icon-img--{{ section.settings.icon_size }}" style="color:{{ section.settings.icon_color }}">
                       {%- if block.settings.image != blank -%}
-                        <img src="{{ block.settings.image | image_url: width: 300 }}" {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}role="presentation"{% endif %} loading="lazy">
+                        <img src="{{ block.settings.image | image_url: width: 300 }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" sizes="80px" {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}alt="" role="presentation"{% endif %} loading="lazy">
                       {%- elsif block.settings.icon != blank -%}
                         {%- render 'material-icon', icon: block.settings.icon, filled: block.settings.filled_icon -%}
                       {%- endif -%}

@@ -86,7 +86,22 @@
 										<div class="comment-body">
 											<img data-src="https://www.gravatar.com/avatar/{{ comment.email | remove: ' ' | strip_newlines | downcase | md5 }}?s=200" class="avatar lazyload" alt="{{ comment.author | escape }}" width="100" height="100" />
 											<div class="comment-author">
-												<cite class="fn">{{ comment.author }}</cite> — <a href="{{ comment.url }}" class="comment-meta">{{ comment.created_at | date: "%B %d, %Y" }}</a>
+												{%- liquid
+													assign comment_url = comment.url | default: ''
+													assign comment_url_safe = ''
+													if comment_url contains '://'
+														assign comment_scheme = comment_url | split: '://' | first | downcase
+														if comment_scheme == 'http' or comment_scheme == 'https'
+															assign comment_url_safe = comment_url
+														endif
+													endif
+												-%}
+												<cite class="fn">{{ comment.author | escape }}</cite>
+												{%- if comment_url_safe != '' -%}
+													— <a href="{{ comment_url_safe | escape }}" rel="nofollow ugc" class="comment-meta">{{ comment.created_at | date: "%B %d, %Y" }}</a>
+												{%- else -%}
+													— <span class="comment-meta">{{ comment.created_at | date: "%B %d, %Y" }}</span>
+												{%- endif -%}
 											</div>
 											{{ comment.content }}
 										</div>
@@ -123,15 +138,15 @@
 							{%- endif -%}
 							<div class="comment-form-fields">
 								<div class="field">
-									<textarea name="comment[body]" class="full {% if form.errors contains 'body' %}invalid{% endif %}" id="CommentBody" placeholder="{{ 'blogs.article.message' | t }}">{{ form.body }}</textarea>
+									<textarea name="comment[body]" class="full {% if form.errors contains 'body' %}invalid{% endif %}" id="CommentBody" placeholder="{{ 'blogs.article.message' | t }}">{{ form.body | escape }}</textarea>
 									<label>{{ 'blogs.article.message' | t }}</label>
 								</div>
 								<div class="field">
-									<input type="text" class="full {% if form.errors contains 'author' %}invalid{% endif %}" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" autocapitalize="words" placeholder="{{ 'blogs.article.name' | t }}">
+									<input type="text" class="full {% if form.errors contains 'author' %}invalid{% endif %}" name="comment[author]" id="CommentAuthor" value="{{ form.author | escape }}" autocapitalize="words" placeholder="{{ 'blogs.article.name' | t }}">
 									<label>{{ 'blogs.article.name' | t }}</label>
 								</div>
 								<div class="field">
-									<input type="email" class="full {% if form.errors contains 'email' %}invalid{% endif %}" name="comment[email]" id="CommentEmail" value="{{ form.email }}" autocorrect="off" autocapitalize="off" placeholder="{{ 'blogs.article.email' | t }}">
+									<input type="email" class="full {% if form.errors contains 'email' %}invalid{% endif %}" name="comment[email]" id="CommentEmail" value="{{ form.email | escape }}" autocorrect="off" autocapitalize="off" placeholder="{{ 'blogs.article.email' | t }}">
 									<label>{{ 'blogs.article.email' | t }}</label>
 								</div>
 								<input class="button full" type="submit" value="{{ 'blogs.article.post' | t | escape }}">

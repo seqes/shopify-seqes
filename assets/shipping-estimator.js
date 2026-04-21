@@ -47,12 +47,8 @@ if (!customElements.get('shipping-estimator')) {
       }
     }
     formatShippingRates(shippingRates) {
-      let formattedShippingRates = '',
-        answer = '',
-        format = window.theme.settings.money_with_currency_format || "${{amount}}";
-      shippingRates.forEach((shippingRate) => {
-        formattedShippingRates += `<li>${shippingRate.presentment_name}: ${formatMoney(parseFloat(shippingRate.price) * 100, format)}</li>`;
-      });
+      const format = window.theme.settings.money_with_currency_format || "${{amount}}";
+      let answer;
       if (shippingRates.length === 0) {
         answer = window.theme.strings.shippingEstimatorNoResults;
       } else if (shippingRates.length === 1) {
@@ -60,24 +56,32 @@ if (!customElements.get('shipping-estimator')) {
       } else {
         answer = window.theme.strings.shippingEstimatorMultipleResults;
       }
-      const html = `
-        <p>${answer}</p>
-        ${formattedShippingRates === "" ? "" : `<ul>${formattedShippingRates}</ul>`}
-      `;
-      this.results.innerHTML = '';
-      this.results.insertAdjacentHTML('beforeend', html);
+      this.results.textContent = '';
+      const p = document.createElement('p');
+      p.textContent = answer;
+      this.results.appendChild(p);
+      if (shippingRates.length > 0) {
+        const ul = document.createElement('ul');
+        shippingRates.forEach((shippingRate) => {
+          const li = document.createElement('li');
+          li.textContent = `${shippingRate.presentment_name}: ${formatMoney(parseFloat(shippingRate.price) * 100, format)}`;
+          ul.appendChild(li);
+        });
+        this.results.appendChild(ul);
+      }
     }
     formatError(errors) {
-      let formattedShippingRates = '';
+      this.results.textContent = '';
+      const p = document.createElement('p');
+      p.textContent = window.theme.strings.shippingEstimatorError;
+      this.results.appendChild(p);
+      const ul = document.createElement('ul');
       Object.keys(errors).forEach((errorKey) => {
-        formattedShippingRates += `<li>${errorKey} ${errors[errorKey]}</li>`;
+        const li = document.createElement('li');
+        li.textContent = `${errorKey} ${errors[errorKey]}`;
+        ul.appendChild(li);
       });
-      const html = `
-        <p>${window.theme.strings.shippingEstimatorError}</p>
-        <ul>${formattedShippingRates}</ul>
-      `;
-      this.results.innerHTML = '';
-      this.results.insertAdjacentHTML('beforeend', html);
+      this.results.appendChild(ul);
     }
     setupCountries() {
 

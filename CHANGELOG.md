@@ -9,6 +9,93 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Dates 
 Git tags:
 
 - `v-pre-optimization` - baseline snapshot before the deep performance refactor. Use `git reset --hard v-pre-optimization` to revert all optimization work.
+- `v-pre-hardening` - snapshot before the production-hardening pass (security / a11y / tooling / CI).
+- `v-post-hardening` - snapshot after the production-hardening pass completed.
+
+---
+
+## Unreleased - Production hardening pass
+
+Security, dead-code cleanup, performance polish, accessibility, tooling, documentation, and CI on top of the deep performance optimization.
+
+### Phase 9 - Security
+
+- **`snippets/search-drawer.liquid`**: escape reflected `search.terms` in the search input `value` attribute.
+- **`sections/main-register.liquid`**: escape `form.first_name` / `form.last_name` reflected in registration input values.
+- **`sections/main-addresses.liquid`**: escape every reflected `form.*` address field (`first_name`, `last_name`, `company`, `address1`, `address2`, `city`, `zip`, `phone`).
+- **`sections/main-article.liquid`**: validate `comment.url` against `http:`/`https:` schemes (otherwise render author as plain text), escape `comment.author`, escape `form.body` textarea contents, escape `form.author` and `form.email` values, and add `rel="nofollow ugc"` + `target="_blank" rel="noopener noreferrer"` on the author link.
+- **`snippets/product-specification-metafield.liquid`**: URL scheme validation for `metafield_type == "url"` (http/https only, `rel="noopener noreferrer"` on external links), `| escape` on image `alt` attributes instead of `| json`, strict hex-only regex gate on `metafield_type == "color"` before interpolating into `style="background-color: ..."`, and `| escape` on reference titles.
+- **`assets/cart.js`**: switched cart line error display from `innerHTML` to `textContent`.
+- **`assets/product.js`**: switched variant option label updates from `innerHTML` to `textContent`.
+- **`assets/shipping-estimator.js`**: rewrote `formatShippingRates` and `formatError` to use `textContent` + `createElement` / `appendChild` instead of `innerHTML` / `insertAdjacentHTML`, removing an XSS vector on shipping API responses.
+- **`sections/main-account.liquid`**: fixed `address.default_address.province_code` bug; now correctly reads `customer.default_address.province_code`.
+- **`sections/social-share.liquid`**: upgraded Facebook and Pinterest share URLs from `http://` to `https://` and added `target="_blank" rel="noopener noreferrer"` to all share links to prevent mixed content and tab-nabbing.
+
+### Phase 10 - Dead code cleanup
+
+- Deleted `snippets/newline_to_span.liquid` (no `render` / `include` references in the codebase).
+- Deleted `sections/seqes-testimonials.liquid` (superseded by the canonical `sections/testimonials.liquid`).
+- Deleted `sections/results.liquid` (not referenced from any `templates/*.json` or `config/settings_data.json`).
+- **`layout/theme.liquid`**: replaced the hardcoded `collection.handle == 'some-handle'` price-hiding block with a metafield-first, tag-fallback check (`collection.metafields.custom.hide_price` or a `hide-price` tag), so merchandisers can flip it from admin without a code change.
+
+### Phase 11 - Performance polish
+
+- **`sections/map.liquid`**: Google Maps JS API is now registered with `SeqesLazy.register` (`rootMargin: 400px 0px`) instead of loaded eagerly, so pages with a map below the fold no longer pay for `maps.googleapis.com` on first paint.
+- **`snippets/shrine-components-lazy.liquid`** (new): one centralized `SeqesLazy.register` entry for `assets/shrine-components.js` that triggers on a compound selector (`content-tabs, parallax-hero, hotspot-button, splide-component, slideshow-component, slider-component, copy-button, countdown-timer, deferred-media, details-disclosure`). Replaces multiple duplicate `<script src=...shrine-components.js>` tags in individual sections.
+- **`sections/collage.liquid`**, **`sections/image-slider.liquid`**, **`sections/shoppable-image.liquid`**, **`sections/content-tabs.liquid`**, **`sections/section-group.liquid`**, **`sections/slideshow-hero.liquid`**, **`sections/parallax-hero.liquid`**, **`sections/product-features.liquid`**: replaced inline `<script src=".../shrine-components.js">` with `{% render 'shrine-components-lazy' %}`.
+- **`assets/banner-shared.css`** (new): extracted duplicated `.banner*` and `.slideshow.banner*` base rules from `sections/image-banner.liquid`, `sections/email-signup-banner.liquid`, and `sections/slideshow-hero.liquid` into a shared, CDN-cacheable stylesheet. Those sections now `{{ 'banner-shared.css' | asset_url | stylesheet_tag }}` and only keep section-specific dynamic CSS (overlay opacity, color scheme) inline.
+- Added explicit `width`, `height`, `srcset`, and `sizes` to images in: `sections/icon-bar.liquid`, `sections/vertical-ticker.liquid`, `sections/horizontal-ticker.liquid`, `sections/bundle-deals.liquid`, `sections/shoppable-image.liquid`, `sections/icons-with-content.liquid`, `sections/insta-stories.liquid`. This helps CLS (reserved layout space) and LCP (browser picks the right variant earlier).
+- **`assets/bundle-deals.js`**, **`assets/promo-popup.js`**, **`assets/comparison-slider.js`**, **`assets/internal-video.js`** (all new): extracted inline custom-element bodies from the corresponding sections into dedicated cacheable assets.
+- **`sections/bundle-deals.liquid`**, **`sections/promo-popup.liquid`**, **`sections/comparison-slider.liquid`**, **`sections/multirow.liquid`**: replaced the inline `<script>` blocks with `SeqesLazy.register` stubs pointing to the new assets, so the components only hydrate when their custom elements enter the viewport.
+
+### Phase 12 - Accessibility
+
+- **`snippets/cart-drawer.liquid`**: added `role="dialog"`, `aria-modal="true"`, `aria-labelledby="Cart-Drawer-Title"`, `aria-hidden`, and an `aria-label` + keyboard-actionable attributes on the close button.
+- **`snippets/search-drawer.liquid`**: same treatment as the cart drawer (`role="dialog"`, `aria-modal`, `aria-label`, `aria-hidden`, accessible close).
+- **`sections/insta-stories.liquid`**: modal container gets `role="dialog" aria-modal="true" aria-label aria-hidden`; pause/resume, volume, close, and prev/next chevron buttons gain `type="button"` + descriptive `aria-label`s.
+- **`assets/focus-trap.js`** (new): `window.SeqesFocusTrap` helper providing `activate(container, options)` / `deactivate(container)` with Tab / Shift+Tab trapping, initial focus placement, Escape-to-close, and focus restoration. Auto-wires itself to `.side-panel` (via `.active` class observation) and `.insta-stories__modal` (via `data-open` attribute observation) using `MutationObserver`, and toggles `aria-hidden` accordingly. Dependency-free, no polyfills required.
+- **`layout/theme.liquid`**: loads `focus-trap.js` with `defer`, immediately after `lazy-hydrate.js`.
+- **`templates/gift_card.liquid`**: removed inline `onclick="window.print();"`, replaced with a `.js-print-gift-card` class + `addEventListener('click', ...)` binding inside the existing DOMContentLoaded handler. Also added `type="button"` on the button.
+- **`snippets/facets-mobile.liquid`**: removed inline `onclick="document.querySelector('.click-capture').click()"` on the mobile "Apply" button; bound via `addEventListener` in a small scoped IIFE.
+
+### Phase 13 - Tooling configs
+
+- **`.theme-check.yml`** (new): Shopify Theme Check config extending `:theme_app_extension`. Enables `ImgLazyLoading`, `ImgWidthAndHeight`, `ParserBlockingScript`, `RemoteAsset`, `UnusedAssign`, `UnusedSnippet`, `UndefinedObject`, deprecation checks, and asset-size thresholds (120 KB JS / 200 KB CSS). Ignores `context/`, `node_modules/`, `dist/`, `build/`.
+- **`package.json`** (new): devDependencies (`@shopify/cli`, `@shopify/theme`, `@shopify/prettier-plugin-liquid`, `prettier`, `husky`, `lint-staged`), npm scripts (`theme:dev`, `theme:push`, `theme:pull`, `theme:check`, `format`, `format:check`, `lint`, `prepare`), and `lint-staged` config. Pinned to Node >= 18.17.
+- **`.prettierrc`** + **`.prettierignore`** (new): Prettier with the Liquid plugin, 120-col print width, LF line endings, singleQuote JS / doubleQuote Liquid. Ignores `locales/`, `config/settings_data.json`, minified assets, `context/`, build dirs.
+- **`.editorconfig`** (new): UTF-8, LF, final newline, trim trailing whitespace. Tabs by default in `.liquid`, spaces in JSON/YAML/MD.
+- **`.gitattributes`** (new): normalizes text files to `eol=lf`, declares binary extensions (images, fonts, video, pdf).
+- **`.shopifyignore`** (new): prevents the Shopify CLI from uploading `context/`, tooling configs, docs, CI configs, node_modules, and editor metadata to the store.
+- **`shopify.theme.toml`** (new): three environments (`development`, `staging`, `production`) with per-env `store`, `theme`, and `ignore` lists. `development` additionally ignores `config/settings_data.json` to avoid overwriting merchant changes during dev.
+- **`.gitignore`**: expanded from just `context/` to cover `node_modules/`, logs, `.env*` (keeping `.env.example`), OS / editor junk, `.shopify/`, build caches, and `.husky/_`.
+- **`.vscode/extensions.json`** + **`.vscode/settings.json`** (new): recommends Shopify Theme Check + Prettier + EditorConfig + Liquid extensions and enforces format-on-save + LF.
+
+### Phase 14 - Docs
+
+- **`README.md`**: rewritten from a one-line stub into a full project README covering requirements, getting started (`npm install` + CLI auth + `theme:dev`), project layout, development workflow, tooling, performance architecture (lazy-hydrate runtime, banner-shared CSS, image sizing), accessibility (dialog roles, focus trap, no inline handlers), security (Liquid escaping, URL scheme validation, `textContent` over `innerHTML`, https-only social links), a release runbook, and a troubleshooting section.
+- **`CONTRIBUTING.md`** (new): ground rules (no `config/settings_data.json` churn, no `context/`, no inline `onclick`, no `innerHTML` with user data, always `| escape` user-reflected Liquid), setup instructions, branching (`feat/*`, `fix/*`, rebase not merge), commit style, PR checklist (lint, smoke test, Lighthouse, image attrs, lazy hydration, locales, changelog), instructions for adding a new section / component, localization rules, and a responsible-disclosure note for security.
+
+### Phase 15 - CI + Husky
+
+- **`.github/workflows/theme-check.yml`** (new): GitHub Actions workflow on `push` / `pull_request` to `main`. Uses Node 20, runs `npm ci || npm install`, then `npm run format:check`, then `npx shopify theme check --fail-level=error`. Fails the build on Prettier drift or any Theme Check `error`-level rule.
+- **`.husky/pre-commit`** (new): runs `npx lint-staged` so Prettier auto-formats staged `.liquid` / `.js` / `.css` / `.scss` / `.json` / `.md` / `.yml` files before the commit is recorded. Hook is activated by `npm install` via the `prepare` script (`husky install`).
+
+### Phase 16 - Verification + tag
+
+- All touched files pass the linter (`ReadLints` clean across the Phase 12-15 edits, plus all previously verified Phase 9-11 edits).
+- Manual smoke-test plan (run on a duplicated theme in Shopify admin before publishing):
+  1. Home page: hero banner still renders eager + high priority, no duplicate banner CSS, Instagram stories still open and trap focus (Tab stays inside the modal, Escape closes it).
+  2. Cart drawer: opens, traps focus, Escape closes, and `aria-hidden` toggles correctly.
+  3. Search drawer: opens and closes, search input `value` shows the user's term safely even if the term contains `"<>` characters.
+  4. Product page: variant picker still updates option labels (now via `textContent`), shipping estimator renders rates / errors as text only, reviews slideshow still honors `max_lines`.
+  5. Comment form (any article): try submitting with `<script>` in the body/author/email/URL; confirm it renders escaped and any bad URL becomes plain text.
+  6. Collection page with mobile filters: tap the new `js-mobile-filters-apply` button; the click-capture still closes the filter drawer.
+  7. Gift card template: print button still triggers `window.print()` via the new `addEventListener` binding.
+  8. Map section: confirm Google Maps API only loads when the map enters the viewport.
+  9. Bundle deals / promo popup / comparison slider / internal video / insta-stories: confirm each hydrates on scroll via `SeqesLazy` (check Network tab: asset request fires just before the element enters view).
+  10. Address book: add/edit an address; confirm all fields round-trip through the form without breaking when user types `<`, `>`, `&`, or quotes.
+- Post-hardening Lighthouse run (mobile, 4x CPU throttle) to be compared against `v-post-optimization`; performance should be flat-or-better, accessibility score should rise measurably due to dialog / focus-trap / aria-label / image sizing improvements.
+- After sign-off, tag: `git tag -a v-post-hardening -m "Production hardening pass complete"`.
 
 ---
 

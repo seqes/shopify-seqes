@@ -12,20 +12,21 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Please refer to [How do I add custom fonts to Reformation theme?](https://documentation.fuelthemes.net/kb/how-do-i-add-custom-fonts-to-reformation-theme/) to add custom fonts to your theme."
+        "content": "Gilroy is self-hosted in the theme's assets folder. To use it, set 'Custom heading font' and 'Custom body font' below to Gilroy. To swap in different font files, replace the Gilroy-*.woff2 files in the assets folder of the theme."
       },
       {
         "type": "font_picker",
         "label": "Heading font",
         "id": "heading_font",
         "default": "archivo_narrow_n4",
-        "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/en/manual/online-store/os/store-speed/improving-speed#fonts)"
+        "info": "Fallback font. Used only when 'Custom heading font' below is set to 'Use Shopify font picker'."
       },
       {
         "type": "select",
         "id": "custom_heading_font_choice",
         "label": "Custom heading font",
-        "default": "shopify",
+        "default": "gilroy",
+        "info": "Choose 'Gilroy' to use the self-hosted Gilroy font bundled with the theme.",
         "options": [
           {
             "value": "shopify",
@@ -36,30 +37,6 @@
             "label": "Gilroy"
           }
         ]
-      },
-      {
-        "type": "text",
-        "id": "gilroy_regular_url",
-        "label": "Gilroy Regular font URL",
-        "info": "Paste the full CDN URL from Content > Files for the Gilroy Regular .woff or .woff2 file."
-      },
-      {
-        "type": "text",
-        "id": "gilroy_medium_url",
-        "label": "Gilroy Medium font URL",
-        "info": "Paste the full CDN URL for Gilroy Medium."
-      },
-      {
-        "type": "text",
-        "id": "gilroy_semibold_url",
-        "label": "Gilroy Semibold font URL",
-        "info": "Paste the full CDN URL for Gilroy Semibold."
-      },
-      {
-        "type": "text",
-        "id": "gilroy_bold_url",
-        "label": "Gilroy Bold font URL",
-        "info": "Paste the full CDN URL for Gilroy Bold."
       },
       {
         "type": "range",
@@ -95,13 +72,14 @@
         "label": "Body font",
         "id": "body_font",
         "default": "archivo_narrow_n4",
-        "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/en/manual/online-store/os/store-speed/improving-speed#fonts)"
+        "info": "Fallback font. Used only when 'Custom body font' below is set to 'Use Shopify font picker'."
       },
       {
         "type": "select",
         "id": "custom_body_font_choice",
         "label": "Custom body font",
-        "default": "shopify",
+        "default": "gilroy",
+        "info": "Choose 'Gilroy' to use the self-hosted Gilroy font bundled with the theme.",
         "options": [
           {
             "value": "shopify",

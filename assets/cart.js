@@ -57,7 +57,7 @@ class Cart {
       document.getElementById(`Line-item-error-${line}`) || document.getElementById(`CartDrawer-LineItemError-${line}`);
     if (lineItemError) {
       lineItemError.removeAttribute('hidden');
-      lineItemError.querySelector('.cart-item__error-text').innerHTML = message;
+      lineItemError.querySelector('.cart-item__error-text').textContent = message;
       this.container.querySelector(`#CartItem-${line}`).classList.remove('loading');
     }
   }

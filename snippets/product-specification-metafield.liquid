@@ -1,5 +1,34 @@
+{%- comment -%}
+  Renders a product metafield value in the product specification table.
+
+  Security note (Phase 9 hardening):
+  - URL metafields are only rendered as clickable links when the scheme is
+    http: or https:. Everything else (javascript:, data:, mailto:, tel:,
+    relative paths, junk input) is rendered as plain escaped text to
+    defeat XSS attempts via merchant-editable metafields.
+  - Color metafields are only emitted inside the style attribute when they
+    match a strict hex pattern (#rgb / #rrggbb). Everything else is
+    dropped so a malicious color value cannot break out of the attribute.
+  - alt attributes use `| escape` (not `| json`, which emits surrounding
+    quotes and mangles the attribute).
+
+  Accepted inputs: metafield, metafield_type, metafield_value, comma.
+{%- endcomment -%}
+
 {%- if metafield_type == "url" -%}
-  <a href="{{- metafield_value -}}" class="link" target="_blank">{{- metafield_value -}}</a>{{ comma }}
+  {%- assign mf_url = metafield_value | default: '' -%}
+  {%- assign mf_url_safe = '' -%}
+  {%- if mf_url contains '://' -%}
+    {%- assign mf_scheme = mf_url | split: '://' | first | downcase -%}
+    {%- if mf_scheme == 'http' or mf_scheme == 'https' -%}
+      {%- assign mf_url_safe = mf_url -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if mf_url_safe != '' -%}
+    <a href="{{ mf_url_safe | escape }}" class="link" target="_blank" rel="noopener noreferrer">{{ mf_url_safe | escape }}</a>{{ comma }}
+  {%- else -%}
+    <span class="link">{{ mf_url | escape }}</span>{{ comma }}
+  {%- endif -%}
 {%- elsif metafield_type == "boolean" -%}
   {%- if metafield_value -%}
     {{- 'products.compare.metafields.boolean_true' | t -}}
@@ -13,7 +42,7 @@
       height="{{ metafield_value.height }}"
       width="{{ metafield_value.width }}"
       loading="lazy"
-      alt="{{ metafield_value.alt | json }}"
+      alt="{{ metafield_value.alt | escape }}"
     />
   {%- else -%}
     {%- liquid
@@ -32,16 +61,48 @@
     <a href="{{- download_url -}}" download class="text-button" {{- additional_attrs -}}>
       <img src="{{ metafield_value.preview_image | image_url: width: 80 }}" class="lazyload"
            height="{{ 40 | divided_by: metafield_value.preview_image.aspect_ratio | round }}"
-           width="40" loading="lazy" alt="{{ metafield_value.alt | json }}"/>
+           width="40" loading="lazy" alt="{{ metafield_value.alt | escape }}"/>
       {{- 'products.compare.metafields.file_download' | t -}}
     </a>
   {%- endif -%}
 {%- elsif metafield_type == "date_time" -%}
   {{- metafield_value | date: format: 'date_at_time' -}}{{ comma }}
 {%- elsif metafield_type == "color" -%}
-  <div class="metafield-color" style="background-color: {{- metafield_value -}}"></div>
+  {%- liquid
+    assign mf_color = metafield_value | default: '' | strip
+    assign mf_color_safe = ''
+    assign mf_color_len = mf_color | size
+    if mf_color_len == 4 or mf_color_len == 7
+      assign mf_color_first = mf_color | slice: 0, 1
+      if mf_color_first == '#'
+        assign mf_color_chars = mf_color | remove_first: '#'
+        assign mf_color_upper = mf_color_chars | upcase
+        assign mf_color_is_hex = true
+        assign mf_color_allowed = '0123456789ABCDEF'
+        assign mf_color_body_size = mf_color_upper | size
+        for i in (0..99)
+          if i >= mf_color_body_size
+            break
+          endif
+          assign mf_color_char = mf_color_upper | slice: i, 1
+          unless mf_color_allowed contains mf_color_char
+            assign mf_color_is_hex = false
+            break
+          endunless
+        endfor
+        if mf_color_is_hex
+          assign mf_color_safe = mf_color
+        endif
+      endif
+    endif
+  -%}
+  {%- if mf_color_safe != '' -%}
+    <div class="metafield-color" style="background-color: {{ mf_color_safe }}"></div>
+  {%- else -%}
+    <div class="metafield-color"></div>
+  {%- endif -%}
 {%- elsif metafield_type == "collection_reference" or metafield_type == "page_reference" or metafield_type == "variant_reference" or metafield_type == "product_reference" -%}
-  <a href="{{- metafield_value.url -}}" class="link" target="_blank">{{- metafield_value.title -}}</a>{{ comma }}
+  <a href="{{ metafield_value.url }}" class="link" target="_blank" rel="noopener">{{ metafield_value.title | escape }}</a>{{ comma }}
 {%- elsif metafield.type contains "list." -%}
   {{- metafield_value | newline_to_br -}}{{ comma }}
 {%- else -%}

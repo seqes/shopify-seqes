@@ -1,4 +1,17 @@
 <link rel="preload" as="style" href="{{ 'app.css' | asset_url }}">
+{%- comment -%}
+  Preload only the two Gilroy weights actually used for first paint:
+  Regular (400) for body copy and Bold (700) for headings. The other
+  weights (Light, Medium, italics) are declared in @font-face but not
+  preloaded, so they load on demand when visible text actually uses them.
+  Only emit these preloads when the theme is configured to use Gilroy.
+{%- endcomment -%}
+{%- if settings.custom_body_font_choice == 'gilroy' -%}
+<link rel="preload" as="font" type="font/woff2" href="{{ 'Gilroy-Regular.woff2' | asset_url }}" crossorigin>
+{%- endif -%}
+{%- if settings.custom_heading_font_choice == 'gilroy' -%}
+<link rel="preload" as="font" type="font/woff2" href="{{ 'Gilroy-Bold.woff2' | asset_url }}" crossorigin>
+{%- endif -%}
 {% if template contains 'product' -%}
 <link rel="preload" as="style" href="{{ 'product.css' | asset_url }}">
 {% liquid

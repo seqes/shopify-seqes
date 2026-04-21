@@ -281,7 +281,7 @@
   {% endfor %}
 </parallax-hero>
 
-<script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
+{%- render 'shrine-components-lazy' -%}
 
 {% schema %}
 {"name":"3D Parallax hero","class":"section","disabled_on": {"groups": ["header","footer"

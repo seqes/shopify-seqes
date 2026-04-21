@@ -1,0 +1,29 @@
+# Shopify CLI theme project configuration
+# https://shopify.dev/docs/themes/tools/cli/configuration
+#
+# This file is ONLY used by the Shopify CLI (`shopify theme push|dev|pull`).
+# It is ignored by Shopify's GitHub integration (which syncs the theme
+# directly from the repo's root theme folders). Store handles below are
+# placeholders; replace with real domains only if you plan to use the CLI.
+
+[environments.development]
+store = "seqes-development.myshopify.com"
+theme = "development"
+ignore = [
+  "config/settings_data.json",
+  "context/*",
+]
+
+[environments.staging]
+store = "seqes-staging.myshopify.com"
+theme = "staging"
+ignore = [
+  "context/*",
+]
+
+[environments.production]
+store = "seqes.myshopify.com"
+theme = "live"
+ignore = [
+  "context/*",
+]

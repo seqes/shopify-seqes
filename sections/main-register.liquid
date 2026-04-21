@@ -24,11 +24,11 @@
 					{% endif %}
 					<div class="fields">
             <div class="field">
-              <input type="text" name="customer[first_name]" class="full" value="{% if form.first_name %}{{ form.first_name }}{% endif %}" placeholder="{{ 'customer.login_page.first_name' | t }}" />
+              <input type="text" name="customer[first_name]" class="full" value="{% if form.first_name %}{{ form.first_name | escape }}{% endif %}" placeholder="{{ 'customer.login_page.first_name' | t }}" />
 	            <label for="first_name">{{ 'customer.login_page.first_name' | t }}</label>
             </div>
             <div class="field">
-              <input type="text" name="customer[last_name]" class="full" value="{% if form.last_name %}{{ form.last_name }}{% endif %}" placeholder="{{ 'customer.login_page.last_name' | t }}" />
+              <input type="text" name="customer[last_name]" class="full" value="{% if form.last_name %}{{ form.last_name | escape }}{% endif %}" placeholder="{{ 'customer.login_page.last_name' | t }}" />
 	            <label for="last_name">{{ 'customer.login_page.last_name' | t }}</label>
             </div>
 					</div>

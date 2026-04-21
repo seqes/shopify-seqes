@@ -4,12 +4,12 @@
 	assign free_shipping_minimum = settings.free_shipping_minimum | times: 100
 	assign total = cart.total_price
 -%}
-<cart-drawer class="side-panel cart-drawer" id="Cart-Drawer" tabindex="-1">
+<cart-drawer class="side-panel cart-drawer" id="Cart-Drawer" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="Cart-Drawer-Title" aria-hidden="true">
 	<div class="side-panel-inner">
 		<div class="side-panel-header">
 			<div>
-				<h4 class="body-font">{{ 'general.cart_drawer.title' | t }}</h4>
-				<side-panel-close class="side-panel-close">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
+				<h4 id="Cart-Drawer-Title" class="body-font">{{ 'general.cart_drawer.title' | t }}</h4>
+				<side-panel-close class="side-panel-close" role="button" tabindex="0" aria-label="{{ 'accessibility.close' | t | default: 'Close' }}">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
 			</div>
 		</div>
 		<div class="side-panel-content">

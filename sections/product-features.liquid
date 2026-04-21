@@ -246,7 +246,7 @@
   </div>
 </div>
 
-<script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
+{%- render 'shrine-components-lazy' -%}
 
 {% schema %}
 {"name":"Product features","class":"section","disabled_on": {"groups": ["header","footer"

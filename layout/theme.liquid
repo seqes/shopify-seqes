@@ -237,17 +237,22 @@
 	  window.SeqesLazy = window.SeqesLazy || { _queue: [], register: function (e) { this._queue.push(e); } };
 	</script>
 	<script src="{{ 'lazy-hydrate.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'focus-trap.js' | asset_url }}" defer="defer"></script>
 	{{ settings.custom_html_head }}
 
     {%- comment -%}
-      TODO: Remove this hardcoded collection price-hiding once the vet clinic
-      homepage is fully migrated. Use collection metafields or tags instead.
+      Hide price on collections that opt-in via metafield (custom.hide_price = true)
+      or via the 'hide-price' tag. Falls back cleanly when the metafield isn't set.
     {%- endcomment -%}
-    {% if collection.handle == "nuestros-profesionales" or collection.handle =="reserva" %}
-    <style>
-      .price  { display: none !important }
-      </style>
-    {% endif %}
+    {%- assign hide_price = false -%}
+    {%- if collection.metafields.custom.hide_price -%}
+      {%- assign hide_price = true -%}
+    {%- elsif collection.tags contains 'hide-price' -%}
+      {%- assign hide_price = true -%}
+    {%- endif -%}
+    {%- if hide_price -%}
+    <style>.price { display: none !important; }</style>
+    {%- endif -%}
 </head>
 <body class="animations-{{ settings.animations }} button-uppercase-{{ settings.button_uppercase }} navigation-uppercase-{{ settings.navigation_uppercase }} product-card-spacing-{{ settings.product_card_spacing }} product-title-uppercase-{{ settings.product_title_uppercase }}{% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}">
 	<!-- Google Tag Manager (noscript) -->

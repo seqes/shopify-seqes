@@ -85,8 +85,12 @@
         <div class="icon-bar__icon icon-bar__icon--{{ section.settings.icon_size }}" style="color:{{ section.settings.icon_color }}">
           {%- if block.settings.image != blank -%}
             <img
-              src="{{ block.settings.image | image_url }}"
-              {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}role="presentation"{% endif %}
+              src="{{ block.settings.image | image_url: width: 120 }}"
+              srcset="{{ block.settings.image | image_url: width: 60 }} 60w, {{ block.settings.image | image_url: width: 120 }} 120w, {{ block.settings.image | image_url: width: 180 }} 180w"
+              sizes="60px"
+              width="{{ block.settings.image.width | default: 60 }}"
+              height="{{ block.settings.image.height | default: 60 }}"
+              {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}alt="" role="presentation"{% endif %}
               loading="lazy"
             >
           {%- else -%}

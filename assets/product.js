@@ -77,7 +77,7 @@ if (!customElements.get('variant-selects')) {
       fieldsets.forEach((item, i) => {
         let label = item.querySelector('.form__label__value');
         if (label) {
-          label.innerHTML = this.options[i];
+          label.textContent = this.options[i];
         }
       });
     }

@@ -287,65 +287,11 @@
 {%- endunless -%}
 
 <script>
-if(!customElements.get('promo-popup')){
-  class PromoPopup extends HTMLElement{
-    connectedCallback(){
-      this.testMode=this.dataset.testMode==='true';
-      this.delayDays=parseInt(this.dataset.delayDays)||7;
-      this.delaySeconds=parseInt(this.dataset.delaySeconds)||3;
-      this.displayTimer=this.dataset.displayTimer==='true';
-      this.timerDuration=parseInt(this.dataset.timerDuration)||300;
-      this.storageKey='promo-popup-'+location.host;
-      this.overlay=this.querySelector('.popup-overlay');
-      this.modal=this.querySelector('.popup-modal');
-      this.closeBtns=this.querySelectorAll('.promp-popup__close-btn');
-      
-      this.closeBtns.forEach(btn=>btn.addEventListener('click',()=>this.close()));
-      
-      if(this.testMode){return;}
-      const stored=localStorage.getItem(this.storageKey);
-      if(stored){
-        try{
-          const data=JSON.parse(stored);
-          if(data.dismissed){
-            const diff=Date.now()-data.timestamp;
-            if(diff<this.delayDays*86400000)return;
-          }
-          if(data.subscribed)return;
-        }catch(e){}
-      }
-      setTimeout(()=>this.open(),this.delaySeconds*1000);
-    }
-    open(){
-      if(this.overlay)this.overlay.classList.add('popup-overlay--active');
-      if(this.modal)this.modal.classList.add('popup-modal--active');
-      if(this.displayTimer)this.startTimer();
-    }
-    close(){
-      if(this.overlay)this.overlay.classList.remove('popup-overlay--active');
-      if(this.modal)this.modal.classList.remove('popup-modal--active');
-      localStorage.setItem(this.storageKey,JSON.stringify({dismissed:true,timestamp:Date.now()}));
-    }
-    startTimer(){
-      let remaining=this.timerDuration;
-      const mEl=this.querySelector('.popup-modal__timer__minutes');
-      const sEl=this.querySelector('.popup-modal__timer__seconds');
-      if(!mEl||!sEl)return;
-      const tick=()=>{
-        if(remaining<=0)return;
-        remaining--;
-        mEl.textContent=String(Math.floor(remaining/60)).padStart(2,'0');
-        sEl.textContent=String(remaining%60).padStart(2,'0');
-      };
-      tick();
-      this._timer=setInterval(tick,1000);
-    }
-    disconnectedCallback(){
-      if(this._timer)clearInterval(this._timer);
-    }
-  }
-  customElements.define('promo-popup',PromoPopup);
-}
+  window.SeqesLazy.register({
+    id: 'promo-popup',
+    selector: 'promo-popup',
+    assets: ['{{ 'promo-popup.js' | asset_url }}']
+  });
 </script>
 
 {% schema %}

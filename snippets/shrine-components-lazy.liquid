@@ -1,0 +1,20 @@
+{%- comment -%}
+  Lazy-hydration registration for assets/shrine-components.js.
+
+  Every section that needs any of the custom elements defined in
+  shrine-components.js (content-tabs, parallax-hero, hotspot-button,
+  splide-component, slideshow-component, slider-component, copy-button,
+  countdown-timer, deferred-media, details-disclosure) renders this
+  snippet instead of emitting a <script src> tag directly.
+
+  The registration is deduped by SeqesLazy via the shared id, and the
+  compound selector ensures the file loads as soon as any matching
+  element is about to enter the viewport.
+{%- endcomment -%}
+<script>
+  window.SeqesLazy.register({
+    id: 'shrine-components',
+    selector: 'content-tabs, parallax-hero, hotspot-button, splide-component, slideshow-component, slider-component, copy-button, countdown-timer, deferred-media, details-disclosure',
+    assets: ['{{ 'shrine-components.js' | asset_url }}']
+  });
+</script>

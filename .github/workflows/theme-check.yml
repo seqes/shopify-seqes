@@ -1,0 +1,40 @@
+name: Theme Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Theme Check + Prettier
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      # Non-blocking for now: reports formatting drift on legacy code without
+      # failing the build. Remove `continue-on-error` once `npm run format` has
+      # been run across the repo.
+      - name: Prettier check
+        run: npm run format:check
+        continue-on-error: true
+
+      # Non-blocking initially: surfaces Theme Check findings on pre-existing
+      # patterns without blocking pushes. Flip `continue-on-error` to `false`
+      # once the baseline is clean.
+      - name: Shopify Theme Check
+        run: npx shopify theme check --fail-level=error
+        continue-on-error: true

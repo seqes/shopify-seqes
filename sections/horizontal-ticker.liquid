@@ -77,11 +77,13 @@
         </p>
       {%- else -%}
         <img
-          src="{{ block.settings.image | image_url }}"
-          {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}role="presentation"{% endif %}
+          src="{{ block.settings.image | image_url: width: 400 }}"
+          srcset="{{ block.settings.image | image_url: width: 200 }} 200w, {{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w"
+          sizes="200px"
+          width="{{ block.settings.image.width }}"
+          height="{{ block.settings.image.height }}"
+          {% if block.settings.image.alt != blank %}alt="{{ block.settings.image.alt | escape }}"{% else %}alt="" role="presentation"{% endif %}
           class="custom-image-height"
-          height="auto"
-          width="auto"
           loading="lazy"
         >
       {%- endif -%}
@@ -96,11 +98,14 @@
             </p>
           {%- else -%}
             <img
-              src="{{ block.settings.image | image_url }}"
+              src="{{ block.settings.image | image_url: width: 400 }}"
+              srcset="{{ block.settings.image | image_url: width: 200 }} 200w, {{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w"
+              sizes="200px"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+              alt=""
               role="presentation"
               class="custom-image-height"
-              height="auto"
-              width="auto"
               loading="lazy"
             >
           {%- endif -%}

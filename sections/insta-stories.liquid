@@ -243,16 +243,16 @@
             {%- endfor -%}
           </div>
         </div>
-        <button class="insta-story__arrow insta-story__arrow--prev active-content insta-stories__open-btns-prev">
+        <button type="button" class="insta-story__arrow insta-story__arrow--prev active-content insta-stories__open-btns-prev" aria-label="{{ 'accessibility.previous_story' | t | default: 'Previous story' }}">
           {%- render 'material-icon', icon: 'chevron_left' -%}
         </button>
-        <button class="insta-story__arrow insta-story__arrow--next active-content insta-stories__open-btns-next">
+        <button type="button" class="insta-story__arrow insta-story__arrow--next active-content insta-stories__open-btns-next" aria-label="{{ 'accessibility.next_story' | t | default: 'Next story' }}">
           {%- render 'material-icon', icon: 'chevron_right' -%}
         </button>
       </div>
 
-      <div class="insta-stories__modal" data-open="false">
-        <button class="insta-stories__modal__close insta-stories__close-button mobile-hidden">
+      <div class="insta-stories__modal" data-open="false" role="dialog" aria-modal="true" aria-label="{{ 'accessibility.story_viewer' | t | default: 'Story viewer' }}" aria-hidden="true">
+        <button type="button" class="insta-stories__modal__close insta-stories__close-button mobile-hidden" aria-label="{{ 'accessibility.close' | t | default: 'Close' }}">
           {%- render 'material-icon', icon: 'close' -%}
         </button>
         <div class="insta-stories__slider-container">
@@ -287,15 +287,15 @@
                       {%- endif -%}
                       <span class="insta-story__time-posted"></span>
                     </p>
-                    <button class="insta-story__info__btn insta-story__pause-resume-btn" data-paused="false">
+                    <button type="button" class="insta-story__info__btn insta-story__pause-resume-btn" data-paused="false" aria-label="{{ 'accessibility.pause_story' | t | default: 'Pause story' }}">
                       {%- render 'material-icon', icon: 'pause', filled: true -%}
                       {%- render 'material-icon', icon: 'play_arrow', filled: true -%}
                     </button>
-                    <button class="insta-story__info__btn insta-story__info__volume-btn insta-story__volume-btn" data-muted="true">
+                    <button type="button" class="insta-story__info__btn insta-story__info__volume-btn insta-story__volume-btn" data-muted="true" aria-label="{{ 'accessibility.toggle_volume' | t | default: 'Toggle volume' }}">
                       {%- render 'material-icon', icon: 'volume_up', filled: true -%}
                       {%- render 'material-icon', icon: 'volume_off', filled: true -%}
                     </button>
-                    <button class="insta-story__info__btn insta-story__info__close-btn insta-stories__close-button">
+                    <button type="button" class="insta-story__info__btn insta-story__info__close-btn insta-stories__close-button" aria-label="{{ 'accessibility.close' | t | default: 'Close' }}">
                       {%- render 'material-icon', icon: 'close' -%}
                     </button>
                   </div>
@@ -354,7 +354,7 @@
                     <div class="insta-story-open-btn__pfp-ring-offset">
                       <div class="insta-story-open-btn__pfp">
                         {%- if block.settings.profile_picture != blank -%}
-                          <img src="{{ block.settings.profile_picture | image_url: width: 400 }}" alt="{{ block.settings.username }}" width="auto" height="auto" loading="lazy">
+                          <img src="{{ block.settings.profile_picture | image_url: width: 200 }}" srcset="{{ block.settings.profile_picture | image_url: width: 100 }} 100w, {{ block.settings.profile_picture | image_url: width: 200 }} 200w, {{ block.settings.profile_picture | image_url: width: 400 }} 400w" sizes="100px" width="{{ block.settings.profile_picture.width }}" height="{{ block.settings.profile_picture.height }}" alt="{{ block.settings.username | escape }}" loading="lazy">
                         {%- else -%}
                           {%- render 'material-icon', icon: 'person', filled: true -%}
                         {%- endif -%}
@@ -363,12 +363,12 @@
                   </div>
                   <span class="insta-story__username mobile-hidden">{{ block.settings.username }}</span>
                 </button>
-                <button class="insta-story__invisible-btn insta-story__invisible-btn--prev insta-story__prev active-content" data-index="{{ forloop.index0 }}">&nbsp;</button>
-                <button class="insta-story__invisible-btn insta-story__invisible-btn--next insta-story__next active-content" data-index="{{ forloop.index0 }}">&nbsp;</button>
-                <button class="insta-story__arrow insta-story__arrow--prev active-content insta-story__prev mobile-hidden" data-index="{{ forloop.index0 }}">
+                <button type="button" class="insta-story__invisible-btn insta-story__invisible-btn--prev insta-story__prev active-content" data-index="{{ forloop.index0 }}" aria-label="{{ 'accessibility.previous_story' | t | default: 'Previous story' }}">&nbsp;</button>
+                <button type="button" class="insta-story__invisible-btn insta-story__invisible-btn--next insta-story__next active-content" data-index="{{ forloop.index0 }}" aria-label="{{ 'accessibility.next_story' | t | default: 'Next story' }}">&nbsp;</button>
+                <button type="button" class="insta-story__arrow insta-story__arrow--prev active-content insta-story__prev mobile-hidden" data-index="{{ forloop.index0 }}" aria-label="{{ 'accessibility.previous_story' | t | default: 'Previous story' }}">
                   {%- render 'material-icon', icon: 'chevron_left' -%}
                 </button>
-                <button class="insta-story__arrow insta-story__arrow--next active-content insta-story__next mobile-hidden" data-index="{{ forloop.index0 }}">
+                <button type="button" class="insta-story__arrow insta-story__arrow--next active-content insta-story__next mobile-hidden" data-index="{{ forloop.index0 }}" aria-label="{{ 'accessibility.next_story' | t | default: 'Next story' }}">
                   {%- render 'material-icon', icon: 'chevron_right' -%}
                 </button>
               </div>

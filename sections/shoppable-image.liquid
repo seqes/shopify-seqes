@@ -208,7 +208,13 @@
                         {{
                           block.settings.product.featured_image
                           | image_url: width: 1000
-                          | image_tag: loading: 'lazy'
+                          | image_tag:
+                            loading: 'lazy',
+                            width: block.settings.product.featured_image.width,
+                            height: block.settings.product.featured_image.height,
+                            sizes: '(min-width: 750px) 30vw, 80vw',
+                            widths: '200, 400, 600, 800, 1000',
+                            alt: block.settings.product.featured_image.alt
                         }}
                       </div>
                     {% endif %}
@@ -268,7 +274,7 @@
   </div>
 </div>
 
-<script src="{{ 'shrine-components.js' | asset_url }}" defer="defer"></script>
+{%- render 'shrine-components-lazy' -%}
 
 {% schema %}
 {"name":"Shoppable image","class":"section","disabled_on": {"groups": ["header","footer"
