@@ -28,7 +28,15 @@
 {{ 'header.js' | asset_url | preload_tag: as: 'script' }}
 {{ 'vendor.min.js' | asset_url | preload_tag: as: 'script' }}
 {{ 'app.js' | asset_url | preload_tag: as: 'script' }}
-{{ 'slideshow.js' | asset_url | preload_tag: as: 'script' }}
+{%- comment -%}
+  slideshow.js is no longer preloaded globally. It is preloaded/loaded only
+  on templates that actually contain a slideshow-type section to avoid
+  wasted network priority on pages like cart, account, or product where
+  no slideshow is rendered.
+{%- endcomment -%}
+{%- if template == 'index' or template == 'product' or template contains 'page' -%}
+  {{ 'slideshow.js' | asset_url | preload_tag: as: 'script' }}
+{%- endif -%}
 
 <script>
 window.lazySizesConfig = window.lazySizesConfig || {};

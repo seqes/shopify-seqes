@@ -31,7 +31,6 @@
           {{ section.settings.text }}
         {% endif %}
       </div>
-      <!-- Tracking number input box. -->
       <div class="field">
         <input
           type="text"
@@ -43,42 +42,69 @@
         >
         <label class="field__label" for="track-order-number">Tracking Number</label>
       </div>
-      <!-- The button is used to call script method. -->
       <div class="contact__button">
-        <input
+        <button
           type="button"
+          id="YQTrackBtn-{{ section.id }}"
           class="button{% if section.settings.button_full_width %} button--full-width{% endif %}"
-          value="{{ section.settings.button_label }}"
-          onclick="doTrack()"
-        >
+        >{{ section.settings.button_label }}</button>
       </div>
+      <div id="YQError-{{ section.id }}" class="track-order-error" role="alert" aria-live="polite" style="color:rgb(var(--color-error,224,53,53));margin-top:1rem;min-height:1em;"></div>
     </div>
-    <!-- Container to display the tracking result. -->
     <div id="YQContainer"></div>
   </div>
 </div>
 
-<script type="text/javascript" src="//www.17track.net/externalcall.js"></script>
-<script type="text/javascript">
-  function doTrack() {
-    var num = document.getElementById("YQNum").value;
-    if(num===""){
-      alert("Enter your number.");
-      return;
+<script>
+  (function () {
+    var btn = document.getElementById('YQTrackBtn-{{ section.id }}');
+    var input = document.getElementById('YQNum');
+    var errorEl = document.getElementById('YQError-{{ section.id }}');
+    if (!btn || !input) return;
+
+    var scriptPromise = null;
+    function ensureScript() {
+      if (scriptPromise) return scriptPromise;
+      scriptPromise = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'https://www.17track.net/externalcall.js';
+        s.async = true;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.body.appendChild(s);
+      });
+      return scriptPromise;
     }
-    YQV5.trackSingle({
-      //Required, Specify the container ID of the carrier content.
-      YQ_ContainerId:"YQContainer",
-      //Optional, specify tracking result height, max height 800px, default is 560px.
-      YQ_Height:560,
-      //Optional, select carrier, default to auto identify.
-      YQ_Fc:"0",
-      //Optional, specify UI language, default language is automatically detected based on the browser settings.
-      YQ_Lang:"en",
-      //Required, specify the number needed to be tracked.
-      YQ_Num:num
+
+    // Warm the script on first interaction with the input so the click
+    // feels instant, but do not load it on every page view.
+    input.addEventListener('focus', ensureScript, { once: true });
+
+    btn.addEventListener('click', function () {
+      errorEl.textContent = '';
+      var num = input.value.trim();
+      if (!num) {
+        errorEl.textContent = 'Enter your number.';
+        input.focus();
+        return;
+      }
+      ensureScript().then(function () {
+        if (typeof YQV5 === 'undefined') {
+          errorEl.textContent = 'Tracking service is unavailable. Please try again later.';
+          return;
+        }
+        YQV5.trackSingle({
+          YQ_ContainerId: 'YQContainer',
+          YQ_Height: 560,
+          YQ_Fc: '0',
+          YQ_Lang: '{{ request.locale.iso_code | default: "en" }}',
+          YQ_Num: num
+        });
+      }).catch(function () {
+        errorEl.textContent = 'Tracking service failed to load.';
+      });
     });
-  }
+  })();
 </script>
 
 {% schema %}

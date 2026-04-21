@@ -9,12 +9,41 @@
 {%- endcapture -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}">
 <head>
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-NVRHX59H');</script>
+	<!-- Google Tag Manager (deferred) -->
+	{%- comment -%}
+	  GTM is deferred until browser idle time (or user interaction) so it
+	  never competes with the critical-path render or the LCP image.
+	  dataLayer is still created synchronously so any early dataLayer.push
+	  calls from the rest of the theme continue to queue correctly; only
+	  the gtm.js loader is delayed.
+	{%- endcomment -%}
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+	  (function () {
+	    var loaded = false;
+	    function loadGtm() {
+	      if (loaded) return;
+	      loaded = true;
+	      var s = document.createElement('script');
+	      s.async = true;
+	      s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-NVRHX59H';
+	      var f = document.getElementsByTagName('script')[0];
+	      f.parentNode.insertBefore(s, f);
+	    }
+	    // Preferred path: requestIdleCallback (Chrome/Edge/Firefox).
+	    if ('requestIdleCallback' in window) {
+	      requestIdleCallback(loadGtm, { timeout: 4000 });
+	    } else {
+	      // Safari fallback: load after load event + short delay.
+	      window.addEventListener('load', function () { setTimeout(loadGtm, 2000); }, { once: true });
+	    }
+	    // Safety net: load on first user interaction if idle has not fired.
+	    ['pointerdown', 'keydown', 'scroll'].forEach(function (ev) {
+	      window.addEventListener(ev, loadGtm, { once: true, passive: true, capture: true });
+	    });
+	  })();
+	</script>
 	<!-- End Google Tag Manager -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -44,36 +73,16 @@
 	{% render 'social-meta-tags' %}
 
 	{{ 'app.css' | asset_url | stylesheet_tag }}
+	{%- comment -%}
+	  Material Symbols rules moved out of the critical inline <style> block
+	  (Phase 3). Loaded with the media="print" onload swap pattern so it does
+	  not block first paint; the glyphs' @font-face uses `font-display: swap`
+	  so any material icon text stays visible in fallback until ready.
+	{%- endcomment -%}
+	<link rel="stylesheet" href="{{ 'material-symbols.css' | asset_url }}" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="{{ 'material-symbols.css' | asset_url }}"></noscript>
 
 	<style>
-		@font-face {
-			font-family: 'Material Symbols Outlined';
-			src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v141/kJF4BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzBwG-RpA6RzaxHMPdY40KH8nGzv3fzfVJU22ZZLsYEpzC_1qmr5Y0.woff2) format('woff2');
-			font-style: normal;
-			font-weight: 300;
-			font-display: swap;
-		}
-		.material-symbols-outlined {
-			font-family: 'Material Symbols Outlined';
-			font-weight: normal;
-			font-style: normal;
-			font-size: 24px;
-			line-height: 1;
-			letter-spacing: normal;
-			text-transform: none;
-			display: inline-block;
-			white-space: nowrap;
-			word-wrap: normal;
-			direction: ltr;
-			-webkit-font-feature-settings: 'liga';
-			-webkit-font-smoothing: antialiased;
-			font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
-			vertical-align: bottom;
-		}
-		.material-symbols-outlined.filled {
-			font-variation-settings: 'FILL' 1;
-		}
-		.material-icon { font-size: inherit; }
 		.desktop-hidden { display: block; }
 		.mobile-hidden { display: none; }
 		.always-display { display: block; }
@@ -216,6 +225,12 @@
 	{{ content_for_header }} <!-- Header hook for plugins -->
 
 	<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+	{%- comment -%}
+	  lazy-hydrate.js is loaded early (but still deferred) so any
+	  SeqesLazy.register(...) calls emitted by individual sections further down
+	  the document are picked up on the first flush (DOMContentLoaded).
+	{%- endcomment -%}
+	<script src="{{ 'lazy-hydrate.js' | asset_url }}" defer="defer"></script>
 	{{ settings.custom_html_head }}
 
     {%- comment -%}
@@ -247,21 +262,39 @@
 		<div class="click-capture"></div>
 	</div>
 
-	{{ 'vendor.min.js' | asset_url | script_tag }}
+	<script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
 	{% if settings.animations %}
-		{{ 'animations.min.js' | asset_url | script_tag }}
+		<script src="{{ 'animations.min.js' | asset_url }}" defer="defer"></script>
 		<script>
-			gsap.defaults({
-				ease: Power4.easeOut
+			document.addEventListener('DOMContentLoaded', function () {
+				if (typeof gsap === 'undefined') return;
+				gsap.defaults({ ease: Power4.easeOut });
+				gsap.config({ nullTargetWarn: false });
+				if (typeof ScrollTrigger !== 'undefined') {
+					gsap.registerPlugin(ScrollTrigger);
+				}
 			});
-			gsap.config({
-		    nullTargetWarn: false
-		  });
-			gsap.registerPlugin(ScrollTrigger);
 		</script>
 	{% endif %}
-	{{ 'slideshow.js' | asset_url | script_tag }}
-	{{ 'app.js' | asset_url | script_tag }}
+	{%- comment -%}
+	  slideshow.js defines <slide-show>. Instead of loading it on every
+	  page (13 KB), register it with the lazy-hydrate helper so it is only
+	  fetched when a <slide-show> element actually appears in the current
+	  page and nears the viewport. The helper is a no-op on pages without
+	  the selector.
+	{%- endcomment -%}
+	<script>
+	  (function () {
+	    if (!window.SeqesLazy) return;
+	    window.SeqesLazy.register({
+	      id: 'slideshow',
+	      selector: 'slide-show',
+	      rootMargin: '400px 0px',
+	      assets: ['{{ 'slideshow.js' | asset_url }}']
+	    });
+	  })();
+	</script>
+	<script src="{{ 'app.js' | asset_url }}" defer="defer"></script>
 	{%- liquid
 		assign add_product_js = false
 		if settings.enable_quick_view or settings.enable_quick_add
@@ -278,11 +311,11 @@
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
 	{%- if request.design_mode -%}
-		{{ 'theme-editor.js' | asset_url | script_tag }}
+		<script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
 		{% render 'customer-data' %}
 	{%- endif -%}
 	{%- if settings.free_shipping -%}
-		{{ 'free-shipping.js' | asset_url | script_tag }}
+		<script src="{{ 'free-shipping.js' | asset_url }}" defer="defer"></script>
 		{{ 'free-shipping.css' | asset_url | stylesheet_tag }}
 	{%- endif -%}
 	{%- if settings.cart_recommendations -%}

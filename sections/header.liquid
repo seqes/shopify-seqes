@@ -42,7 +42,7 @@
 		{%- endunless -%}
 	{%- endstyle -%}
 </theme-header>
-{{- 'header.js' | asset_url | script_tag -}}
+<script src="{{ 'header.js' | asset_url }}" defer="defer"></script>
 
 <script type="application/ld+json">
   {
