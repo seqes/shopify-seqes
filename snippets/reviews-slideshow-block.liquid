@@ -19,6 +19,11 @@
   assign photo_size = block.settings.photo_size | default: 44
   assign text_size = block.settings.text_size | default: 12
   assign max_chars = block.settings.max_chars | default: 120
+  assign max_lines = block.settings.max_lines | default: 2
+  assign desktop_extra = block.settings.desktop_extra_width | default: 0
+  assign mobile_extra = block.settings.mobile_extra_width | default: 0
+  assign desktop_half = desktop_extra | divided_by: 2.0
+  assign mobile_half = mobile_extra | divided_by: 2.0
 
   assign bg_r = bg | color_extract: 'red'
   assign bg_g = bg | color_extract: 'green'
@@ -35,9 +40,19 @@
     background: rgba({{ bg_r }}, {{ bg_g }}, {{ bg_b }}, {{ bg_a }});
     border-radius: 0.8rem;
     padding: 0.8rem 1rem;
-    margin: 6px 0;
+    margin: 6px -{{ mobile_half }}px;
+    width: calc(100% + {{ mobile_extra }}px);
+    max-width: calc(100vw - 1.5rem);
     overflow: hidden;
     color: {{ text_col }};
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 750px) {
+    .rsb-{{ bid }} {
+      margin: 6px -{{ desktop_half }}px;
+      width: calc(100% + {{ desktop_extra }}px);
+      max-width: none;
+    }
   }
   .rsb-{{ bid }} .rsb-track {
     display: grid;
@@ -116,7 +131,8 @@
     margin: 0;
     opacity: 0.85;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: {{ max_lines }};
+    line-clamp: {{ max_lines }};
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

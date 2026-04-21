@@ -2656,17 +2656,49 @@
           "unit": "px",
           "default": 12,
           "label": "Review text size",
-          "info": "Smaller text fits more content in 2 lines."
+          "info": "Smaller text fits more content per line."
+        },
+        {
+          "type": "range",
+          "id": "max_lines",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 2,
+          "label": "Max review text lines",
+          "info": "Number of lines of review text shown before truncating with ellipsis."
         },
         {
           "type": "range",
           "id": "max_chars",
           "min": 60,
-          "max": 200,
+          "max": 500,
           "step": 10,
-          "default": 120,
+          "default": 180,
           "label": "Max characters per review",
-          "info": "Text is truncated to fit neatly in each slide."
+          "info": "Hard cap per review (truncated with ellipsis)."
+        },
+        {
+          "type": "range",
+          "id": "desktop_extra_width",
+          "min": 0,
+          "max": 400,
+          "step": 20,
+          "unit": "px",
+          "default": 0,
+          "label": "Extra width on desktop",
+          "info": "Widens the block beyond its column to fit longer reviews. Applied symmetrically (split between left and right)."
+        },
+        {
+          "type": "range",
+          "id": "mobile_extra_width",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "default": 0,
+          "label": "Extra width on mobile",
+          "info": "Widens the block beyond its column on mobile. Keep small to avoid clipping on narrow screens."
         },
         {
           "type": "range",
