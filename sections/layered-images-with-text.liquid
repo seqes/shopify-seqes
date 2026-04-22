@@ -33,6 +33,11 @@
 		elsif image_ratio_3 == 'adapt' and image_3 == blank
 			assign ratio_3 = 0.85
 		endif
+
+	assign priority = false
+	if section.index == 1
+		assign priority = 'high'
+	endif
 -%}
 <div class="row{% if full_width %} full-width-row{% endif %}">
 	<div class="small-12 columns">
@@ -49,7 +54,7 @@
 										assign master_width = image.src.width | append: 'x' | append: image.src.height
 										assign width = '345x' | append: mobile_image_height | append: ',' | append: master_width
 
-										render 'responsive-image', image: image, sizes: width
+										render 'responsive-image', image: image, sizes: width, priority: priority
 									 -%}
 								{%- else -%}
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -66,7 +71,7 @@
 										assign master_width = image_2.src.width | append: 'x' | append: image_2.src.height
 										assign width = '345x' | append: mobile_image_height | append: ',' | append: master_width
 
-										render 'responsive-image', image: image_2, sizes: width
+										render 'responsive-image', image: image_2, sizes: width, priority: priority
 									 -%}
 								{%- else -%}
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -83,7 +88,7 @@
 										assign master_width = image_3.src.width | append: 'x' | append: image_3.src.height
 										assign width = '345x' | append: mobile_image_height | append: ',' | append: master_width
 
-										render 'responsive-image', image: image_3, sizes: width
+										render 'responsive-image', image: image_3, sizes: width, priority: priority
 									 -%}
 								{%- else -%}
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}

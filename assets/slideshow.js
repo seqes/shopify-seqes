@@ -342,6 +342,12 @@ if (!customElements.get('slide-show')) {
       fontsReady.then(function () {
         animations[i].timeScale(1).restart();
       });
+
+      setTimeout(function () {
+        if (animations[i] && !animations[i].isActive() && animations[i].progress() === 0) {
+          animations[i].progress(1);
+        }
+      }, 3000);
     }
     animateReverse(i, animations) {
       animations[i].timeScale(3).reverse();

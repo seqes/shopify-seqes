@@ -33,6 +33,11 @@
 			assign ratio = 16.00 | divided_by: 9.00
 		endif
 	endif
+
+	assign priority = false
+	if section.index == 1
+		assign priority = 'high'
+	endif
 -%}
 <div class="row {{ section_width }}">
 	<div class="small-12 columns">
@@ -56,7 +61,7 @@
 							assign master_width = image.src.width | append: 'x' | append: image.src.height
 							assign width = '690x' | append: small_height | append: ',' | append: '1340x' | append: mid_height | append: ',' | append: master_width
 						-%}
-						{%- render 'responsive-image', image: image, sizes: width -%}
+						{%- render 'responsive-image', image: image, sizes: width, priority: priority -%}
 					{%- else -%}
 						{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
 					{%- endif -%}

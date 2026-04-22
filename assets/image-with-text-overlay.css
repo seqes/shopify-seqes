@@ -114,3 +114,15 @@
     .image-with-text-overlay--content.content-bottom-right {
       justify-content: flex-end;
       align-items: flex-end; }
+
+@keyframes seqes-force-visible {
+  to { visibility: visible; opacity: 1; } }
+@keyframes seqes-force-subheading {
+  to { opacity: 0.6; } }
+.animations-true .image-with-text-overlay--content .image-with-text-overlay--heading,
+.animations-true .image-with-text-overlay--content .rte p {
+  animation: seqes-force-visible 0s 3s forwards; }
+.animations-true .image-with-text-overlay--content .subheading {
+  animation: seqes-force-subheading 0s 3s forwards; }
+.animations-true .image-with-text-overlay--content .button {
+  animation: seqes-force-visible 0s 3s forwards; }

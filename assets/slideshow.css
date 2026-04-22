@@ -265,3 +265,10 @@
   @media only screen and (min-width: 768px) {
     .slideshow-image--desktop {
       display: block; } }
+
+@keyframes seqes-slideshow-force-visible {
+  to { visibility: visible; } }
+.animations-true .slideshow__slide:first-child .subheading,
+.animations-true .slideshow__slide:first-child .split-text,
+.animations-true .slideshow__slide:first-child .button {
+  animation: seqes-slideshow-force-visible 0s 3s forwards; }

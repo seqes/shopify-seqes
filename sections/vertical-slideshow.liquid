@@ -8,6 +8,10 @@
 		assign dots = false
 	endif
 
+	assign priority = false
+	if section.index == 1
+		assign priority = 'high'
+	endif
 -%}
 <vertical-slideshow class="vertical-slideshow section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %} transition--{{ transition }}" data-dots="{{ dots }}" style="--color-text: #fff; --block-size: {{ section.blocks.size }};">
 	{%- for block in section.blocks -%}
@@ -31,7 +35,11 @@
 							assign class = 'vertical-slideshow-image--desktop'
 						endif
 					 -%}
-					{%- render 'responsive-image', image: image, sizes: width, class: class -%}
+					{%- if forloop.first -%}
+						{%- render 'responsive-image', image: image, sizes: width, class: class, priority: priority -%}
+					{%- else -%}
+						{%- render 'responsive-image', image: image, sizes: width, class: class -%}
+					{%- endif -%}
 				{%- else -%}
 					{%- assign index = forloop.index | modulo: 2 | plus: 1 -%}
 					{{ 'lifestyle-' | append: index | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -42,7 +50,11 @@
 						assign master_width = image.src.width | append: 'x' | append: image.src.height
 						assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
 					 -%}
-					{%- render 'responsive-image', image: image, sizes: width, class: 'vertical-slideshow-image--mobile' -%}
+					{%- if forloop.first -%}
+						{%- render 'responsive-image', image: image, sizes: width, class: 'vertical-slideshow-image--mobile', priority: priority -%}
+					{%- else -%}
+						{%- render 'responsive-image', image: image, sizes: width, class: 'vertical-slideshow-image--mobile' -%}
+					{%- endif -%}
 				{%- endif -%}
 			</div>
 			{%- if block.settings.video_background -%}

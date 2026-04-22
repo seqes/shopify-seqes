@@ -127,3 +127,15 @@
     @media only screen and (min-width: 768px) {
       .featured-product-card .product-cart-item {
         display: none; } }
+
+@keyframes seqes-fpc-force-visible {
+  to { visibility: visible; opacity: 1; } }
+@keyframes seqes-fpc-force-subheading {
+  to { opacity: 0.6; } }
+.animations-true .featured-product-card--content .featured-product-card--heading,
+.animations-true .featured-product-card--content .rte p {
+  animation: seqes-fpc-force-visible 0s 3s forwards; }
+.animations-true .featured-product-card--content .subheading {
+  animation: seqes-fpc-force-subheading 0s 3s forwards; }
+.animations-true .featured-product-card--content .button {
+  animation: seqes-fpc-force-visible 0s 3s forwards; }

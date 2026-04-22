@@ -25,6 +25,11 @@
 		assign dots = false
 		assign dots_class = ''
 	endif
+
+	assign priority = false
+	if section.index == 1
+		assign priority = 'high'
+	endif
 -%}
 <div class="row{% if full_width %} full-width-row-full{% endif %}">
 	<div class="small-12 columns">
@@ -37,7 +42,11 @@
 								{% assign image = block.settings.image %}
 								{% assign master_width = image.src.width | append: 'x' | append: image.src.height %}
 								{% assign width = '375x500' | append: ',' | append: master_width %}
-								{%- render 'responsive-image', image: image, sizes: width -%}
+								{%- if forloop.first -%}
+									{%- render 'responsive-image', image: image, sizes: width, priority: priority -%}
+								{%- else -%}
+									{%- render 'responsive-image', image: image, sizes: width -%}
+								{%- endif -%}
 							{% else %}
 								{% assign index = forloop.index | modulo: 2 | plus: 1 %}
 								{{ 'lifestyle-' | append: index | placeholder_svg_tag: 'placeholder_svg_tag' }}

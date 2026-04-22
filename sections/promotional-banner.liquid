@@ -27,6 +27,10 @@
 		endif
 	endif
 
+	assign priority = false
+	if section.index == 1
+		assign priority = 'high'
+	endif
 -%}
 <div class="row {{ section_width }}">
 	<div class="small-12 columns">
@@ -63,7 +67,7 @@
 								assign class = 'promotional-image--desktop'
 							endif
 						 -%}
-						{%- render 'responsive-image', image: image, sizes: width, class: class -%}
+						{%- render 'responsive-image', image: image, sizes: width, class: class, priority: priority -%}
 					{%- else -%}
 						{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
 					{%- endif -%}
@@ -73,7 +77,7 @@
 							assign master_width = mobile_image.src.height | append: 'x' | append: mobile_image.src.width
 							assign width = '375x' | append: small_width | append: ',' | append: master_width
 						 -%}
-						{%- render 'responsive-image', image: mobile_image, sizes: width, class: 'promotional-image--mobile' -%}
+						{%- render 'responsive-image', image: mobile_image, sizes: width, class: 'promotional-image--mobile', priority: priority -%}
 					{%- endif -%}
 				</div>
 			</div>

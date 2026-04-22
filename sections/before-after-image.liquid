@@ -44,6 +44,13 @@
 						assign text_color = block.settings.text_color
 						assign overlay_color = block.settings.overlay_color
 						assign overlay_opacity = block.settings.overlay_opacity
+
+						assign block_priority = false
+						if section.index == 1
+							assign block_priority = 'high'
+						elsif forloop.index == 1
+							assign block_priority = 'high'
+						endif
 					-%}
 					<div class="before-after-image--media before-after-image--{{ forloop.index }}" style="--color-body: {{ text_color }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --color-overlay-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }};">
 						<div class="before-after-image--image {{ mobile_height }} {{ desktop_height }}" style="--image-aspect: {{ image.aspect_ratio }}">
@@ -57,7 +64,7 @@
 										assign class = 'before-after-image--desktop'
 									endif
 								 -%}
-								{%- render 'responsive-image', image: image, sizes: width, class: class -%}
+								{%- render 'responsive-image', image: image, sizes: width, class: class, priority: block_priority -%}
 							{%- else -%}
 								<div class="thb-placeholder">
 									{{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -69,7 +76,7 @@
 									assign master_width = image.src.width | append: 'x' | append: image.src.height
 									assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
 								 -%}
-								{%- render 'responsive-image', image: image, sizes: width, class: 'before-after-image--mobile' -%}
+								{%- render 'responsive-image', image: image, sizes: width, class: 'before-after-image--mobile', priority: block_priority -%}
 							{%- endif -%}
 						</div>
 						<div class="before-after-image--content before-after-image--content-{{ heading_position }}">
