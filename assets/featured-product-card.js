@@ -31,6 +31,11 @@ if (!customElements.get('featured-product-card')) {
         : (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve());
 
       fontsReady.then(function () {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+          return;
+        }
+
         let button_offset = 0;
 
         section.splittext = new SplitText(section.querySelectorAll('.featured-product-card--heading, p:not(.subheading)'), {
@@ -54,9 +59,6 @@ if (!customElements.get('featured-product-card')) {
         if (section.querySelector('.featured-product-card--heading')) {
           let h3_duration = 0.8 + ((section.querySelectorAll('.featured-product-card--heading .line-child div').length - 1) * 0.08);
           section.tl
-            .set(section.querySelector('.featured-product-card--heading'), {
-              visibility: 'visible'
-            }, 0)
             .from(section.querySelectorAll('.featured-product-card--heading .line-child div'), {
               duration: h3_duration,
               yPercent: '100',
@@ -67,9 +69,6 @@ if (!customElements.get('featured-product-card')) {
         if (section.querySelector('.rte p')) {
           let p_duration = 0.8 + ((section.querySelectorAll('.rte p .line-child div').length - 1) * 0.02);
           section.tl
-            .set(section.querySelectorAll('.rte p'), {
-              visibility: 'visible'
-            }, 0)
             .from(section.querySelectorAll('.rte p .line-child div'), {
               duration: p_duration,
               yPercent: '100',
@@ -96,10 +95,6 @@ if (!customElements.get('featured-product-card')) {
             start: "top center",
             onEnter: function () { section.tl.play(); }
           });
-        }
-
-        if (section.getBoundingClientRect().top < window.innerHeight * 0.5) {
-          section.tl.play();
         }
       });
 

@@ -48,6 +48,11 @@ if (!customElements.get('background-video')) {
 				: (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve());
 
 			fontsReady.then(function() {
+				const rect = section.getBoundingClientRect();
+				if (rect.top < window.innerHeight * 0.8) {
+					return;
+				}
+
 				let button_offset = 0;
 
 				section.splittext = new SplitText( section.querySelectorAll('h3, p'), {
@@ -94,10 +99,6 @@ if (!customElements.get('background-video')) {
 						start: "top center",
 						onEnter: function () { section.tl.play(); }
 					});
-				}
-
-				if (section.getBoundingClientRect().top < window.innerHeight * 0.5) {
-					section.tl.play();
 				}
 			});
 		}

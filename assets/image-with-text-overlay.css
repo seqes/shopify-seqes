@@ -77,14 +77,8 @@
         max-width: 900px; }
     .image-with-text-overlay--content .image-with-text-overlay--heading {
       color: #fff; }
-      .animations-true .image-with-text-overlay--content .image-with-text-overlay--heading {
-        visibility: hidden;
-        will-change: visibility; }
     .image-with-text-overlay--content > * + .button {
       margin-top: 30px; }
-    .animations-true .image-with-text-overlay--content .subheading, .animations-true
-    .image-with-text-overlay--content .button {
-      opacity: 0; }
     @media only screen and (min-width: 1068px) {
       .image-with-text-overlay--content .rte.description-size--medium {
         font-size: 1.25rem; } }
@@ -93,9 +87,6 @@
         font-size: 1.5rem; } }
     .image-with-text-overlay--content .rte p {
       font-size: inherit; }
-      .animations-true .image-with-text-overlay--content .rte p {
-        visibility: hidden;
-        will-change: visibility; }
     .image-with-text-overlay--content.content-middle-left {
       justify-content: flex-start;
       align-items: center; }
