@@ -38,6 +38,10 @@
     @media only screen and (min-width: 1068px) {
       .slideshow__slide p.split-text.description-size--large {
         font-size: 1.5rem; } }
+    .animations-true .slideshow__slide .subheading, .animations-true
+    .slideshow__slide .split-text, .animations-true
+    .slideshow__slide .button {
+      visibility: hidden; }
     .slideshow__slide-inner {
       display: flex;
       flex-shrink: 0;
