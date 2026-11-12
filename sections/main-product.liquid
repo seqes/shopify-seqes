@@ -4,6 +4,10 @@
   assign media_aspect_ratio = section.settings.media_aspect_ratio
   assign full_width = section.settings.full_width
   assign media_layout = section.settings.media_layout
+  assign main_sizes_attr = '(min-width: 1068px) calc((100vw - 540px) / 2), 100vw'
+  if media_layout != 'grid'
+    assign main_sizes_attr = '(min-width: 1068px) calc(100vw - 540px), 100vw'
+  endif
   assign display_slider_pagination = section.settings.display_slider_pagination
 
   assign image_index = -1
@@ -76,7 +80,11 @@
                   assign first_image = featured_media.preview_image
                 -%}
                 {%- if featured_media.media_type == 'image' -%}
-                  {%- render 'responsive-preload', image: featured_media.preview_image, sizes: sizes -%}
+                  {%- render 'responsive-preload',
+                    image: featured_media.preview_image,
+                    sizes: sizes,
+                    sizes_attr: main_sizes_attr
+                  -%}
                 {%- endif -%}
                 {%- render 'product-media',
                   product: product,
@@ -84,6 +92,7 @@
                   forloop: false,
                   media: featured_media,
                   sizes: sizes,
+                  sizes_attr: main_sizes_attr,
                   variant_images: variant_images,
                   media_aspect_ratio: media_aspect_ratio,
                   hide_variants: hide_variants,
@@ -105,13 +114,18 @@
                     endif
                   -%}
                   {%- if priority == 'high' and media.media_type == 'image' -%}
-                    {%- render 'responsive-preload', image: media.preview_image, sizes: sizes -%}
+                    {%- render 'responsive-preload',
+                      image: media.preview_image,
+                      sizes: sizes,
+                      sizes_attr: main_sizes_attr
+                    -%}
                   {%- endif -%}
                   {%- render 'product-media',
                     product: product,
                     section: section,
                     forloop: forloop,
                     media: media,
+                    sizes_attr: main_sizes_attr,
                     sizes: sizes,
                     variant_images: variant_images,
                     media_aspect_ratio: media_aspect_ratio,

@@ -74,7 +74,7 @@
     fetchpriority="{{ fetchpriority }}"
     src="{{- src -}}"
     srcset="{{ srcset | slice: 0, l | strip_newlines -}}"
-    sizes="100vw"
+    sizes="{{ sizes_attr | default: '100vw' }}"
     alt="{{ image.alt | escape }}"
     {% if focal_point -%}
       style="object-position: {{ focal_point }};"

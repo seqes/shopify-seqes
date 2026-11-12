@@ -2,7 +2,7 @@
   "general": {
     "continue_shopping": "Verder winkelen",
     "close": "Sluiten",
-    "shop_the_look": "Shop the look",
+    "shop_the_look": "Shop de look",
     "cart_drawer": {
       "title": "Winkelwagen",
       "view_cart": "Bekijk winkelwagen",
@@ -26,7 +26,7 @@
   "newsletter": {
     "label": "E‑mail",
     "success": "Bedankt voor het abonneren",
-    "button_label": "Subscribe"
+    "button_label": "Abonneren"
   },
   "social": {
     "links": {
@@ -63,14 +63,14 @@
     "link_messages": {
       "new_window": "Opent in een nieuw venster."
     },
-    "previous_story": "Previous story",
-    "next_story": "Next story",
-    "pause_story": "Pause story",
-    "toggle_volume": "Toggle volume",
-    "story_viewer": "Story viewer",
-    "vendor": "Vendor",
-    "star_reviews_info": "Rated {{ rating_value }} out of {{ rating_max }}",
-    "total_reviews": "Total reviews"
+    "previous_story": "Vorig verhaal",
+    "next_story": "Volgend verhaal",
+    "pause_story": "Verhaal pauzeren",
+    "toggle_volume": "Geluid aan/uit",
+    "story_viewer": "Verhalenviewer",
+    "vendor": "Leverancier",
+    "star_reviews_info": "Beoordeeld met {{ rating_value }} van {{ rating_max }}",
+    "total_reviews": "Totaal aantal beoordelingen"
   },
   "blogs": {
     "blog": {
@@ -85,7 +85,7 @@
       },
       "moderated": "Let op: opmerkingen moeten worden goedgekeurd voordat ze worden gepubliceerd.",
       "comment_form_title": "Reactie plaatsen",
-      "comment_form_note": "Your email address will not be published.",
+      "comment_form_note": "Je e-mailadres wordt niet gepubliceerd.",
       "name": "Naam",
       "email": "E‑mail",
       "message": "Reactie",
@@ -162,8 +162,8 @@
       "siblings": {
         "label": "Kleur"
       },
-      "choose_product_options": "Choose options for {{ product_name }}",
-      "vendor": "Vendor"
+      "choose_product_options": "Kies opties voor {{ product_name }}",
+      "vendor": "Leverancier"
     },
     "facets": {
       "apply": "Toepassen",
@@ -172,7 +172,7 @@
       "from": "Van",
       "filter_and_sort": "Filteren en sorteren",
       "filter_by_label": "Filter:",
-      "filter_button": "Filter",
+      "filter_button": "Filteren",
       "filters_selected": {
         "one": "{{ count }} geselecteerd",
         "other": "{{ count }} geselecteerd"
@@ -194,9 +194,9 @@
     },
     "compare": {
       "metafields": {
-        "boolean_true": "Yes",
-        "boolean_false": "No",
-        "file_download": "Download file"
+        "boolean_true": "Ja",
+        "boolean_false": "Nee",
+        "file_download": "Bestand downloaden"
       }
     }
   },
@@ -206,7 +206,7 @@
       "search_for": "Zoek nar iets",
       "popular_searches": "POPULAIRE ZOEKEN",
       "my_account": "Mijn account",
-      "login": "Login",
+      "login": "Inloggen",
       "cart": "winkelwagen",
       "search_products": "Producten",
       "articles": "Artikelen",
@@ -310,7 +310,7 @@
       }
     },
     "video": {
-      "load_video": "Load video: {{ description }}"
+      "load_video": "Video laden: {{ description }}"
     }
   },
   "localization": {
@@ -325,7 +325,7 @@
       "login_description": "Als je een account bij ons hebt, log dan in.",
       "create_account": "Account aanmaken",
       "create_account_description": "Vul hieronder uw gegevens in om verder te gaan. Als u al een account heeft, log dan in plaats daarvan in.",
-      "email": "Email address",
+      "email": "E-mailadres",
       "forgot_password": "Wachtwoord vergeten?",
       "dont_have_an_account": "Heb je geen account?",
       "password": "Wachtwoord",

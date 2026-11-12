@@ -26,7 +26,7 @@
   "newsletter": {
     "label": "E-posta",
     "success": "Abone olduğunuz için teşekkür ederiz",
-    "button_label": "Subscribe"
+    "button_label": "Abone ol"
   },
   "social": {
     "links": {
@@ -63,14 +63,14 @@
     "link_messages": {
       "new_window": "Yeni bir pencerede açılır."
     },
-    "previous_story": "Previous story",
-    "next_story": "Next story",
-    "pause_story": "Pause story",
-    "toggle_volume": "Toggle volume",
-    "story_viewer": "Story viewer",
-    "vendor": "Vendor",
-    "star_reviews_info": "Rated {{ rating_value }} out of {{ rating_max }}",
-    "total_reviews": "Total reviews"
+    "previous_story": "Önceki hikaye",
+    "next_story": "Sonraki hikaye",
+    "pause_story": "Hikayeyi duraklat",
+    "toggle_volume": "Sesi aç/kapat",
+    "story_viewer": "Hikaye görüntüleyici",
+    "vendor": "Satıcı",
+    "star_reviews_info": "{{ rating_max }} üzerinden {{ rating_value }} puan",
+    "total_reviews": "Toplam yorum"
   },
   "blogs": {
     "blog": {
@@ -162,8 +162,8 @@
       "siblings": {
         "label": "Renk"
       },
-      "choose_product_options": "Choose options for {{ product_name }}",
-      "vendor": "Vendor"
+      "choose_product_options": "{{ product_name }} için seçenekleri belirleyin",
+      "vendor": "Satıcı"
     },
     "facets": {
       "apply": "Uygula",
@@ -194,9 +194,9 @@
     },
     "compare": {
       "metafields": {
-        "boolean_true": "Yes",
-        "boolean_false": "No",
-        "file_download": "Download file"
+        "boolean_true": "Evet",
+        "boolean_false": "Hayır",
+        "file_download": "Dosyayı indir"
       }
     }
   },
@@ -310,7 +310,7 @@
       }
     },
     "video": {
-      "load_video": "Load video: {{ description }}"
+      "load_video": "Videoyu yükle: {{ description }}"
     }
   },
   "localization": {

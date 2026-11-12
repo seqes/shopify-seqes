@@ -1,6 +1,6 @@
 {%- capture trail -%}
   {{ 'sections.breadcrumbs.home' | t | replace: ';', ',' | replace: '|', '-' }}|{{ routes.root_url }};
-  {%- if template contains 'product' -%}
+  {%- if request.page_type == 'product' -%}
     {%- if product.template_suffix == 'crema-corporal-bebe' -%}
       Bebé|/collections/bebe;Crema Corporal|/collections/crema-corporal;
     {%- elsif product.template_suffix == 'shampoo-bebe' -%}
@@ -14,10 +14,10 @@
     {{ 'sections.breadcrumbs.shop' | t | replace: ';', ',' | replace: '|', '-' }}|{{ routes.all_products_collection_url }};
     {{ collection.title | replace: ';', ',' | replace: '|', '-' }}|;
   {%- endif -%}
-  {%- if template contains 'cart' -%}
+  {%- if request.page_type == 'cart' -%}
     {{ 'sections.breadcrumbs.cart' | t | replace: ';', ',' | replace: '|', '-' }}|;
   {%- endif -%}
-  {%- if template contains 'blog' -%}
+  {%- if request.page_type == 'blog' -%}
     {%- if current_tags -%}
       {{ blog.title | replace: ';', ',' | replace: '|', '-' }}|{{ blog.url }};
       {{ current_tags | join: ', ' | replace: ';', ',' | replace: '|', '-' }}|;
@@ -25,17 +25,17 @@
       {{ blog.title | replace: ';', ',' | replace: '|', '-' }}|;
     {%- endif -%}
   {%- endif -%}
-  {%- if template contains 'article' -%}
+  {%- if request.page_type == 'article' -%}
     {{ blog.title | replace: ';', ',' | replace: '|', '-' }}|{{ blog.url }};
     {{ article.title | replace: ';', ',' | replace: '|', '-' }}|;
   {%- endif -%}
-  {%- if template contains 'page' -%}
+  {%- if request.page_type == 'page' -%}
     {{ page.title | replace: ';', ',' | replace: '|', '-' }}|;
   {%- endif -%}
-  {%- if template contains 'search' -%}
+  {%- if request.page_type == 'search' -%}
     {{ 'sections.breadcrumbs.search' | t | replace: ';', ',' | replace: '|', '-' }}|;
   {%- endif -%}
-  {%- if template contains 'customers' -%}
+  {%- if request.page_type contains 'customer' -%}
     {{ 'sections.breadcrumbs.my_account' | t | replace: ';', ',' | replace: '|', '-' }}|;
   {%- endif -%}
 {%- endcapture -%}

@@ -37,5 +37,5 @@
   as="image"
   href="{{- src -}}"
   imagesrcset="{{ srcset | slice: 0, l | strip_newlines }}"
-  imagesizes="100vw"
+  imagesizes="{{ sizes_attr | default: '100vw' }}"
 >
