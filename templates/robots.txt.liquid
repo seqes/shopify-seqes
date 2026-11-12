@@ -3,27 +3,27 @@
   Repite las reglas por defecto de cada grupo y, para el grupo "*", agrega un
   grupo explicito por cada agente de IA y de busqueda que interesa a Seqes, con
   las mismas reglas de bloqueo (carrito, checkout, cuenta, busqueda, filtros).
-  La linea "User-agent:" de cada agente sale del propio objeto user_agent
-  (cambiando el "*" por el agente), asi el salto de linea y la sangria no
-  dependen del formato de este archivo. No quitar los guiones de los tags.
+
+  ATENCION: aqui el salto de linea es contenido. Los objetos user_agent, rule y
+  sitemap NO traen salto de linea propio: cada linea empieza con un salto de
+  linea escrito en la plantilla. Por eso este archivo esta excluido de prettier
+  (.prettierignore); no reformatear ni cambiar los guiones de los tags.
 {%- endcomment -%}
-{%- assign ai_agents = 'GPTBot,OAI-SearchBot,ChatGPT-User,ClaudeBot,Claude-Web,anthropic-ai,PerplexityBot,Perplexity-User,Google-Extended,Applebot-Extended,CCBot'
-  | split: ','
--%}
-{%- for group in robots.default_groups -%}
-  {{- group.user_agent -}}
-  {%- for rule in group.rules -%}
-    {{- rule -}}
-  {%- endfor -%}
-  {%- if group.sitemap != blank -%}
-    {{- group.sitemap -}}
-  {%- endif -%}
-  {%- if group.user_agent.value == '*' -%}
-    {%- for agent in ai_agents -%}
-      {{- group.user_agent | replace: '*', agent -}}
-      {%- for rule in group.rules -%}
-        {{- rule -}}
-      {%- endfor -%}
-    {%- endfor -%}
-  {%- endif -%}
-{%- endfor -%}
+{%- assign ai_agents = 'GPTBot,OAI-SearchBot,ChatGPT-User,ClaudeBot,Claude-Web,anthropic-ai,PerplexityBot,Perplexity-User,Google-Extended,Applebot-Extended,CCBot' | split: ',' -%}
+{%- for group in robots.default_groups %}
+{{ group.user_agent }}
+{%- for rule in group.rules %}
+{{ rule }}
+{%- endfor %}
+{%- if group.sitemap != blank %}
+{{ group.sitemap }}
+{%- endif %}
+{%- if group.user_agent.value == '*' %}
+{%- for agent in ai_agents %}
+{{ group.user_agent | replace: '*', agent }}
+{%- for rule in group.rules %}
+{{ rule }}
+{%- endfor %}
+{%- endfor %}
+{%- endif %}
+{%- endfor %}

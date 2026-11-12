@@ -20,3 +20,6 @@ locales/
 
 # Config touched by Shopify admin
 config/settings_data.json
+
+# robots.txt: el espacio en blanco es contenido; prettier-liquid lo reescribe
+templates/robots.txt.liquid
