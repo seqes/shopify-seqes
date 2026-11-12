@@ -26,7 +26,7 @@ Actions).
 ## Requirements
 
 - **Node.js** >= 18.17
-- **npm** >= 9 (Yarn or pnpm also fine; lockfile is not committed)
+- **npm** >= 9 (Yarn or pnpm also fine; `package-lock.json` is versioned: use `npm ci` for reproducible installs)
 - **Shopify CLI** 3.x (installed via `npm install` as a devDependency, or globally)
 - A Shopify store where you have `themes` access
 
@@ -66,15 +66,15 @@ context/     - internal-only notes, NOT uploaded to Shopify (see .shopifyignore)
 
 Root config files of note:
 
-| File | Purpose |
-| ---- | ------- |
-| `.theme-check.yml` | Shopify Theme Check rules (CI + local) |
-| `.prettierrc` / `.prettierignore` | Formatting rules, Liquid plugin |
-| `.editorconfig` | Editor-level whitespace / EOL rules |
-| `.gitattributes` | LF normalization + binary declarations |
-| `.shopifyignore` | Files that must NOT be pushed to the store |
-| `shopify.theme.toml` | CLI environments (dev / staging / prod) |
-| `package.json` | Dev tooling + npm scripts |
+| File                              | Purpose                                    |
+| --------------------------------- | ------------------------------------------ |
+| `.theme-check.yml`                | Shopify Theme Check rules (CI + local)     |
+| `.prettierrc` / `.prettierignore` | Formatting rules, Liquid plugin            |
+| `.editorconfig`                   | Editor-level whitespace / EOL rules        |
+| `.gitattributes`                  | LF normalization + binary declarations     |
+| `.shopifyignore`                  | Files that must NOT be pushed to the store |
+| `shopify.theme.toml`              | CLI environments (dev / staging / prod)    |
+| `package.json`                    | Dev tooling + npm scripts                  |
 
 ## Development workflow
 
@@ -111,7 +111,7 @@ Prettier. A GitHub Actions workflow runs `npm run lint` on every push / PR.
 The theme is built around **lazy hydration** to keep initial page weight low:
 
 - `assets/lazy-hydrate.js` exposes `window.SeqesLazy.register({ id, selector,
-  rootMargin, assets })`. Scripts registered through it are only fetched once a
+rootMargin, assets })`. Scripts registered through it are only fetched once a
   matching element approaches the viewport (via `IntersectionObserver`).
 - Heavy components (Google Maps, `shrine-components.js`, `bundle-deals`,
   `promo-popup`, `comparison-slider`, `internal-video`, etc.) are lazy-hydrated.

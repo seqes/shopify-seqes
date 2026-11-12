@@ -1,64 +1,82 @@
-{{ 'breadcrumbs.css' | asset_url | stylesheet_tag }}
-<nav class="breadcrumbs" aria-label="breadcrumbs">
-  <a href="{{ routes.root_url }}">{{ 'sections.breadcrumbs.home' | t }}</a>
-
+{%- capture trail -%}
+  {{ 'sections.breadcrumbs.home' | t | replace: ';', ',' | replace: '|', '-' }}|{{ routes.root_url }};
   {%- if template contains 'product' -%}
     {%- if product.template_suffix == 'crema-corporal-bebe' -%}
-      <i>/</i>
-      <a href="/collections/bebe" title="Bebé">Bebé</a>
-      <i>/</i>
-      <a href="/collections/crema-corporal" title="Crema Corporal">Crema Corporal</a>
+      Bebé|/collections/bebe;Crema Corporal|/collections/crema-corporal;
     {%- elsif product.template_suffix == 'shampoo-bebe' -%}
-      <i>/</i>
-      <a href="/collections/bebe" title="Bebé">Bebé</a>
-      <i>/</i>
-      <a href="/collections/jabon-y-champu" title="Jabón y Champú">Jabón y Champú</a>
+      Bebé|/collections/bebe;Jabón y Champú|/collections/jabon-y-champu;
     {%- elsif collection.url -%}
-      <i>/</i>
-      <a href="{{ routes.all_products_collection_url }}">{{ 'sections.breadcrumbs.shop' | t }}</a>
-      <i>/</i>
-      {{ collection.title }}
+      {{ 'sections.breadcrumbs.shop' | t | replace: ';', ',' | replace: '|', '-' }}|{{ routes.all_products_collection_url }};
+      {{ collection.title | replace: ';', ',' | replace: '|', '-' }}|{{ collection.url }};
     {%- endif -%}
-    <i>/</i>
-    {{ product.title }}
+    {{ product.title | replace: ';', ',' | replace: '|', '-' }}|;
   {%- elsif collection.url -%}
-    <i>/</i>
-    <a href="{{ routes.all_products_collection_url }}">{{ 'sections.breadcrumbs.shop' | t }}</a>
-    <i>/</i>
-    {{ collection.title }}
+    {{ 'sections.breadcrumbs.shop' | t | replace: ';', ',' | replace: '|', '-' }}|{{ routes.all_products_collection_url }};
+    {{ collection.title | replace: ';', ',' | replace: '|', '-' }}|;
   {%- endif -%}
-
-  {% if template contains 'cart' %}
-    <i>/</i>
-    {{ 'sections.breadcrumbs.cart' | t }}
-  {% endif %}
-  {% if template contains 'blog' %}
-    {% if current_tags %}
+  {%- if template contains 'cart' -%}
+    {{ 'sections.breadcrumbs.cart' | t | replace: ';', ',' | replace: '|', '-' }}|;
+  {%- endif -%}
+  {%- if template contains 'blog' -%}
+    {%- if current_tags -%}
+      {{ blog.title | replace: ';', ',' | replace: '|', '-' }}|{{ blog.url }};
+      {{ current_tags | join: ', ' | replace: ';', ',' | replace: '|', '-' }}|;
+    {%- else -%}
+      {{ blog.title | replace: ';', ',' | replace: '|', '-' }}|;
+    {%- endif -%}
+  {%- endif -%}
+  {%- if template contains 'article' -%}
+    {{ blog.title | replace: ';', ',' | replace: '|', '-' }}|{{ blog.url }};
+    {{ article.title | replace: ';', ',' | replace: '|', '-' }}|;
+  {%- endif -%}
+  {%- if template contains 'page' -%}
+    {{ page.title | replace: ';', ',' | replace: '|', '-' }}|;
+  {%- endif -%}
+  {%- if template contains 'search' -%}
+    {{ 'sections.breadcrumbs.search' | t | replace: ';', ',' | replace: '|', '-' }}|;
+  {%- endif -%}
+  {%- if template contains 'customers' -%}
+    {{ 'sections.breadcrumbs.my_account' | t | replace: ';', ',' | replace: '|', '-' }}|;
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign crumbs = trail | strip | replace_last: ';', '' | split: ';' -%}
+{{- 'breadcrumbs.css' | asset_url | stylesheet_tag -}}
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  {%- for crumb in crumbs -%}
+    {%- assign parts = crumb | strip | split: '|' -%}
+    {%- if forloop.index > 1 -%}
       <i>/</i>
-      <a href="{{ blog.url }}">{{ blog.title }}</a>
-      <i>/</i>
-      {{ current_tags }}
-    {% else %}
-      <i>/</i>
-      {{ blog.title }}
-    {% endif %}
-  {% endif %}
-  {% if template contains 'article' %}
-    <i>/</i>
-    <a href="{{ blog.url }}" title="{{ blog.title | escape }}">{{ blog.title }}</a>
-    <i>/</i>
-    {{ article.title }}
-  {% endif %}
-  {% if template contains 'page' %}
-    <i>/</i>
-    {{ page.title }}
-  {% endif %}
-  {% if template contains 'search' %}
-    <i>/</i>
-    {{ 'sections.breadcrumbs.search' | t }}
-  {% endif %}
-  {% if template contains 'customers' %}
-    <i>/</i>
-    {{ 'sections.breadcrumbs.my_account' | t }}
-  {% endif %}
+    {%- endif -%}
+    {%- assign link_url = parts[1] | default: '' -%}
+    {%- assign first_char = link_url | slice: 0 -%}
+    {%- assign url_head = link_url | slice: 0, 2 -%}
+    {%- assign as_text = false -%}
+    {%- if forloop.last and forloop.index > 1 -%}{%- assign as_text = true -%}{%- endif -%}
+    {%- if first_char != '/' or url_head == '//' or url_head == '/\' -%}{%- assign as_text = true -%}{%- endif -%}
+    {%- if as_text -%}
+      {{ parts[0] | escape }}
+    {%- else -%}
+      <a href="{{ link_url | escape }}" title="{{ parts[0] | escape }}">{{ parts[0] | escape }}</a>
+    {%- endif -%}
+  {%- endfor -%}
 </nav>
+{%- if crumbs.size > 1 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {%- for crumb in crumbs -%}
+          {%- assign parts = crumb | strip | split: '|' -%}
+          {%- assign item_path = parts[1] | default: request.path -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "name": {{ parts[0] | json }},
+            "item": {{ request.origin | append: item_path | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}

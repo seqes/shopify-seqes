@@ -25,7 +25,8 @@
   },
   "newsletter": {
     "label": "E‑mail",
-    "success": "Bedankt voor het abonneren"
+    "success": "Bedankt voor het abonneren",
+    "button_label": "Subscribe"
   },
   "social": {
     "links": {
@@ -61,7 +62,15 @@
     "unit_price_separator": "per",
     "link_messages": {
       "new_window": "Opent in een nieuw venster."
-    }
+    },
+    "previous_story": "Previous story",
+    "next_story": "Next story",
+    "pause_story": "Pause story",
+    "toggle_volume": "Toggle volume",
+    "story_viewer": "Story viewer",
+    "vendor": "Vendor",
+    "star_reviews_info": "Rated {{ rating_value }} out of {{ rating_max }}",
+    "total_reviews": "Total reviews"
   },
   "blogs": {
     "blog": {
@@ -71,8 +80,8 @@
       "read_more": "Lees verder",
       "tags": "Tags:",
       "comments_html": {
-        "one": "<span>{{ count }} reactie<\/span> {{ title }}",
-        "other": "<span>{{ count }} reacties<\/span> {{ title }}"
+        "one": "<span>{{ count }} reactie</span> {{ title }}",
+        "other": "<span>{{ count }} reacties</span> {{ title }}"
       },
       "moderated": "Let op: opmerkingen moeten worden goedgekeurd voordat ze worden gepubliceerd.",
       "comment_form_title": "Reactie plaatsen",
@@ -141,7 +150,8 @@
         "pick_up_available_at_html": "Afhaling is beschikbaar bij <span class=\"color-foreground\">{{ location_name }}</span>",
         "pick_up_unavailable_at_html": "Afhaling is momenteel niet beschikbaar bij <span class=\"color-foreground\">{{ location_name }}</span>",
         "unavailable": "Kan beschikbaarheid voor afhalen niet laden",
-        "refresh": "Vernieuwen"
+        "refresh": "Vernieuwen",
+        "heading": "Pickup availability"
       },
       "view_product_details": "Productdetails bekijken",
       "product_drawer": {
@@ -151,7 +161,9 @@
       "xr_button_label": "Bekijk in je ruimte, laadt artikel in augmented reality-venster",
       "siblings": {
         "label": "Kleur"
-      }
+      },
+      "choose_product_options": "Choose options for {{ product_name }}",
+      "vendor": "Vendor"
     },
     "facets": {
       "apply": "Toepassen",
@@ -179,6 +191,13 @@
       "sort_by_label": "Sorteer op:",
       "to": "Aan",
       "clear_filter": "Filter verwijderen"
+    },
+    "compare": {
+      "metafields": {
+        "boolean_true": "Yes",
+        "boolean_false": "No",
+        "file_download": "Download file"
+      }
     }
   },
   "sections": {
@@ -289,6 +308,9 @@
       "map": {
         "location": "Locatie {{ index }}"
       }
+    },
+    "video": {
+      "load_video": "Load video: {{ description }}"
     }
   },
   "localization": {
@@ -414,7 +436,8 @@
       "copy_code": "Cadeauboncode kopiëren",
       "expired": "Verlopen",
       "copy_code_success": "Code succesvol gekopieerd",
-      "print_gift_card": "Afdrukken"
+      "print_gift_card": "Afdrukken",
+      "remaining_html": "Remaining balance: <strong>{{ balance }}</strong>"
     }
   },
   "recipient": {
@@ -428,7 +451,8 @@
       "message": "Bericht",
       "max_characters": "Maximaal {{ max_chars }} tekens",
       "send_on": "JJJJ-MM-DD",
-      "send_on_label": "Verzenden op (optioneel)"
+      "send_on_label": "Verzenden op (optioneel)",
+      "email_label_optional": "Email (optional)"
     }
   }
 }

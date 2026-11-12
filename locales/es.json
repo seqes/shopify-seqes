@@ -34,7 +34,8 @@
   },
   "newsletter": {
     "label": "Correo electrónico",
-    "success": "Gracias por suscribirte"
+    "success": "Gracias por suscribirte",
+    "button_label": "Suscribirse"
   },
   "social": {
     "links": {
@@ -70,7 +71,15 @@
     "unit_price_separator": "por",
     "link_messages": {
       "new_window": "Se abre en una nueva ventana."
-    }
+    },
+    "previous_story": "Historia anterior",
+    "next_story": "Siguiente historia",
+    "pause_story": "Pausar historia",
+    "toggle_volume": "Cambiar volumen",
+    "story_viewer": "Visor de historias",
+    "vendor": "Marca",
+    "star_reviews_info": "Calificado con {{ rating_value }} de {{ rating_max }}",
+    "total_reviews": "Total de reseñas"
   },
   "blogs": {
     "blog": {
@@ -161,7 +170,9 @@
       "xr_button_label": "Ver en tu espacio, carga el artículo en la ventana de realidad aumentada",
       "siblings": {
         "label": "Color"
-      }
+      },
+      "choose_product_options": "Elegir opciones para {{ product_name }}",
+      "vendor": "Marca"
     },
     "facets": {
       "apply": "Aplicar",
@@ -192,6 +203,13 @@
       "sort_by_label": "Ordenar por:",
       "to": "Para",
       "clear_filter": "Eliminar filtro"
+    },
+    "compare": {
+      "metafields": {
+        "boolean_true": "Sí",
+        "boolean_false": "No",
+        "file_download": "Descargar archivo"
+      }
     }
   },
   "sections": {
@@ -302,6 +320,9 @@
       "map": {
         "location": "Ubicación {{ index }}"
       }
+    },
+    "video": {
+      "load_video": "Cargar video: {{ description }}"
     }
   },
   "localization": {
@@ -337,7 +358,7 @@
     },
     "reset_password": {
       "title": "Restablecer contraseña de cuenta",
-      "subtext": "Ingresa una nueva contraseña para {{ email }}",
+      "subtext": "Ingresa una nueva contraseña para tu cuenta",
       "password": "Contraseña",
       "password_confirm": "Confirmar contraseña",
       "submit": "Restablecer contraseña"

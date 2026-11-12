@@ -1,15 +1,15 @@
 # Shopify Theme Check configuration
 # See: https://shopify.dev/docs/themes/tools/theme-check/configuration
 
-root: "."
+root: '.'
 
-extends: :theme_app_extension
+extends: :recommended
 
 ignore:
-  - "context/**/*"
-  - "node_modules/**/*"
-  - "dist/**/*"
-  - "build/**/*"
+  - 'context/**/*'
+  - 'node_modules/**/*'
+  - 'dist/**/*'
+  - 'build/**/*'
 
 # Severity tuning for the Seqes theme. These are relaxed to avoid noisy
 # failures on pre-existing patterns while still catching real issues in

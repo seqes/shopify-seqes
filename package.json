@@ -12,11 +12,10 @@
     "format": "prettier --write \"**/*.{liquid,js,css,scss,json,md,yml,yaml}\"",
     "format:check": "prettier --check \"**/*.{liquid,js,css,scss,json,md,yml,yaml}\"",
     "lint": "npm run theme:check && npm run format:check",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@shopify/cli": "^3.68.0",
-    "@shopify/theme": "^3.68.0",
     "@shopify/prettier-plugin-liquid": "^1.5.0",
     "prettier": "^3.3.3",
     "husky": "^9.1.6",

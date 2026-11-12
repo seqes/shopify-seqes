@@ -41,7 +41,8 @@
             {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
             {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
             {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
-            {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
+            {{ section.settings.image | image_url }} {{ section.settings.image.width }}w
+          "
           sizes="100vw"
           src="{{ section.settings.image | image_url: width: 1500 }}"
           loading="lazy"
@@ -68,7 +69,7 @@
               {{ block.settings.text }}
             </div>
           {%- when 'email_form' -%}
-            <div class='' {{ block.shopify_attributes }}>
+            <div class="" {{ block.shopify_attributes }}>
               {% form 'customer', class: 'newsletter-form' %}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 <div class="newsletter-form__field-wrapper">
@@ -134,126 +135,139 @@
 </div>
 
 {% schema %}
-{"name":"Email signup banner","tag":"section","class":"section","settings": [
-    {"type":"select","id":"visibility","options": [
-        {"value":"desktop-hidden","label":"Mobile only"
-        },
-        {"value":"mobile-hidden","label":"Desktop only"
-        },
-        {"value":"always-display","label":"All devices"
+{
+  "name": "Email signup banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
+    },
+    { "type": "header", "content": "General" },
+    { "type": "paragraph", "content": "Each email subscription creates a customer account." },
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Image overlay opacity",
+      "default": 0
+    },
+    { "type": "checkbox", "id": "show_background_image", "label": "Show background image", "default": true },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        { "value": "adapt-image", "label": "Adapt to image" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium",
+      "label": "Banner height",
+      "info": "For best results, use an image with a 16:9 aspect ratio."
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "options": [
+        { "value": "top-left", "label": "Top left" },
+        { "value": "top-center", "label": "Top center" },
+        { "value": "top-right", "label": "Top right" },
+        { "value": "middle-left", "label": "Middle left" },
+        { "value": "middle-center", "label": "Middle center" },
+        { "value": "middle-right", "label": "Middle right" },
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "bottom-center", "label": "Bottom center" },
+        { "value": "bottom-right", "label": "Bottom right" }
+      ],
+      "default": "middle-center",
+      "label": "Desktop content position"
+    },
+    { "type": "checkbox", "id": "show_text_box", "default": true, "label": "Show container on desktop" },
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "label": "Desktop content alignment"
+    },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#121212" },
+    { "type": "header", "content": "Mobile layout" },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "label": "Mobile content alignment"
+    },
+    { "type": "checkbox", "id": "show_text_below", "default": true, "label": "Show container below image on mobile" }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "default": "Opening soon", "label": "Heading" },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            { "value": "h2", "label": "Small" },
+            { "value": "h1", "label": "Medium" },
+            { "value": "h0", "label": "Large" }
+          ],
+          "default": "h1",
+          "label": "Heading size"
         }
-      ],"label":"Display on","default":"always-display"
+      ]
     },
-    {"type":"header","content":"General"
-    },
-    {"type":"paragraph","content":"Each email subscription creates a customer account."
-    },
-    {"type":"image_picker","id":"image","label":"Background image"
-    },
-    {"type":"range","id":"image_overlay_opacity","min": 0,"max": 100,"step": 10,"unit":"%","label":"Image overlay opacity","default": 0
-    },
-    {"type":"checkbox","id":"show_background_image","label":"Show background image","default": true
-    },
-    {"type":"select","id":"image_height","options": [
-        {"value":"adapt-image","label":"Adapt to image"
-        },
-        {"value":"small","label":"Small"
-        },
-        {"value":"medium","label":"Medium"
-        },
-        {"value":"large","label":"Large"
-        }
-      ],"default":"medium","label":"Banner height","info":"For best results, use an image with a 16:9 aspect ratio."
-    },
-    {"type":"select","id":"desktop_content_position","options": [
-        {"value":"top-left","label":"Top left"
-        },
-        {"value":"top-center","label":"Top center"
-        },
-        {"value":"top-right","label":"Top right"
-        },
-        {"value":"middle-left","label":"Middle left"
-        },
-        {"value":"middle-center","label":"Middle center"
-        },
-        {"value":"middle-right","label":"Middle right"
-        },
-        {"value":"bottom-left","label":"Bottom left"
-        },
-        {"value":"bottom-center","label":"Bottom center"
-        },
-        {"value":"bottom-right","label":"Bottom right"
-        }
-      ],"default":"middle-center","label":"Desktop content position"
-    },
-    {"type":"checkbox","id":"show_text_box","default": true,"label":"Show container on desktop"
-    },
-    {"type":"select","id":"desktop_content_alignment","options": [
-        {"value":"left","label":"Left"
-        },
-        {"value":"center","label":"Center"
-        },
-        {"value":"right","label":"Right"
-        }
-      ],"default":"center","label":"Desktop content alignment"
-    },
-    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
-    },
-    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
-    },
-    {"type":"header","content":"Mobile layout"
-    },
-    {"type":"select","id":"mobile_content_alignment","options": [
-        {"value":"left","label":"Left"
-        },
-        {"value":"center","label":"Center"
-        },
-        {"value":"right","label":"Right"
-        }
-      ],"default":"center","label":"Mobile content alignment"
-    },
-    {"type":"checkbox","id":"show_text_below","default": true,"label":"Show container below image on mobile"
-    }
-  ],"blocks": [
-    {"type":"heading","name":"Heading","limit": 1,"settings": [
-        {"type":"text","id":"heading","default":"Opening soon","label":"Heading"
-        },
-        {"type":"select","id":"heading_size","options": [
-            {"value":"h2","label":"Small"
-            },
-            {"value":"h1","label":"Medium"
-            },
-            {"value":"h0","label":"Large"
-            }
-          ],"default":"h1","label":"Heading size"
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 1,
+      "settings": [
+        { "type": "richtext", "id": "text", "default": "<p>Be the first to know when we launch.</p>", "label": "Text" },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            { "value": "body", "label": "Body" },
+            { "value": "subtitle", "label": "Subtitle" }
+          ],
+          "default": "body",
+          "label": "Text style"
         }
       ]
     },
-    {"type":"paragraph","name":"Paragraph","limit": 1,"settings": [
-        {"type":"richtext","id":"text","default":"<p>Be the first to know when we launch.</p>","label":"Text"
-        },
-        {"type":"select","id":"text_style","options": [
-            {"value":"body","label":"Body"
-            },
-            {"value":"subtitle","label":"Subtitle"
-            }
-          ],"default":"body","label":"Text style"
-        }
-      ]
-    },
-    {"type":"email_form","name":"Email form","limit": 1,"settings": []
+    { "type": "email_form", "name": "Email form", "limit": 1, "settings": [] }
+  ],
+  "presets": [
+    {
+      "name": "Email signup banner",
+      "blocks": [{ "type": "heading" }, { "type": "paragraph" }, { "type": "email_form" }]
     }
-  ],"presets": [
-    {"name":"Email signup banner","blocks": [
-        {"type":"heading"
-        },
-        {"type":"paragraph"
-        },
-        {"type":"email_form"
-        }
-      ]
-    }
-  ],"templates": ["password"
   ]
 }
 {% endschema %}

@@ -87,13 +87,15 @@
 <div class="section-color-{{ section.id }}-color_scheme {{ section.settings.visibility }}">
   <div class="section-{{ section.id }}-padding{% unless section.settings.full_page_width %} page-width{% endunless %}">
     <div
-      class="hotspots-image-container
+      class="
+        hotspots-image-container
         hotspots-image-container-{{ section.id }}
         hotspots-image-container--content-{{ section.settings.desktop_content_position }}
         hotspots-image-container--mobile-content-{{ section.settings.mobile_content_position }}
         {% if section.settings.color_scheme != section.settings.content_color_scheme %} hotspots-image--different-bg{% else %} hotspots-image--same-bg{% endif %}
         hotspots-image-container--{{ section.settings.desktop_image_width }}
-        {% if content_empty %} hotspots-image-container--content-empty{% endif %}"
+        {% if content_empty %} hotspots-image-container--content-empty{% endif %}
+      "
       style="--max-width:{{ section.settings.image_max_width | divided_by: 10.0 }}rem"
     >
       <div
@@ -127,7 +129,7 @@
               id="SectionAtcBtn-{{ section.id }}"
               type="button"
               class="button main-product-atc button--has-spinner"
-              {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+              {% if product.selected_or_first_available_variant.available == false %}
                 disabled
               {% endif %}
             >
@@ -277,220 +279,355 @@
 {%- render 'shrine-components-lazy' -%}
 
 {% schema %}
-{"name":"Shoppable image","class":"section","disabled_on": {"groups": ["header","footer"
-    ]
-  },"settings": [
-    {"type":"select","id":"visibility","options": [
-        {"value":"desktop-hidden","label":"Mobile only"
-        },
-        {"value":"mobile-hidden","label":"Desktop only"
-        },
-        {"value":"always-display","label":"All devices"
-        }
-      ],"label":"Display on","default":"always-display"
+{
+  "name": "Shoppable image",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
     },
-    {"type":"header","content":"Content"
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "title", "default": "Shoppable image", "label": "Title" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
     },
-    {"type":"text","id":"title","default":"Shoppable image","label":"Title"
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Use this section to hightlight multiple products with one image that contains all of them</p>"
     },
-    {"type":"select","id":"heading_size","options": [
-        {"value":"h2","label":"Small"
-        },
-        {"value":"h1","label":"Medium"
-        },
-        {"value":"h0","label":"Large"
-        }
-      ],"default":"h1","label":"Heading size"
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "info": "Leave the label blank to hide the button."
     },
-    {"type":"richtext","id":"text","label":"Text","default":"<p>Use this section to hightlight multiple products with one image that contains all of them</p>"
+    { "type": "url", "id": "link", "label": "Button link" },
+    { "type": "checkbox", "id": "button_style_secondary", "label": "Use outline button style", "default": false },
+    {
+      "type": "text",
+      "id": "atc_button_label",
+      "label": "Add to Cart button label",
+      "info": "Leave the label blank to hide the Add to Cart button."
     },
-    {"type":"text","id":"button_label","label":"Button label","info":"Leave the label blank to hide the button."
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "label": "Desktop content position",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "right", "label": "Right" },
+        { "value": "bottom", "label": "Bottom" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "top"
     },
-    {"type":"url","id":"link","label":"Button link"
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "label": "Desktop content alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "right" }
+      ],
+      "default": "center"
     },
-    {"type":"checkbox","id":"button_style_secondary","label":"Use outline button style","default": false
+    { "type": "checkbox", "id": "hide_content_on_mobile", "label": "Hide content on mobile", "default": false },
+    {
+      "type": "select",
+      "id": "mobile_content_position",
+      "label": "Mobile content position",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "top"
     },
-    {"type":"text","id":"atc_button_label","label":"Add to Cart button label","info":"Leave the label blank to hide the Add to Cart button."
+    {
+      "type": "checkbox",
+      "id": "content_corner_radius",
+      "label": "Enable content corner radius",
+      "default": true,
+      "info": "This option is automatically optimized for all layout & color scheme settings."
     },
-    {"type":"select","id":"desktop_content_position","label":"Desktop content position","options": [
-        {"value":"top","label":"Top"
-        },
-        {"value":"right","label":"Right"
-        },
-        {"value":"bottom","label":"Bottom"
-        },
-        {"value":"left","label":"Left"
-        }
-      ],"default":"top"
+    { "type": "color", "id": "content_bg_color", "label": "Content background color", "default": "#ffffff" },
+    { "type": "color", "id": "content_text_color", "label": "Content text color", "default": "#121212" },
+    { "type": "color", "id": "bg_color", "label": "Section background color", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Section text color", "default": "#121212" },
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    {
+      "type": "select",
+      "id": "desktop_image_width",
+      "options": [
+        { "value": "limited", "label": "Limited" },
+        { "value": "unlimited", "label": "Maximum possible" }
+      ],
+      "label": "Desktop image width",
+      "default": "limited"
     },
-    {"type":"select","id":"desktop_content_alignment","label":"Desktop content alignment","options": [
-        {"value":"left","label":"Left"
-        },
-        {"value":"center","label":"Center"
-        },
-        {"value":"right","label":"right"
-        }
-      ],"default":"center"
+    {
+      "type": "range",
+      "id": "image_max_width",
+      "min": 300,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Image max width",
+      "default": 900
     },
-    {"type":"checkbox","id":"hide_content_on_mobile","label":"Hide content on mobile","default": false
+    { "type": "checkbox", "id": "full_page_width", "label": "Use full page width", "default": false },
+    {
+      "type": "checkbox",
+      "id": "image_corner_radius",
+      "label": "Enable image corner radius",
+      "default": false,
+      "info": "This option is automatically optimized for all layout & color scheme settings."
     },
-    {"type":"select","id":"mobile_content_position","label":"Mobile content position","options": [
-        {"value":"top","label":"Top"
-        },
-        {"value":"bottom","label":"Bottom"
-        }
-      ],"default":"top"
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "If this is empty, the image for desktop will be applied to mobile."
     },
-    {"type":"checkbox","id":"content_corner_radius","label":"Enable content corner radius","default": true,"info":"This option is automatically optimized for all layout & color scheme settings."
+    { "type": "header", "content": "Hotspot buttons & modals" },
+    {
+      "type": "select",
+      "id": "hotspot_open_event",
+      "options": [
+        { "value": "click", "label": "Click" },
+        { "value": "hover", "label": "Hover" }
+      ],
+      "label": "Open modal on:",
+      "default": "click"
     },
-    {"type":"color","id":"content_bg_color","label":"Content background color","default":"#ffffff"
+    { "type": "color", "id": "hotspots_bg_color", "label": "Hotspot buttons background color", "default": "#ffffff" },
+    { "type": "color", "id": "hotspots_text_color", "label": "Hotspot buttons text color", "default": "#121212" },
+    {
+      "type": "checkbox",
+      "id": "display_hotspots_animation",
+      "label": "Display button ripple animation",
+      "default": true
     },
-    {"type":"color","id":"content_text_color","label":"Content text color","default":"#121212"
+    {
+      "type": "color",
+      "id": "hotspot_content_bg_color",
+      "label": "Hotspots modal background color",
+      "default": "#ffffff"
     },
-    {"type":"color","id":"bg_color","label":"Section background color","default":"#ffffff"
+    { "type": "color", "id": "hotspot_content_text_color", "label": "Hotspots modal text color", "default": "#121212" },
+    {
+      "type": "select",
+      "id": "hotspot_image_size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "full", "label": "Full width" }
+      ],
+      "label": "Modal image width",
+      "default": "small"
     },
-    {"type":"color","id":"text_color","label":"Section text color","default":"#121212"
+    {
+      "type": "checkbox",
+      "id": "contain_hotspot_modal",
+      "label": "Contain modals inside the main image",
+      "default": false,
+      "info": "Prevents modals from getting displayed outside the image on desktop. This option is automatically turned on for mobile."
     },
-    {"type":"header","content":"Image"
+    {
+      "type": "range",
+      "id": "hotspot_modal_desktop_width",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "label": "Hotspot modal desktop width",
+      "default": 400
     },
-    {"type":"image_picker","id":"image","label":"Image"
+    {
+      "type": "range",
+      "id": "hotspot_modal_mobile_width",
+      "min": 100,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Hotspot modal mobile width",
+      "default": 300
     },
-    {"type":"select","id":"desktop_image_width","options": [
-        {"value":"limited","label":"Limited"
-        },
-        {"value":"unlimited","label":"Maximum possible"
-        }
-      ],"label":"Desktop image width","default":"limited"
+    { "type": "header", "content": "Product information" },
+    {
+      "type": "select",
+      "id": "modal_heading_size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium",
+      "label": "Heading size"
     },
-    {"type":"range","id":"image_max_width","min": 300,"max": 1000,"step": 50,"unit":"px","label":"Image max width","default": 900
+    {
+      "type": "select",
+      "id": "mobile_modal_position",
+      "options": [
+        { "value": "inline", "label": "Over/under the button" },
+        { "value": "fixed", "label": "Fixed to page" }
+      ],
+      "default": "inline",
+      "label": "Mobile modal position"
     },
-    {"type":"checkbox","id":"full_page_width","label":"Use full page width","default": false
+    {
+      "type": "checkbox",
+      "id": "display_slider",
+      "label": "Display product images slider",
+      "default": false,
+      "info": "If unchecked, only the featured image will be displayed. Only available if the modal image width is set to full."
     },
-    {"type":"checkbox","id":"image_corner_radius","label":"Enable image corner radius","default": false,"info":"This option is automatically optimized for all layout & color scheme settings."
+    { "type": "checkbox", "id": "display_price", "label": "Display price", "default": true },
+    { "type": "checkbox", "id": "display_discount_badge", "label": "Display price discount badge", "default": true },
+    { "type": "checkbox", "id": "display_variant_picker", "label": "Display variant picker", "default": false },
+    {
+      "type": "text",
+      "id": "modal_button_label",
+      "label": "Button label",
+      "default": "Add to Cart",
+      "info": "Leave empty to hide the button"
     },
-    {"type":"image_picker","id":"mobile_image","label":"Mobile image","info":"If this is empty, the image for desktop will be applied to mobile."
+    {
+      "type": "select",
+      "id": "button_function",
+      "options": [
+        { "value": "link", "label": "Link to product page" },
+        { "value": "atc", "label": "Add to cart" }
+      ],
+      "default": "atc",
+      "label": "Button function"
     },
-    {"type":"header","content":"Hotspot buttons & modals"
+    { "type": "checkbox", "id": "display_price_in_btn", "label": "Display price in the button", "default": false },
+    {
+      "type": "checkbox",
+      "id": "skip_cart",
+      "label": "Skip cart",
+      "info": "Applied if button fucntion is set to Add to cart",
+      "default": false
     },
-    {"type":"select","id":"hotspot_open_event","options": [
-        {"value":"click","label":"Click"
-        },
-        {"value":"hover","label":"Hover"
-        }
-      ],"label":"Open modal on:","default":"click"
+    { "type": "header", "content": "Section padding" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
     },
-    {"type":"color","id":"hotspots_bg_color","label":"Hotspot buttons background color","default":"#ffffff"
-    },
-    {"type":"color","id":"hotspots_text_color","label":"Hotspot buttons text color","default":"#121212"
-    },
-    {"type":"checkbox","id":"display_hotspots_animation","label":"Display button ripple animation","default": true
-    },
-    {"type":"color","id":"hotspot_content_bg_color","label":"Hotspots modal background color","default":"#ffffff"
-    },
-    {"type":"color","id":"hotspot_content_text_color","label":"Hotspots modal text color","default":"#121212"
-    },
-    {"type":"select","id":"hotspot_image_size","options": [
-        {"value":"small","label":"Small"
-        },
-        {"value":"full","label":"Full width"
-        }
-      ],"label":"Modal image width","default":"small"
-    },
-    {"type":"checkbox","id":"contain_hotspot_modal","label":"Contain modals inside the main image","default": false,"info":"Prevents modals from getting displayed outside the image on desktop. This option is automatically turned on for mobile."
-    },
-    {"type":"range","id":"hotspot_modal_desktop_width","min": 200,"max": 600,"step": 20,"unit":"px","label":"Hotspot modal desktop width","default": 400
-    },
-    {"type":"range","id":"hotspot_modal_mobile_width","min": 100,"max": 300,"step": 10,"unit":"px","label":"Hotspot modal mobile width","default": 300
-    },
-    {"type":"header","content":"Product information"
-    },
-    {"type":"select","id":"modal_heading_size","options": [
-        {"value":"small","label":"Small"
-        },
-        {"value":"medium","label":"Medium"
-        },
-        {"value":"large","label":"Large"
-        }
-      ],"default":"medium","label":"Heading size"
-    },
-    {"type":"select","id":"mobile_modal_position","options": [
-        {"value":"inline","label":"Over/under the button"
-        },
-        {"value":"fixed","label":"Fixed to page"
-        }
-      ],"default":"inline","label":"Mobile modal position"
-    },
-    {"type":"checkbox","id":"display_slider","label":"Display product images slider","default": false,"info":"If unchecked, only the featured image will be displayed. Only available if the modal image width is set to full."
-    },
-    {"type":"checkbox","id":"display_price","label":"Display price","default": true
-    },
-    {"type":"checkbox","id":"display_discount_badge","label":"Display price discount badge","default": true
-    },
-    {"type":"checkbox","id":"display_variant_picker","label":"Display variant picker","default": false
-    },
-    {"type":"text","id":"modal_button_label","label":"Button label","default":"Add to Cart","info":"Leave empty to hide the button"
-    },
-    {"type":"select","id":"button_function","options": [
-        {"value":"link","label":"Link to product page"
-        },
-        {"value":"atc","label":"Add to cart"
-        }
-      ],"default":"atc","label":"Button function"
-    },
-    {"type":"checkbox","id":"display_price_in_btn","label":"Display price in the button","default": false
-    },
-    {"type":"checkbox","id":"skip_cart","label":"Skip cart","info":"Applied if button fucntion is set to Add to cart","default": false
-    },
-    {"type":"header","content":"Section padding"
-    },
-    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 36
-    },
-    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 36
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
     }
-  ],"blocks": [
-    {"type":"hotspot","name":"Product hotspot","settings": [
-        {"type":"header","content":"Hotspot position"
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Product hotspot",
+      "settings": [
+        { "type": "header", "content": "Hotspot position" },
+        {
+          "type": "range",
+          "id": "offset_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal offset",
+          "default": 30
         },
-        {"type":"range","id":"offset_x","min": 0,"max": 100,"step": 1,"unit":"%","label":"Horizontal offset","default": 30
+        {
+          "type": "range",
+          "id": "offset_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical offset",
+          "default": 30
         },
-        {"type":"range","id":"offset_y","min": 0,"max": 100,"step": 1,"unit":"%","label":"Vertical offset","default": 30
+        { "type": "header", "content": "Mobile hotspot position" },
+        {
+          "type": "checkbox",
+          "id": "enable_mobile_position",
+          "label": "Enable custom mobile positioning",
+          "info": "Enable this option if you are using a separate image for mobile."
         },
-        {"type":"header","content":"Mobile hotspot position"
+        {
+          "type": "range",
+          "id": "mobile_offset_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Mobile horizontal offset",
+          "default": 30
         },
-        {"type":"checkbox","id":"enable_mobile_position","label":"Enable custom mobile positioning","info":"Enable this option if you are using a separate image for mobile."
+        {
+          "type": "range",
+          "id": "mobile_offset_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Mobile vertical offset",
+          "default": 30
         },
-        {"type":"range","id":"mobile_offset_x","min": 0,"max": 100,"step": 1,"unit":"%","label":"Mobile horizontal offset","default": 30
-        },
-        {"type":"range","id":"mobile_offset_y","min": 0,"max": 100,"step": 1,"unit":"%","label":"Mobile vertical offset","default": 30
-        },
-        {"type":"header","content":"Product"
-        },
-        {"type":"product","id":"product","label":"Product"
-        },
-        {"type":"richtext","id":"text","label":"Description"
-        },
-        {"type":"select","id":"alignment","options": [
-            {"value":"left","label":"Left"
-            },
-            {"value":"center","label":"Center"
-            },
-            {"value":"right","label":"Right"
-            }
-          ],"default":"left","label":"Text alignment"
+        { "type": "header", "content": "Product" },
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "richtext", "id": "text", "label": "Description" },
+        {
+          "type": "select",
+          "id": "alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left",
+          "label": "Text alignment"
         }
       ]
     }
-  ],"presets": [
-    {"name":"Shoppable image","blocks": [
-        {"type":"hotspot","settings": {"offset_x": 30,"offset_y": 30
-          }
-        },
-        {"type":"hotspot","settings": {"offset_x": 40,"offset_y": 70
-          }
-        },
-        {"type":"hotspot","settings": {"offset_x": 70,"offset_y": 50
-          }
-        }
+  ],
+  "presets": [
+    {
+      "name": "Shoppable image",
+      "blocks": [
+        { "type": "hotspot", "settings": { "offset_x": 30, "offset_y": 30 } },
+        { "type": "hotspot", "settings": { "offset_x": 40, "offset_y": 70 } },
+        { "type": "hotspot", "settings": { "offset_x": 70, "offset_y": 50 } }
       ]
     }
   ]

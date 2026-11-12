@@ -25,7 +25,8 @@
   },
   "newsletter": {
     "label": "E-posta",
-    "success": "Abone olduğunuz için teşekkür ederiz"
+    "success": "Abone olduğunuz için teşekkür ederiz",
+    "button_label": "Subscribe"
   },
   "social": {
     "links": {
@@ -61,7 +62,15 @@
     "unit_price_separator": "/",
     "link_messages": {
       "new_window": "Yeni bir pencerede açılır."
-    }
+    },
+    "previous_story": "Previous story",
+    "next_story": "Next story",
+    "pause_story": "Pause story",
+    "toggle_volume": "Toggle volume",
+    "story_viewer": "Story viewer",
+    "vendor": "Vendor",
+    "star_reviews_info": "Rated {{ rating_value }} out of {{ rating_max }}",
+    "total_reviews": "Total reviews"
   },
   "blogs": {
     "blog": {
@@ -80,13 +89,12 @@
       "email": "E-posta",
       "message": "Yorum",
       "post": "Yorumu paylaş",
-      "back_to_blog": "Bloga dön",
-      "share": "Bu makaleyi paylaş",
       "success": "Yorumunuz başarıyla paylaşıldı! Teşekkür ederiz.",
       "success_moderated": "Yorumunuz başarıyla paylaşıldı. Blogumuz denetlendiğinden yorumunuzu kısa bir süre sonra yayınlayacağız.",
       "share_this_article": "Bu yazıyı paylaş",
       "previous_article": "Önceki yazı",
-      "next_article": "Sonraki yazı"
+      "next_article": "Sonraki yazı",
+      "comment_form_note": "Comments are reviewed before they are published."
     }
   },
   "onboarding": {
@@ -153,7 +161,9 @@
       "xr_button_label": "Alanınızda görüntüleyin; ürün, artırılmış gerçeklik penceresinde yüklenir",
       "siblings": {
         "label": "Renk"
-      }
+      },
+      "choose_product_options": "Choose options for {{ product_name }}",
+      "vendor": "Vendor"
     },
     "facets": {
       "apply": "Uygula",
@@ -180,8 +190,14 @@
       "sort_button": "Sırala",
       "sort_by_label": "Sıralama ölçütü:",
       "to": "En yüksek",
-      "clear_filter": "Filtreyi kaldır",
-      "filter_selected_accessibility": "{{ type }} ({{ count }} filtre seçildi)"
+      "clear_filter": "Filtreyi kaldır"
+    },
+    "compare": {
+      "metafields": {
+        "boolean_true": "Yes",
+        "boolean_false": "No",
+        "file_download": "Download file"
+      }
     }
   },
   "sections": {
@@ -228,8 +244,7 @@
         "product": "Ürün",
         "price": "Fiyat",
         "total": "Toplam",
-        "quantity": "Adet",
-        "image": "Ürün görseli"
+        "quantity": "Adet"
       },
       "terms": "Kullanım şartları ve koşullarını kabul ediyorum",
       "terms_html": "Ben, <a href='{{ url }}' target='_blank'>satış şartları ve koşulları</a>'nı kabul ediyorum.",
@@ -293,6 +308,9 @@
       "map": {
         "location": "Lokasyon {{ index }}"
       }
+    },
+    "video": {
+      "load_video": "Load video: {{ description }}"
     }
   },
   "localization": {
@@ -418,7 +436,8 @@
       "copy_code": "Hediye kartı kodunu kopyala",
       "expired": "Süresi sona erdi",
       "copy_code_success": "Kod başarıyla kopyalandı",
-      "print_gift_card": "Yazdır"
+      "print_gift_card": "Yazdır",
+      "remaining_html": "Remaining balance: <strong>{{ balance }}</strong>"
     }
   },
   "recipient": {
@@ -432,7 +451,8 @@
       "message": "Mesaj",
       "max_characters": "Maksimum {{ max_chars }} karakter",
       "send_on": "YYYY-AA-GG",
-      "send_on_label": "Şu tarihte gönder (isteğe bağlı)"
+      "send_on_label": "Şu tarihte gönder (isteğe bağlı)",
+      "email_label_optional": "Email (optional)"
     }
   }
 }

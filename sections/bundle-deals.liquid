@@ -34,7 +34,7 @@
   .section-color-{{ section.id }}-color_scheme { background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; }
   .section-color-{{ section.id }}-pickers_color_scheme { background: {{ section.settings.pickers_bg_bg_color }}; color: {{ section.settings.pickers_text_text_color }}; }
   .section-color-{{ section.id }}-pickers_overlay_color { background: {{ section.settings.pickers_overlay_bg_color }}; color: {{ section.settings.pickers_overlay_text_color }}; }
-  .section-color-{{ section.id }}-pickers_text_color { background: {{ section.settings.pickers_text_bg_color }}; color: {{ section.settings.pickers_text_text_color }}; }
+  .section-color-{{ section.id }}-pickers_text_color { background: {{ section.settings.pickers_text_bg_color }}; color: {{ section.settings.pickers_text_color_text }}; }
 
   /* --- Ported section layout CSS --- */
 {%- endstyle -%}
@@ -59,7 +59,10 @@
       {% endif %}
     </div>
 
-    {% assign total_percentage_left_multiplier = 100.0 | minus: section.settings.percentage_discount | divided_by: 100.0 %}
+    {% assign total_percentage_left_multiplier = 100.0
+      | minus: section.settings.percentage_discount
+      | divided_by: 100.0
+    %}
     {% assign total_fixed_discount = section.settings.fixed_amount_discount | times: 100.0 %}
     <bundle-deals
       id="bundle-deals-{{ section.id }}"
@@ -100,7 +103,7 @@
         {% endfor %}
       </div>
       <div class="bundle-deals__center index-{{ content_index | plus: 1 }}">
-        {% liquid 
+        {% liquid
           assign items_count = 0
           assign total_compare_price = 0
           assign total_price = 0
@@ -116,7 +119,7 @@
               assign price = product.selected_or_first_available_variant.price | times: percentage_left_multiplier | minus: fixed_discount
               if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price
                 assign compare_price = product.selected_or_first_available_variant.compare_at_price
-              else 
+              else
                 assign compare_price = product.selected_or_first_available_variant.price
               endif
               assign total_price = total_price | plus: price
@@ -164,12 +167,18 @@
                 </label>
                 <div class="bundle-deals__prices">
                   <span class="bundle-deals__price bundle-deals__price-js regular-price">{{ price | money }}</span>
-                  <span class="bundle-deals__compare-price bundle-deals__compare-price-js compare-price">{% if compare_price > price %}{{ compare_price | money }}{% endif %}</span>
+                  <span class="bundle-deals__compare-price bundle-deals__compare-price-js compare-price">
+                    {%- if compare_price > price %}{{ compare_price | money }}{% endif -%}
+                  </span>
                 </div>
               </div>
               <div class="bundle-deals__info">
                 {% if product.has_only_default_variant == false %}
-                  <div class="bundle-deals__variant-selects bundle-deals__variant-selects-js" data-index="{{ forloop.index0 }}" data-id-index="id_{{ forloop.index0 }}">
+                  <div
+                    class="bundle-deals__variant-selects bundle-deals__variant-selects-js"
+                    data-index="{{ forloop.index0 }}"
+                    data-id-index="id_{{ forloop.index0 }}"
+                  >
                     {%- for option in product.options_with_values -%}
                       <div class="select select--small no-background section-color-{{ section.id }}-pickers_color_scheme accent-section-color-{{ section.id }}-pickers_overlay_color accent-2-section-color-{{ section.id }}-pickers_text_color">
                         <select class="select__select">
@@ -203,8 +212,12 @@
           <p class="bundle-deals__total-price-container">
             <span>{{ section.settings.total_price_label }}</span>
             <span>
-              <span class="bundle-deals__total-price bundle-deals__total-price-js regular-price">{{ total_price | times: total_percentage_left_multiplier | minus: total_fixed_discount | money }}</span>
-              <span class="bundle-deals__total-compare-price bundle-deals__total-compare-price-js compare-price">{%- if total_compare_price > total_price %}{{ total_compare_price | money }}{% endif -%}</span>
+              <span class="bundle-deals__total-price bundle-deals__total-price-js regular-price">
+                {{- total_price | times: total_percentage_left_multiplier | minus: total_fixed_discount | money -}}
+              </span>
+              <span class="bundle-deals__total-compare-price bundle-deals__total-compare-price-js compare-price">
+                {%- if total_compare_price > total_price %}{{ total_compare_price | money }}{% endif -%}
+              </span>
             </span>
           </p>
           <product-form class="product-form" data-section="{{ section.id }}">
@@ -281,102 +294,150 @@
 </script>
 
 {% schema %}
-{"name":"Bundle deals","settings": [
-    {"type":"select","id":"visibility","options": [
-        {"value":"desktop-hidden","label":"Mobile only"
+{
+  "name": "Bundle deals",
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
+    },
+    { "type": "header", "content": "General" },
+    { "type": "text", "id": "title", "default": "Bundle deals", "label": "Heading" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#121212" },
+    { "type": "header", "content": "Bundles" },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "", "label": "Vertical" },
+        { "value": "horizontal-images-left", "label": "Horizontal - Images left" },
+        { "value": "horizontal-images-right", "label": "Horizontal - Images right" }
+      ],
+      "default": "horizontal-images-left",
+      "label": "Desktop layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_price_changes",
+      "label": "Enable dynamic price changes",
+      "info": "Enables live changes to item and total prices after variant/checkbox change. CAUTION: Due to the way Liquid works, after a change, new price will NOT work with currency converters.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "prices_under",
+      "label": "Dispaly price under the title for products without a variant picker",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "skip_cart",
+      "label": "Skip cart",
+      "default": false,
+      "info": "Your customers will be sent directly to checkout after click the Add to Cart button."
+    },
+    { "type": "text", "id": "total_price_label", "label": "Total price label", "default": "Total Price:" },
+    { "type": "text", "id": "btn_label", "label": "Add to cart button label", "default": "Add selected to cart" },
+    { "type": "header", "content": "Discounts" },
+    {
+      "type": "text",
+      "id": "percentage_discount",
+      "label": "Percentage discount",
+      "default": "0",
+      "info": "Percentae to be discounted from the total price, WITHOUT the % symbol."
+    },
+    {
+      "type": "text",
+      "id": "fixed_amount_discount",
+      "label": "Fixed amount discount",
+      "default": "0",
+      "info": "Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
+    },
+    { "type": "header", "content": "Section padding" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    },
+    { "type": "color", "id": "pickers_bg_bg_color", "label": "Pickers background", "default": "#ffffff" },
+    { "type": "color", "id": "pickers_text_text_color", "label": "Pickers text", "default": "#121212" },
+    {
+      "type": "color",
+      "id": "pickers_overlay_bg_color",
+      "label": "Pickers overlay color background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "pickers_overlay_text_color",
+      "label": "Pickers overlay color text",
+      "default": "#121212"
+    },
+    { "type": "color", "id": "pickers_text_bg_color", "label": "Pickers text color background", "default": "#ffffff" },
+    { "type": "color", "id": "pickers_text_color_text", "label": "Pickers text color text", "default": "#121212" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "limit": 5,
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        {
+          "type": "text",
+          "id": "percentage_discount",
+          "label": "Percentage discount",
+          "default": "0",
+          "info": "Percentae to be discounted from the total price, WITHOUT the % symbol."
         },
-        {"value":"mobile-hidden","label":"Desktop only"
-        },
-        {"value":"always-display","label":"All devices"
-        }
-      ],"label":"Display on","default":"always-display"
-    },
-    {"type":"header","content":"General"
-    },
-    {"type":"text","id":"title","default":"Bundle deals","label":"Heading"
-    },
-    {"type":"select","id":"heading_size","options": [
-        {"value":"h2","label":"Small"
-        },
-        {"value":"h1","label":"Medium"
-        },
-        {"value":"h0","label":"Large"
-        }
-      ],"default":"h1","label":"Heading size"
-    },
-    {"type":"richtext","id":"text","label":"Text"
-    },
-    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
-    },
-    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
-    },
-    {"type":"header","content":"Bundles"
-    },
-    {"type":"select","id":"layout","options": [
-        {"value":"","label":"Vertical"
-        },
-        {"value":"horizontal-images-left","label":"Horizontal - Images left"
-        },
-        {"value":"horizontal-images-right","label":"Horizontal - Images right"
-        }
-      ],"default":"horizontal-images-left","label":"Desktop layout"
-    },
-    {"type":"checkbox","id":"enable_price_changes","label":"Enable dynamic price changes","info":"Enables live changes to item and total prices after variant/checkbox change. CAUTION: Due to the way Liquid works, after a change, new price will NOT work with currency converters.","default": true
-    },
-    {"type":"checkbox","id":"prices_under","label":"Dispaly price under the title for products without a variant picker","default": true
-    },
-    {"type":"checkbox","id":"skip_cart","label":"Skip cart","default": false,"info":"Your customers will be sent directly to checkout after click the Add to Cart button."
-    },
-    {"type":"text","id":"total_price_label","label":"Total price label","default":"Total Price:"
-    },
-    {"type":"text","id":"btn_label","label":"Add to cart button label","default":"Add selected to cart"
-    },
-    {"type":"header","content":"Discounts"
-    },
-    {"type":"text","id":"percentage_discount","label":"Percentage discount","default":"0","info":"Percentae to be discounted from the total price, WITHOUT the % symbol."
-    },
-    {"type":"text","id":"fixed_amount_discount","label":"Fixed amount discount","default":"0","info":"Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
-    },
-    {"type":"header","content":"Section padding"
-    },
-    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 36
-    },
-    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 36
-    },
-    {"type":"color","id":"pickers_bg_bg_color","label":"Pickers background","default":"#ffffff"
-    },
-    {"type":"color","id":"pickers_text_text_color","label":"Pickers text","default":"#121212"
-    },
-    {"type":"color","id":"pickers_overlay_bg_color","label":"Pickers overlay color background","default":"#ffffff"
-    },
-    {"type":"color","id":"pickers_overlay_text_color","label":"Pickers overlay color text","default":"#121212"
-    },
-    {"type":"color","id":"pickers_text_bg_color","label":"Pickers text color background","default":"#ffffff"
-    },
-    {"type":"color","id":"pickers_text_text_color","label":"Pickers text color text","default":"#121212"
-    }
-  ],"blocks": [
-    {"type":"product","name":"Product","limit": 5,"settings": [
-        {"type":"product","id":"product","label":"Product"
-        },
-        {"type":"text","id":"percentage_discount","label":"Percentage discount","default":"0","info":"Percentae to be discounted from the total price, WITHOUT the % symbol."
-        },
-        {"type":"text","id":"fixed_amount_discount","label":"Fixed amount discount","default":"0","info":"Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
+        {
+          "type": "text",
+          "id": "fixed_amount_discount",
+          "label": "Fixed amount discount",
+          "default": "0",
+          "info": "Fixed amount of money to be discounted from the total price, WITHOUT the currency symbol."
         }
       ]
     }
-  ],"presets": [
-    {"name":"Bundle deals","blocks": [
-        {"type":"product"
-        },
-        {"type":"product"
-        },
-        {"type":"product"
-        }
-      ]
-    }
-  ],"disabled_on": {"groups": ["header","footer"
-    ]
-  }
+  ],
+  "presets": [
+    { "name": "Bundle deals", "blocks": [{ "type": "product" }, { "type": "product" }, { "type": "product" }] }
+  ],
+  "disabled_on": { "groups": ["header", "footer"] }
 }
 {% endschema %}

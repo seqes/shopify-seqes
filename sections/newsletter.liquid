@@ -61,7 +61,7 @@
         {%- when 'paragraph' -%}
           <div class="newsletter__subheading rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
         {%- when 'email_form' -%}
-          <div class='' {{ block.shopify_attributes }}>
+          <div class="" {{ block.shopify_attributes }}>
             {% form 'customer', class: 'newsletter-form' %}
               <input type="hidden" name="contact[tags]" value="newsletter">
               <div class="newsletter-form__field-wrapper">
@@ -139,79 +139,100 @@
 </div>
 
 {% schema %}
-{"name":"Newsletter","tag":"section","class":"section","disabled_on": {"groups": ["header"
-    ]
-  },"settings": [
-    {"type":"select","id":"visibility","options": [
-        {"value":"desktop-hidden","label":"Mobile only"
-        },
-        {"value":"mobile-hidden","label":"Desktop only"
-        },
-        {"value":"always-display","label":"All devices"
-        }
-      ],"label":"Display on","default":"always-display"
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
     },
-    {"type":"header","content":"General"
+    { "type": "header", "content": "General" },
+    {
+      "type": "select",
+      "id": "button_type",
+      "options": [
+        { "value": "arrow", "label": "Arrow button" },
+        { "value": "solid", "label": "Solid button" }
+      ],
+      "default": "solid",
+      "label": "Submit button type"
     },
-    {"type":"select","id":"button_type","options": [
-        {"value":"arrow","label":"Arrow button"
-        },
-        {"value":"solid","label":"Solid button"
-        }
-      ],"default":"solid","label":"Submit button type"
+    { "type": "text", "id": "button_label", "label": "Solid button label", "default": "Sign up" },
+    { "type": "checkbox", "id": "button_style_secondary", "label": "Use outline button style", "default": false },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#121212" },
+    { "type": "checkbox", "id": "full_width", "default": true, "label": "Full width" },
+    { "type": "paragraph", "content": "Each email subscription creates a customer account." },
+    { "type": "header", "content": "Section padding" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
     },
-    {"type":"text","id":"button_label","label":"Solid button label","default":"Sign up"
-    },
-    {"type":"checkbox","id":"button_style_secondary","label":"Use outline button style","default": false
-    },
-    {"type":"color","id":"bg_color","label":"Background color","default":"#ffffff"
-    },
-    {"type":"color","id":"text_color","label":"Text color","default":"#121212"
-    },
-    {"type":"checkbox","id":"full_width","default": true,"label":"Full width"
-    },
-    {"type":"paragraph","content":"Each email subscription creates a customer account."
-    },
-    {"type":"header","content":"Section padding"
-    },
-    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 40
-    },
-    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 52
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 52
     }
-  ],"blocks": [
-    {"type":"heading","name":"Heading","limit": 1,"settings": [
-        {"type":"text","id":"heading","default":"Subscribe to our emails","label":"Heading"
-        },
-        {"type":"select","id":"heading_size","options": [
-            {"value":"h2","label":"Small"
-            },
-            {"value":"h1","label":"Medium"
-            },
-            {"value":"h0","label":"Large"
-            }
-          ],"default":"h1","label":"Heading size"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "default": "Subscribe to our emails", "label": "Heading" },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            { "value": "h2", "label": "Small" },
+            { "value": "h1", "label": "Medium" },
+            { "value": "h0", "label": "Large" }
+          ],
+          "default": "h1",
+          "label": "Heading size"
         }
       ]
     },
-    {"type":"paragraph","name":"Paragraph","limit": 1,"settings": [
-        {"type":"richtext","id":"text","default":"<p>Be the first to know about new collections and exclusive offers.</p>","label":"Text"
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Be the first to know about new collections and exclusive offers.</p>",
+          "label": "Text"
         }
       ]
     },
-    {"type":"email_form","name":"Email form","limit": 1,"settings": []
-    },
-    {"type":"@app","settings": []
-    }
-  ],"presets": [
-    {"name":"Newsletter","blocks": [
-        {"type":"heading"
-        },
-        {"type":"paragraph"
-        },
-        {"type":"email_form"
-        }
-      ]
-    }
+    { "type": "email_form", "name": "Email form", "limit": 1, "settings": [] },
+    { "type": "@app" }
+  ],
+  "presets": [
+    { "name": "Newsletter", "blocks": [{ "type": "heading" }, { "type": "paragraph" }, { "type": "email_form" }] }
   ]
 }
 {% endschema %}

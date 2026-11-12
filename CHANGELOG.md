@@ -18,6 +18,21 @@ Git tags:
 
 Security, dead-code cleanup, performance polish, accessibility, tooling, documentation, and CI on top of the deep performance optimization.
 
+### Phase 17 - SEO, LCP y limpieza de la clinica heredada
+
+- Eliminadas las plantillas `collection.medicos-veterinarios.json` y `collection.especialidades-medicas.json` (heredadas de la clinica).
+- Retirado el bloque que ocultaba precios por metafield `custom.hide_price` o etiqueta `hide-price` en `layout/theme.liquid`. Ya no existe mecanismo de ocultar precios en el tema.
+- Nuevo `templates/robots.txt.liquid`: reglas por defecto de Shopify repetidas para agentes de IA y de busqueda.
+- `noindex,follow` en busqueda, carrito y cuentas; meta description con respaldo a la descripcion de la tienda.
+- JSON-LD `Organization`: `url` de la tienda, `sameAs` solo con redes no vacias, contexto https.
+- LCP: imagenes con `priority: 'high'` salen como `<img>` nativo con `src`/`srcset` reales. El preload de la imagen principal de producto y de la de coleccion ahora lo emite cada seccion justo antes de la imagen, con el mismo `sizes` y la misma URL (antes salia en `<head>` con tamanos distintos). Las demas imagenes siguen con lazysizes.
+- Tamanos `0xH` (banner de coleccion) generan URL con `height` en vez de `width: 0`; placeholder de imagenes sin division por cero.
+- Corregido el fallback de color de iconos en `svg-icons.liquid` y el ancho del logo claro en las cuatro cabeceras.
+- `password.liquid` carga `vendor.min.js` (lazysizes) con defer; sin animaciones, porque esa pagina no las usa.
+- Breadcrumbs escapan href y texto.
+- Retirados comentarios de cambio obsoletos ("has been rewritten").
+- `package.json`: quitado `@shopify/theme` (no existe en el registro), Husky 9 (`prepare: husky`), `package-lock.json` versionado.
+
 ### Phase 9 - Security
 
 - **`snippets/search-drawer.liquid`**: escape reflected `search.terms` in the search input `value` attribute.

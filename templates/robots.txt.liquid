@@ -1,0 +1,27 @@
+{%- comment -%}
+  robots.txt personalizado (patron oficial de Shopify: robots.default_groups).
+  Repite las reglas por defecto de cada grupo y, para el grupo "*", agrega un
+  grupo explicito por cada agente de IA y de busqueda que interesa a Seqes, con
+  las mismas reglas de bloqueo (carrito, checkout, cuenta, busqueda, filtros).
+  user_agent y rule ya emiten su propio salto de linea; no quitar los guiones.
+{%- endcomment -%}
+{%- assign ai_agents = 'GPTBot,OAI-SearchBot,ChatGPT-User,ClaudeBot,Claude-Web,anthropic-ai,PerplexityBot,Perplexity-User,Google-Extended,Applebot-Extended,CCBot'
+  | split: ','
+-%}
+{%- for group in robots.default_groups -%}
+  {{- group.user_agent -}}
+  {%- for rule in group.rules -%}
+    {{- rule -}}
+  {%- endfor -%}
+  {%- if group.sitemap != blank -%}
+    {{- group.sitemap -}}
+  {%- endif -%}
+  {%- if group.user_agent.value == '*' -%}
+    {%- for agent in ai_agents %}
+      User-agent: {{ agent }}
+      {%- for rule in group.rules -%}
+        {{- rule -}}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}

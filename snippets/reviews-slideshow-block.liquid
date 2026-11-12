@@ -167,115 +167,132 @@
 {%- endfor -%}
 
 {%- if review_count > 0 -%}
-<div class="rsb-{{ bid }}" {{ block.shopify_attributes }}>
-  <div class="rsb-track" data-rsb-track>
-    {%- for i in (1..6) -%}
-      {%- liquid
-        assign img_key = 'review_' | append: i | append: '_image'
-        assign name_key = 'review_' | append: i | append: '_name'
-        assign text_key = 'review_' | append: i | append: '_text'
-        assign stars_key = 'review_' | append: i | append: '_stars'
-        assign r_img = block.settings[img_key]
-        assign r_name = block.settings[name_key]
-        assign r_text = block.settings[text_key] | truncate: max_chars
-        assign r_stars = block.settings[stars_key] | times: 1
-      -%}
-      {%- if block.settings[text_key] != blank -%}
-        <div class="rsb-slide">
-          {%- if r_img != blank -%}
-            <img class="rsb-photo" src="{{ r_img | image_url: width: 120 }}" alt="{{ r_name | escape }}" width="{{ photo_size }}" height="{{ photo_size }}" loading="lazy">
-          {%- else -%}
-            <div class="rsb-photo-placeholder">
-              {%- if r_name != blank -%}{{ r_name | slice: 0 }}{%- else -%}?{%- endif -%}
+  <div class="rsb-{{ bid }}" {{ block.shopify_attributes }}>
+    <div class="rsb-track" data-rsb-track>
+      {%- for i in (1..6) -%}
+        {%- liquid
+          assign img_key = 'review_' | append: i | append: '_image'
+          assign name_key = 'review_' | append: i | append: '_name'
+          assign text_key = 'review_' | append: i | append: '_text'
+          assign stars_key = 'review_' | append: i | append: '_stars'
+          assign r_img = block.settings[img_key]
+          assign r_name = block.settings[name_key]
+          assign r_text = block.settings[text_key] | truncate: max_chars
+          assign r_stars = block.settings[stars_key] | times: 1
+        -%}
+        {%- if block.settings[text_key] != blank -%}
+          <div class="rsb-slide">
+            {%- if r_img != blank -%}
+              <img
+                class="rsb-photo"
+                src="{{ r_img | image_url: width: 120 }}"
+                alt="{{ r_name | escape }}"
+                width="{{ photo_size }}"
+                height="{{ photo_size }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              <div class="rsb-photo-placeholder">
+                {%- if r_name != blank -%}{{ r_name | slice: 0 }}{%- else -%}?{%- endif -%}
+              </div>
+            {%- endif -%}
+            <div class="rsb-body">
+              <div class="rsb-header">
+                {%- if r_name != blank -%}
+                  <span class="rsb-name">{{ r_name }}</span>
+                {%- endif -%}
+                {%- if r_stars > 0 -%}
+                  <div class="rsb-stars">
+                    {%- for s in (1..5) -%}
+                      {%- if s <= r_stars -%}{{ star_svg }}{%- else -%}{{ empty_star_svg }}{%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+                {%- if badge_logo != blank -%}
+                  <div class="rsb-badge-icon" title="{{ badge_text | escape }}">
+                    <img
+                      src="{{ badge_logo | image_url: width: 48 }}"
+                      width="48"
+                      height="48"
+                      alt="{{ badge_text | default: 'Verified' | escape }}"
+                      loading="lazy"
+                    >
+                  </div>
+                {%- endif -%}
+              </div>
+              <p class="rsb-text">"{{ r_text }}"</p>
             </div>
-          {%- endif -%}
-          <div class="rsb-body">
-            <div class="rsb-header">
-              {%- if r_name != blank -%}
-                <span class="rsb-name">{{ r_name }}</span>
-              {%- endif -%}
-              {%- if r_stars > 0 -%}
-                <div class="rsb-stars">
-                  {%- for s in (1..5) -%}
-                    {%- if s <= r_stars -%}{{ star_svg }}{%- else -%}{{ empty_star_svg }}{%- endif -%}
-                  {%- endfor -%}
-                </div>
-              {%- endif -%}
-              {%- if badge_logo != blank -%}
-                <div class="rsb-badge-icon" title="{{ badge_text | escape }}">
-                  <img src="{{ badge_logo | image_url: width: 48 }}" alt="{{ badge_text | default: 'Verified' | escape }}" loading="lazy">
-                </div>
-              {%- endif -%}
-            </div>
-            <p class="rsb-text">"{{ r_text }}"</p>
           </div>
-        </div>
-      {%- endif -%}
-    {%- endfor -%}
-  </div>
-
-  {%- if review_count > 1 -%}
-    <div class="rsb-dots" data-rsb-dots>
-      {%- for i in (1..review_count) -%}
-        <button class="rsb-dot{% if i == 1 %} active{% endif %}" data-rsb-goto="{{ i | minus: 1 }}" aria-label="Review {{ i }}"></button>
+        {%- endif -%}
       {%- endfor -%}
     </div>
 
-    <script>
-      (function(){
-        var root = document.querySelector('.rsb-{{ bid }}');
-        if (!root) return;
-        var track = root.querySelector('[data-rsb-track]');
-        var dots = root.querySelectorAll('[data-rsb-goto]');
-        var total = {{ review_count }};
-        var current = 0;
-        var speed = {{ speed }} * 1000;
-        var timer;
+    {%- if review_count > 1 -%}
+      <div class="rsb-dots" data-rsb-dots>
+        {%- for i in (1..review_count) -%}
+          <button
+            class="rsb-dot{% if i == 1 %} active{% endif %}"
+            data-rsb-goto="{{ i | minus: 1 }}"
+            aria-label="Review {{ i }}"
+          ></button>
+        {%- endfor -%}
+      </div>
 
-        function goTo(idx) {
-          current = ((idx % total) + total) % total;
-          track.style.transform = 'translateX(-' + (current * 100) + '%)';
-          dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
-        }
+      <script>
+        (function(){
+          var root = document.querySelector('.rsb-{{ bid }}');
+          if (!root) return;
+          var track = root.querySelector('[data-rsb-track]');
+          var dots = root.querySelectorAll('[data-rsb-goto]');
+          var total = {{ review_count }};
+          var current = 0;
+          var speed = {{ speed }} * 1000;
+          var timer;
 
-        dots.forEach(function(d) {
-          d.addEventListener('click', function() {
-            goTo(parseInt(d.dataset.rsbGoto));
-            clearInterval(timer);
-            timer = setInterval(function(){ goTo(current + 1); }, speed);
+          function goTo(idx) {
+            current = ((idx % total) + total) % total;
+            track.style.transform = 'translateX(-' + (current * 100) + '%)';
+            dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+          }
+
+          dots.forEach(function(d) {
+            d.addEventListener('click', function() {
+              goTo(parseInt(d.dataset.rsbGoto));
+              clearInterval(timer);
+              timer = setInterval(function(){ goTo(current + 1); }, speed);
+            });
           });
-        });
 
-        // Touch / swipe support
-        var touchStartX = 0;
-        var touchStartY = 0;
+          // Touch / swipe support
+          var touchStartX = 0;
+          var touchStartY = 0;
 
-        root.addEventListener('touchstart', function(e) {
-          touchStartX = e.touches[0].clientX;
-          touchStartY = e.touches[0].clientY;
-        }, { passive: true });
+          root.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+          }, { passive: true });
 
-        root.addEventListener('touchmove', function(e) {
-          var dx = e.touches[0].clientX - touchStartX;
-          var dy = e.touches[0].clientY - touchStartY;
-          if (Math.abs(dx) > Math.abs(dy)) {
-            e.preventDefault();
-          }
-        }, { passive: false });
+          root.addEventListener('touchmove', function(e) {
+            var dx = e.touches[0].clientX - touchStartX;
+            var dy = e.touches[0].clientY - touchStartY;
+            if (Math.abs(dx) > Math.abs(dy)) {
+              e.preventDefault();
+            }
+          }, { passive: false });
 
-        root.addEventListener('touchend', function(e) {
-          var dx = e.changedTouches[0].clientX - touchStartX;
-          var dy = e.changedTouches[0].clientY - touchStartY;
-          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-            clearInterval(timer);
-            goTo(dx < 0 ? current + 1 : current - 1);
-            timer = setInterval(function(){ goTo(current + 1); }, speed);
-          }
-        }, { passive: true });
+          root.addEventListener('touchend', function(e) {
+            var dx = e.changedTouches[0].clientX - touchStartX;
+            var dy = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+              clearInterval(timer);
+              goTo(dx < 0 ? current + 1 : current - 1);
+              timer = setInterval(function(){ goTo(current + 1); }, speed);
+            }
+          }, { passive: true });
 
-        timer = setInterval(function(){ goTo(current + 1); }, speed);
-      })();
-    </script>
-  {%- endif -%}
-</div>
+          timer = setInterval(function(){ goTo(current + 1); }, speed);
+        })();
+      </script>
+    {%- endif -%}
+  </div>
 {%- endif -%}

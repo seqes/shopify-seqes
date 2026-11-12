@@ -5,21 +5,52 @@
 {%- endcomment -%}
 
 <style>
-  .est-shipping { display: flex; align-items: center; gap: 8px; margin: 4px 0; font-size: 0.9em; }
-  .est-shipping__icon { flex-shrink: 0; display: flex; align-items: center; }
-  .est-shipping__icon--small { font-size: 18px; }
-  .est-shipping__icon--small img { height: 18px; width: auto; }
-  .est-shipping__icon--medium { font-size: 24px; }
-  .est-shipping__icon--medium img { height: 24px; width: auto; }
-  .est-shipping__icon--large { font-size: 32px; }
-  .est-shipping__icon--large img { height: 32px; width: auto; }
+  .est-shipping {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+    font-size: 0.9em;
+  }
+  .est-shipping__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .est-shipping__icon--small {
+    font-size: 18px;
+  }
+  .est-shipping__icon--small img {
+    height: 18px;
+    width: auto;
+  }
+  .est-shipping__icon--medium {
+    font-size: 24px;
+  }
+  .est-shipping__icon--medium img {
+    height: 24px;
+    width: auto;
+  }
+  .est-shipping__icon--large {
+    font-size: 32px;
+  }
+  .est-shipping__icon--large img {
+    height: 32px;
+    width: auto;
+  }
 </style>
 
 <div class="est-shipping" {{ block.shopify_attributes }}>
   {%- unless block.settings.custom_icon == blank and block.settings.icon == blank -%}
     <div class="est-shipping__icon est-shipping__icon--{{ block.settings.icon_size }}">
       {%- if block.settings.custom_icon != blank -%}
-        <img src="{{ block.settings.custom_icon | image_url: width: 150 }}" loading="lazy" role="presentation">
+        <img
+          src="{{ block.settings.custom_icon | image_url: width: 150 }}"
+          width="150"
+          height="150"
+          loading="lazy"
+          role="presentation"
+        >
       {%- else -%}
         {%- render 'material-icon', icon: block.settings.icon, filled: block.settings.filled_icon -%}
       {%- endif -%}
@@ -39,8 +70,8 @@
 </div>
 
 <script>
-  (function(){
-    document.querySelectorAll('[data-est-shipping]').forEach(function(el){
+  (function () {
+    document.querySelectorAll('[data-est-shipping]').forEach(function (el) {
       if (el.dataset.processed) return;
       el.dataset.processed = '1';
       var msg = el.dataset.message;
@@ -53,9 +84,7 @@
       startDate.setDate(startDate.getDate() + min);
       var endDate = new Date(now);
       endDate.setDate(endDate.getDate() + max);
-      var opts = fmt === 'long'
-        ? { month: 'long', day: 'numeric' }
-        : { month: 'short', day: 'numeric' };
+      var opts = fmt === 'long' ? { month: 'long', day: 'numeric' } : { month: 'short', day: 'numeric' };
       var startStr = startDate.toLocaleDateString(locale, opts);
       var endStr = endDate.toLocaleDateString(locale, opts);
       el.textContent = msg.replace('[start_date]', startStr).replace('[end_date]', endStr);

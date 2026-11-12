@@ -1,41 +1,40 @@
 {%- liquid
-	assign product = section.settings.product
-	assign first_3d_model = product.media | where: "media_type", "model" | first
-	assign media_aspect_ratio = section.settings.media_aspect_ratio
-	assign full_width = section.settings.full_width
+  assign product = section.settings.product
+  assign first_3d_model = product.media | where: 'media_type', 'model' | first
+  assign media_aspect_ratio = section.settings.media_aspect_ratio
+  assign full_width = section.settings.full_width
   assign media_layout = section.settings.media_layout
-	assign display_slider_pagination = section.settings.display_slider_pagination
+  assign display_slider_pagination = section.settings.display_slider_pagination
 
-	assign section_heading = section.settings.heading
-	assign section_heading_left = section.settings.heading_left
-	assign section_description = section.settings.description
+  assign section_heading = section.settings.heading
+  assign section_heading_left = section.settings.heading_left
+  assign section_description = section.settings.description
 
-	assign image_index = -1
+  assign image_index = -1
 
-	assign display_captions = section.settings.display_captions
+  assign display_captions = section.settings.display_captions
   assign hide_variants = section.settings.hide_variants
-	assign featured_media = product.featured_media
+  assign featured_media = product.featured_media
 
-	assign first_image = nil
-	assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
+  assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
 
-	assign disable_top_spacing = section.settings.disable_top_spacing
-	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+  assign disable_top_spacing = section.settings.disable_top_spacing
+  assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 
-	assign sizes = '375x375,640x640,960x960,1280x1280'
-	if media_aspect_ratio == 'adapt'
-		assign sizes = '375x0,640x0,960x0,1280x0'
-	elsif media_aspect_ratio == 'portrait'
-		assign sizes = '375x469,640x800,960x1200,1280x1600'
-	elsif media_aspect_ratio == 'landscape'
-		assign sizes = '375x281,640x480,960x720,1280x960'
-	endif
+  assign sizes = '375x375,640x640,960x960,1280x1280'
+  if media_aspect_ratio == 'adapt'
+    assign sizes = '375x0,640x0,960x0,1280x0'
+  elsif media_aspect_ratio == 'portrait'
+    assign sizes = '375x469,640x800,960x1200,1280x1600'
+  elsif media_aspect_ratio == 'landscape'
+    assign sizes = '375x281,640x480,960x720,1280x960'
+  endif
 
   if hide_variants and variant_images.size == product.media.size
     assign single_media_visible = true
   endif
 
-	assign media_count = product.media.size
+  assign media_count = product.media.size
   if hide_variants and media_count > 1 and variant_images.size > 0
     assign media_count = media_count | minus: variant_images.size | plus: 1
   endif
@@ -43,27 +42,41 @@
   if media_count == 1 or single_media_visible
     assign single_media_visible_mobile = true
   endif
-
 -%}
 {{- 'featured-product.css' | asset_url | stylesheet_tag -}}
 
-{%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
+{%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
 {%- if first_3d_model -%}
-  <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
-  <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'product-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link
+    id="ModelViewerStyle"
+    rel="stylesheet"
+    href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+    media="print"
+    onload="this.media='all'"
+  >
+  <link
+    id="ModelViewerOverride"
+    rel="stylesheet"
+    href="{{ 'product-model-viewer-ui.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'"
+  >
 {%- endif -%}
 <div class="thb-product-detail featured-product product section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
   <div class="row {% if full_width %}full-width-row{% endif %}">
-		<div class="small-12 columns">
-			{% render 'section-header', section_heading: section_heading, section_description: section_description, section_heading_left: section_heading_left %}
-			<div class="product-grid-container">
-				<div id="MediaGallery-{{ section.id }}" data-hide-variants="{{ hide_variants }}">
-					<div class="product-image-container product-image-container--{{ media_layout }}">
-		        <product-slider{{ slider_prefix }} id="Product-Slider" class="product-images product-images--{{ media_layout }}" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
+    <div class="small-12 columns">
+      {% render 'section-header',
+        section_heading: section_heading,
+        section_description: section_description,
+        section_heading_left: section_heading_left
+      %}
+      <div class="product-grid-container">
+        <div id="MediaGallery-{{ section.id }}" data-hide-variants="{{ hide_variants }}">
+          <div class="product-image-container product-image-container--{{ media_layout }}">
+            <product-slider{% if media_layout == 'thumbnails' %}-thumbnails{% endif %} id="Product-Slider" class="product-images product-images--{{ media_layout }}" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
 							{%- if featured_media != null -%}
 	              {%- liquid
 									assign image_index = image_index | plus: 1
-									assign first_image = featured_media.preview_image
 								-%}
 	              {%- render 'product-media', product: product, section: section, forloop: false, media: featured_media, sizes: sizes, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants, priority: 'high', display_captions: display_captions -%}
 	            {%- endif -%}
@@ -76,14 +89,13 @@
 
                     assign priority = false
                     if image_index == 0
-                      assign first_image = media.preview_image
                       assign priority = 'high'
                     endif
                   -%}
                   {%- render 'product-media', product: product, section: section, forloop: forloop, media: media, sizes: sizes, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants, priority: priority, display_captions: display_captions -%}
 								{%- endunless -%}
 		          {%- endfor -%}
-		        </product-slider{{ slider_prefix }}>
+		        {%- if media_layout == 'thumbnails' -%}</product-slider-thumbnails>{%- else -%}</product-slider>{%- endif -%}
             {%- if media_layout == 'thumbnails' -%}
               <scroll-shadow>
 								<div id="Product-Thumbnails" class="product-thumbnail-container" data-hide-variants="{{ hide_variants }}">
@@ -125,146 +137,147 @@
               {%- endif -%}
             {%- endif -%}
 					</div>
-		    </div>
-				<div class="product-information">
-					{% render 'product-information', product: product, section: section, update_url: false, pickup: false %}
-				</div>
-			</div>
-	  </div>
-	</div>
-</div>
 
-{%- if section.settings.lightbox != blank -%}
-{% render 'photoswipe' %}
-<link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}" media="print" onload="this.media='all'">
-{%- endif -%}
+          </div>
+          <div class="product-information">
+            {% render 'product-information', product: product, section: section, update_url: false, pickup: false %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
-{%- if media_layout == 'thumbnails' -%}
-  <script src="{{ 'product-thumbnails.js' | asset_url }}" defer="defer"></script>
-{%- endif -%}
+  {%- if section.settings.lightbox != blank -%}
+    {% render 'photoswipe' %}
+    <link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}" media="print" onload="this.media='all'">
+  {%- endif -%}
 
-{%- if first_3d_model -%}
-  <script type="application/json" id="ProductJSON-{{ product.id }}">
-    {{ product.media | where: 'media_type', 'model' | json }}
-  </script>
-  <script src="{{ 'product-model.js' | asset_url }}" defer></script>
-{%- endif -%}
+  <script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
+  {%- if media_layout == 'thumbnails' -%}
+    <script src="{{ 'product-thumbnails.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
 
-{% schema %}
+  {%- if first_3d_model -%}
+    <script type="application/json" id="ProductJSON-{{ product.id }}">
+      {{ product.media | where: 'media_type', 'model' | json }}
+    </script>
+    <script src="{{ 'product-model.js' | asset_url }}" defer></script>
+  {%- endif -%}
+
+  {% schema %}
 {
   "name": "Featured product",
   "tag": "section",
   "class": "section-featured-product",
-	"settings": [
-		{
-			"type": "text",
-			"id": "heading",
-			"label": "Heading",
-			"default": "Featured product"
-		},
-		{
-			"type": "checkbox",
-			"id": "heading_left",
-			"default": false,
-			"label": "Left align heading"
-		},
-		{
-			"type": "richtext",
-			"id": "description",
-			"label": "Description",
-			"default": "<p>Add a short description for this featured product</p>"
-		},
-		{
-			"type": "checkbox",
-			"id": "full_width",
-			"default": false,
-			"label": "Make section full width"
-		},
-		{
-			"type": "header",
-			"content": "Product"
-		},
-		{
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured product"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_left",
+      "default": false,
+      "label": "Left align heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add a short description for this featured product</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": false,
+      "label": "Make section full width"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
       "type": "product",
       "id": "product",
       "label": "Product"
     },
-		{
-			"type": "checkbox",
-			"id": "show_taxes_included",
-			"default": true,
-			"label": "Show taxes included"
-		},
-		{
-			"type": "checkbox",
-			"id": "enable_sticky_info",
-			"default": true,
-			"label": "Enable sticky content on desktop"
-		},
-		{
-			"type": "header",
-			"content": "Media"
-		},
-		{
-			"type": "paragraph",
-			"content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
-		},
     {
-			"type": "select",
-			"id": "media_layout",
-			"options": [
-				{
-					"value": "grid",
-					"label": "Grid"
-				},
-				{
-					"value": "list",
-					"label": "List"
-				},
-				{
-					"value": "collage",
-					"label": "Collage"
-				},
-				{
-					"value": "thumbnails",
-					"label": "Thumbnails"
-				}
-			],
-			"default": "grid",
-			"label": "Layout"
-		},
-		{
+      "type": "checkbox",
+      "id": "show_taxes_included",
+      "default": true,
+      "label": "Show taxes included"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "default": true,
+      "label": "Enable sticky content on desktop"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+    },
+    {
+      "type": "select",
+      "id": "media_layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "list",
+          "label": "List"
+        },
+        {
+          "value": "collage",
+          "label": "Collage"
+        },
+        {
+          "value": "thumbnails",
+          "label": "Thumbnails"
+        }
+      ],
+      "default": "grid",
+      "label": "Layout"
+    },
+    {
       "type": "checkbox",
       "id": "display_slider_pagination",
       "default": true,
       "label": "Display pagination on mobile"
     },
-		{
-			"type": "select",
-			"id": "media_aspect_ratio",
-			"options": [
-				{
-					"value": "adapt",
-					"label": "Adapt to image"
-				},
-				{
-					"value": "square",
-					"label": "Square"
-				},
-				{
-					"value": "portrait",
-					"label": "Portrait"
-				},
-				{
-					"value": "landscape",
-					"label": "Landscape"
-				}
-			],
-			"default": "adapt",
-			"label": "Image ratio"
-		},
-		{
+    {
+      "type": "select",
+      "id": "media_aspect_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
+      ],
+      "default": "adapt",
+      "label": "Image ratio"
+    },
+    {
       "type": "checkbox",
       "id": "display_captions",
       "default": true,
@@ -275,42 +288,42 @@
       "id": "hide_variants",
       "default": false,
       "label": "Hide unselected variants’ media",
-			"info": "Media for the unselected variants will be hidden."
+      "info": "Media for the unselected variants will be hidden."
     },
-		{
-			"type": "checkbox",
-			"id": "lightbox",
-			"default": true,
-			"label": "Enable image zoom"
-		},
-		{
+    {
+      "type": "checkbox",
+      "id": "lightbox",
+      "default": true,
+      "label": "Enable image zoom"
+    },
+    {
       "type": "checkbox",
       "id": "enable_video_looping",
       "default": false,
       "label": "Enable video looping"
     },
-		{
+    {
       "type": "header",
       "content": "Spacing"
     },
-		{
-			"type": "checkbox",
-			"id": "disable_top_spacing",
-			"default": false,
-			"label": "Remove top spacing"
-		},
-		{
-			"type": "checkbox",
-			"id": "disable_bottom_spacing",
-			"default": false,
-			"label": "Remove bottom spacing"
-		}
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    }
   ],
   "blocks": [
-		{
-			"type": "@app"
-		},
-		{
+    {
+      "type": "@app"
+    },
+    {
       "type": "text",
       "name": "Text",
       "settings": [
@@ -342,37 +355,37 @@
         }
       ]
     },
-		{
+    {
       "type": "title",
       "name": "Title",
       "limit": 1,
-			"settings": [
-				{
-					"type": "checkbox",
-					"id": "uppercase",
-					"default": true,
-					"label": "Make title uppercase"
-				},
-				{
-					"type": "checkbox",
-					"id": "show_products_rating",
-					"default": true,
-					"label": "Show product rating",
-					"info": "To display a rating, add a product rating app. [Learn more](https://help.shopify.com/manual/online-store/themes/os20/themes-by-shopify/dawn/sections#featured-collection-show-product-rating)"
-				},
+      "settings": [
         {
-					"type": "header",
-					"content": "Badges"
-				},
+          "type": "checkbox",
+          "id": "uppercase",
+          "default": true,
+          "label": "Make title uppercase"
+        },
         {
-					"type": "checkbox",
-					"id": "show_custom_badges",
-					"default": true,
-					"label": "Show custom badges"
-				}
-			]
+          "type": "checkbox",
+          "id": "show_products_rating",
+          "default": true,
+          "label": "Show product rating",
+          "info": "To display a rating, add a product rating app. [Learn more](https://help.shopify.com/manual/online-store/themes/os20/themes-by-shopify/dawn/sections#featured-collection-show-product-rating)"
+        },
+        {
+          "type": "header",
+          "content": "Badges"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_custom_badges",
+          "default": true,
+          "label": "Show custom badges"
+        }
+      ]
     },
-		{
+    {
       "type": "variant_picker",
       "name": "Variant picker",
       "limit": 1,
@@ -393,13 +406,13 @@
           "default": "button",
           "label": "Type"
         },
-				{
-					"type": "checkbox",
-					"id": "color_picker",
-					"default": true,
-					"label": "Enable color swatches",
-					"info": "[Learn more about color swatches.](https://documentation.fuelthemes.net/kb/how-do-i-set-up-product-variant-swatches/)"
-				},
+        {
+          "type": "checkbox",
+          "id": "color_picker",
+          "default": true,
+          "label": "Enable color swatches",
+          "info": "[Learn more about color swatches.](https://documentation.fuelthemes.net/kb/how-do-i-set-up-product-variant-swatches/)"
+        },
         {
           "type": "select",
           "id": "color_picker_size",
@@ -421,36 +434,36 @@
           "default": "regular"
         },
         {
-					"type": "checkbox",
-					"id": "color_picker_use_variants",
-					"default": false,
-					"label": "Use variant images for color swatches",
-					"info": "Color swatches will use variant featured images if available."
-				},
-				{
-					"type": "checkbox",
-					"id": "variant_is_disabled",
-					"default": true,
-					"label": "Show availability in selectors",
-					"info": "When an option is selected, unavailable variants will be crossed-out."
-				},
+          "type": "checkbox",
+          "id": "color_picker_use_variants",
+          "default": false,
+          "label": "Use variant images for color swatches",
+          "info": "Color swatches will use variant featured images if available."
+        },
         {
-					"type": "header",
-					"content": "Sizing guide"
-				},
+          "type": "checkbox",
+          "id": "variant_is_disabled",
+          "default": true,
+          "label": "Show availability in selectors",
+          "info": "When an option is selected, unavailable variants will be crossed-out."
+        },
+        {
+          "type": "header",
+          "content": "Sizing guide"
+        },
         {
           "type": "text",
           "id": "sizing_guide_variant",
           "default": "Size",
           "label": "Sizing guide variant name",
-					"info": "Name of the variant to show the sizing guide link. [Learn more about sizing guide](https://documentation.fuelthemes.net/kb/how-do-i-add-a-size-chart-to-my-products-distinctive/)"
+          "info": "Name of the variant to show the sizing guide link. [Learn more about sizing guide](https://documentation.fuelthemes.net/kb/how-do-i-add-a-size-chart-to-my-products-distinctive/)"
         },
-				{
+        {
           "type": "text",
           "id": "sizing_guide_text",
           "default": "Sizing guide",
           "label": "Sizing guide label",
-					"info": "Leave empty to remove the sizing guide link."
+          "info": "Leave empty to remove the sizing guide link."
         },
         {
           "type": "select",
@@ -638,28 +651,28 @@
         },
         {
           "type": "page",
-	        "id": "sizing_guide_page",
+          "id": "sizing_guide_page",
           "label": "Sizing guide page"
         }
       ]
     },
-		{
+    {
       "type": "buy_buttons",
       "name": "Product form",
       "limit": 1,
-			"settings": [
-				{
-					"type": "checkbox",
-					"id": "show_quantity_selector",
-					"default": true,
-					"label": "Show quantity selector"
-				},
+      "settings": [
         {
-					"type": "checkbox",
-					"id": "outline_button",
-					"default": true,
-					"label": "Make button outline"
-				},
+          "type": "checkbox",
+          "id": "show_quantity_selector",
+          "default": true,
+          "label": "Show quantity selector"
+        },
+        {
+          "type": "checkbox",
+          "id": "outline_button",
+          "default": true,
+          "label": "Make button outline"
+        },
         {
           "type": "checkbox",
           "id": "show_dynamic_checkout",
@@ -673,7 +686,7 @@
       "type": "description",
       "name": "Description",
       "limit": 1,
-			"settings": [
+      "settings": [
         {
           "type": "range",
           "id": "seo_text_max_height",
@@ -700,7 +713,7 @@
         }
       ]
     },
-		{
+    {
       "type": "custom_liquid",
       "name": "Custom liquid",
       "settings": [
@@ -716,19 +729,19 @@
       "type": "specifications_tab",
       "name": "Product specifications",
       "settings": [
-				{
-					"type": "text",
-					"id": "heading",
-					"default": "Product specifications",
-					"info": "Include a heading that explains the content.",
-					"label": "Heading"
-				},
-				{
-					"type": "checkbox",
-					"id": "open",
-					"default": false,
-					"label": "Open by default"
-				},
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Product specifications",
+          "info": "Include a heading that explains the content.",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "default": false,
+          "label": "Open by default"
+        },
         {
           "type": "textarea",
           "id": "content",
@@ -736,31 +749,31 @@
           "info": "Include a list of labels and product metafield keys below, separated by a colon, one per line. Example: Color:custom.color"
         },
         {
-					"type": "text",
-					"id": "empty_field_label",
-					"default": "N/A",
-					"label": "Empty field text",
-					"info": "Text to use for empty fields"
-				}
+          "type": "text",
+          "id": "empty_field_label",
+          "default": "N/A",
+          "label": "Empty field text",
+          "info": "Text to use for empty fields"
+        }
       ]
     },
-		{
+    {
       "type": "collapsible_tab",
       "name": "Collapsible row",
       "settings": [
-				{
-					"type": "text",
-					"id": "heading",
-					"default": "Collapsible row",
-					"info": "Include a heading that explains the content.",
-					"label": "Heading"
-				},
-				{
-					"type": "checkbox",
-					"id": "open",
-					"default": false,
-					"label": "Open by default"
-				},
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible row",
+          "info": "Include a heading that explains the content.",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "default": false,
+          "label": "Open by default"
+        },
         {
           "type": "richtext",
           "id": "content",
@@ -827,53 +840,53 @@
         }
       ]
     },
-		{
-			"type": "image",
+    {
+      "type": "image",
       "name": "Image",
-			"settings": [
-				{
-					"type": "image_picker",
-					"id": "image",
-					"label": "Image"
-				},
-				{
-					 "type": "select",
-					 "id": "position",
-					 "label": "Position",
-					 "options": [
-						 { "value": "text-center", "label": "Center" },
-						 { "value": "text-left", "label": "Left" },
-						 { "value": "text-right", "label": "Right" }
-					 ],
-					 "default": "text-left"
-				},
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            { "value": "text-center", "label": "Center" },
+            { "value": "text-left", "label": "Left" },
+            { "value": "text-right", "label": "Right" }
+          ],
+          "default": "text-left"
+        },
         {
           "id": "image_link",
           "type": "url",
           "label": "Link"
         }
-			]
-		},
-		{
+      ]
+    },
+    {
       "type": "product_link",
       "name": "Product link",
       "limit": 1,
       "settings": [
         {
-					"type": "paragraph",
-					"content": "Use this to direct users to product page"
+          "type": "paragraph",
+          "content": "Use this to direct users to product page"
         }
       ]
     },
-		{
+    {
       "type": "custom_option",
       "name": "Line item property",
       "settings": [
-				{
-					"type": "paragraph",
-					"content": "Line item properties are used to collect customization information for an item added to the cart."
-				},
-				{
+        {
+          "type": "paragraph",
+          "content": "Line item properties are used to collect customization information for an item added to the cart."
+        },
+        {
           "type": "select",
           "id": "type",
           "label": "Type",
@@ -910,12 +923,12 @@
           "info": "Only works with 'Add to cart' button",
           "default": false
         },
-				{
+        {
           "type": "header",
           "content": "Text",
-					"info": "Requires line item property type to be Text or Textarea."
+          "info": "Requires line item property type to be Text or Textarea."
         },
-				{
+        {
           "type": "text",
           "id": "text_placeholder",
           "label": "Placeholder",
@@ -924,7 +937,7 @@
         {
           "type": "header",
           "content": "Checkbox",
-					"info": "Requires line item property type to be Checkbox."
+          "info": "Requires line item property type to be Checkbox."
         },
         {
           "type": "text",
@@ -941,7 +954,7 @@
         {
           "type": "header",
           "content": "Multiple options",
-					"info": "Requires line item property type to be Multiple options."
+          "info": "Requires line item property type to be Multiple options."
         },
         {
           "type": "select",
@@ -968,30 +981,30 @@
         }
       ]
     },
-		{
+    {
       "type": "sku",
       "name": "SKU",
       "settings": [
-				{
-					"type": "select",
-					"id": "sku_style",
-					"options": [
-						{
-							"value": "style_body",
-							"label": "Body"
-						},
-						{
-							"value": "subheading",
-							"label": "Subheading"
-						},
-						{
-							"value": "style_vendor",
-							"label": "Vendor"
-						}
-					],
-					"default": "style_vendor",
-					"label": "SKU style"
-				}
+        {
+          "type": "select",
+          "id": "sku_style",
+          "options": [
+            {
+              "value": "style_body",
+              "label": "Body"
+            },
+            {
+              "value": "subheading",
+              "label": "Subheading"
+            },
+            {
+              "value": "style_vendor",
+              "label": "Vendor"
+            }
+          ],
+          "default": "style_vendor",
+          "label": "SKU style"
+        }
       ]
     },
     {
@@ -1051,34 +1064,32 @@
         }
       ]
     },
-		{
+    {
       "type": "payment_icons",
       "name": "Payment icons",
       "limit": 1,
       "settings": []
     }
   ],
-	"presets": [
-		{
-			"name": "Featured product",
-			"blocks": [
-				{
-					"type": "title"
-				},
-				{
-					"type": "variant_picker"
-				},
-				{
-					"type": "buy_buttons"
-				}
-			]
-		}
-	],
-	"enabled_on": {
+  "presets": [
+    {
+      "name": "Featured product",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "variant_picker"
+        },
+        {
+          "type": "buy_buttons"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
     "templates": ["*"],
-		"groups": [
-			"header", "footer"
-		]
-	}
+    "groups": ["header", "footer"]
+  }
 }
-{% endschema %}
+  {% endschema %}

@@ -67,17 +67,21 @@
               {% endif %}
             >
               {%- if block.settings.video != blank -%}
-                <internal-video data-autoplay='true'>
-                  <video 
-                    width="100%" 
-                    height="auto" 
-                    preload='metadata'
+                <internal-video data-autoplay="true">
+                  <video
+                    width="100%"
+                    height="auto"
+                    preload="metadata"
                     poster="{{ block.settings.video.preview_image | image_url }}"
-                    loop muted playsinline autoplay disablepictureinpicture
+                    loop
+                    muted
+                    playsinline
+                    autoplay
+                    disablepictureinpicture
                   >
                     {% for source in block.settings.video.sources %}
-                      <source 
-                        data-src="{{ source.url }}" 
+                      <source
+                        data-src="{{ source.url }}"
                         type="{{ source.mime_type }}"
                       >
                     {% endfor %}
@@ -131,7 +135,7 @@
                     id="SectionAtcBtn-{{ section.id }}-{{ forloop.index }}"
                     type="button"
                     class="button main-product-atc button--has-spinner"
-                    {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                    {% if product.selected_or_first_available_variant.available == false %}
                       disabled
                     {% endif %}
                   >
@@ -149,10 +153,7 @@
                     </div>
                   </button>
                 {% else %}
-                  {% assign product_form_id = 'section-product-form-'
-                    | append: section.id
-                    | append: block.id
-                  %}
+                  {% assign product_form_id = 'section-product-form-' | append: section.id | append: block.id %}
                   {% render 'separate-atc-btn',
                     product: block.settings.atc_product,
                     product_form_id: product_form_id,
@@ -177,149 +178,189 @@
 </script>
 
 {% schema %}
-{"name":"Multirow","class":"section","disabled_on": {"groups": ["header","footer"
-    ]
-  },"settings": [
-    {"type":"select","id":"visibility","options": [
-        {"value":"desktop-hidden","label":"Mobile only"
-        },
-        {"value":"mobile-hidden","label":"Desktop only"
-        },
-        {"value":"always-display","label":"All devices"
-        }
-      ],"label":"Display on","default":"always-display"
+{
+  "name": "Multirow",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "options": [
+        { "value": "desktop-hidden", "label": "Mobile only" },
+        { "value": "mobile-hidden", "label": "Desktop only" },
+        { "value": "always-display", "label": "All devices" }
+      ],
+      "label": "Display on",
+      "default": "always-display"
     },
-    {"type":"select","id":"image_height","options": [
-        {"value":"adapt","label":"Option 1"
-        },
-        {"value":"small","label":"Option 2"
-        },
-        {"value":"medium","label":"Option 3"
-        },
-        {"value":"large","label":"Option 4"
-        }
-      ],"default":"medium","label":"Image Height"
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        { "value": "adapt", "label": "Option 1" },
+        { "value": "small", "label": "Option 2" },
+        { "value": "medium", "label": "Option 3" },
+        { "value": "large", "label": "Option 4" }
+      ],
+      "default": "medium",
+      "label": "Image Height"
     },
-    {"type":"select","id":"desktop_image_width","options": [
-        {"value":"small","label":"Option 1"
-        },
-        {"value":"medium","label":"Option 2"
-        },
-        {"value":"large","label":"Option 3"
-        }
-      ],"default":"medium","label":"Desktop Image Width","info":"Info"
+    {
+      "type": "select",
+      "id": "desktop_image_width",
+      "options": [
+        { "value": "small", "label": "Option 1" },
+        { "value": "medium", "label": "Option 2" },
+        { "value": "large", "label": "Option 3" }
+      ],
+      "default": "medium",
+      "label": "Desktop Image Width",
+      "info": "Info"
     },
-    {"type":"select","id":"heading_size","options": [
-        {"value":"h2","label":"Option 1"
-        },
-        {"value":"h1","label":"Option 2"
-        },
-        {"value":"h0","label":"Option 3"
-        }
-      ],"default":"h1","label":"Heading Size"
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Option 1" },
+        { "value": "h1", "label": "Option 2" },
+        { "value": "h0", "label": "Option 3" }
+      ],
+      "default": "h1",
+      "label": "Heading Size"
     },
-    {"type":"select","id":"text_style","options": [
-        {"value":"body","label":"Option 1"
-        },
-        {"value":"subtitle","label":"Option 2"
-        }
-      ],"default":"body","label":"Text Style"
+    {
+      "type": "select",
+      "id": "text_style",
+      "options": [
+        { "value": "body", "label": "Option 1" },
+        { "value": "subtitle", "label": "Option 2" }
+      ],
+      "default": "body",
+      "label": "Text Style"
     },
-    {"type":"select","id":"button_style","options": [
-        {"value":"primary","label":"Option 1"
-        },
-        {"value":"secondary","label":"Option 2"
-        }
-      ],"default":"secondary","label":"Button Style"
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        { "value": "primary", "label": "Option 1" },
+        { "value": "secondary", "label": "Option 2" }
+      ],
+      "default": "secondary",
+      "label": "Button Style"
     },
-    {"type":"select","id":"desktop_content_position","options": [
-        {"value":"top","label":"Left"
-        },
-        {"value":"middle","label":"Center"
-        },
-        {"value":"bottom","label":"Right"
-        }
-      ],"default":"middle","label":"Desktop content alignment","info":"Info"
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "options": [
+        { "value": "top", "label": "Left" },
+        { "value": "middle", "label": "Center" },
+        { "value": "bottom", "label": "Right" }
+      ],
+      "default": "middle",
+      "label": "Desktop content alignment",
+      "info": "Info"
     },
-    {"type":"select","id":"desktop_content_alignment","options": [
-        {"value":"left","label":"Option 1"
-        },
-        {"value":"center","label":"Option 2"
-        },
-        {"value":"right","label":"Option 3"
-        }
-      ],"default":"left","label":"Desktop Content Alignment"
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "options": [
+        { "value": "left", "label": "Option 1" },
+        { "value": "center", "label": "Option 2" },
+        { "value": "right", "label": "Option 3" }
+      ],
+      "default": "left",
+      "label": "Desktop Content Alignment"
     },
-    {"type":"select","id":"image_layout","options": [
-        {"value":"alternate-left","label":"Option 1"
-        },
-        {"value":"alternate-right","label":"Option 2"
-        },
-        {"value":"align-left","label":"Option 3"
-        },
-        {"value":"align-right","label":"Option 4"
-        }
-      ],"default":"alternate-left","label":"Image Layout","info":"Info"
+    {
+      "type": "select",
+      "id": "image_layout",
+      "options": [
+        { "value": "alternate-left", "label": "Option 1" },
+        { "value": "alternate-right", "label": "Option 2" },
+        { "value": "align-left", "label": "Option 3" },
+        { "value": "align-right", "label": "Option 4" }
+      ],
+      "default": "alternate-left",
+      "label": "Image Layout",
+      "info": "Info"
     },
-    {"type":"color","id":"section_bg_color","label":"Background color","default":"#ffffff"
+    { "type": "color", "id": "section_bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "section_text_color", "label": "Text color", "default": "#121212" },
+    { "type": "color", "id": "row_bg_color", "label": "Container background color", "default": "#ffffff" },
+    { "type": "color", "id": "row_text_color", "label": "Container text color", "default": "#121212" },
+    { "type": "header", "content": "Mobile layout" },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left",
+      "label": "Mobile content alignment"
     },
-    {"type":"color","id":"section_text_color","label":"Text color","default":"#121212"
+    { "type": "header", "content": "Section padding" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
     },
-    {"type":"color","id":"row_bg_color","label":"Container background color","default":"#ffffff"
-    },
-    {"type":"color","id":"row_text_color","label":"Container text color","default":"#121212"
-    },
-    {"type":"header","content":"Mobile layout"
-    },
-    {"type":"select","id":"mobile_content_alignment","options": [
-        {"value":"left","label":"Left"
-        },
-        {"value":"center","label":"Center"
-        },
-        {"value":"right","label":"Right"
-        }
-      ],"default":"left","label":"Mobile content alignment"
-    },
-    {"type":"header","content":"Section padding"
-    },
-    {"type":"range","id":"padding_top","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding top","default": 36
-    },
-    {"type":"range","id":"padding_bottom","min": 0,"max": 100,"step": 4,"unit":"px","label":"Padding bottom","default": 36
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
     }
-  ],"blocks": [
-    {"type":"row","name":"Row","settings": [
-        {"type":"image_picker","id":"image","label":"Image"
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "header", "content": "Or" },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Use autoplay mp4 instead of GIFs & animated WEBPs."
         },
-        {"type":"header","content":"Or"
+        { "type": "text", "id": "caption", "default": "Caption", "label": "Caption" },
+        { "type": "inline_richtext", "id": "heading", "default": "Row", "label": "Heading" },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+          "label": "Text"
         },
-        {"type":"video","id":"video","label":"Video","info":"Use autoplay mp4 instead of GIFs & animated WEBPs."
+        { "type": "text", "id": "button_label", "default": "Button label", "label": "Button label" },
+        { "type": "url", "id": "button_link", "label": "Button link" },
+        {
+          "type": "text",
+          "id": "atc_button_label",
+          "label": "Add to Cart button label",
+          "info": "Leave the label blank to hide the Add to Cart button."
         },
-        {"type":"text","id":"caption","default":"Caption","label":"Caption"
-        },
-        {"type":"inline_richtext","id":"heading","default":"Row","label":"Heading"
-        },
-        {"type":"richtext","id":"text","default":"<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>","label":"Text"
-        },
-        {"type":"text","id":"button_label","default":"Button label","label":"Button label"
-        },
-        {"type":"url","id":"button_link","label":"Button link"
-        },
-        {"type":"text","id":"atc_button_label","label":"Add to Cart button label","info":"Leave the label blank to hide the Add to Cart button."
-        },
-        {"type":"product","id":"atc_product","label":"ATC Custom product","info":"IMPORTANT: If empty, the button will add the main product FROM THE PRODUCT PAGE to cart (INCLUDING the selected variant/quantity, upsells etc.)"
+        {
+          "type": "product",
+          "id": "atc_product",
+          "label": "ATC Custom product",
+          "info": "IMPORTANT: If empty, the button will add the main product FROM THE PRODUCT PAGE to cart (INCLUDING the selected variant/quantity, upsells etc.)"
         }
       ]
     }
-  ],"presets": [
-    {"name":"Multirow","blocks": [
-        {"type":"row"
-        },
-        {"type":"row"
-        },
-        {"type":"row"
-        }
-      ]
-    }
-  ]
+  ],
+  "presets": [{ "name": "Multirow", "blocks": [{ "type": "row" }, { "type": "row" }, { "type": "row" }] }]
 }
 {% endschema %}

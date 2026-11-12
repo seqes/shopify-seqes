@@ -8,7 +8,7 @@
  * ------------------------------------------------------------
  */
 {
-  "type": "header",
+  "type": "footer",
   "name": "Footer group",
   "sections": {
     "footer": {
@@ -38,11 +38,7 @@
           }
         }
       },
-      "block_order": [
-        "menu_nWDeMm",
-        "social_EnGpgj",
-        "signup_keJmdR"
-      ],
+      "block_order": ["menu_nWDeMm", "social_EnGpgj", "signup_keJmdR"],
       "settings": {
         "full_width": true,
         "copyright_text": "All rights reserved.",
@@ -53,7 +49,5 @@
       }
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["footer"]
 }
