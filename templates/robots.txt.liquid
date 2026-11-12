@@ -3,7 +3,9 @@
   Repite las reglas por defecto de cada grupo y, para el grupo "*", agrega un
   grupo explicito por cada agente de IA y de busqueda que interesa a Seqes, con
   las mismas reglas de bloqueo (carrito, checkout, cuenta, busqueda, filtros).
-  user_agent y rule ya emiten su propio salto de linea; no quitar los guiones.
+  La linea "User-agent:" de cada agente sale del propio objeto user_agent
+  (cambiando el "*" por el agente), asi el salto de linea y la sangria no
+  dependen del formato de este archivo. No quitar los guiones de los tags.
 {%- endcomment -%}
 {%- assign ai_agents = 'GPTBot,OAI-SearchBot,ChatGPT-User,ClaudeBot,Claude-Web,anthropic-ai,PerplexityBot,Perplexity-User,Google-Extended,Applebot-Extended,CCBot'
   | split: ','
@@ -17,8 +19,8 @@
     {{- group.sitemap -}}
   {%- endif -%}
   {%- if group.user_agent.value == '*' -%}
-    {%- for agent in ai_agents %}
-      User-agent: {{ agent }}
+    {%- for agent in ai_agents -%}
+      {{- group.user_agent | replace: '*', agent -}}
       {%- for rule in group.rules -%}
         {{- rule -}}
       {%- endfor -%}
