@@ -11,7 +11,7 @@
 {%- endcomment -%}
 {%- assign ai_agents = 'GPTBot,OAI-SearchBot,ChatGPT-User,ClaudeBot,Claude-Web,anthropic-ai,PerplexityBot,Perplexity-User,Google-Extended,Applebot-Extended,CCBot' | split: ',' -%}
 {%- for group in robots.default_groups %}
-{{ group.user_agent }}
+{{ group.user_agent | strip_newlines }}
 {%- for rule in group.rules %}
 {{ rule }}
 {%- endfor %}
@@ -20,7 +20,7 @@
 {%- endif %}
 {%- if group.user_agent.value == '*' %}
 {%- for agent in ai_agents %}
-{{ group.user_agent | replace: '*', agent }}
+{{ group.user_agent | strip_newlines | replace: '*', agent }}
 {%- for rule in group.rules %}
 {{ rule }}
 {%- endfor %}
