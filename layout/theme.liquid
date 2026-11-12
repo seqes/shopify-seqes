@@ -1,4 +1,22 @@
 <!doctype html>
+{%- comment -%}
+  El contenido se captura una vez para decidir si la pagina necesita GSAP
+  (cada seccion animada tiene su nombre como clase). Asi solo cargan animations.min.js
+  y gsap-config.js donde hay secciones que las usan. La biblioteca de secciones no cambia.
+{%- endcomment -%}
+{%- capture page_content -%}{{ content_for_layout }}{%- endcapture -%}
+{%- assign gsap_sections = 'background-video,before-after-image,featured-collection-list,featured-product-card,image-hotspots,image-with-text-overlay,layered-images-with-text,map,progress-bars,tabbed-content,timeline,vertical-slideshow,slideshow'
+  | split: ','
+-%}
+{%- assign needs_gsap = false -%}
+{%- if settings.animations -%}
+  {%- for name in gsap_sections -%}
+    {%- if page_content contains name -%}
+      {%- assign needs_gsap = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 {%- capture dir -%}
 	{%- case request.locale.iso_code -%}
 	  {%- when 'ae' or 'ar' or 'arc' or 'bcc' or 'bqi' or 'ckb' or 'dv' or 'fa' or 'glk' or 'ha' or 'he' or 'he-IL' or 'kwh' or 'ks' or 'ku' or 'mzn' or 'nqo' or 'pnb' or 'ps' or 'sd' or 'ug' or 'ur' or 'yi' -%}
@@ -577,7 +595,7 @@
     <script src="{{ 'lazy-hydrate.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'focus-trap.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
-    {%- if settings.animations -%}
+    {%- if needs_gsap -%}
       <script src="{{ 'animations.min.js' | asset_url }}" defer="defer"></script>
       <script src="{{ 'gsap-config.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
@@ -599,7 +617,7 @@
       {%- sections 'header-group' -%}
       {%- sections 'overlay-group' -%}
       <div role="main" id="main-content">
-        {{ content_for_layout }}
+        {{ page_content }}
       </div>
       {% sections 'footer-group' %}
       {% render 'cart-drawer' %}
