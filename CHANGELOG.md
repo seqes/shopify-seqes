@@ -18,6 +18,19 @@ Git tags:
 
 Security, dead-code cleanup, performance polish, accessibility, tooling, documentation, and CI on top of the deep performance optimization.
 
+### Phase 18 - Revision del tema (2026-11-17)
+
+- Breadcrumbs de producto desde el metacampo `custom.breadcrumb` (lista ordenada de colecciones); sin metacampo, la primera coleccion distinta de `frontpage`.
+- Redes sociales de la veterinaria retiradas de `config/settings_data.json` (quedan vacias hasta cargar las de Seqes en el editor). Con eso tambien salen del JSON-LD `Organization`.
+- `templates/page.faq.json` borrada: era el FAQ de la veterinaria y no estaba asignada.
+- `robots.txt`: `rule` y `sitemap` con `strip_newlines` (salian con una linea en blanco entre reglas).
+- `<title>` en una sola linea, sin saltos ni espacios sobrantes.
+- `noindex,follow` en la coleccion tecnica `frontpage`.
+- Vista rapida apagada (`enable_quick_view`): `product.js` ya no carga en todas las paginas.
+- Borradas 23 plantillas de demostracion de Reformation sin asignar (glamour, mono, reinvent, sunshine, cashmere, our-fabrics, about, sustainability, articulos y blog/collection alternativas). Las secciones se conservan.
+- `product.pre-order.json` se conserva por la funcion de preventa (sufijo `pre-order`), solo con breadcrumbs, ficha y recomendaciones.
+- Blog con titulo "Artículos". `.husky/pre-commit` sin las lineas que husky v10 rechaza.
+
 ### Phase 17 - SEO, LCP y limpieza de la clinica heredada
 
 - Eliminadas las plantillas `collection.medicos-veterinarios.json` y `collection.especialidades-medicas.json` (heredadas de la clinica).

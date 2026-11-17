@@ -81,20 +81,31 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif %}
 
+    {%- comment -%} Titulo en una sola linea: cada tag recorta el salto de linea que lo rodea {%- endcomment -%}
     <title>
-      {{ page_title }}
-      {% if current_tags -%}
+      {{- page_title -}}
+      {%- if current_tags -%}
         {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
-      {%- endif %}
-      {% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}
-      {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
     {%- assign meta_description = page_description | default: shop.description -%}
     {% if meta_description != blank %}
       <meta name="description" content="{{ meta_description | strip_html | strip_newlines | truncate: 155 | escape }}">
     {% endif %}
-    {%- if request.page_type == 'search' or request.page_type == 'cart' or request.page_type contains 'customers' -%}
+    {%- liquid
+      assign noindex = false
+      if request.page_type == 'search' or request.page_type == 'cart' or request.page_type contains 'customers'
+        assign noindex = true
+      endif
+      # frontpage es la coleccion tecnica de la home: no se indexa como pagina propia
+      if request.page_type == 'collection' and collection.handle == 'frontpage'
+        assign noindex = true
+      endif
+    -%}
+    {%- if noindex -%}
       <meta name="robots" content="noindex,follow">
     {%- endif -%}
 

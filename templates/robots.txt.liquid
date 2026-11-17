@@ -13,16 +13,16 @@
 {%- for group in robots.default_groups %}
 {{ group.user_agent | strip_newlines }}
 {%- for rule in group.rules %}
-{{ rule }}
+{{ rule | strip_newlines }}
 {%- endfor %}
 {%- if group.sitemap != blank %}
-{{ group.sitemap }}
+{{ group.sitemap | strip_newlines }}
 {%- endif %}
 {%- if group.user_agent.value == '*' %}
 {%- for agent in ai_agents %}
 {{ group.user_agent | strip_newlines | replace: '*', agent }}
 {%- for rule in group.rules %}
-{{ rule }}
+{{ rule | strip_newlines }}
 {%- endfor %}
 {%- endfor %}
 {%- endif %}
