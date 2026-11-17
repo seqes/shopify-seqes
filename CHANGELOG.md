@@ -23,7 +23,7 @@ Security, dead-code cleanup, performance polish, accessibility, tooling, documen
 - Breadcrumbs de producto desde el metacampo `custom.breadcrumb` (lista ordenada de colecciones); sin metacampo, la primera coleccion distinta de `frontpage`.
 - Redes sociales de la veterinaria retiradas de `config/settings_data.json` (quedan vacias hasta cargar las de Seqes en el editor). Con eso tambien salen del JSON-LD `Organization`.
 - `templates/page.faq.json` borrada: era el FAQ de la veterinaria y no estaba asignada.
-- `robots.txt`: `rule` y `sitemap` con `strip_newlines` (salian con una linea en blanco entre reglas).
+- `robots.txt`: salia con una linea en blanco entre reglas. `strip_newlines` en `rule` no lo corrigio (verificado en vivo), asi que la plantilla ahora emite todo con `echo` dentro de un tag `liquid` y un salto de linea explicito (`nl`), sin depender del control de espacios.
 - `<title>` en una sola linea, sin saltos ni espacios sobrantes.
 - `noindex,follow` en la coleccion tecnica `frontpage`.
 - Vista rapida apagada (`enable_quick_view`): `product.js` ya no carga en todas las paginas.
