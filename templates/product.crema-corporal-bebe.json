@@ -310,9 +310,9 @@
         "faq_dry_skin": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "¿Por qué elegir estasi hay tantas cremas disponibles?",
+            "heading": "¿Por qué elegir esta si hay tantas cremas disponibles?",
             "open": false,
-            "content": "<p>Porque lo que le pones a la piel de tu guagua no debería ser lo mismo que compras al paso. Seqes tiene células madre de Alerce obtenidas por biotecnología, extracto de Murta chilena, hidratación biomimética con Hydrovance y manteca de karité. Todo respaldado por estudios clínicos con 0% de reacciones adversas. No es una crema más con un envase bonito: es lo que lleva adentro lo que la hace distinta.</p>",
+            "content": "<p>Porque lo que le pones a la piel de tu guagua no debería ser lo mismo que compras al paso. Seqes tiene células madre de Alerce obtenidas por biotecnología, hidratación biomimética con Hydrovance y manteca de karité. Todo respaldado por estudios clínicos con 0% de reacciones adversas. No es una crema más con un envase bonito: es lo que lleva adentro lo que la hace distinta.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -334,11 +334,11 @@
             "side_panel_1_page": "",
             "side_panel_2_label": "Despacho",
             "side_panel_2_icon": "truck",
-            "side_panel_2_content": "<p>Actualmente contamos con 2 métodos de envío:<br/></p><ul><li><strong>Blue Express:</strong> Disponible para todo Chile Continental.</li><li><strong>Envío Express ⚡️:</strong> Disponible, según stock en Punto de Venta (tiendas), para RM, Viña del Mar, Antofagasta y Concepción.</li></ul><p></p><p><em><strong>**Envío Express ⚡️ no aplican para envíos gratuitos</strong></em><em>.</em><em><strong>**<br/><br/></strong></em><strong>Tiempo de envío:</strong></p><ul><li><strong>Blue Express RM:</strong> 2 a 5 días hábiles</li><li><strong>Blue Express regiones norte, centro y sur:</strong> 3 a 7 días hábiles.</li><li><strong>Blue Express regiones extremas:</strong> 10 a 15 días hábiles.</li><li><strong>Envío Express ⚡️:</strong> Entrega en un máximo de 3 horas</li></ul><p><strong>*En caso de combinar este producto con el Calendario de Adviento, será despachado en 1 solo envío, a partir del 29 de septiembre*</strong></p><p>Durante eventos de alta demanda como <strong>Cyber Days, Navidad o Black Friday</strong>, los tiempos de<strong> despacho pueden extenderse</strong> debido al alto volumen de pedidos y la saturación de las empresas de transporte.</p><p>Por esta razón, es importante considerar <strong>entre 2 a 3 días hábiles adicionales</strong> al plazo de entrega habitual.</p><p>En el caso de los envíos exprés, se recomienda contemplar <strong>hasta 3 horas adicionales</strong> sobre el tiempo originalmente estimado.</p>",
+            "side_panel_2_content": "<p>Despachamos con <strong>Blue Express</strong> a todo Chile continental.</p><p><strong>Tiempo de envío:</strong></p><ul><li><strong>Región Metropolitana:</strong> 2 a 5 días hábiles.</li><li><strong>Regiones norte, centro y sur:</strong> 3 a 7 días hábiles.</li><li><strong>Regiones extremas:</strong> 10 a 15 días hábiles.</li></ul><p>Durante eventos de alta demanda como <strong>Cyber Days, Navidad o Black Friday</strong>, los tiempos de<strong> despacho pueden extenderse</strong> debido al alto volumen de pedidos y la saturación de las empresas de transporte. Considera <strong>entre 2 y 3 días hábiles adicionales</strong> al plazo habitual.</p>",
             "side_panel_2_page": "",
             "side_panel_3_label": "Garantias",
             "side_panel_3_icon": "return",
-            "side_panel_3_content": "<p>Puedes optar a la garantía de cambio o devolución<strong> </strong><em><strong>siempre que el producto esté sellado, con su empaque original intacto y sin uso</strong></em>, <em>hasta 30 días después de la fecha en que este haya sido recibido</em>, en el lugar donde el producto fue despachado.</p><p>Para cambios por motivos personales, será necesario realizar el pago del envío de la devolución hacia el lugar de origen, así como también el pago del reenvío del producto cambiado. El valor de cada uno va acorde a las tarifas establecidas en nuestra página web.</p><p>Si tu producto cumple con las condiciones de cambio y devolución, por favor escríbenos a hola@sokobox.cl para guiarte en el proceso.</p>",
+            "side_panel_3_content": "<p>Puedes optar a la garantía de cambio o devolución<strong> </strong><em><strong>siempre que el producto esté sellado, con su empaque original intacto y sin uso</strong></em>, <em>hasta 30 días después de la fecha en que este haya sido recibido</em>, en el lugar donde el producto fue despachado.</p><p>Para cambios por motivos personales, será necesario realizar el pago del envío de la devolución hacia el lugar de origen, así como también el pago del reenvío del producto cambiado. El valor de cada uno va acorde a las tarifas establecidas en nuestra página web.</p><p>Si tu producto cumple con las condiciones de cambio y devolución, por favor escríbenos a contacto@seqes.cl para guiarte en el proceso.</p>",
             "side_panel_3_page": "",
             "layout": "horizontal",
             "center_icons": true,
@@ -426,12 +426,7 @@
           }
         }
       },
-      "block_order": [
-        "logo_RLLtmX",
-        "logo_Pw4iVy",
-        "logo_CwQrwD",
-        "logo_PGm3XA"
-      ],
+      "block_order": ["logo_RLLtmX", "logo_Pw4iVy", "logo_CwQrwD", "logo_PGm3XA"],
       "settings": {
         "heading": "Libre de lo que sobra, llena de lo que importa",
         "description": "<p>Todo lo que eliminamos para proteger su piel</p>",
@@ -516,11 +511,7 @@
           }
         }
       },
-      "block_order": [
-        "user_iktzdg",
-        "user_aDnHLC",
-        "user_dTXRUG"
-      ],
+      "block_order": ["user_iktzdg", "user_aDnHLC", "user_dTXRUG"],
       "name": "Instagram stories",
       "settings": {
         "visibility": "always-display",
@@ -582,12 +573,7 @@
           }
         }
       },
-      "block_order": [
-        "subheading_gULkCL",
-        "heading_jMdrqh",
-        "text_RnzK9d",
-        "button_hJaUiD"
-      ],
+      "block_order": ["subheading_gULkCL", "heading_jMdrqh", "text_RnzK9d", "button_hJaUiD"],
       "settings": {
         "image": "shopify://shop_images/Baby_Lotion_Webp.webp",
         "image_ratio": "square",
@@ -649,10 +635,7 @@
           }
         }
       },
-      "block_order": [
-        "image_VVqgxA",
-        "image_cRFMkT"
-      ],
+      "block_order": ["image_VVqgxA", "image_cRFMkT"],
       "settings": {
         "heading": "¿Has visto esto en la piel de tu bebé?",
         "heading_left": false,
@@ -697,11 +680,7 @@
           }
         }
       },
-      "block_order": [
-        "icon_MQMEz6",
-        "icon_JTNVmQ",
-        "icon_nrMNYB"
-      ],
+      "block_order": ["icon_MQMEz6", "icon_JTNVmQ", "icon_nrMNYB"],
       "name": "Text with icons",
       "settings": {
         "text_alignment": "left",
@@ -744,11 +723,7 @@
           }
         }
       },
-      "block_order": [
-        "quote_ENNa6W",
-        "quote_NPKM3M",
-        "quote_D3waLP"
-      ],
+      "block_order": ["quote_ENNa6W", "quote_NPKM3M", "quote_D3waLP"],
       "name": "Testimonials",
       "settings": {
         "full_width": true,
@@ -860,12 +835,7 @@
           }
         }
       },
-      "block_order": [
-        "logo_eVJG3L",
-        "logo_MHyfdt",
-        "logo_Bxei7j",
-        "logo_CLnNBN"
-      ],
+      "block_order": ["logo_eVJG3L", "logo_MHyfdt", "logo_Bxei7j", "logo_CLnNBN"],
       "settings": {
         "heading": "¿Confiarías cualquier crema para la piel de tu guagua?",
         "description": "<p>Compromisos que puedes verificar</p>",
@@ -924,7 +894,7 @@
           "settings": {
             "heading": "¿Es adecuada para piel atópica o con dermatitis?",
             "open": false,
-            "content": "<p>Sí. La fórmula fue diseñada pensando en pieles secas, sensibles y con tendencia atópica. Combina <strong>células madre de Alerce</strong> (protección antioxidante), <strong>extracto de Murta</strong> (defensa natural) y <strong>Hydrovance + manteca de karité</strong> (hidratación profunda).</p><p>Su perfil hipoalergénico confirmado clínicamente la hace una opción segura para pieles que reaccionan fácilmente a productos convencionales.</p>",
+            "content": "<p>Sí. La fórmula fue diseñada pensando en pieles secas, sensibles y con tendencia atópica. Combina <strong>células madre de Alerce</strong> (protección antioxidante) y <strong>Hydrovance + manteca de karité</strong> (hidratación profunda).</p><p>Su perfil hipoalergénico confirmado clínicamente la hace una opción segura para pieles que reaccionan fácilmente a productos convencionales.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -934,7 +904,7 @@
           "settings": {
             "heading": "¿Cuál es la diferencia con cremas de farmacia?",
             "open": false,
-            "content": "<p>La mayoría de cremas de farmacia para bebé utilizan fórmulas genéricas con fragancias, parabenos o derivados del petróleo. Seqes se diferencia por:</p><p>• <strong>96% ingredientes de origen natural</strong> (certificado ISO 16128)<br/>• <strong>Activos de biotecnología</strong> (Cobiostem Alerce) en vez de ingredientes estándar<br/>• <strong>Estudio clínico hipoalergénico</strong> con 0% reacciones adversas<br/>• <strong>Sin fragancia, sin parabenos, sin sulfatos</strong><br/>• Fórmula <strong>biodegradable y vegana</strong></p>",
+            "content": "<p>La mayoría de cremas de farmacia para bebé utilizan fórmulas genéricas con fragancias, parabenos o derivados del petróleo. Seqes se diferencia por:</p><p>• <strong>96% ingredientes de origen natural</strong> (calculado según la norma ISO 16128)<br/>• <strong>Activos de biotecnología</strong> (Cobiostem Alerce) en vez de ingredientes estándar<br/>• <strong>Estudio clínico hipoalergénico</strong> con 0% reacciones adversas<br/>• <strong>Sin fragancia, sin parabenos, sin sulfatos</strong><br/>• Fórmula <strong>biodegradable y vegana</strong></p>",
             "page": "",
             "custom_liquid": ""
           }
