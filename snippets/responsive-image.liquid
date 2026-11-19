@@ -75,7 +75,7 @@
     src="{{- src -}}"
     srcset="{{ srcset | slice: 0, l | strip_newlines -}}"
     sizes="{{ sizes_attr | default: '100vw' }}"
-    alt="{{ image.alt | escape }}"
+    alt="{{ alt | default: image.alt | escape }}"
     {% if focal_point -%}
       style="object-position: {{ focal_point }};"
     {% endif %}
@@ -94,7 +94,7 @@
     src="{{- src -}}"
     data-srcset="{{ srcset | slice: 0, l | strip_newlines -}}"
     fetchpriority="{{ fetchpriority }}"
-    alt="{{ image.alt | escape }}"
+    alt="{{ alt | default: image.alt | escape }}"
     {% if focal_point -%}
       style="object-position: {{ focal_point }};"
     {% endif %}

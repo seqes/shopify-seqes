@@ -401,6 +401,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_libre_de_sulfatos.webp",
+            "image_alt": "Sello Libre de sulfatos",
             "link": ""
           }
         },
@@ -408,6 +409,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_libre_de_siliconas.webp",
+            "image_alt": "Sello Libre de siliconas",
             "link": ""
           }
         },
@@ -415,6 +417,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_libre_de_parabenos.webp",
+            "image_alt": "Sello Libre de parabenos",
             "link": ""
           }
         },
@@ -422,6 +425,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Logo_Libre_de_Disruptorees_Hormonales.webp",
+            "image_alt": "Sello Libre de disruptores hormonales",
             "link": ""
           }
         }
@@ -810,6 +814,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Logo_Libre_de_Disruptorees_Hormonales.webp",
+            "image_alt": "Sello Libre de disruptores hormonales",
             "link": ""
           }
         },
@@ -817,6 +822,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_indice_origen_natural.webp",
+            "image_alt": "Sello Índice de origen natural mayor a 95 % según ISO 16128",
             "link": ""
           }
         },
@@ -824,6 +830,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_libre_de_crueldad_animal.webp",
+            "image_alt": "Sello Libre de crueldad animal",
             "link": ""
           }
         },
@@ -831,6 +838,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo_hecho_en_chile.webp",
+            "image_alt": "Sello Hecho en Chile",
             "link": ""
           }
         }

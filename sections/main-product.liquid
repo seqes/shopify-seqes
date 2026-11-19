@@ -286,8 +286,30 @@
   <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 {%- endif -%}
 
+{%- comment -%}
+  Politica de devoluciones en cada Offer, con los datos de la Politica de reembolso de la tienda (2026-11-19):
+  7 dias corridos desde la recepcion, producto sin uso y sellado, devolucion por envio, solo Chile.
+  Sin returnFees: el costo de retorno depende del motivo y la politica no da un monto.
+  Sin shippingDetails: las tarifas de la Politica de despacho no coinciden con las del checkout.
+{%- endcomment -%}
+{%- liquid
+  assign offer_type = '"@type":"Offer",'
+  assign offer_with_policy = offer_type
+  if shop.refund_policy.url != blank
+    assign return_link = shop.url | append: shop.refund_policy.url | json
+    capture offer_with_policy
+      echo offer_type
+      echo '"hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"CL","returnPolicyCountry":"CL",'
+      echo '"returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":7,'
+      echo '"returnMethod":"https://schema.org/ReturnByMail","itemCondition":"https://schema.org/NewCondition",'
+      echo '"merchantReturnLink":'
+      echo return_link
+      echo '},'
+    endcapture
+  endif
+-%}
 <script type="application/ld+json">
-  {{ product | structured_data }}
+  {{ product | structured_data | replace: offer_type, offer_with_policy }}
 </script>
 
 {% schema %}
