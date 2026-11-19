@@ -45,8 +45,8 @@
           "settings": {
             "icon": "ruler",
             "image": "shopify://shop_images/logo_indice_origen_natural.webp",
-            "image_alt": "Sello Índice de origen natural mayor a 95 % según ISO 16128",
-            "heading": "+95% Origen Natural",
+            "image_alt": "Sello Índice de origen natural de más de 95 % según ISO 16128",
+            "heading": "Más de 95 % de origen natural",
             "text": "<p>Índice calculado según la norma ISO 16128. Fórmula clean, biodegradable y sin ingredientes innecesarios.</p>"
           }
         },
@@ -201,7 +201,7 @@
         "text_BBjXUJ": {
           "type": "text",
           "settings": {
-            "text": "<p></p><p>Formulados para bebés desde el primer día. Dermatológicamente testeados, con activos biotecnológicos chilenos y +95% de origen natural.</p><p></p>",
+            "text": "<p></p><p>Formulados para bebés desde el primer día. Dermatológicamente testeados, con activos biotecnológicos chilenos y más de 95 % de origen natural.</p><p></p>",
             "description_size": "medium"
           }
         },

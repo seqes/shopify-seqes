@@ -18,7 +18,7 @@
           "type": "text",
           "settings": {
             "icon": "leaf",
-            "text": "+95% Origen Natural",
+            "text": "Más de 95 % de origen natural",
             "link": ""
           }
         },
@@ -89,8 +89,5 @@
       }
     }
   },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+  "order": ["announcement-bar", "header"]
 }
