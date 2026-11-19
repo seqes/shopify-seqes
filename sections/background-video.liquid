@@ -12,10 +12,31 @@
   assign lightbox_button = section.settings.lightbox_button
   assign disable_top_spacing = section.settings.disable_top_spacing
   assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+  assign use_fallback_image = section.settings.use_fallback_image
+  assign frame_desktop = section.settings.frame_desktop
+  assign frame_mobile = section.settings.frame_mobile
+  comment
+    Cada marco se muestra solo en su pantalla: un PNG pensado para una proporcion se ve mal en la otra.
+  endcomment
+  assign frame_desktop_on = false
+  assign frame_mobile_on = false
+  if section.settings.show_frame
+    if frame_desktop != blank
+      assign frame_desktop_on = true
+    endif
+    if frame_mobile != blank
+      assign frame_mobile_on = true
+    endif
+  endif
 -%}
 <div class="row {% if full_width %}full-width-row-full{% endif %}">
   <div class="small-12 columns">
-    <background-video class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+    <background-video
+      class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}{% if frame_mobile_on %} background-video--frame-mobile{% endif %}"
+      {% if frame_mobile_on %}
+        style="--frame-mobile-text-offset: {{ section.settings.frame_mobile_text_offset }}px;"
+      {% endif %}
+    >
       {%- if fallback_image != blank -%}
         <div class="background-video__fallback-img">
           {%- if section.index == 1 -%}
@@ -47,39 +68,89 @@
           {%- endif -%}
         </div>
       {%- endif -%}
-      <div class="background-video__iframe" data-provider="{{ video.type }}">
-        {%- if video_hosted == blank -%}
-          {%- if video != blank -%}
-            {%- if video.type == 'youtube' -%}
-              <iframe
-                data-src="https://www.youtube.com/embed/{{ video.id }}?loop=1&autoplay=1&mute=1&playlist={{ video.id }}&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1"
-                frameborder="0"
-                class="lazyload"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                title="{{ section.settings.heading | escape }}"
-                tabindex="-1"
-              ></iframe>
-            {%- else -%}
-              <iframe
-                data-src="https://player.vimeo.com/video/{{ video.id }}?background=1"
-                frameborder="0"
-                class="lazyload"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                title="{{ section.settings.heading | escape }}"
-                tabindex="-1"
-              ></iframe>
+      {%- unless use_fallback_image and fallback_image != blank -%}
+        <div class="background-video__iframe" data-provider="{{ video.type }}">
+          {%- if video_hosted == blank -%}
+            {%- if video != blank -%}
+              {%- if video.type == 'youtube' -%}
+                <iframe
+                  data-src="https://www.youtube.com/embed/{{ video.id }}?loop=1&autoplay=1&mute=1&playlist={{ video.id }}&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1"
+                  frameborder="0"
+                  class="lazyload"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
+                  title="{{ section.settings.heading | escape }}"
+                  tabindex="-1"
+                ></iframe>
+              {%- else -%}
+                <iframe
+                  data-src="https://player.vimeo.com/video/{{ video.id }}?background=1"
+                  frameborder="0"
+                  class="lazyload"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
+                  title="{{ section.settings.heading | escape }}"
+                  tabindex="-1"
+                ></iframe>
+              {%- endif -%}
             {%- endif -%}
+          {%- else -%}
+            {{ video_hosted | video_tag: autoplay: true, loop: true, controls: false, muted: true }}
           {%- endif -%}
-        {%- else -%}
-          {{ video_hosted | video_tag: autoplay: true, loop: true, controls: false, muted: true }}
-        {%- endif -%}
-      </div>
+        </div>
+      {%- endunless -%}
       <div
         class="background-video__overlay"
         style="--overlay-opacity: {{ overlay_opacity | divided_by: 100.00 }}"
       ></div>
+      {%- if frame_desktop_on or frame_mobile_on -%}
+        {%- comment -%}
+          Marco inferior: PNG transparente (silueta, ola, etc.) sobre el video y el oscurecido, bajo el texto.
+          Se ancla abajo y cubre la seccion. Carga nativa (no lazysizes): es decorativo y sin efecto de desenfoque.
+        {%- endcomment -%}
+        <picture class="background-video__frame{% unless frame_desktop_on %} background-video__frame--mobile-only{% endunless %}{% unless frame_mobile_on %} background-video__frame--desktop-only{% endunless %}">
+          {%- comment -%}
+            Con un solo marco, la otra pantalla recibe un GIF vacio de 1x1: una imagen eager oculta con
+            display:none igual se descargaria.
+          {%- endcomment -%}
+          {%- assign frame_empty = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' -%}
+          {%- if frame_desktop_on and frame_mobile_on -%}
+            <source
+              media="(max-width: 767px)"
+              srcset="{{ frame_mobile | image_url: width: 750 }} 750w, {{ frame_mobile | image_url: width: 1125 }} 1125w"
+              sizes="100vw"
+            >
+          {%- elsif frame_desktop_on -%}
+            <source media="(max-width: 767px)" srcset="{{ frame_empty }}">
+          {%- else -%}
+            <source media="(min-width: 768px)" srcset="{{ frame_empty }}">
+          {%- endif -%}
+          {%- if frame_desktop_on -%}
+            {%- assign frame_img = frame_desktop -%}
+            {%- assign frame_src_w = 1440 -%}
+            {%- capture frame_srcset -%}{{ frame_desktop | image_url: width: 1440 }} 1440w, {{ frame_desktop | image_url: width: 1920 }} 1920w, {{ frame_desktop | image_url: width: 2880 }} 2880w{%- endcapture -%}
+          {%- else -%}
+            {%- assign frame_img = frame_mobile -%}
+            {%- assign frame_src_w = 750 -%}
+            {%- capture frame_srcset -%}{{ frame_mobile | image_url: width: 750 }} 750w, {{ frame_mobile | image_url: width: 1125 }} 1125w{%- endcapture -%}
+          {%- endif -%}
+          <img
+            src="{{ frame_img | image_url: width: frame_src_w }}"
+            srcset="{{ frame_srcset }}"
+            sizes="100vw"
+            alt=""
+            width="{{ frame_img.width }}"
+            height="{{ frame_img.height }}"
+            {% if section.index == 1 %}
+              loading="eager"
+            {% else %}
+              loading="lazy"
+            {% endif %}
+            decoding="async"
+            class="no-blur"
+          >
+        </picture>
+      {%- endif -%}
       <div class="background-video__content-wrap">
         <div class="background-video__content">
           {%- if subheading != blank -%}
@@ -284,6 +355,13 @@
       "info": "1920 x 1080 px .jpg recommended."
     },
     {
+      "type": "checkbox",
+      "id": "use_fallback_image",
+      "label": "Usar la foto de fondo en vez del video",
+      "info": "Muestra la Fallback image y oculta el video sin borrarlo (útil para una promoción). Requiere cargar la Fallback image; sin ella se sigue mostrando el video. El botón de play (lightbox) sigue activo si está encendido.",
+      "default": false
+    },
+    {
       "type": "range",
       "id": "overlay_opacity",
       "min": 0,
@@ -292,6 +370,42 @@
       "unit": "%",
       "label": "Overlay opacity",
       "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Marco inferior (silueta)"
+    },
+    {
+      "type": "paragraph",
+      "content": "PNG con fondo transparente que va sobre el video, anclado abajo. Cada marco se muestra solo en su pantalla. Diseñarlo con la proporción de la sección: escritorio 2880 x 1100 px (para 550 px de alto) y celular 750 x 1000 px (para 500 px); usar un alto fijo, no \"Adapt to content\". En escritorio el texto va centrado: dejar las figuras a los lados o en la franja inferior. Peso recomendado: menos de 300 KB. Si la ola debe fundirse con la sección siguiente, usar su mismo color y activar \"Remove bottom spacing\"."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_frame",
+      "label": "Mostrar marco",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_desktop",
+      "label": "Marco escritorio"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_mobile",
+      "label": "Marco celular",
+      "info": "Si se deja vacío, el celular va sin marco."
+    },
+    {
+      "type": "range",
+      "id": "frame_mobile_text_offset",
+      "min": 20,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Celular: distancia del texto al borde superior",
+      "info": "Con marco, en celular el texto se ancla arriba para no taparse con las siluetas.",
+      "default": 50
     },
     {
       "type": "header",
