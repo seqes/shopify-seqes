@@ -23,6 +23,9 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Seqes Prueba 1 Webm.webm",
         "overlay_opacity": 25,
+        "show_siluetas": true,
+        "siluetas_alto": 40,
+        "siluetas_alto_movil": 20,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -67,12 +70,7 @@
           }
         }
       },
-      "block_order": [
-        "icon_XEwUyz",
-        "icon_9PGdGg",
-        "icon_Leed3p",
-        "icon_aR8RkC"
-      ],
+      "block_order": ["icon_XEwUyz", "icon_9PGdGg", "icon_Leed3p", "icon_aR8RkC"],
       "settings": {
         "text_alignment": "left",
         "icon_position": "left",
@@ -129,11 +127,7 @@
           }
         }
       },
-      "block_order": [
-        "col_biotecnologia",
-        "col_naturalidad",
-        "col_seguridad"
-      ],
+      "block_order": ["col_biotecnologia", "col_naturalidad", "col_seguridad"],
       "name": "Pilares de la marca",
       "settings": {
         "heading": "Por qué SEQES es diferente",
@@ -219,13 +213,7 @@
           }
         }
       },
-      "block_order": [
-        "subheading_VrU4YN",
-        "heading_W3FrTx",
-        "button_VhdHLg",
-        "text_BBjXUJ",
-        "button_3aDeP9"
-      ],
+      "block_order": ["subheading_VrU4YN", "heading_W3FrTx", "button_VhdHLg", "text_BBjXUJ", "button_3aDeP9"],
       "name": "Image with text overlay",
       "settings": {
         "section_width": "full-width-row-full",
@@ -286,13 +274,7 @@
           }
         }
       },
-      "block_order": [
-        "review_01",
-        "review_02",
-        "review_03",
-        "review_04",
-        "review_05"
-      ],
+      "block_order": ["review_01", "review_02", "review_03", "review_04", "review_05"],
       "settings": {
         "full_width": true,
         "text_size": "small",
@@ -345,11 +327,7 @@
           }
         }
       },
-      "block_order": [
-        "column_WmADhD",
-        "column_7JwjrY",
-        "column_EiDqyJ"
-      ],
+      "block_order": ["column_WmADhD", "column_7JwjrY", "column_EiDqyJ"],
       "name": "Multicolumn",
       "settings": {
         "heading": "Aprende sobre el cuidado de la piel",
