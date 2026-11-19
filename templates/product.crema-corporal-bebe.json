@@ -144,7 +144,7 @@
         "seqes_it_claim_4": {
           "type": "seqes_icon_text",
           "settings": {
-            "text": "96% ingredientes de origen natural",
+            "text": "Más de 95 % de origen natural",
             "text_color": "",
             "font_size": 15,
             "font_weight": "500",
@@ -862,7 +862,7 @@
           "settings": {
             "heading": "¿Qué ingredientes debería evitar una crema para bebé?",
             "open": false,
-            "content": "<p>Es recomendable evitar <strong>parabenos</strong> (metilparabeno, propilparabeno), <strong>sulfatos</strong> (SLS, SLES), <strong>ftalatos</strong>, <strong>fragancias sintéticas</strong> y <strong>colorantes artificiales</strong>. Estos ingredientes pueden irritar o sensibilizar la piel delicada de los bebés.</p><p>Seqes no contiene ninguno de estos ingredientes. Nuestra fórmula está compuesta en un <strong>96% por ingredientes de origen natural</strong>, incluyendo agua, aceite de almendras dulces, manteca de karité y glicerina vegetal.</p>",
+            "content": "<p>Es recomendable evitar <strong>parabenos</strong> (metilparabeno, propilparabeno), <strong>sulfatos</strong> (SLS, SLES), <strong>ftalatos</strong>, <strong>fragancias sintéticas</strong> y <strong>colorantes artificiales</strong>. Estos ingredientes pueden irritar o sensibilizar la piel delicada de los bebés.</p><p>Seqes no contiene ninguno de estos ingredientes. Nuestra fórmula está compuesta en <strong>más de un 95 % por ingredientes de origen natural</strong>, incluyendo agua, aceite de almendras dulces, manteca de karité y glicerina vegetal.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -882,7 +882,7 @@
           "settings": {
             "heading": "¿Las cremas naturales son realmente mejores para bebés?",
             "open": false,
-            "content": "<p>Depende de la formulación. Una crema con alto porcentaje de ingredientes naturales <strong>reduce la exposición a químicos innecesarios</strong>, pero lo importante es que la fórmula completa sea segura y eficaz.</p><p>Seqes combina lo mejor de ambos mundos: una <strong>base natural del 96%</strong> (ISO 16128) con activos funcionales de última generación como <strong>Hydrovance</strong> (hidratación biomimética) que potencian los resultados sin comprometer la seguridad.</p>",
+            "content": "<p>Depende de la formulación. Una crema con alto porcentaje de ingredientes naturales <strong>reduce la exposición a químicos innecesarios</strong>, pero lo importante es que la fórmula completa sea segura y eficaz.</p><p>Seqes combina lo mejor de ambos mundos: una <strong>base natural de más de 95 %</strong> (ISO 16128) con activos funcionales de última generación como <strong>Hydrovance</strong> (hidratación biomimética) que potencian los resultados sin comprometer la seguridad.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -912,7 +912,7 @@
           "settings": {
             "heading": "¿Cuál es la diferencia con cremas de farmacia?",
             "open": false,
-            "content": "<p>La mayoría de cremas de farmacia para bebé utilizan fórmulas genéricas con fragancias, parabenos o derivados del petróleo. Seqes se diferencia por:</p><p>• <strong>96% ingredientes de origen natural</strong> (calculado según la norma ISO 16128)<br/>• <strong>Activos de biotecnología</strong> (Cobiostem Alerce) en vez de ingredientes estándar<br/>• <strong>Estudio clínico hipoalergénico</strong> con 0% reacciones adversas<br/>• <strong>Sin fragancia, sin parabenos, sin sulfatos</strong><br/>• Fórmula <strong>biodegradable y vegana</strong></p>",
+            "content": "<p>La mayoría de cremas de farmacia para bebé utilizan fórmulas genéricas con fragancias, parabenos o derivados del petróleo. Seqes se diferencia por:</p><p>• <strong>más de 95 % de ingredientes de origen natural</strong> (calculado según la norma ISO 16128)<br/>• <strong>Activos de biotecnología</strong> (Cobiostem Alerce) en vez de ingredientes estándar<br/>• <strong>Estudio clínico hipoalergénico</strong> con 0% reacciones adversas<br/>• <strong>Sin fragancia, sin parabenos, sin sulfatos</strong><br/>• Fórmula <strong>biodegradable y vegana</strong></p>",
             "page": "",
             "custom_liquid": ""
           }

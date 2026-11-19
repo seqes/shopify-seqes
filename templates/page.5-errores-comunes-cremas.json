@@ -29,9 +29,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_jAcBtk"
-      ],
+      "block_order": ["heading_jAcBtk"],
       "name": "Image with text overlay",
       "settings": {
         "section_width": "full-width-row-full",
@@ -60,9 +58,7 @@
           }
         }
       },
-      "block_order": [
-        "text_kCAtMJ"
-      ],
+      "block_order": ["text_kCAtMJ"],
       "name": "Rich text",
       "settings": {
         "section_width": "full-width-row-full",
@@ -87,9 +83,7 @@
           }
         }
       },
-      "block_order": [
-        "text_pNhXpN"
-      ],
+      "block_order": ["text_pNhXpN"],
       "name": "Image with text",
       "settings": {
         "image": "{{ page.metafields.custom.foto_1.value }}",
@@ -120,9 +114,7 @@
           }
         }
       },
-      "block_order": [
-        "text_zMmf8z"
-      ],
+      "block_order": ["text_zMmf8z"],
       "name": "Image with text",
       "settings": {
         "image": "{{ page.metafields.custom.foto_2.value }}",
@@ -153,9 +145,7 @@
           }
         }
       },
-      "block_order": [
-        "text_JmAKYN"
-      ],
+      "block_order": ["text_JmAKYN"],
       "name": "Image with text",
       "settings": {
         "image": "{{ page.metafields.custom.foto_3.value }}",
@@ -186,9 +176,7 @@
           }
         }
       },
-      "block_order": [
-        "text_EeftNX"
-      ],
+      "block_order": ["text_EeftNX"],
       "name": "Image with text",
       "settings": {
         "image": "{{ page.metafields.custom.foto_4.value }}",
@@ -219,9 +207,7 @@
           }
         }
       },
-      "block_order": [
-        "text_e9MXPF"
-      ],
+      "block_order": ["text_e9MXPF"],
       "name": "Image with text",
       "settings": {
         "image": "{{ page.metafields.custom.foto_5.value }}",
@@ -260,7 +246,7 @@
         "text_ULxVXD": {
           "type": "text",
           "settings": {
-            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. </p><ul><li>Sin fragancia. </li><li>Con índice de naturalidad ISO 16128 del 96%. </li><li>Formulada específicamente para piel sensible infantil. </li><li>Con estudio hipoalergénico clínico independiente. </li><li>Sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</li></ul><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p><p></p>",
+            "text": "<p>En SEQES desarrollamos la <strong>Crema Corporal Nutritiva para Bebé</strong> teniendo en cuenta exactamente estos cinco puntos. </p><ul><li>Sin fragancia. </li><li>Con más de 95 % de ingredientes de origen natural (ISO 16128). </li><li>Formulada específicamente para piel sensible infantil. </li><li>Con estudio hipoalergénico clínico independiente. </li><li>Sin sulfatos, parabenos, siliconas ni disruptores endocrinos.</li></ul><p>No es marketing. Es el resultado de años de desarrollo con estándares dermatológicos reales, ingredientes biotecnológicos del sur de Chile y un compromiso genuino con la salud de la piel de tu bebé.</p><p></p>",
             "description_size": "small"
           }
         },
@@ -273,12 +259,7 @@
           }
         }
       },
-      "block_order": [
-        "subheading_YhF8XH",
-        "heading_7xGEqy",
-        "text_ULxVXD",
-        "button_pLLpNg"
-      ],
+      "block_order": ["subheading_YhF8XH", "heading_7xGEqy", "text_ULxVXD", "button_pLLpNg"],
       "name": "Image with text overlay",
       "settings": {
         "section_width": "full-width-row-full",
