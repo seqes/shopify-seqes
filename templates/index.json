@@ -14,7 +14,7 @@
       "name": "Background video",
       "settings": {
         "desktop_height": "desktop-height-550",
-        "mobile_height": "mobile-height-500",
+        "mobile_height": "mobile-height-450",
         "full_width": true,
         "subheading": "La piel de tu bebé merece lo mejor",
         "heading": "Ciencia real. Naturaleza del sur de Chile.",
@@ -28,6 +28,8 @@
         "frame_left": "shopify://shop_images/seqes-portada-figura-izquierda.png",
         "frame_right": "shopify://shop_images/seqes-portada-figura-derecha.png",
         "frame_wave": "shopify://shop_images/seqes-portada-ola.png",
+        "frame_scale_desktop": 100,
+        "frame_scale_mobile": 100,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
