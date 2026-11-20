@@ -25,9 +25,9 @@
         "use_fallback_image": false,
         "overlay_opacity": 0,
         "show_frame": true,
-        "frame_desktop": "shopify://shop_images/marco-portada-escritorio.png",
-        "frame_mobile": "shopify://shop_images/marco-portada-celular.png",
-        "frame_mobile_text_offset": 20,
+        "frame_left": "shopify://shop_images/seqes-portada-figura-izquierda.png",
+        "frame_right": "shopify://shop_images/seqes-portada-figura-derecha.png",
+        "frame_wave": "shopify://shop_images/seqes-portada-ola.png",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }

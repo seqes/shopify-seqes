@@ -13,29 +13,24 @@
   assign disable_top_spacing = section.settings.disable_top_spacing
   assign disable_bottom_spacing = section.settings.disable_bottom_spacing
   assign use_fallback_image = section.settings.use_fallback_image
-  assign frame_desktop = section.settings.frame_desktop
-  assign frame_mobile = section.settings.frame_mobile
+  assign frame_left = section.settings.frame_left
+  assign frame_right = section.settings.frame_right
+  assign frame_wave = section.settings.frame_wave
   comment
-    Cada marco se muestra solo en su pantalla: un PNG pensado para una proporcion se ve mal en la otra.
+    Marco en 3 capas (izquierda, derecha, ola), ancladas abajo por separado: al angostar la pantalla se
+    achican en vez de recortarse, y no suben hacia el texto.
   endcomment
-  assign frame_desktop_on = false
-  assign frame_mobile_on = false
+  assign frame_on = false
   if section.settings.show_frame
-    if frame_desktop != blank
-      assign frame_desktop_on = true
-    endif
-    if frame_mobile != blank
-      assign frame_mobile_on = true
+    if frame_left != blank or frame_right != blank or frame_wave != blank
+      assign frame_on = true
     endif
   endif
 -%}
 <div class="row {% if full_width %}full-width-row-full{% endif %}">
   <div class="small-12 columns">
     <background-video
-      class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}{% if frame_mobile_on %} background-video--frame-mobile{% endif %}"
-      {% if frame_mobile_on %}
-        style="--frame-mobile-text-offset: {{ section.settings.frame_mobile_text_offset }}px;"
-      {% endif %}
+      class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}"
     >
       {%- if fallback_image != blank -%}
         <div class="background-video__fallback-img">
@@ -103,53 +98,61 @@
         class="background-video__overlay"
         style="--overlay-opacity: {{ overlay_opacity | divided_by: 100.00 }}"
       ></div>
-      {%- if frame_desktop_on or frame_mobile_on -%}
+      {%- if frame_on -%}
         {%- comment -%}
-          Marco inferior: PNG transparente (silueta, ola, etc.) sobre el video y el oscurecido, bajo el texto.
-          Se ancla abajo y cubre la seccion. Carga nativa (no lazysizes): es decorativo y sin efecto de desenfoque.
+          Marco inferior: PNG transparentes sobre el video y el oscurecido, bajo el texto. Carga nativa (no
+          lazysizes): es decorativo y sin efecto de desenfoque. El alto de cada capa lo fija el CSS.
         {%- endcomment -%}
-        <picture class="background-video__frame{% unless frame_desktop_on %} background-video__frame--mobile-only{% endunless %}{% unless frame_mobile_on %} background-video__frame--desktop-only{% endunless %}">
-          {%- comment -%}
-            Con un solo marco, la otra pantalla recibe un GIF vacio de 1x1: una imagen eager oculta con
-            display:none igual se descargaria.
-          {%- endcomment -%}
-          {%- assign frame_empty = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' -%}
-          {%- if frame_desktop_on and frame_mobile_on -%}
-            <source
-              media="(max-width: 767px)"
-              srcset="{{ frame_mobile | image_url: width: 750 }} 750w, {{ frame_mobile | image_url: width: 1125 }} 1125w"
+        {%- if section.index == 1 -%}
+          {%- assign frame_loading = 'eager' -%}
+        {%- else -%}
+          {%- assign frame_loading = 'lazy' -%}
+        {%- endif -%}
+        <div
+          class="background-video__frame"
+          style="--frame-scale: {{ section.settings.frame_scale_desktop | divided_by: 100.0 }}; --frame-scale-mobile: {{ section.settings.frame_scale_mobile | divided_by: 100.0 }};"
+          aria-hidden="true"
+        >
+          {%- if frame_wave != blank -%}
+            <img
+              class="background-video__frame-layer background-video__frame-layer--wave no-blur"
+              src="{{ frame_wave | image_url: width: 1440 }}"
+              srcset="{{ frame_wave | image_url: width: 750 }} 750w, {{ frame_wave | image_url: width: 1440 }} 1440w, {{ frame_wave | image_url: width: 2880 }} 2880w"
               sizes="100vw"
+              alt=""
+              width="{{ frame_wave.width }}"
+              height="{{ frame_wave.height }}"
+              loading="{{ frame_loading }}"
+              decoding="async"
             >
-          {%- elsif frame_desktop_on -%}
-            <source media="(max-width: 767px)" srcset="{{ frame_empty }}">
-          {%- else -%}
-            <source media="(min-width: 768px)" srcset="{{ frame_empty }}">
           {%- endif -%}
-          {%- if frame_desktop_on -%}
-            {%- assign frame_img = frame_desktop -%}
-            {%- assign frame_src_w = 1440 -%}
-            {%- capture frame_srcset -%}{{ frame_desktop | image_url: width: 1440 }} 1440w, {{ frame_desktop | image_url: width: 1920 }} 1920w, {{ frame_desktop | image_url: width: 2880 }} 2880w{%- endcapture -%}
-          {%- else -%}
-            {%- assign frame_img = frame_mobile -%}
-            {%- assign frame_src_w = 750 -%}
-            {%- capture frame_srcset -%}{{ frame_mobile | image_url: width: 750 }} 750w, {{ frame_mobile | image_url: width: 1125 }} 1125w{%- endcapture -%}
+          {%- if frame_left != blank -%}
+            <img
+              class="background-video__frame-layer background-video__frame-layer--left no-blur"
+              src="{{ frame_left | image_url: width: 600 }}"
+              srcset="{{ frame_left | image_url: width: 300 }} 300w, {{ frame_left | image_url: width: 600 }} 600w, {{ frame_left | image_url: width: 900 }} 900w"
+              sizes="(max-width: 767px) 35vw, 32vw"
+              alt=""
+              width="{{ frame_left.width }}"
+              height="{{ frame_left.height }}"
+              loading="{{ frame_loading }}"
+              decoding="async"
+            >
           {%- endif -%}
-          <img
-            src="{{ frame_img | image_url: width: frame_src_w }}"
-            srcset="{{ frame_srcset }}"
-            sizes="100vw"
-            alt=""
-            width="{{ frame_img.width }}"
-            height="{{ frame_img.height }}"
-            {% if section.index == 1 %}
-              loading="eager"
-            {% else %}
-              loading="lazy"
-            {% endif %}
-            decoding="async"
-            class="no-blur"
-          >
-        </picture>
+          {%- if frame_right != blank -%}
+            <img
+              class="background-video__frame-layer background-video__frame-layer--right no-blur"
+              src="{{ frame_right | image_url: width: 600 }}"
+              srcset="{{ frame_right | image_url: width: 300 }} 300w, {{ frame_right | image_url: width: 600 }} 600w, {{ frame_right | image_url: width: 880 }} 880w"
+              sizes="(max-width: 767px) 25vw, 31vw"
+              alt=""
+              width="{{ frame_right.width }}"
+              height="{{ frame_right.height }}"
+              loading="{{ frame_loading }}"
+              decoding="async"
+            >
+          {%- endif -%}
+        </div>
       {%- endif -%}
       <div class="background-video__content-wrap">
         <div class="background-video__content">
@@ -377,7 +380,7 @@
     },
     {
       "type": "paragraph",
-      "content": "PNG transparente sobre el video, anclado abajo; cada marco se ve solo en su pantalla. Medidas: escritorio 2880 x 1100 px (alto 550 px) y celular 750 x 1000 px (alto 500 px), con alto fijo, no \"Adapt to content\". En escritorio, figuras a los lados o abajo. Menos de 300 KB. Para fundir la ola con la sección siguiente, usar su color y activar \"Remove bottom spacing\"."
+      "content": "Tres PNG transparentes que se anclan abajo por separado y se achican con la pantalla, sin recortarse: figura izquierda, figura derecha y ola a todo el ancho. Blanco (o el color de la sección siguiente) y \"Remove bottom spacing\" activado para que la ola se funda con ella. Requiere alto fijo, no \"Adapt to content\"."
     },
     {
       "type": "checkbox",
@@ -387,25 +390,38 @@
     },
     {
       "type": "image_picker",
-      "id": "frame_desktop",
-      "label": "Marco escritorio"
+      "id": "frame_left",
+      "label": "Figura izquierda"
     },
     {
       "type": "image_picker",
-      "id": "frame_mobile",
-      "label": "Marco celular",
-      "info": "Si se deja vacío, el celular va sin marco."
+      "id": "frame_right",
+      "label": "Figura derecha"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_wave",
+      "label": "Ola inferior"
     },
     {
       "type": "range",
-      "id": "frame_mobile_text_offset",
-      "min": 20,
-      "max": 200,
+      "id": "frame_scale_desktop",
+      "min": 50,
+      "max": 150,
       "step": 5,
-      "unit": "px",
-      "label": "Celular: distancia del texto al borde superior",
-      "info": "Con marco, en celular el texto se ancla arriba para no taparse con las siluetas.",
-      "default": 50
+      "unit": "%",
+      "label": "Escritorio: tamaño de las figuras",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "frame_scale_mobile",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Celular: tamaño de las figuras",
+      "default": 100
     },
     {
       "type": "header",
