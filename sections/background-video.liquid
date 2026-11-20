@@ -16,6 +16,7 @@
   assign frame_left = section.settings.frame_left
   assign frame_right = section.settings.frame_right
   assign frame_wave = section.settings.frame_wave
+  assign frame_split = section.settings.frame_left_split | default: 0
   comment
     Marco en 3 capas (izquierda, derecha, ola), ancladas abajo por separado: al angostar la pantalla se
     achican en vez de recortarse, y no suben hacia el texto.
@@ -30,7 +31,10 @@
 <div class="row {% if full_width %}full-width-row-full{% endif %}">
   <div class="small-12 columns">
     <background-video
-      class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}"
+      class="background-video {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}{% if frame_on %} background-video--frame{% endif %}{% if section.index == 1 %} background-video--first{% endif %}"
+      {% if frame_on -%}
+        style="--frame-scale: {{ section.settings.frame_scale_desktop | divided_by: 100.0 }}; --frame-scale-mobile: {{ section.settings.frame_scale_mobile | divided_by: 100.0 }};{% if frame_split > 0 %} --frame-split: {{ frame_split }}%; --frame-part2-scale: {{ section.settings.frame_left_part2_scale | default: 100 | divided_by: 100.0 }};{% endif %}"
+      {%- endif %}
     >
       {%- if fallback_image != blank -%}
         <div class="background-video__fallback-img">
@@ -109,8 +113,7 @@
           {%- assign frame_loading = 'lazy' -%}
         {%- endif -%}
         <div
-          class="background-video__frame"
-          style="--frame-scale: {{ section.settings.frame_scale_desktop | divided_by: 100.0 }}; --frame-scale-mobile: {{ section.settings.frame_scale_mobile | divided_by: 100.0 }};"
+          class="background-video__frame{% if frame_split > 0 and frame_left != blank %} background-video__frame--split{% endif %}"
           aria-hidden="true"
         >
           {%- if frame_wave != blank -%}
@@ -138,6 +141,23 @@
               loading="{{ frame_loading }}"
               decoding="async"
             >
+            {%- if frame_split > 0 -%}
+              {%- comment -%}
+                La misma imagen otra vez, recortada a la parte derecha (el frasco) y corrida hacia afuera para
+                que no se pegue a la mamá. Mismo src/srcset: el navegador no la descarga dos veces.
+              {%- endcomment -%}
+              <img
+                class="background-video__frame-layer background-video__frame-layer--left background-video__frame-layer--left-part2 no-blur"
+                src="{{ frame_left | image_url: width: 600 }}"
+                srcset="{{ frame_left | image_url: width: 300 }} 300w, {{ frame_left | image_url: width: 600 }} 600w, {{ frame_left | image_url: width: 900 }} 900w"
+                sizes="(max-width: 767px) 35vw, 32vw"
+                alt=""
+                width="{{ frame_left.width }}"
+                height="{{ frame_left.height }}"
+                loading="{{ frame_loading }}"
+                decoding="async"
+              >
+            {%- endif -%}
           {%- endif -%}
           {%- if frame_right != blank -%}
             <img
@@ -392,6 +412,28 @@
       "type": "image_picker",
       "id": "frame_left",
       "label": "Figura izquierda"
+    },
+    {
+      "type": "range",
+      "id": "frame_left_split",
+      "min": 0,
+      "max": 90,
+      "step": 1,
+      "unit": "%",
+      "label": "Figura izquierda: corte entre sus dos partes",
+      "info": "Columna vacía de la imagen (en % de su ancho) donde termina la primera figura. La segunda se separa hacia la derecha. 0 = sin separar. Al cambiar la imagen, revisar este valor.",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "frame_left_part2_scale",
+      "min": 100,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Figura izquierda: tamaño de la segunda parte",
+      "info": "Agranda la segunda parte (el producto) desde su base. Con 150 % el frasco queda del alto de la mamá.",
+      "default": 150
     },
     {
       "type": "image_picker",

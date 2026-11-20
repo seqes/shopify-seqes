@@ -84,21 +84,37 @@
   width: 100%;
   height: auto;
 }
+/* Escritorio: la figura izquierda (con el frasco agrandado) crece con el ancho solo hasta donde cabe a la
+   izquierda del texto (28vw - 195px); en pantallas justas baja a 150px y queda bajo el parrafo. */
 .background-video__frame-layer--left {
   left: 0;
-  height: min(100%, calc(53% * var(--frame-scale, 1)), calc(20.3vw * var(--frame-scale, 1)));
+  height: min(100%, calc(clamp(150px, 28vw - 195px, 53%) * var(--frame-scale, 1)));
 }
+/* Tope 72 % del alto: la copa del alerce queda bajo el subtitulo y no la tapa el menu fijo. */
 .background-video__frame-layer--right {
   right: 0;
-  height: min(100%, calc(100% * var(--frame-scale, 1)), calc(38.2vw * var(--frame-scale, 1)));
+  height: min(72%, calc(72% * var(--frame-scale, 1)), calc(38.2vw * var(--frame-scale, 1)));
 }
 @media only screen and (min-width: 768px) and (max-width: 1100px) {
   .background-video__frame-layer--left {
     height: min(100%, calc(53% * var(--frame-scale, 1)), calc(15vw * var(--frame-scale, 1)));
   }
   .background-video__frame-layer--right {
-    height: min(100%, calc(100% * var(--frame-scale, 1)), calc(29vw * var(--frame-scale, 1)));
+    height: min(72%, calc(72% * var(--frame-scale, 1)), calc(29vw * var(--frame-scale, 1)));
   }
+}
+/* Figura izquierda en dos partes (mama y frasco): la misma imagen recortada en --frame-split; la segunda
+   parte (el producto) se agranda con --frame-part2-scale desde su base y se corre un poco a la derecha. */
+.background-video__frame--split {
+  --frame-gap: clamp(4px, 1.5vw, 30px);
+}
+.background-video__frame--split .background-video__frame-layer--left {
+  clip-path: inset(0 calc(100% - var(--frame-split)) 0 0);
+}
+.background-video__frame--split .background-video__frame-layer--left-part2 {
+  clip-path: inset(0 0 0 var(--frame-split));
+  transform-origin: var(--frame-split) 100%;
+  transform: translateX(var(--frame-gap)) scale(var(--frame-part2-scale, 1));
 }
 @media only screen and (max-width: 767px) {
   .background-video__frame-layer--left {
@@ -106,6 +122,14 @@
   }
   .background-video__frame-layer--right {
     height: min(100%, calc(28% * var(--frame-scale-mobile, 1)), calc(31vw * var(--frame-scale-mobile, 1)));
+  }
+  /* Celular: el texto no baja hasta las figuras (reserva el alto del alerce) y, si el menu va transparente
+     sobre la portada, tampoco sube bajo el logo. La seccion tiene alto minimo: crece si hace falta. */
+  .background-video--frame .background-video__content-wrap {
+    padding-bottom: calc(31vw * var(--frame-scale-mobile, 1));
+  }
+  body:has(.header.transparent--true) .background-video--first .background-video__content-wrap {
+    padding-top: var(--header-height, 0px);
   }
 }
 .background-video__content-wrap {
