@@ -473,64 +473,8 @@
         "content": "Social accounts"
       },
       {
-        "type": "text",
-        "id": "social_facebook_link",
-        "label": "Facebook",
-        "info": "https://facebook.com/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_twitter_link",
-        "label": "X (formerly Twitter)",
-        "info": "https://twitter.com/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_instagram_link",
-        "label": "Instagram",
-        "info": "https://instagram.com/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_pinterest_link",
-        "label": "Pinterest",
-        "info": "https://pinterest.com/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_tiktok_link",
-        "label": "TikTok",
-        "info": "https://tiktok.com/@shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_youtube_link",
-        "label": "Youtube",
-        "info": "https://youtube.com/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_vimeo_link",
-        "label": "Vimeo",
-        "info": "https://vimeo.com/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_linkedin_link",
-        "label": "Linkedin",
-        "info": "https://linkedin.com/company/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_snapchat_link",
-        "label": "Snapchat",
-        "info": "https://www.snapchat.com/add/shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_wechat_link",
-        "label": "WeChat",
-        "info": "https://wechat.com/shopify"
+        "type": "paragraph",
+        "content": "Los enlaces de redes sociales se editan en Configuración > Marca. El tema los lee desde ahí."
       },
       {
         "type": "header",

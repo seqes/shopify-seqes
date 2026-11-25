@@ -58,16 +58,12 @@
     {% if section.settings.logo %}
       "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }},
     {% endif %}
+    {%- assign redes = 'facebook,instagram,tiktok,threads,youtube,twitter,pinterest,linkedin,snapchat,vimeo' | split: ',' -%}
     {%- capture same_as -%}
-      {%- if settings.social_twitter_link != blank %}{{ settings.social_twitter_link | json }},{% endif -%}
-      {%- if settings.social_facebook_link != blank %}{{ settings.social_facebook_link | json }},{% endif -%}
-      {%- if settings.social_pinterest_link != blank %}{{ settings.social_pinterest_link | json }},{% endif -%}
-      {%- if settings.social_instagram_link != blank %}{{ settings.social_instagram_link | json }},{% endif -%}
-      {%- if settings.social_tiktok_link != blank %}{{ settings.social_tiktok_link | json }},{% endif -%}
-      {%- if settings.social_youtube_link != blank %}{{ settings.social_youtube_link | json }},{% endif -%}
-      {%- if settings.social_vimeo_link != blank %}{{ settings.social_vimeo_link | json }},{% endif -%}
-      {%- if settings.social_linkedin_link != blank %}{{ settings.social_linkedin_link | json }},{% endif -%}
-      {%- if settings.social_wechat_link != blank %}{{ settings.social_wechat_link | json }},{% endif -%}
+      {%- for red in redes -%}
+        {%- assign enlace = shop.brand.metafields.social_links[red].value -%}
+        {%- if enlace != blank %}{{ enlace | json }},{% endif -%}
+      {%- endfor -%}
     {%- endcapture -%}
     {%- if same_as != blank %}
     "sameAs": [{{ same_as | remove_last: ',' }}],

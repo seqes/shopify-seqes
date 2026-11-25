@@ -18,6 +18,12 @@ Git tags:
 
 Security, dead-code cleanup, performance polish, accessibility, tooling, documentation, and CI on top of the deep performance optimization.
 
+### Phase 19 - Redes sociales desde Marca (2026-11-24)
+
+- Las redes sociales se leen de Configuracion > Marca (`shop.brand.metafields.social_links`), el unico lugar donde se editan. Usan esa fuente `snippets/social-links.liquid` (pie y pagina de contrasena), el `sameAs` del JSON-LD `Organization` en `sections/header.liquid` y `twitter:site` en `snippets/social-meta-tags.liquid`.
+- Fuera los campos `social_*_link` del editor del tema (`settings_schema.json`) y sus valores en `settings_data.json`; en su lugar, una nota que apunta a Marca. Las opciones para compartir (`social_share_*`) se quedan.
+- Threads: icono en `snippets/svg-icons.liquid` y texto en `locales/es.json` y `en.default.json`.
+
 ### Phase 18 - Revision del tema (2026-11-17)
 
 - Breadcrumbs de producto desde el metacampo `custom.breadcrumb` (lista ordenada de colecciones); sin metacampo, la primera coleccion distinta de `frontpage`.
