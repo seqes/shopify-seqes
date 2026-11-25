@@ -6,8 +6,10 @@
   Respeta el consentimiento de Shopify (Customer Privacy API): sin permiso de analitica no guarda
   ni envia nada; sin permiso de marketing omite los IDs de clic y de anuncio.
 
-  Hueco conocido: el boton de pago dinamico ("Comprar ahora") crea su propio checkout sin pasar
-  por el carro, asi que esos pedidos no llevan estos atributos (si llevan customerJourneySummary).
+  El boton de pago dinamico ("Comprar ahora") crea su propio checkout sin pasar por el carro, asi
+  que la atribucion tambien va como propiedades privadas de linea (_sq_first, _sq_last, _sq_ga_cid).
+  Esos inputs quedan deshabilitados y solo se habilitan al tocar ese boton, para que el alta normal
+  al carro no parta la misma variante en dos lineas (el carro ya lleva los atributos __sq_).
 
   @param {string} ga_stream - ID de medicion de GA4 sin el prefijo G-, para leer la cookie de sesion
 
@@ -114,6 +116,63 @@
       };
     }
 
+    var PROPIEDADES = { _sq_first: '__sq_first', _sq_last: '__sq_last', _sq_ga_cid: '__sq_ga_cid' };
+
+    function rellenarFormulario(form, habilitar) {
+      if (!listo || !form || !form.matches || !form.matches('form[action*="/cart/add"]')) return;
+      var perm = permisos();
+      var a = perm.analitica ? atributos(leer(KEY) || {}, perm) : null;
+      Object.keys(PROPIEDADES).forEach(function (prop) {
+        var nombre = 'properties[' + prop + ']';
+        var input = form.querySelector('input[name="' + nombre + '"]');
+        if (!a) {
+          if (input) input.remove();
+          return;
+        }
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = nombre;
+          form.appendChild(input);
+        }
+        input.value = a[PROPIEDADES[prop]];
+        input.disabled = !habilitar;
+      });
+    }
+
+    function rellenarTodos() {
+      document.querySelectorAll('form[action*="/cart/add"]').forEach(function (form) {
+        rellenarFormulario(form, false);
+      });
+    }
+
+    function formularioDe(el) {
+      var form = el && el.closest ? el.closest('form') : null;
+      if (!form && el && el.closest) {
+        var contenedor = el.closest('product-form, .product-form, [data-product-form]');
+        form = contenedor ? contenedor.querySelector('form[action*="/cart/add"]') : null;
+      }
+      return form;
+    }
+
+    document.addEventListener(
+      'submit',
+      function (ev) {
+        rellenarFormulario(ev.target, false);
+      },
+      true
+    );
+    ['pointerover', 'pointerdown', 'touchstart', 'focusin', 'click', 'keydown'].forEach(function (tipo) {
+      document.addEventListener(
+        tipo,
+        function (ev) {
+          var boton = ev.target && ev.target.closest ? ev.target.closest('.shopify-payment-button') : null;
+          if (boton) rellenarFormulario(formularioDe(boton), true);
+        },
+        true
+      );
+    });
+
     var listo = false;
     var pendiente = false;
 
@@ -145,6 +204,7 @@
       listo = true;
       var perm = permisos();
       if (perm.analitica) registrarToque(perm);
+      rellenarTodos();
       if (pendiente) sincronizar(true);
       else if (CART_ITEMS > 0) sincronizar(false);
     }
@@ -168,6 +228,7 @@
     document.addEventListener('visitorConsentCollected', function () {
       var perm = permisos();
       if (perm.analitica) registrarToque(perm);
+      rellenarTodos();
       sincronizar(false);
     });
     if (document.readyState === 'loading') {
