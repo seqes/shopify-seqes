@@ -1,0 +1,179 @@
+{% doc %}
+  Guarda el primer y el ultimo contacto de la visita (UTM, ID de clic, referente, pagina de entrada)
+  y los IDs de GA4, y los escribe como atributos privados del carro (prefijo __sq_) para que lleguen
+  al pedido (order.customAttributes). Los atributos con __ no se ven en el checkout ni en Liquid.
+
+  Respeta el consentimiento de Shopify (Customer Privacy API): sin permiso de analitica no guarda
+  ni envia nada; sin permiso de marketing omite los IDs de clic y de anuncio.
+
+  Hueco conocido: el boton de pago dinamico ("Comprar ahora") crea su propio checkout sin pasar
+  por el carro, asi que esos pedidos no llevan estos atributos (si llevan customerJourneySummary).
+
+  @param {string} ga_stream - ID de medicion de GA4 sin el prefijo G-, para leer la cookie de sesion
+
+  @example
+  {% render 'sq-attribution', ga_stream: 'GYECVBNCGG' %}
+{% enddoc %}
+<script>
+  (function () {
+    var KEY = 'sq_attr';
+    var SYNC = 'sq_attr_sync';
+    var VENTANA = 30 * 864e5;
+    var GA_STREAM = {{ ga_stream | json }};
+    var CART_ITEMS = {{ cart.item_count | default: 0 }};
+    var CLICKS = ['gclid', 'gbraid', 'wbraid', 'fbclid', 'ttclid', 'msclkid'];
+    var NO_REFERENTES = /(mercadopago|mercadolibre|webpay|transbank|flow\.cl|khipu|paypal|shopify\.com|shop\.app)/i;
+
+    function leer(k) {
+      try {
+        return JSON.parse(localStorage.getItem(k) || 'null');
+      } catch (e) {
+        return null;
+      }
+    }
+    function guardar(k, v) {
+      try {
+        localStorage.setItem(k, JSON.stringify(v));
+      } catch (e) {}
+    }
+    function cookie(nombre) {
+      var m = document.cookie.match(new RegExp('(?:^|; )' + nombre + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : '';
+    }
+    function corto(v) {
+      return v ? String(v).slice(0, 255) : '';
+    }
+
+    var p = new URLSearchParams(location.search);
+    var clic = '';
+    for (var i = 0; i < CLICKS.length; i++) {
+      if (p.get(CLICKS[i])) {
+        clic = CLICKS[i] + ':' + p.get(CLICKS[i]);
+        break;
+      }
+    }
+    var referente = '';
+    try {
+      var r = document.referrer ? new URL(document.referrer) : null;
+      if (r && r.hostname !== location.hostname && !NO_REFERENTES.test(r.hostname)) referente = r.hostname;
+    } catch (e) {}
+    var ahora = Date.now();
+    var conParametros = p.get('utm_source') || p.get('utm_medium') || p.get('utm_campaign') || clic;
+    var landing = corto(location.pathname);
+
+    function permisos() {
+      var cp = window.Shopify && window.Shopify.customerPrivacy;
+      if (!cp || typeof cp.analyticsProcessingAllowed !== 'function') return { analitica: true, marketing: true };
+      return { analitica: !!cp.analyticsProcessingAllowed(), marketing: !!cp.marketingAllowed() };
+    }
+
+    function registrarToque(perm) {
+      var toque = null;
+      if (conParametros || referente) {
+        toque = {
+          source: corto(p.get('utm_source') || referente),
+          medium: corto(p.get('utm_medium') || (conParametros ? '' : 'referral')),
+          campaign: corto(p.get('utm_campaign')),
+          content: corto(p.get('utm_content')),
+          term: corto(p.get('utm_term')),
+          utm_id: corto(p.get('utm_id')),
+          click: perm.marketing ? corto(clic) : '',
+          ad: perm.marketing ? corto(p.get('sq_ad')) : '',
+          exp: corto(p.get('sq_exp')),
+          landing: landing,
+          ts: new Date(ahora).toISOString(),
+        };
+      }
+      var st = leer(KEY) || {};
+      var inicio = st.ft ? Date.parse(st.ft.ts) : NaN;
+      var vencido = !st.ft || isNaN(inicio) || ahora - inicio > VENTANA;
+      if (vencido) {
+        st.ft = toque || { source: '(direct)', medium: '(none)', landing: landing, ts: new Date(ahora).toISOString() };
+        st.lt = toque || null;
+      } else if (toque) {
+        st.lt = toque;
+      }
+      if (toque || vencido) guardar(KEY, st);
+      return st;
+    }
+
+    function atributos(st, perm) {
+      var ft = Object.assign({}, st.ft || {});
+      var lt = Object.assign({}, st.lt || st.ft || {});
+      if (!perm.marketing) {
+        ft.click = ft.ad = lt.click = lt.ad = '';
+      }
+      var ga = cookie('_ga').split('.');
+      var gs = cookie('_ga_' + GA_STREAM);
+      var sid = (gs.match(/^GS2\.\d+\.s(\d+)/) || gs.match(/^GS1\.\d+\.(\d+)/) || [])[1] || '';
+      return {
+        __sq_first: JSON.stringify(ft),
+        __sq_last: JSON.stringify(lt),
+        __sq_ga_cid: ga.length >= 4 ? ga.slice(-2).join('.') : '',
+        __sq_ga_sid: sid,
+      };
+    }
+
+    var listo = false;
+    var pendiente = false;
+
+    function sincronizar(forzar) {
+      if (!listo) {
+        pendiente = pendiente || forzar;
+        return;
+      }
+      var perm = permisos();
+      if (!perm.analitica) return;
+      var a = atributos(leer(KEY) || {}, perm);
+      var firma = cookie('cart') + '|' + JSON.stringify(a);
+      if (!forzar && leer(SYNC) === firma) return;
+      var raiz = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+      fetch(raiz + 'cart/update.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ attributes: a }),
+        keepalive: true,
+      })
+        .then(function (res) {
+          if (res.ok) guardar(SYNC, firma);
+        })
+        .catch(function () {});
+    }
+
+    function arrancar() {
+      if (listo) return;
+      listo = true;
+      var perm = permisos();
+      if (perm.analitica) registrarToque(perm);
+      if (pendiente) sincronizar(true);
+      else if (CART_ITEMS > 0) sincronizar(false);
+    }
+
+    function cargarConsentimiento() {
+      var s = window.Shopify;
+      if (s && typeof s.loadFeatures === 'function') {
+        try {
+          s.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], function () {
+            arrancar();
+          });
+          return;
+        } catch (e) {}
+      }
+      arrancar();
+    }
+
+    document.addEventListener('cart:item-added', function () {
+      sincronizar(true);
+    });
+    document.addEventListener('visitorConsentCollected', function () {
+      var perm = permisos();
+      if (perm.analitica) registrarToque(perm);
+      sincronizar(false);
+    });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', cargarConsentimiento, { once: true });
+    } else {
+      cargarConsentimiento();
+    }
+  })();
+</script>

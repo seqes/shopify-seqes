@@ -27,48 +27,8 @@
 {%- endcapture -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}">
   <head>
-    <!-- Google Tag Manager (deferred) -->
-    {%- comment -%}
-      GTM is deferred until browser idle time (or user interaction) so it
-      never competes with the critical-path render or the LCP image.
-      dataLayer is still created synchronously so any early dataLayer.push
-      calls from the rest of the theme continue to queue correctly; only
-      the gtm.js loader is delayed.
-    {%- endcomment -%}
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      (function () {
-        var loaded = false;
-        function loadGtm() {
-          if (loaded) return;
-          loaded = true;
-          var s = document.createElement('script');
-          s.async = true;
-          s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-NVRHX59H';
-          var f = document.getElementsByTagName('script')[0];
-          f.parentNode.insertBefore(s, f);
-        }
-        // Preferred path: requestIdleCallback (Chrome/Edge/Firefox).
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(loadGtm, { timeout: 4000 });
-        } else {
-          // Safari fallback: load after load event + short delay.
-          window.addEventListener(
-            'load',
-            function () {
-              setTimeout(loadGtm, 2000);
-            },
-            { once: true }
-          );
-        }
-        // Safety net: load on first user interaction if idle has not fired.
-        ['pointerdown', 'keydown', 'scroll'].forEach(function (ev) {
-          window.addEventListener(ev, loadGtm, { once: true, passive: true, capture: true });
-        });
-      })();
-    </script>
-    <!-- End Google Tag Manager -->
+    {%- comment -%}GTM ya no se carga aqui: corre dentro del pixel personalizado de Shopify (Eventos de clientes).{%- endcomment -%}
+    {% render 'sq-attribution', ga_stream: 'GYECVBNCGG' %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
     <meta name="theme-color" content="{{ settings.color_body_bg }}">
@@ -613,16 +573,6 @@
     {{ settings.custom_html_head }}
   </head>
   <body class="animations-{{ settings.animations }} button-uppercase-{{ settings.button_uppercase }} navigation-uppercase-{{ settings.navigation_uppercase }} product-card-spacing-{{ settings.product_card_spacing }} product-title-uppercase-{{ settings.product_title_uppercase }}{% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NVRHX59H"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <a class="screen-reader-shortcut" href="#main-content">{{ 'accessibility.skip_to_text' | t }}</a>
     <div id="wrapper">
       {%- sections 'header-group' -%}
