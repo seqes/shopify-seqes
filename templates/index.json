@@ -26,12 +26,12 @@
         "overlay_opacity": 0,
         "show_frame": true,
         "frame_left": "shopify://shop_images/seqes-portada-figura-izquierda-v2.png",
+        "frame_left_split": 64,
+        "frame_left_part2_scale": 150,
         "frame_right": "shopify://shop_images/seqes-portada-figura-derecha-v2.png",
         "frame_wave": "shopify://shop_images/seqes-portada-ola-v2.png",
         "frame_scale_desktop": 100,
         "frame_scale_mobile": 100,
-        "frame_left_split": 64,
-        "frame_left_part2_scale": 150,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -80,7 +80,12 @@
           }
         }
       },
-      "block_order": ["icon_XEwUyz", "icon_9PGdGg", "icon_Leed3p", "icon_aR8RkC"],
+      "block_order": [
+        "icon_XEwUyz",
+        "icon_9PGdGg",
+        "icon_Leed3p",
+        "icon_aR8RkC"
+      ],
       "settings": {
         "text_alignment": "left",
         "icon_position": "left",
@@ -100,7 +105,7 @@
         "col_biotecnologia": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Cloning_cells_webp.webp",
+            "image": "shopify://shop_images/pilar-1-ciencia-webp.webp",
             "image_full_width": true,
             "image_link": "",
             "retina": true,
@@ -113,7 +118,7 @@
         "col_naturalidad": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/baby_holding_hand_webp.webp",
+            "image": "shopify://shop_images/pilar-2-seguridad-webp.webp",
             "image_full_width": true,
             "image_link": "",
             "retina": true,
@@ -126,7 +131,7 @@
         "col_seguridad": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tree_sample_webbp.webp",
+            "image": "shopify://shop_images/pilar-3-activos-webp.webp",
             "image_full_width": true,
             "image_link": "",
             "retina": true,
@@ -137,7 +142,11 @@
           }
         }
       },
-      "block_order": ["col_biotecnologia", "col_naturalidad", "col_seguridad"],
+      "block_order": [
+        "col_biotecnologia",
+        "col_naturalidad",
+        "col_seguridad"
+      ],
       "name": "Pilares de la marca",
       "settings": {
         "heading": "Por qué SEQES es diferente",
@@ -223,7 +232,13 @@
           }
         }
       },
-      "block_order": ["subheading_VrU4YN", "heading_W3FrTx", "button_VhdHLg", "text_BBjXUJ", "button_3aDeP9"],
+      "block_order": [
+        "subheading_VrU4YN",
+        "heading_W3FrTx",
+        "button_VhdHLg",
+        "text_BBjXUJ",
+        "button_3aDeP9"
+      ],
       "name": "Image with text overlay",
       "settings": {
         "section_width": "full-width-row-full",
@@ -284,7 +299,13 @@
           }
         }
       },
-      "block_order": ["review_01", "review_02", "review_03", "review_04", "review_05"],
+      "block_order": [
+        "review_01",
+        "review_02",
+        "review_03",
+        "review_04",
+        "review_05"
+      ],
       "settings": {
         "full_width": true,
         "text_size": "small",
@@ -337,7 +358,11 @@
           }
         }
       },
-      "block_order": ["column_WmADhD", "column_7JwjrY", "column_EiDqyJ"],
+      "block_order": [
+        "column_WmADhD",
+        "column_7JwjrY",
+        "column_EiDqyJ"
+      ],
       "name": "Multicolumn",
       "settings": {
         "heading": "Aprende sobre el cuidado de la piel",
