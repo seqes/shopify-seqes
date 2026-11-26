@@ -14,14 +14,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "menu_nWDeMm": {
-          "type": "menu",
-          "settings": {
-            "column_size": "medium",
-            "title": "SEQES",
-            "menu": "footer-1"
-          }
-        },
         "social_EnGpgj": {
           "type": "social",
           "settings": {
@@ -32,16 +24,24 @@
         "signup_keJmdR": {
           "type": "signup",
           "settings": {
-            "column_size": "large",
+            "column_size": "medium",
             "title": "Únete a nuestra familia",
             "text": "<p>Suscríbete para no perderte nuestras promociones del mes, stock limitado y lo último en fórmulas dermocosméticas.</p>"
+          }
+        },
+        "menu_nWDeMm": {
+          "type": "menu",
+          "settings": {
+            "column_size": "large",
+            "title": "SEQES",
+            "menu": "footer-1"
           }
         }
       },
       "block_order": [
-        "menu_nWDeMm",
         "social_EnGpgj",
-        "signup_keJmdR"
+        "signup_keJmdR",
+        "menu_nWDeMm"
       ],
       "settings": {
         "full_width": true,
