@@ -180,7 +180,10 @@
             "star_color": "#faa525",
             "photo_size": 44,
             "text_size": 14,
+            "max_lines": 2,
             "max_chars": 200,
+            "desktop_extra_width": 0,
+            "mobile_extra_width": 0,
             "autoplay_speed": 5,
             "badge_logo": "shopify://shop_images/Logo_Google.webp",
             "badge_text": "Reseñas verificadas de Google",
@@ -430,7 +433,12 @@
           }
         }
       },
-      "block_order": ["logo_RLLtmX", "logo_Pw4iVy", "logo_CwQrwD", "logo_PGm3XA"],
+      "block_order": [
+        "logo_RLLtmX",
+        "logo_Pw4iVy",
+        "logo_CwQrwD",
+        "logo_PGm3XA"
+      ],
       "settings": {
         "heading": "Libre de lo que sobra, llena de lo que importa",
         "description": "<p>Todo lo que eliminamos para proteger su piel</p>",
@@ -515,7 +523,11 @@
           }
         }
       },
-      "block_order": ["user_iktzdg", "user_aDnHLC", "user_dTXRUG"],
+      "block_order": [
+        "user_iktzdg",
+        "user_aDnHLC",
+        "user_dTXRUG"
+      ],
       "name": "Instagram stories",
       "settings": {
         "visibility": "always-display",
@@ -577,7 +589,12 @@
           }
         }
       },
-      "block_order": ["subheading_gULkCL", "heading_jMdrqh", "text_RnzK9d", "button_hJaUiD"],
+      "block_order": [
+        "subheading_gULkCL",
+        "heading_jMdrqh",
+        "text_RnzK9d",
+        "button_hJaUiD"
+      ],
       "settings": {
         "image": "shopify://shop_images/Baby_Lotion_Webp.webp",
         "image_ratio": "square",
@@ -606,7 +623,13 @@
         "lightbox_button": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Navegacion Alerce Webm.webm",
+        "use_fallback_image": false,
         "overlay_opacity": 25,
+        "show_frame": true,
+        "frame_left_split": 0,
+        "frame_left_part2_scale": 150,
+        "frame_scale_desktop": 100,
+        "frame_scale_mobile": 100,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -617,7 +640,7 @@
         "image_VVqgxA": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/child-rash-cchn.webp",
+            "image": "shopify://shop_images/05-antes-despues_2-irritada.webp",
             "title": "Piel irritada",
             "heading_size": "h3",
             "heading_position": "top",
@@ -629,7 +652,7 @@
         "image_cRFMkT": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/gemini_baby_leg_healthy.webp",
+            "image": "shopify://shop_images/04-antes-despues_1-equilibrada.webp",
             "title": "Piel equilibrada",
             "heading_size": "h3",
             "heading_position": "top",
@@ -639,7 +662,10 @@
           }
         }
       },
-      "block_order": ["image_VVqgxA", "image_cRFMkT"],
+      "block_order": [
+        "image_VVqgxA",
+        "image_cRFMkT"
+      ],
       "settings": {
         "heading": "¿Has visto esto en la piel de tu bebé?",
         "heading_left": false,
@@ -661,6 +687,7 @@
           "settings": {
             "icon": "truck",
             "image": "shopify://shop_images/Icon_Delivery_Truck.webp",
+            "image_alt": "",
             "heading": "DESPACHOS GRATIS",
             "text": "<p>Por compras sobre $50.000</p>"
           }
@@ -670,6 +697,7 @@
           "settings": {
             "icon": "ruler",
             "image": "shopify://shop_images/Icon_Chile.webp",
+            "image_alt": "",
             "heading": "A TODO CHILE",
             "text": "<p>De Arica a Punta Arenas</p>"
           }
@@ -679,12 +707,17 @@
           "settings": {
             "icon": "ruler",
             "image": "shopify://shop_images/Icon_Warranty.webp",
+            "image_alt": "",
             "heading": "Pago 100% seguro",
             "text": "<p>Tarjeta de Crédito, débito o transferencia</p>"
           }
         }
       },
-      "block_order": ["icon_MQMEz6", "icon_JTNVmQ", "icon_nrMNYB"],
+      "block_order": [
+        "icon_MQMEz6",
+        "icon_JTNVmQ",
+        "icon_nrMNYB"
+      ],
       "name": "Text with icons",
       "settings": {
         "text_alignment": "left",
@@ -727,7 +760,11 @@
           }
         }
       },
-      "block_order": ["quote_ENNa6W", "quote_NPKM3M", "quote_D3waLP"],
+      "block_order": [
+        "quote_ENNa6W",
+        "quote_NPKM3M",
+        "quote_D3waLP"
+      ],
       "name": "Testimonials",
       "settings": {
         "full_width": true,
@@ -843,7 +880,12 @@
           }
         }
       },
-      "block_order": ["logo_eVJG3L", "logo_MHyfdt", "logo_Bxei7j", "logo_CLnNBN"],
+      "block_order": [
+        "logo_eVJG3L",
+        "logo_MHyfdt",
+        "logo_Bxei7j",
+        "logo_CLnNBN"
+      ],
       "settings": {
         "heading": "¿Confiarías cualquier crema para la piel de tu guagua?",
         "description": "<p>Compromisos que puedes verificar</p>",
