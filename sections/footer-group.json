@@ -33,12 +33,16 @@
           "type": "signup",
           "settings": {
             "column_size": "large",
-            "title": "adsadsa",
-            "text": "<p>Add a text to attract more customers to <strong>sign up!</strong></p>"
+            "title": "Únete a nuestra familia",
+            "text": "<p>Suscríbete para no perderte nuestras promociones del mes, stock limitado y lo último en fórmulas dermocosméticas.</p>"
           }
         }
       },
-      "block_order": ["menu_nWDeMm", "social_EnGpgj", "signup_keJmdR"],
+      "block_order": [
+        "menu_nWDeMm",
+        "social_EnGpgj",
+        "signup_keJmdR"
+      ],
       "settings": {
         "full_width": true,
         "copyright_text": "All rights reserved.",
@@ -49,5 +53,7 @@
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }
